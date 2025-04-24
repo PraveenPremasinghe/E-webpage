@@ -21,6 +21,9 @@ const OurServices = () => {
         />
 
       <div className="container mt-14">
+
+
+
   <div className="wow fadeInUp" data-wow-delay=".2s">
     <div className="-mx-4 grid gap-12 md:grid-cols-3">
       {servicesData.map((card: servicesCard, index) => (
@@ -55,9 +58,9 @@ const OurServices = () => {
                 </div>
               )}
 
-              <h3 className="mb-3 text-xl font-bold">{card.title}</h3>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{card.title} </h3>
 
-              <p className="mb-6 flex-grow line-clamp-3 text-gray-500">
+              <p className="mb-6 flex-grow line-clamp-3 text-gray-600 dark:text-gray-300">
                 {card.content}
               </p>
 

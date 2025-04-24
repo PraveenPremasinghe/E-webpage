@@ -77,7 +77,7 @@ const AboutPage = () => {
             onClick={() => setActiveTab("mission")}
             className={`px-6 py-3 rounded-full font-medium transition-all ${
               activeTab === "mission"
-                ? "bg-blue-600 text-white shadow-lg"
+                ? "bg-primary text-white shadow-lg"
                 : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
             }`}
           >
@@ -87,7 +87,7 @@ const AboutPage = () => {
             onClick={() => setActiveTab("values")}
             className={`px-6 py-3 rounded-full font-medium transition-all ${
               activeTab === "values"
-                ? "bg-blue-600 text-white shadow-lg"
+                ? "bg-primary text-white shadow-lg"
                 : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
             }`}
           >
