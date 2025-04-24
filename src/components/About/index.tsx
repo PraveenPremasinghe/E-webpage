@@ -13,7 +13,7 @@ const About = () => {
             <div className="w-full lg:w-2/3">
               <div className=" mx-10">
                 <img
-                  src="/images/products/email-cover.png"
+                  src='/images/products/email-cover.png'
                   alt="Actogo ERP"
                   className="h-full w-full object-cover"
                 />

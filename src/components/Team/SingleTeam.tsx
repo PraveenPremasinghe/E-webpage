@@ -40,12 +40,12 @@ const fixedPositions: PositionStyle[] = [
 
 export default function TeamShowcase() {
   return (
-    <div className="relative w-full h-[700px] bg-gradient-to-b from-white to-gray-100 overflow-hidden">
+    <div className='relative w-full h-[700px] bg-gradient-to-b from-white to-gray-100 overflow-hidden'>
       {/* Positioned Images */}
       {imageSources.map((src, i) => (
         <div
           key={i}
-          className="absolute rounded-full overflow-hidden shadow-lg transition-all duration-300 hover:scale-110"
+          className='absolute rounded-full overflow-hidden shadow-lg transition-all duration-300 hover:scale-110'
           style={fixedPositions[i]}
         >
           <Image
@@ -53,19 +53,19 @@ export default function TeamShowcase() {
             alt={`Team member ${i + 1}`}
             width={100}
             height={100}
-            className="w-full h-full object-cover"
+            className='w-full h-full object-cover'
           />
         </div>
       ))}
 
       {/* Center Text Block */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-center max-w-2xl px-4">
-        <h2 className="text-3xl font-semibold leading-snug">
-          We're a wonderfully diverse team. When we come together, magic happens
+      <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-center max-w-2xl px-4'>
+        <h2 className='text-3xl font-semibold leading-snug'>
+          We&apos;re a wonderfully diverse team. When we come together, magic happens
         </h2>
-        <div className="mt-6 text-4xl font-bold">
+        <div className='mt-6 text-4xl font-bold'>
           200+<br />
-          <span className="text-lg font-medium">unique perspectives</span>
+          <span className='text-lg font-medium'>unique perspectives</span>
         </div>
       </div>
     </div>
