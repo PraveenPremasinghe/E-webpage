@@ -49,7 +49,7 @@ const Header = () => {
         className={`ud-header left-0 top-0 z-40 flex w-full items-center ${
           sticky
             ? "shadow-nav fixed z-[999] border-b border-stroke bg-white/80 backdrop-blur-[5px] dark:border-dark-3/20 dark:bg-dark/10"
-            : "absolute bg-transparent"
+            : "absolute bg-white"
         }`}
       >
         <div className="container">
@@ -168,7 +168,7 @@ const Header = () => {
                               className={`ud-menu-scroll flex py-2 text-base lg:inline-flex lg:px-0 lg:py-6 ${
                                 sticky
                                   ? "text-dark group-hover:text-primary dark:text-white dark:group-hover:text-primary"
-                                  : "text-body-color dark:text-white lg:text-white"
+                                  : "text-body-color dark:text-white lg:text-gray-700"
                               } ${
                                 pathUrl === menuItem?.path &&
                                 sticky &&
