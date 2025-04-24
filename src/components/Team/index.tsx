@@ -1,6 +1,4 @@
 import { TeamType } from "@/types/team";
-import SectionTitle from "../Common/SectionTitle";
-import SingleTeam, { ImageGallery } from "./SingleTeam";
 import TeamShowcase from "./SingleTeam";
 
 const teamData: TeamType[] = [
