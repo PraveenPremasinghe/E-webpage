@@ -11,6 +11,41 @@ import {
   CheckCircle,
 } from "lucide-react";
 
+interface NavigationCategory {
+  title: string;
+  items: { name: string }[];
+}
+
+interface RightSidebar {
+  title: string;
+  brandName: { first: string; highlight: string };
+  features: string[];
+}
+
+interface NavigationItemBase {
+  id: string;
+  title: string;
+  submenu: boolean;
+  link?: string;
+}
+
+interface NavigationItemWithSubmenu extends NavigationItemBase {
+  submenu: true;
+  content: {
+    title: string;
+    categories: NavigationCategory[];
+    rightSidebar: RightSidebar;
+  };
+}
+
+interface NavigationItemWithoutSubmenu extends NavigationItemBase {
+  submenu: false;
+  link: string;
+}
+
+type NavigationItem = NavigationItemWithSubmenu | NavigationItemWithoutSubmenu;
+
+
 export default function HeaderNew() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -252,27 +287,27 @@ export default function HeaderNew() {
                         className={`transform transition-transform duration-200 ${activeDropdown === `mobile-${item.id}` ? "rotate-180" : ""}`}
                       />
                     </button>
-                    {activeDropdown === `mobile-${item.id}` && (
+                    {activeDropdown === `mobile-${item.id}` && item.submenu && (
                       <div className="ml-4 space-y-1">
-                        {item.content.categories.map((category, idx) => (
-                          <div key={idx}>
-                            <div className="py-1 font-medium text-gray-700">
-                              {category.title}
-                            </div>
-                            {category.items
-                              .slice(0, 3)
-                              .map((subitem, subidx) => (
-                                <a
-                                  key={subidx}
-                                  href="#"
-                                  className="block rounded-md px-3 py-2 text-gray-600 hover:bg-gray-100"
-                                >
-                                  {subitem.name}
-                                </a>
-                              ))}
-                          </div>
-                        ))}
-                      </div>
+    {(item as NavigationItemWithSubmenu).content.categories.map((category, idx) => (
+      <div key={idx}>
+        <div className="py-1 font-medium text-gray-700">
+          {category.title}
+        </div>
+        {category.items
+          .slice(0, 3)
+          .map((subitem, subidx) => (
+            <a
+              key={subidx}
+              href="#"
+              className="block rounded-md px-3 py-2 text-gray-600 hover:bg-gray-100"
+            >
+              {subitem.name}
+            </a>
+          ))}
+      </div>
+    ))}
+  </div>
                     )}
                   </div>
                 ) : (
