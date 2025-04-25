@@ -5,7 +5,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="we-offer-section-bg mt-32 pb-28 pt-28 dark:bg-dark-2"
+      className="we-offer-section-bg pb-28 pt-10 sm:pt-24 md:pt-32 dark:bg-dark"
     >
       <div className="container">
         <div className="wow fadeInUp" data-wow-delay=".2s">

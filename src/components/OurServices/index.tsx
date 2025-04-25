@@ -14,7 +14,7 @@ import { PinContainer } from "@/components/ui/3d-pin";
 
 const OurServices = () => {
   return (
-    <section className="service-section-bg pt-32  dark:bg-dark">
+    <section className="service-section-bg pt-10 sm:pt-24 md:pt-32 dark:bg-dark">
       <div className="container">
         <SectionTitle
           subtitle="Our Services"

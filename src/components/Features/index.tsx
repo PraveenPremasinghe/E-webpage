@@ -30,7 +30,8 @@ Digitalize all critical Business Operations"
               <div className="w-full px-4 md:px-6 lg:w-1/2 lg:px-8">
                 <div className="mb-8 max-w-full md:max-w-[540px] lg:mb-0">
                   {/* Title Section */}
-                  <h1 className="mb-3 text-3xl font-medium leading-tight text-dark dark:text-white sm:mb-4 sm:text-4xl md:mb-5 md:text-5xl">
+                  <h1
+                    className="mb-3 text-3xl font-medium leading-tight text-dark dark:text-white sm:mb-4 sm:text-4xl md:mb-5 md:text-5xl">
                     About
                     <span className="mx-1 font-semibold text-primary sm:mx-2">
                       #Edhirya IT
@@ -38,7 +39,8 @@ Digitalize all critical Business Operations"
                   </h1>
 
                   {/* Description */}
-                  <h2 className="mb-4 text-base font-medium leading-tight text-dark dark:text-white sm:mb-5 sm:text-lg sm:leading-[1.8] md:text-xl">
+                  <h2
+                    className="mb-4 text-base font-medium leading-tight text-dark dark:text-white sm:mb-5 sm:text-lg sm:leading-[1.8] md:text-xl">
                     &quot;Over the years we&apos;ve developed sophisticated tools,
                     platforms and digital products with cutting edge technology
                     and helped grow businesses rapidly. It&apos;s a well known fact
@@ -133,69 +135,71 @@ Digitalize all critical Business Operations"
         {/*</section>*/}
       </div>
 
-      <section className="pt-32 dark:bg-dark">
-        <div
-          className="container relative w-full overflow-hidden rounded-[2rem] bg-black p-6
- text-white sm:p-24"
-        >
+    <section className="pt-16 sm:pt-24 md:pt-28 lg:pt-32 dark:bg-dark">
+  <div
+    className="container relative w-full overflow-hidden rounded-2xl bg-black p-6 text-white sm:rounded-3xl sm:p-12 md:p-16 lg:rounded-[2rem] lg:p-24">
+    {/* Glow Effect */}
+    <img
+      src="/images/glows/glow-vector.png"
+      alt="Glow Effect"
+      className="pointer-events-none absolute right-[-50px] top-[-50px] z-0 w-[600px] opacity-50 sm:right-[-80px] sm:top-[-80px] sm:w-[800px] md:right-[-100px] md:top-[-100px] md:w-[1000px]"
+    />
+
+    {/* Warm Vector */}
+    <img
+      src="/images/glows/warm-vector.png"
+      alt="Warm Vector"
+      className="pointer-events-none absolute bottom-[-50px] left-[-50px] z-0 w-[800px] opacity-60 sm:bottom-[-80px] sm:left-[-80px] sm:w-[1000px] md:bottom-[-100px] md:left-[-100px] md:w-[1200px]"
+    />
+
+    {/* Noise Overlay */}
+    <div className="absolute inset-0 z-0 opacity-50 mix-blend-soft-light">
+      <img
+        src="/images/glows/noise-wide.png"
+        alt="Noise"
+        className="h-full w-full object-cover"
+      />
+    </div>
+
+    <div
+      className="relative z-10 mx-auto flex max-w-7xl flex-col items-start gap-6 lg:flex-row lg:items-center lg:gap-8">
+      {/* Text Section */}
+      <div className="w-full lg:w-1/2">
+        <div className="w-[200px] sm:w-[250px] md:w-[300px]">
           <img
-            src="/images/glows/glow-vector.png"
-            alt="Glow Effect"
-            className="pointer-events-none absolute right-[-100px] top-[-100px] z-0 w-[1000px] opacity-50 md:w-[1000px]"
+            src="/images/logo/edhirya-it-logo.webp"
+            alt="AI Brain"
+            className="h-auto w-full object-contain"
           />
-
-          {/* Bottom-left Warm Vector */}
-          <img
-            src="/images/glows/warm-vector.png"
-            alt="Warm Vector"
-            className="pointer-events-none absolute bottom-[-100px] left-[-100px] z-0 w-[1200px] opacity-60 md:w-[1200px]"
-          />
-
-          {/* Noise Overlay */}
-          <div className="absolute inset-0 z-0 opacity-50 mix-blend-soft-light">
-            <img
-              src="/images/glows/noise-wide.png"
-              alt="Noise"
-              className="h-full w-full object-cover"
-            />
-          </div>
-
-          <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-start gap-8 lg:flex-row lg:items-center">
-            {/* Text Section */}
-            <div className="w-full lg:w-1/2">
-              <div className="w-[300px]">
-                <img
-                  src="/images/logo/edhirya-it-logo.webp"
-                  alt="AI Brain"
-                  className="h-auto w-full object-contain"
-                />
-              </div>
-              <h3 className="mt-6 text-2xl font-semibold text-white md:text-3xl">
-                Revolutionizing AI Solutions
-              </h3>
-              <p className="mt-3 text-base text-gray-300 md:text-lg">
-                Discover our innovative AI brain technology that’s shaping
-                industries through intelligent automation and smarter systems.
-              </p>
-              <div className="mt-10">
-                <button className="ai-button">Get Started ,</button>
-              </div>
-            </div>
-
-            <div className="w-full lg:w-1/2"></div>
-          </div>
-
-          <div className="absolute bottom-[-48px] right-[-30px] w-[600px] md:w-[350px] lg:w-[650px] ">
-            <div className="modern-image-mask rounded-tl-[30px] border-l border-t border-white border-opacity-30 bg-white/20 p-4">
-              <img
-                src="/images/hero/email-cover2.png"
-                alt="AI Brain"
-                className="h-auto w-full object-contain"
-              />
-            </div>
-          </div>
         </div>
-      </section>
+        <h3 className="mt-4 text-xl font-semibold text-white sm:mt-5 sm:text-2xl md:mt-6 md:text-3xl">
+          Revolutionizing AI Solutions
+        </h3>
+        <p className="mt-2 text-sm text-gray-300 sm:mt-3 sm:text-base md:text-lg">
+          Discover our innovative AI brain technology that&apos;s shaping
+          industries through intelligent automation and smarter systems.
+        </p>
+        <div className="mt-6 sm:mt-8 md:mt-10">
+          <button className="ai-button">Get Started ,</button>
+        </div>
+      </div>
+
+      <div className="w-full lg:w-1/2"></div>
+    </div>
+
+    <div
+      className="absolute bottom-[-24px] right-[-15px] w-[300px] sm:bottom-[-36px] sm:right-[-20px] sm:w-[400px] md:bottom-[-48px] md:right-[-30px] md:w-[350px] lg:w-[650px]">
+      <div
+        className="modern-image-mask rounded-tl-[15px] border-l border-t border-white border-opacity-30 bg-white/20 p-2 sm:rounded-tl-[20px] sm:p-3 md:rounded-tl-[30px] md:p-4">
+        <img
+          src="/images/hero/email-cover2.png"
+          alt="AI Brain"
+          className="h-auto w-full object-contain"
+        />
+      </div>
+    </div>
+  </div>
+</section>
 
     </section>
   );

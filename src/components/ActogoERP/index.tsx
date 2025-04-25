@@ -47,7 +47,7 @@ const ActogoERP = () => {
   ];
 
   return (
-    <section className=" pb-10 pt-32 dark:bg-dark">
+    <section className=" pb-10 pt-10 sm:pt-24 md:pt-32 dark:bg-dark">
       <div className="container ">
         <SectionTitle
           subtitle="ActoGo ERP Platform"
