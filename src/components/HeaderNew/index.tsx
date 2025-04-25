@@ -143,7 +143,7 @@ export default function HeaderNew() {
     setMegaMenuVisible(false);
   };
 
-  const toggleDropdown = (dropdown) => {
+  const toggleDropdown = (dropdown:any) => {
     const isSameDropdown = activeDropdown === dropdown;
 
     // Set the active dropdown
