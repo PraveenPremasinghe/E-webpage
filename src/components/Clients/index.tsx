@@ -16,7 +16,7 @@ const Clients = () => {
 <div className="container">
        <SectionTitle
          subtitle="Powering Innovation Across Industries"
-         title="Our Trusted Clients"
+         title="Trusted by Industry Leaders Around the World"
          paragraph=" "
        />
 

@@ -13,11 +13,11 @@ const Hero = () => {
           <div className='flex h-full flex-col items-center justify-between gap-8 py-12 md:py-16 lg:flex-row lg:py-20'>
             {/* Left side - Title and content */}
             <div className='flex  flex-col justify-center space-y-6 lg:w-2/3 '>
-              <div className='w-[800px]'>
-                <h1 className='text-6xl font-normal text-neutral-600 dark:text-neutral-400'>
+              <div >
+                <h1 className='text-8xl font-normal text-white dark:text-neutral-400'>
                   Build <FlipWords words={words} /> digital solutions
                 </h1>
-                <p className='mt-3 max-w-lg text-lg text-gray-600 sm:text-xl'>
+                <p className='mt-3 max-w-lg text-lg text-white sm:text-xl'>
                   A compelling subheading that explains your value proposition
                   in clear terms.
                 </p>
@@ -47,90 +47,90 @@ const Hero = () => {
 
             {/* Right side - Globe component */}
             <div className='flex w-full items-center justify-center lg:w-1/2'>
-              <GlobeDemo />
+             sfgdfgh
             </div>
           </div>
         </div>
       </section>
 
-      <div className='our-merit-bg'>
-        <div className='flare-overlay'></div>
-        <div className='flex justify-around p-8'>
-          <div className='flex items-center gap-2'>
-            <div className='icon-white-circle'>
-              <img
-                src='/images/icons/icons8-crowd-100.png'
-                alt='icon'
-                className='h-14 w-14 object-contain'
-              />
-            </div>
+      {/*<div className='our-merit-bg'>*/}
+      {/*  <div className='flare-overlay'></div>*/}
+      {/*  <div className='flex justify-around p-8'>*/}
+      {/*    <div className='flex items-center gap-2'>*/}
+      {/*      <div className='icon-white-circle'>*/}
+      {/*        <img*/}
+      {/*          src='/images/icons/icons8-crowd-100.png'*/}
+      {/*          alt='icon'*/}
+      {/*          className='h-14 w-14 object-contain'*/}
+      {/*        />*/}
+      {/*      </div>*/}
 
-            <div className='flex flex-col items-center  '>
-              <h3 className='font-size-16'>ACTIVE CLIENTS</h3>
-              <h1 className='font-size-50 font-semibold'>15 +</h1>
-            </div>
-          </div>
+      {/*      <div className='flex flex-col items-center  '>*/}
+      {/*        <h3 className='font-size-16'>ACTIVE CLIENTS</h3>*/}
+      {/*        <h1 className='font-size-50 font-semibold'>15 +</h1>*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
 
-          <div className='flex items-center gap-2'>
-            <div className='icon-white-circle'>
-              <img
-                src='/images/icons/icons8-desktop-100.png'
-                alt='icon'
-                className='h-14 w-14 object-contain  '
-              />
-            </div>
-            <div className='flex flex-col items-center'>
-              <h3 className='font-size-16'>PROJECTS DONE</h3>
-              <h1 className='font-size-50 font-semibold'>50 +</h1>
-            </div>
-          </div>
+      {/*    <div className='flex items-center gap-2'>*/}
+      {/*      <div className='icon-white-circle'>*/}
+      {/*        <img*/}
+      {/*          src='/images/icons/icons8-desktop-100.png'*/}
+      {/*          alt='icon'*/}
+      {/*          className='h-14 w-14 object-contain  '*/}
+      {/*        />*/}
+      {/*      </div>*/}
+      {/*      <div className='flex flex-col items-center'>*/}
+      {/*        <h3 className='font-size-16'>PROJECTS DONE</h3>*/}
+      {/*        <h1 className='font-size-50 font-semibold'>50 +</h1>*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
 
-          <div className='flex items-center gap-2'>
-            <div className='icon-white-circle'>
-              <img
-                src='/images/icons/icons8-team-100.png'
-                alt='icon'
-                className='h-14 w-14 object-contain  '
-              />
-            </div>
+      {/*    <div className='flex items-center gap-2'>*/}
+      {/*      <div className='icon-white-circle'>*/}
+      {/*        <img*/}
+      {/*          src='/images/icons/icons8-team-100.png'*/}
+      {/*          alt='icon'*/}
+      {/*          className='h-14 w-14 object-contain  '*/}
+      {/*        />*/}
+      {/*      </div>*/}
 
-            <div className='flex flex-col items-center'>
-              <h3 className='font-size-16'>TEAM ADVISORS</h3>
-              <h1 className='font-size-50 font-semibold'>25 +</h1>
-            </div>
-          </div>
+      {/*      <div className='flex flex-col items-center'>*/}
+      {/*        <h3 className='font-size-16'>TEAM ADVISORS</h3>*/}
+      {/*        <h1 className='font-size-50 font-semibold'>25 +</h1>*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
 
-          <div className='flex items-center gap-2'>
-            <div className='icon-white-circle'>
-              <img
-                src='/images/icons/icons8-juggler-100.png'
-                alt='icon'
-                className='h-14 w-14 object-contain '
-              />
-            </div>
+      {/*    <div className='flex items-center gap-2'>*/}
+      {/*      <div className='icon-white-circle'>*/}
+      {/*        <img*/}
+      {/*          src='/images/icons/icons8-juggler-100.png'*/}
+      {/*          alt='icon'*/}
+      {/*          className='h-14 w-14 object-contain '*/}
+      {/*        />*/}
+      {/*      </div>*/}
 
-            <div className='flex flex-col items-center'>
-              <h3 className='font-size-16'>GLORIOUS YEARS</h3>
-              <h1 className='font-size-50 font-semibold'>10 +</h1>
-            </div>
-          </div>
+      {/*      <div className='flex flex-col items-center'>*/}
+      {/*        <h3 className='font-size-16'>GLORIOUS YEARS</h3>*/}
+      {/*        <h1 className='font-size-50 font-semibold'>10 +</h1>*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
 
-          <div className='flex items-center gap-2'>
-            <div className='icon-white-circle'>
-              <img
-                src='/images/icons/icons8-asia-100.png'
-                alt='icon'
-                className='h-14 w-14 object-contain  '
-              />
-            </div>
+      {/*    <div className='flex items-center gap-2'>*/}
+      {/*      <div className='icon-white-circle'>*/}
+      {/*        <img*/}
+      {/*          src='/images/icons/icons8-asia-100.png'*/}
+      {/*          alt='icon'*/}
+      {/*          className='h-14 w-14 object-contain  '*/}
+      {/*        />*/}
+      {/*      </div>*/}
 
-            <div className='flex flex-col items-center'>
-              <h3 className='font-size-16'>CONNECTED COUNTRIES</h3>
-              <h1 className='font-size-50 font-semibold'>10 +</h1>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/*      <div className='flex flex-col items-center'>*/}
+      {/*        <h3 className='font-size-16'>CONNECTED COUNTRIES</h3>*/}
+      {/*        <h1 className='font-size-50 font-semibold'>10 +</h1>*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
     </>
   );
 };

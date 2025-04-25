@@ -17,6 +17,8 @@ import OurServices from "@/components/OurServices";
 import Partners from "@/components/Partners";
 import AIBot from "@/components/AIBot";
 import ActogoERP from "@/components/ActogoERP";
+import Platform from "@/components/Platform";
+import IndustrySolutionsSection from "@/components/TailoredSolution";
 
 export const metadata: Metadata = {
   title: "Edhirya IT - Crafting the Future of Digital Innovation",
@@ -32,6 +34,8 @@ export default function Home() {
       <Hero />
       {/*<AIBot/>*/}
       <Clients />
+      <Platform/>
+       <IndustrySolutionsSection/>
       <Features />
       <WeOffer/>
       <OurServices/>

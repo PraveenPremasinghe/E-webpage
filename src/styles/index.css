@@ -12,6 +12,8 @@
 
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow-x: hidden;
+
 }
 
 .bg-primary{
@@ -19,7 +21,7 @@ body {
 }
 
 .text-primary{
-  color: #A12266;
+  color: #A12266 !important;
 }
 
 .brand-color-text{
@@ -100,14 +102,16 @@ body {
   position: relative;
   width: 100%;
   min-height: 100vh; /* Full viewport height */
-  background-image: url('/images/hero/hero-bg.png');
+  background-image: url('https://images.unsplash.com/photo-1717962690206-2d2f6ddac9db?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed; /* Optional for parallax effect */
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+
 }
 
 
@@ -330,5 +334,17 @@ background-color: #fef4ea;
   line-height: 1.3333333333;
 }
 
-
+.inner-details-card{
+  position: absolute;
+  inset-inline-start: 40px;;
+  inset-inline-end: 40px;;
+  inset-block-start: calc(100% + 0.625rem);
+  z-index: 1;
+  gap: 0;
+  inline-size: 100vw;
+  border: 1px solid #ceceea;
+  border-radius: 15px;
+  background-color: #ffffff;
+  box-shadow: 0 0.25rem 0.375rem 0 rgba(67, 46, 134, .04);
+}
 

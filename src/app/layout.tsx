@@ -8,8 +8,9 @@ import { ThemeProvider } from "next-themes";
 import "../styles/index.css";
 import "../styles/prism-vsc-dark-plus.css";
 import ToasterContext from "./api/contex/ToasetContex";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import PreLoader from "@/components/Common/PreLoader";
+import HeaderNew from "@/components/HeaderNew";
 
 export default function RootLayout({
   children,
@@ -41,7 +42,7 @@ export default function RootLayout({
               defaultTheme="light"
             >
               <ToasterContext />
-              <Header />
+              <HeaderNew />
               {children}
               <Footer />
               <ScrollToTop />

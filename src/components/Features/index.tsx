@@ -106,21 +106,21 @@ Digitalize all critical Business Operations'
           </div>
         </div>
 
-        <section className='edhirya-card  pt-32'>
-          <div className='flex flex-col items-center gap-4 border-y-2 pb-20 pt-14 '>
-            <div className='flex flex-col '>
-              <span className='home-banner-title-sub ml-[-3.25rem] text-2xl font-medium   text-dark dark:text-white sm:ml-[-10.25rem]'>
-                We are ,
-              </span>
-              <span className='home-banner-title-main text-center text-2xl font-medium leading-tight text-dark dark:text-white'>
-                <span className='logo-text-color'>
-                  <span className='logo-text-second-color'>[e]</span>dhirya
-                </span>
-                <span className='logo-text-second-color'> IT.</span>
-              </span>
-            </div>
-          </div>
-        </section>
+        {/*<section className='edhirya-card  pt-32'>*/}
+        {/*  <div className='flex flex-col items-center gap-4 border-y-2 pb-20 pt-14 '>*/}
+        {/*    <div className='flex flex-col '>*/}
+        {/*      <span className='home-banner-title-sub ml-[-3.25rem] text-2xl font-medium   text-dark dark:text-white sm:ml-[-10.25rem]'>*/}
+        {/*        We are ,*/}
+        {/*      </span>*/}
+        {/*      <span className='home-banner-title-main text-center text-2xl font-medium leading-tight text-dark dark:text-white'>*/}
+        {/*        <span className='logo-text-color'>*/}
+        {/*          <span className='logo-text-second-color'>[e]</span>dhirya*/}
+        {/*        </span>*/}
+        {/*        <span className='logo-text-second-color'> IT.</span>*/}
+        {/*      </span>*/}
+        {/*    </div>*/}
+        {/*  </div>*/}
+        {/*</section>*/}
       </div>
 
       <section className='pt-32 dark:bg-dark'>

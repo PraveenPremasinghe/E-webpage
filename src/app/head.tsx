@@ -14,7 +14,7 @@ export default function Head() {
   <meta property="og:image" content="/images/og-image.jpg" />
   <meta property="og:url" content="https://edhirya.com" />
   <meta property="og:type" content="website" />
-       <link rel="icon" href="/images/favicon.ico" />
+       <link rel="icon" href="/images/logo/favicon.png" />
 </>
   );
 }
