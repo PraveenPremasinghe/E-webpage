@@ -326,7 +326,7 @@ export default function HeaderNew() {
                   href="#"
                   className="block w-full rounded-md border border-gray-300 px-4 py-2 text-center font-medium text-gray-700 hover:bg-gray-50"
                 >
-                  Contact Sales
+                  Contact Us
                 </a>
               </div>
             </div>

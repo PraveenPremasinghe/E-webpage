@@ -16,17 +16,17 @@ import WorkspaceSetupUI from "@/components/WorkspaceSetupUI";
 
 const Platform = () => {
   return (
-    <section className="pt-32 dark:bg-dark  ">
+    <section className="pt-10 dark:bg-dark sm:pt-24 md:pt-32">
       <div className="">
         <div className="container">
           <div className="wow fadeInUp" data-wow-delay=".2s">
             <div className="-mx-4 flex flex-wrap items-center">
               <div className="w-full px-4 lg:w-1/2">
                 <div className="mb-12   lg:mb-0">
-                  <h1 className="mb-10 text-7xl font-medium leading-tight text-dark dark:text-white">
+                  <h1 className="mb-4 text-3xl font-medium sm:text-center md:text-left leading-tight text-dark dark:text-white sm:mb-6 sm:text-4xl md:mb-8 md:text-5xl lg:mb-10 lg:text-6xl xl:text-7xl">
                     A Platform That Adapts To You
                   </h1>
-                  <p className="mb-5 mt-5 text-2xl font-light  leading-[1.5] text-gray-500 dark:text-white   ">
+                  <p className="mb-4 text-base font-light leading-relaxed text-gray-500 dark:text-white sm:mb-5 sm:text-lg sm:leading-[1.5] md:text-xl lg:mb-6 lg:text-2xl">
                     From finance and HR to service workflows and reporting, our
                     platform fits your business, not the other way around.
                   </p>
@@ -53,8 +53,7 @@ const Platform = () => {
               </div>
 
               <div className="w-full lg:w-1/2">
-
-                <WorkspaceSetupUI/>
+                <WorkspaceSetupUI />
               </div>
             </div>
           </div>
@@ -62,8 +61,8 @@ const Platform = () => {
 
         <section className="edhirya-card  pt-32">
           <div className="flex flex-col items-center gap-4 border-y-2 pb-20 pt-14 ">
-            <div className="flex flex-col ">
-              <span className="home-banner-title-sub ml-[-3.25rem] text-2xl font-medium   text-dark dark:text-white sm:ml-[-10.25rem]">
+            <div className="flex flex-col gap-3">
+              <span className="home-banner-title-sub ml-[-2.25rem] text-2xl font-medium   text-dark dark:text-white sm:ml-[-10.25rem]">
                 We are ,
               </span>
               <span className="home-banner-title-main text-center text-2xl font-medium leading-tight text-dark dark:text-white">
@@ -76,8 +75,6 @@ const Platform = () => {
           </div>
         </section>
       </div>
-
-
     </section>
   );
 };

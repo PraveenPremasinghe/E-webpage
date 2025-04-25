@@ -37,8 +37,9 @@ export default function Home() {
       <Platform/>
        <IndustrySolutionsSection/>
       <Features />
-      <WeOffer/>
       <OurServices/>
+      <WeOffer/>
+
       <About />
       <ActogoERP/>
       <Partners/>

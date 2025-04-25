@@ -12,7 +12,7 @@ import SectionTitle from "@/components/Common/SectionTitle";
 
 const Clients = () => {
   return (
-    <section className="pt-32 dark:bg-dark">
+    <section className="pt-10 sm:pt-24 md:pt-32 dark:bg-dark">
 <div className="container">
        <SectionTitle
          subtitle="Powering Innovation Across Industries"
@@ -51,7 +51,7 @@ const Clients = () => {
       </div>
 </div>
     </section>
-);
+  );
 };
 
 export default Clients;

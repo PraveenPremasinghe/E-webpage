@@ -14,10 +14,10 @@ const Hero = () => {
             {/* Left side - Title and content */}
             <div className='flex  flex-col justify-center space-y-6 lg:w-2/3 '>
               <div >
-                <h1 className='text-8xl font-normal text-white dark:text-neutral-400'>
+                <h1 className='text-6xl md:text-6xl lg:text-8xl font-normal text-white dark:text-neutral-400 tracking-tight'>
                   Build <FlipWords words={words} /> digital solutions
                 </h1>
-                <p className='mt-3 max-w-lg text-lg text-white sm:text-xl'>
+                <p className='mt-2 md:mt-3 text-lg md:text-lg lg:text-xl max-w-sm md:max-w-lg text-white'>
                   A compelling subheading that explains your value proposition
                   in clear terms.
                 </p>

@@ -157,12 +157,12 @@ body {
 }
 
 .home-banner-title-main {
-  font-size: clamp(3.813rem,-2.5643rem + 15.2027vw,14rem);
+  font-size: clamp(4rem,-2.5643rem + 15.2027vw,14rem);
   line-height: 1
 }
 
 .home-banner-title-sub {
-  font-size: clamp(1.25rem,.1152rem + 3.7933vw,3.5rem);
+  font-size: clamp(2.25rem,.1152rem + 3.7933vw,3.5rem);
 
 }
 
