@@ -289,7 +289,7 @@ const Footer = () => {
                     target="_blank"
                     className="text-gray-1 hover:underline"
                   >
-                      © 2024 Edhirtya IT.
+                      © 2025 Edhirtya IT.
                   </Link>
                 </p>
               </div>

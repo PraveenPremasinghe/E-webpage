@@ -61,11 +61,11 @@ export default function TeamShowcase() {
       {/* Center Text Block */}
       <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-center max-w-2xl px-4'>
         <h2 className='text-3xl font-semibold leading-snug'>
-          We&apos;re a wonderfully diverse team. When we come together, magic happens
+         Diverse minds, one unstoppable team—where brilliance meets collaboration.
         </h2>
         <div className='mt-6 text-4xl font-bold'>
-          200+<br />
-          <span className='text-lg font-medium'>unique perspectives</span>
+          50+<br />
+          <span className='text-lg font-medium'> voices, one extraordinary story</span>
         </div>
       </div>
     </div>

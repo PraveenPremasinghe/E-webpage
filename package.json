@@ -1,5 +1,5 @@
 {
-  "name": "play-nextjs",
+  "name": "edhirya-it",
   "version": "2.2.0",
   "private": true,
   "scripts": {
@@ -23,6 +23,7 @@
     "date-fns": "^3.4.0",
     "framer-motion": "^12.8.0",
     "gray-matter": "^4.0.3",
+    "lucide-react": "^0.503.0",
     "motion": "^12.8.2",
     "next": "15.3.0",
     "next-auth": "4.24.11",

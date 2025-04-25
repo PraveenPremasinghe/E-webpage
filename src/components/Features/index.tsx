@@ -15,27 +15,27 @@ import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules';
 
 const Features = () => {
   return (
-    <section className='pt-32 dark:bg-dark  '>
+    <section className="pt-32 dark:bg-dark  ">
       <div className="">
         <SectionTitle
-          subtitle='Who We Are ?'
-          title='We are on a Mission to
-Digitalize all critical Business Operations'
-          paragraph='Our vast experience leveraged to solve your problems – across verticals.'
+          subtitle="Who We Are ?"
+          title="We are on a Mission to
+Digitalize all critical Business Operations"
+          paragraph="Our vast experience leveraged to solve your problems – across verticals."
         />
 
-        <div className='container pt-20'>
-          <div className='wow fadeInUp' data-wow-delay='.2s'>
-            <div className='-mx-4 flex flex-wrap items-center'>
-              <div className='w-full px-4 lg:w-1/2'>
-                <div className='mb-12 max-w-[540px] lg:mb-0'>
-                  <h1 className='mb-5 text-5xl font-medium leading-tight text-dark dark:text-white'>
+        <div className="container pt-20">
+          <div className="wow fadeInUp" data-wow-delay=".2s">
+            <div className="-mx-4 flex flex-wrap items-center">
+              <div className="w-full px-4 lg:w-1/2">
+                <div className="mb-12 max-w-[540px] lg:mb-0">
+                  <h1 className="mb-5 text-5xl font-medium leading-tight text-dark dark:text-white">
                     About
-                    <span className='font-semibold text-primary'>
+                    <span className="font-semibold text-primary mx-2">
                       #Edhirya IT
                     </span>
                   </h1>
-                  <h2 className='text-1xl mb-5 font-medium leading-tight text-dark dark:text-white sm:text-[30px] sm:leading-[1.5]'>
+                  <h2 className="mb-5 text-xl font-medium leading-tight text-dark dark:text-white   sm:leading-[1.8]">
                     &quot; Over the years we’ve developed sophisticated tools,
                     platforms and digital products with cutting edge technology
                     and helped grow businesses rapidly. It’s a well known fact
@@ -48,23 +48,33 @@ Digitalize all critical Business Operations'
                   {/*  Over the years we’ve developed sophisticated tools, platforms and digital products with cutting edge technology and helped grow businesses rapidly. It’s a well known fact that through automation, a business would run having minimum staff and investment and also risks. Well this isn’t a constant outcome and that’s why our team with the right tools, will analyse your business and develop the bet suited tools and management systems for a great compatibility.*/}
                   {/*</p>*/}
 
-                  <div className='flex justify-center'>
-                    <Link
-                      href='#'
-                      className='inline-flex items-center justify-center rounded-md bg-primary px-7 py-3 text-center text-base font-medium text-white duration-300 hover:bg-primary/90'
+                  <div className="flex justify-start">
+                    <button
+                      type="submit"
+                      className="text-md group relative isolation-auto z-10 mt-7 flex items-center justify-center gap-2 overflow-hidden rounded-full border-2 border-gray-50 bg-pink-700 px-4 py-2 text-white shadow-xl backdrop-blur-md before:absolute before:-left-full before:-z-10 before:aspect-square before:w-full before:rounded-full before:bg-black before:transition-all before:duration-700 hover:text-gray-50 before:hover:left-0 before:hover:w-full before:hover:scale-150 before:hover:duration-700 lg:font-semibold"
                     >
-                      Contact Us
-                    </Link>
+                      Let&apos;s Talk
+                      <svg
+                        className="h-7 w-7 rotate-45 justify-end rounded-full border border-gray-100 p-2 text-gray-50 duration-300 ease-linear group-hover:rotate-90 group-hover:border-none group-hover:bg-gray-50"
+                        viewBox="0 0 16 19"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
+                          className="fill-gray-100 group-hover:fill-gray-700"
+                        ></path>
+                      </svg>
+                    </button>
                   </div>
                 </div>
               </div>
 
-              <div className='w-full lg:w-1/2'>
+              <div className="w-full lg:w-1/2">
                 <Swiper
-                  effect={'coverflow'}
+                  effect={"coverflow"}
                   grabCursor={true}
                   centeredSlides={true}
-                  slidesPerView={'auto'}
+                  slidesPerView={"auto"}
                   loop={true}
                   autoplay={{
                     delay: 2500,
@@ -79,23 +89,23 @@ Digitalize all critical Business Operations'
                   }}
                   pagination={{ clickable: true }}
                   modules={[EffectCoverflow, Pagination, Autoplay]}
-                  className='mySwiper'
+                  className="mySwiper"
                 >
                   {/* Slide 1 */}
                   <SwiperSlide>
                     <img
-                      src='/images/products/email-cover.png'
-                      alt='Slide 1'
-                      className='h-full w-full rounded-xl object-cover shadow-md'
+                      src="/images/products/email-cover.png"
+                      alt="Slide 1"
+                      className="h-full w-full rounded-xl object-cover shadow-md"
                     />
                   </SwiperSlide>
 
                   {/* Slide 2 */}
                   <SwiperSlide>
                     <img
-                      src='/images/products/email-cover.png'
-                      alt='Slide 2'
-                      className='h-full w-full rounded-xl object-cover shadow-md'
+                      src="/images/products/email-cover.png"
+                      alt="Slide 2"
+                      className="h-full w-full rounded-xl object-cover shadow-md"
                     />
                   </SwiperSlide>
 
@@ -123,64 +133,64 @@ Digitalize all critical Business Operations'
         {/*</section>*/}
       </div>
 
-      <section className='pt-32 dark:bg-dark'>
+      <section className="pt-32 dark:bg-dark">
         <div
-          className='container relative w-full overflow-hidden rounded-[2rem] bg-black p-6
- text-white sm:p-24'
+          className="container relative w-full overflow-hidden rounded-[2rem] bg-black p-6
+ text-white sm:p-24"
         >
           <img
-            src='/images/glows/glow-vector.png'
-            alt='Glow Effect'
-            className='pointer-events-none absolute right-[-100px] top-[-100px] z-0 w-[1000px] opacity-50 md:w-[1000px]'
+            src="/images/glows/glow-vector.png"
+            alt="Glow Effect"
+            className="pointer-events-none absolute right-[-100px] top-[-100px] z-0 w-[1000px] opacity-50 md:w-[1000px]"
           />
 
           {/* Bottom-left Warm Vector */}
           <img
-            src='/images/glows/warm-vector.png'
-            alt='Warm Vector'
-            className='pointer-events-none absolute bottom-[-100px] left-[-100px] z-0 w-[1200px] opacity-60 md:w-[1200px]'
+            src="/images/glows/warm-vector.png"
+            alt="Warm Vector"
+            className="pointer-events-none absolute bottom-[-100px] left-[-100px] z-0 w-[1200px] opacity-60 md:w-[1200px]"
           />
 
           {/* Noise Overlay */}
-          <div className='absolute inset-0 z-0 opacity-50 mix-blend-soft-light'>
+          <div className="absolute inset-0 z-0 opacity-50 mix-blend-soft-light">
             <img
-              src='/images/glows/noise-wide.png'
-              alt='Noise'
-              className='h-full w-full object-cover'
+              src="/images/glows/noise-wide.png"
+              alt="Noise"
+              className="h-full w-full object-cover"
             />
           </div>
 
-          <div className='relative z-10 mx-auto flex max-w-7xl flex-col items-start gap-8 lg:flex-row lg:items-center'>
+          <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-start gap-8 lg:flex-row lg:items-center">
             {/* Text Section */}
-            <div className='w-full lg:w-1/2'>
-              <div className='w-[300px]'>
+            <div className="w-full lg:w-1/2">
+              <div className="w-[300px]">
                 <img
-                  src='/images/logo/edhirya-it-logo.webp'
-                  alt='AI Brain'
-                  className='h-auto w-full object-contain'
+                  src="/images/logo/edhirya-it-logo.webp"
+                  alt="AI Brain"
+                  className="h-auto w-full object-contain"
                 />
               </div>
-              <h3 className='mt-6 text-2xl font-semibold text-white md:text-3xl'>
+              <h3 className="mt-6 text-2xl font-semibold text-white md:text-3xl">
                 Revolutionizing AI Solutions
               </h3>
-              <p className='mt-3 text-base text-gray-300 md:text-lg'>
+              <p className="mt-3 text-base text-gray-300 md:text-lg">
                 Discover our innovative AI brain technology that’s shaping
                 industries through intelligent automation and smarter systems.
               </p>
-              <div className='mt-10'>
-                <button className='ai-button'>Get Started ,</button>
+              <div className="mt-10">
+                <button className="ai-button">Get Started ,</button>
               </div>
             </div>
 
-            <div className='w-full lg:w-1/2'></div>
+            <div className="w-full lg:w-1/2"></div>
           </div>
 
-          <div className='absolute bottom-[-48px] right-[-30px] w-[600px] md:w-[350px] lg:w-[650px] '>
-            <div className='modern-image-mask rounded-tl-[30px] border-l border-t border-white border-opacity-30 bg-white/20 p-4'>
+          <div className="absolute bottom-[-48px] right-[-30px] w-[600px] md:w-[350px] lg:w-[650px] ">
+            <div className="modern-image-mask rounded-tl-[30px] border-l border-t border-white border-opacity-30 bg-white/20 p-4">
               <img
-                src='/images/hero/email-cover2.png'
-                alt='AI Brain'
-                className='h-auto w-full object-contain'
+                src="/images/hero/email-cover2.png"
+                alt="AI Brain"
+                className="h-auto w-full object-contain"
               />
             </div>
           </div>

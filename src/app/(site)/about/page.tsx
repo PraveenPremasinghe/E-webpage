@@ -26,28 +26,20 @@ const AboutPage = () => {
       <div className="container">
         <div className="wow fadeInUp" data-wow-delay=".2s">
           <div className="-mx-4 flex flex-wrap items-center justify-between">
-             <div className="w-full px-4 lg:w-2/3">
-              <div className="  lg:mb-0">
+             <div className="w-full px-4 ">
+              <div className=" text-center">
                 <h2
                   className="mb-5 text-7xl font-medium   leading-tight dark:text-white  sm:leading-[1.2]">
                We Are
                   <span className="font-semibold text-primary"> #Edhirya IT</span>
 
                 </h2>
-                <p className="mb-10 text-base text-xl font-light leading-relaxed text-body-color dark:text-dark-6">
+                <p className="mb-10 mt-10  text-3xl font-light leading-[1.8] text-body-color dark:text-dark-6">
                   Founded in 2010, Edhirya IT has consistently positioned itself at the forefront of technological innovation, specialising in delivering top-tier IT solutions to bridge the gap between management and data. Our comprehensive software support and maintenance services empower businesses to view problems from new perspectives, enhancing managerial efficiency and decision-making. By focusing on quality, efficiency, and innovation, we transform challenges into opportunities, ensuring our clients thrive in a rapidly evolving digital landscapedeployment.
                 </p>
               </div>
             </div>
-            <div className="w-full lg:w-1/3">
-              <div>
-                <img
-                  src="https://images.unsplash.com/photo-1594235045856-a6315f0c4083?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="Actogo ERP"
-                  className="h-full w-full object-cover rounded-2xl"
-                />
-              </div>
-            </div>
+
 
 
           </div>
@@ -330,6 +322,8 @@ const AboutPage = () => {
 <div>
   <OurJourneyTimeline/>
 </div>
+
+
 
       <About />
       <Team />
