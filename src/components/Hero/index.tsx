@@ -48,6 +48,7 @@ const Hero = () => {
             {/* Right side - Globe component */}
             <div className='flex w-full items-center justify-center lg:w-1/2'>
              sfgdfgh
+
             </div>
           </div>
         </div>
