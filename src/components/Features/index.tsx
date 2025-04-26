@@ -55,7 +55,7 @@ Digitalize all critical Business Operations"
                       type="submit"
                       className="group relative mt-5 flex items-center justify-center gap-2 overflow-hidden rounded-full border-2 border-gray-50 bg-pink-700 px-4 py-2 text-sm font-medium text-white shadow-xl transition-all duration-300 hover:bg-pink-800 sm:mt-6 sm:px-5 sm:py-2 sm:text-base md:mt-7 md:text-lg"
                     >
-                      Let's Talk
+                      Let&apos;s Talk
                       <svg
                         className="h-6 w-6 rotate-45 rounded-full border border-gray-100 p-1.5 text-gray-50 transition-all duration-300 ease-linear group-hover:rotate-90 group-hover:border-none group-hover:bg-gray-50 sm:h-7 sm:w-7 sm:p-2"
                         viewBox="0 0 16 19"

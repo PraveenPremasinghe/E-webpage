@@ -291,7 +291,7 @@ export default function OurService() {
                   Ready to Transform Your Business?
                 </h2>
                 <p className="mb-4 text-lg opacity-90">
-                  Let's discuss how our custom software solutions can help you
+                  Let&apos;s discuss how our custom software solutions can help you
                   achieve your business goals.
                 </p>
                 <ul className="mb-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium">

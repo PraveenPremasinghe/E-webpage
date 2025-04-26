@@ -24,7 +24,7 @@ const AIBot = () => {
         <div className="wow fadeInUp" data-wow-delay=".2s">
           <div className="-mx-4 flex flex-wrap justify-between">
             <div className="w-full lg:w-2/3">
-              <div className="  h-[400px]   mx-10">
+              <div className="h-[400px] mx-10">
                 <img
                   src='/images/products/email-cover.png'
                   alt="Actogo ERP"
