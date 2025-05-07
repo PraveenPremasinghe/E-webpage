@@ -28,7 +28,7 @@ Digitalize all critical Business Operations"
           <div className="wow fadeInUp" data-wow-delay=".2s">
             <div className="-mx-4 flex flex-wrap items-center">
               <div className="w-full px-4 md:px-6 lg:w-1/2 lg:px-8">
-                <div className="mb-8 max-w-full md:max-w-[540px] lg:mb-0">
+                <div className="mb-8 max-w-full md:max-w-[540px] lg:mb-0 text-center">
                   {/* Title Section */}
                   <h1
                     className="mb-3 text-3xl font-medium leading-tight text-dark dark:text-white sm:mb-4 sm:text-4xl md:mb-5 md:text-5xl">
@@ -40,7 +40,7 @@ Digitalize all critical Business Operations"
 
                   {/* Description */}
                   <h2
-                    className="mb-4 text-base font-medium leading-tight text-dark dark:text-white sm:mb-5 sm:text-lg sm:leading-[1.8] md:text-xl">
+                    className="mb-4 text-base font-medium  text-dark dark:text-white sm:mb-5 sm:text-lg sm:!leading-[1.8] md:text-2xl">
                     &quot;Over the years we&apos;ve developed sophisticated tools,
                     platforms and digital products with cutting edge technology
                     and helped grow businesses rapidly. It&apos;s a well known fact
@@ -50,7 +50,7 @@ Digitalize all critical Business Operations"
                   </h2>
 
                   {/* Button */}
-                  <div className="flex justify-start">
+                  <div className="flex justify-items-center items-center text-center">
                     <button
                       type="submit"
                       className="group relative mt-5 flex items-center justify-center gap-2 overflow-hidden rounded-full border-2 border-gray-50 bg-pink-700 px-4 py-2 text-sm font-medium text-white shadow-xl transition-all duration-300 hover:bg-pink-800 sm:mt-6 sm:px-5 sm:py-2 sm:text-base md:mt-7 md:text-lg"

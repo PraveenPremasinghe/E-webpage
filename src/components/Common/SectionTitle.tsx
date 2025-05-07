@@ -22,7 +22,7 @@ const SectionTitle = ({
       >
         {subtitle && (
           <span className="mb-3 block text-center sm:mb-4">
-            <span className="inline-block rounded-full bg-[#a122661a] px-4 py-1 text-sm font-medium text-primary sm:px-4 sm:py-1 sm:text-base md:text-[20px]">
+            <span className="inline-block rounded-full bg-[#a122661a] px-4 py-1 text-sm font-medium text-primary sm:px-4 sm:py-1 sm:text-base md:text-[1rem]">
               {subtitle}
             </span>
           </span>
