@@ -168,6 +168,11 @@ export default function HeaderNew() {
       title: "Careers",
       submenu: false,
       link: "/careers",
+    },{
+      id: "acctogo",
+      title: "AcctoGo",
+      submenu: false,
+      link: "/acctogo",
     },
   ];
 
@@ -225,7 +230,7 @@ export default function HeaderNew() {
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="rounded-md p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+              className="rounded-md p-2 text-gray-700  hover:text-[#A12266] hover:bg-[#a1226629]"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -238,7 +243,7 @@ export default function HeaderNew() {
                 <div key={item.id} className="relative">
                   <button
                     onClick={() => toggleDropdown(item.id)}
-                    className={`flex items-center rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 ${activeDropdown === item.id ? "bg-gray-100" : ""}`}
+                    className={`flex items-center rounded-full px-3 py-2 font-medium text-gray-700  hover:text-[#A12266] hover:bg-[#a1226629] ${activeDropdown === item.id ? "bg-gray-100" : ""}`}
                   >
                     {item.title}{" "}
                     <ChevronDown
@@ -251,7 +256,7 @@ export default function HeaderNew() {
                 <a
                   key={item.id}
                   href={item.link}
-                  className="rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100"
+                  className="rounded-full px-3 py-2 font-medium text-gray-700  hover:text-[#A12266] hover:bg-[#a1226629]"
                 >
                   {item.title}
                 </a>
@@ -263,7 +268,7 @@ export default function HeaderNew() {
           <div className="hidden items-center space-x-2 md:flex">
             <a
               href="#"
-              className="rounded-md border border-gray-300 px-4 py-2 font-medium text-gray-700 hover:bg-gray-50"
+              className="rounded-full  px-4 py-2 font-medium text-white bg-primary "
             >
               Contact Us
             </a>
@@ -369,7 +374,7 @@ export default function HeaderNew() {
                     <span className="text-xl font-bold">
                      Accto
                     </span>
-                    <span className="text-xl font-bold text-purple-600">
+                    <span className="text-xl font-bold text-primary">
                       Brain
                     </span>
                   </div>
@@ -378,14 +383,14 @@ export default function HeaderNew() {
                 <ul className="space-y-3">
                   {activeContent.rightSidebar.features.map((feature, index) => (
                     <li key={index} className="flex items-center text-gray-700">
-                      <CheckCircle size={18} className="mr-2 text-purple-500" />
+                      <CheckCircle size={18} className="mr-2 text-primary" />
                       <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
 
                 <div className="mt-6">
-                  <button className="font-medium text-purple-700 hover:underline">
+                  <button className="font-medium text-primary hover:underline">
                     Learn More
                   </button>
                 </div>

@@ -11,10 +11,10 @@ export default function Head() {
   <meta property="og:title" content="Edhirya IT - Crafting the Future of Digital Innovation" />
   <meta property="og:description"
         content="Empowering businesses with SaaS platforms, IT solutions, and next-gen technologies. Discover how Edhirya IT shapes the digital future." />
-  <meta property="og:image" content="/images/og-image.jpg" />
+  <meta property="og:image" content="/images/logo/favicon.png" />
   <meta property="og:url" content="https://edhirya.com" />
   <meta property="og:type" content="website" />
-       <link rel="icon" href="/images/logo/favicon.png" />
+       <link rel="icon" href="/favicon.ico" />
 </>
   );
 }

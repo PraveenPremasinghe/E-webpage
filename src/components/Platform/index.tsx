@@ -13,6 +13,9 @@ import 'swiper/css/autoplay';
 
 import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules';
 import WorkspaceSetupUI from "@/components/WorkspaceSetupUI";
+import WeAreEdhirya from "@/components/weAreEdhirya";
+import { WorldMap } from "@/components/ui/world-map";
+
 
 const Platform = () => {
   return (
@@ -23,11 +26,13 @@ const Platform = () => {
             <div className="-mx-4 flex flex-wrap items-center">
               <div className="w-full px-4 lg:w-1/2">
                 <div className="mb-12   lg:mb-0">
-                  <h1 className="mb-4 text-3xl font-medium sm:text-center md:text-left leading-tight text-dark dark:text-white sm:mb-6 sm:text-4xl md:mb-8 md:text-5xl lg:mb-10 lg:text-6xl xl:text-7xl">
+                  <h1
+                    className="mb-4 text-3xl font-medium sm:text-center md:text-left leading-tight text-dark dark:text-white sm:mb-6 sm:text-4xl md:mb-8 md:text-5xl lg:mb-10 lg:text-6xl xl:text-7xl">
                     A Platform That Adapts To You
                   </h1>
-                  <p className="mb-4 text-base font-light leading-relaxed text-gray-500 dark:text-white sm:mb-5 sm:text-lg sm:leading-[1.5] md:text-xl lg:mb-6 lg:text-2xl">
-                    From finance and HR to service workflows and reporting, our
+                  <p
+                    className="mb-4 text-base font-light leading-relaxed text-gray-500 dark:text-white sm:mb-5 sm:text-lg sm:leading-[1.5] md:text-xl lg:mb-6 lg:text-2xl">
+                    From Finance and HR to service workflows and reporting, our
                     platform fits your business, not the other way around.
                   </p>
 
@@ -62,10 +67,12 @@ const Platform = () => {
         <section className="edhirya-card  pt-32">
           <div className="flex flex-col items-center gap-4 border-y-2 pb-20 pt-14 ">
             <div className="flex flex-col gap-3">
-              <span className="home-banner-title-sub ml-[-2.25rem] text-2xl font-medium   text-dark dark:text-white sm:ml-[-10.25rem]">
+              <span
+                className="home-banner-title-sub ml-[-2.25rem] text-2xl font-medium   text-dark dark:text-white sm:ml-[-10.25rem]">
                 We are ,
               </span>
-              <span className="home-banner-title-main text-center text-2xl font-medium leading-tight text-dark dark:text-white">
+              <span
+                className="home-banner-title-main text-center text-2xl font-medium leading-tight text-dark dark:text-white">
                 <span className="logo-text-color">
                   <span className="logo-text-second-color">[e]</span>dhirya
                 </span>
@@ -74,9 +81,12 @@ const Platform = () => {
             </div>
           </div>
         </section>
+
+
+
       </div>
     </section>
-  );
+);
 };
 
 export default Platform;
