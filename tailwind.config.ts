@@ -10,6 +10,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      maxWidth: {
+        '9xl': '96rem', // or any value you need
+      },
       colors: {
         ...colors,
         // primary: "#1A202C",

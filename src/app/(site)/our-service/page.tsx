@@ -103,7 +103,7 @@ export default function OurService() {
   };
 
   return (
-    <main className="">
+    <main >
       <Breadcrumb pageName="Solutions by Industry " />
 
       {/* Navigation Bar */}

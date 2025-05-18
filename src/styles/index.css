@@ -335,16 +335,38 @@ background-color: #fef4ea;
 }
 
 .inner-details-card{
-  position: absolute;
+
   inset-inline-start: 40px;;
   inset-inline-end: 40px;;
-  inset-block-start: calc(100% + 0.625rem);
-  z-index: 1;
+  inset-block-start: calc(5.71rem);
+  z-index: 999999;
   gap: 0;
-  inline-size: 100vw;
-  border: 1px solid #ceceea;
-  border-radius: 15px;
+  inline-size: 95vw;
+  border-right: 1px solid #ceceea;
+  border-bottom: 1px solid #ceceea;
+  border-left: 1px solid #ceceea;
+  border-radius: 0 0 15px 15px;
   background-color: #ffffff;
-  box-shadow: 0 0.25rem 0.375rem 0 rgba(67, 46, 134, .04);
+  /*box-shadow: 0px 20rem 20rem 0px #00000087;*/
 }
 
+
+@keyframes fadeInOverlay {
+  from {
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.mega-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 997;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  animation: fadeInOverlay 0.3s ease-out forwards;
+}
