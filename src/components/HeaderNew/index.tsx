@@ -43,6 +43,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { navigationItems, NavigationItem } from "./navigationItems";
+import ContactForm from "@/components/ContactForm/ContactForm";
 
 // Icon mapping for dynamic rendering
 const IconMap: Record<string, any> = {
@@ -86,13 +87,14 @@ export default function HeaderNew() {
   const [megaMenuVisible, setMegaMenuVisible] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
+  const [isScrolling, setIsScrolling] = useState(false);
 
   const headerRef = useRef<HTMLElement>(null);
   const megaMenuRef = useRef<HTMLDivElement>(null);
 
   // Find active dropdown content if available
   const activeNavItem = navigationItems.find(
-    (item) => item.id === activeDropdown && item.submenu
+    (item) => item.id === activeDropdown && item.submenu,
   );
 
   const toggleMenu = () => {
@@ -116,7 +118,7 @@ export default function HeaderNew() {
       setMegaMenuVisible(true);
       // Set default selected category to first category
       const navItem = navigationItems.find((item) => item.id === dropdown);
-      if (navItem && 'categories' in navItem && navItem.categories.length > 0) {
+      if (navItem && "categories" in navItem && navItem.categories.length > 0) {
         setSelectedCategory(navItem.categories[0].title);
         if (navItem.categories[0].items.length > 0) {
           setSelectedItem(navItem.categories[0].items[0].name);
@@ -147,13 +149,39 @@ export default function HeaderNew() {
     };
   }, []);
 
+  useEffect(() => {
+    let scrollTimer: NodeJS.Timeout;
+
+    const handleScroll = () => {
+      if (megaMenuVisible) {
+        setIsScrolling(true);
+        clearTimeout(scrollTimer);
+
+        scrollTimer = setTimeout(() => {
+          setIsScrolling(false);
+          setMegaMenuVisible(false);
+          setActiveDropdown(null);
+        }, 300);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      clearTimeout(scrollTimer);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [megaMenuVisible]);
+
   // Handle selecting a category
   const handleCategorySelect = (categoryTitle: string) => {
     setSelectedCategory(categoryTitle);
     // Select first item of this category by default
     const navItem = navigationItems.find((item) => item.id === activeDropdown);
-    if (navItem && 'categories' in navItem) {
-      const category = navItem.categories.find(cat => cat.title === categoryTitle);
+    if (navItem && "categories" in navItem) {
+      const category = navItem.categories.find(
+        (cat) => cat.title === categoryTitle,
+      );
       if (category && category.items.length > 0) {
         setSelectedItem(category.items[0].name);
       }
@@ -167,12 +195,20 @@ export default function HeaderNew() {
 
   // Get current selected item data
   const getSelectedItemData = () => {
-    if (!activeNavItem || !('categories' in activeNavItem) || !selectedCategory || !selectedItem) return null;
+    if (
+      !activeNavItem ||
+      !("categories" in activeNavItem) ||
+      !selectedCategory ||
+      !selectedItem
+    )
+      return null;
 
-    const category = activeNavItem.categories.find(cat => cat.title === selectedCategory);
+    const category = activeNavItem.categories.find(
+      (cat) => cat.title === selectedCategory,
+    );
     if (!category) return null;
 
-    return category.items.find(item => item.name === selectedItem);
+    return category.items.find((item) => item.name === selectedItem);
   };
 
   const selectedItemData = getSelectedItemData();
@@ -183,11 +219,82 @@ export default function HeaderNew() {
     return IconMap[iconName];
   };
 
+  const [isContactFormOpen, setIsContactFormOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const contactFormRef = useRef<HTMLDivElement>(null);
+
+  const toggleContactForm = () => {
+    setIsContactFormOpen(!isContactFormOpen);
+    // Close other open menus when contact form is opened
+    if (!isContactFormOpen) {
+      setMegaMenuVisible(false);
+      setActiveDropdown(null);
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Simulate form submission
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      setSubmitSuccess(true);
+      setFormData({ name: '', email: '', message: '' });
+
+      // Reset success message after 3 seconds
+      setTimeout(() => {
+        setSubmitSuccess(false);
+        setIsContactFormOpen(false);
+      }, 3000);
+    } catch (error) {
+      console.error('Submission error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // Close contact form when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (contactFormRef.current && !contactFormRef.current.contains(event.target as Node)) {
+        // Check if the clicked element is not the contact button
+        const contactButton = document.querySelector('.contact-button');
+        if (contactButton && !contactButton.contains(event.target as Node)) {
+          setIsContactFormOpen(false);
+        }
+      }
+    };
+
+    if (isContactFormOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isContactFormOpen]);
+
+
   return (
     <>
       <header
         ref={headerRef}
-        className="shadow-nav fixed left-0 top-0 z-[999] w-full border-b border-stroke  px-4 bg-white  dark:border-dark-3/20 dark:bg-dark/10 sm:px-4 md:px-6 lg:px-8"
+        className="shadow-nav fixed left-0 top-0 z-[9999] h-[90px] w-full border-b border-stroke  bg-white px-4  dark:border-dark-3/20 dark:bg-dark/10 sm:px-4 md:px-6 lg:px-8"
       >
         <div className="mx-auto flex max-w-9xl items-center justify-between">
           {/* Logo */}
@@ -211,7 +318,7 @@ export default function HeaderNew() {
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="rounded-md p-2 text-gray-700 hover:text-[#A12266] hover:bg-[#a1226629]"
+              className="rounded-md p-2 text-gray-700 hover:bg-[#a1226629] hover:text-[#A12266]"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -224,15 +331,19 @@ export default function HeaderNew() {
                 <div key={item.id} className="relative">
                   <button
                     onClick={() => toggleDropdown(item.id)}
-                    className={`flex items-center rounded-full px-3 py-2 font-medium text-gray-700 hover:text-[#A12266] hover:bg-[#a1226629] ${
-                      activeDropdown === item.id ? "text-[#A12266] bg-[#a1226629]" : ""
+                    className={`flex items-center rounded-full px-3 py-2 font-medium text-gray-700 hover:bg-[#a1226629] hover:text-[#A12266] ${
+                      activeDropdown === item.id
+                        ? "bg-[#a1226629] text-[#a4105f]"
+                        : ""
                     }`}
                   >
                     {item.title}{" "}
                     <ChevronDown
                       size={16}
                       className={`ml-1 transition-transform duration-200 ${
-                        activeDropdown === item.id && megaMenuVisible ? "rotate-180" : ""
+                        activeDropdown === item.id && megaMenuVisible
+                          ? "rotate-180"
+                          : ""
                       }`}
                     />
                   </button>
@@ -241,23 +352,34 @@ export default function HeaderNew() {
                 <a
                   key={item.id}
                   href={(item as any).link}
-                  className="rounded-full px-3 py-2 font-medium text-gray-700 hover:text-[#A12266] hover:bg-[#a1226629]"
+                  className="rounded-full px-3 py-2 font-medium text-gray-700 hover:bg-[#a1226629] hover:text-[#A12266]"
                 >
                   {item.title}
                 </a>
-              )
+              ),
             )}
           </nav>
 
           {/* CTA Buttons */}
           <div className="hidden items-center space-x-2 md:flex">
-            <a
-              href="#"
-              className="rounded-full px-4 py-2 font-medium text-white bg-[#A12266]"
+            <button
+              onClick={toggleContactForm}
+              className="contact-button rounded-full bg-[#A12266] px-4 py-2 font-medium text-white transition-colors hover:bg-[#8a1c57]"
             >
               Contact Us
-            </a>
+            </button>
           </div>
+
+          {/* Contact Form Overlay */}
+          <ContactForm
+            isOpen={isContactFormOpen}
+            onClose={() => setIsContactFormOpen(false)}
+            onSubmit={handleSubmit}
+            formData={formData}
+            isSubmitting={isSubmitting}
+            submitSuccess={submitSuccess}
+            handleInputChange={handleInputChange}
+          />
         </div>
 
         {/* Mobile menu, show/hide based on menu state */}
@@ -275,32 +397,36 @@ export default function HeaderNew() {
                       <ChevronDown
                         size={16}
                         className={`transform transition-transform duration-200 ${
-                          activeDropdown === `mobile-${item.id}` ? "rotate-180" : ""
+                          activeDropdown === `mobile-${item.id}`
+                            ? "rotate-180"
+                            : ""
                         }`}
                       />
                     </button>
-                    {activeDropdown === `mobile-${item.id}` && item.submenu && 'categories' in item && (
-                      <div className="ml-4 space-y-1">
-                        {item.categories.map((category, idx) => (
-                          <div key={idx}>
-                            <div className="py-1 font-medium text-gray-700">
-                              {category.title}
+                    {activeDropdown === `mobile-${item.id}` &&
+                      item.submenu &&
+                      "categories" in item && (
+                        <div className="ml-4 space-y-1">
+                          {item.categories.map((category, idx) => (
+                            <div key={idx}>
+                              <div className="py-1 font-medium text-gray-700">
+                                {category.title}
+                              </div>
+                              {category.items
+                                .slice(0, 3)
+                                .map((subitem, subidx) => (
+                                  <a
+                                    key={subidx}
+                                    href="#"
+                                    className="block rounded-md px-3 py-2 text-gray-600 hover:bg-gray-100"
+                                  >
+                                    {subitem.name}
+                                  </a>
+                                ))}
                             </div>
-                            {category.items
-                              .slice(0, 3)
-                              .map((subitem, subidx) => (
-                                <a
-                                  key={subidx}
-                                  href="#"
-                                  className="block rounded-md px-3 py-2 text-gray-600 hover:bg-gray-100"
-                                >
-                                  {subitem.name}
-                                </a>
-                              ))}
-                          </div>
-                        ))}
-                      </div>
-                    )}
+                          ))}
+                        </div>
+                      )}
                   </div>
                 ) : (
                   <a
@@ -310,7 +436,7 @@ export default function HeaderNew() {
                   >
                     {item.title}
                   </a>
-                )
+                ),
               )}
 
               <div className="space-y-2 pt-4">
@@ -327,39 +453,72 @@ export default function HeaderNew() {
       </header>
 
       {/* Mega Menu - Only visible when a dropdown is active */}
-      {megaMenuVisible && activeNavItem && 'categories' in activeNavItem && (
+      {megaMenuVisible && activeNavItem && "categories" in activeNavItem && (
         <div
           ref={megaMenuRef}
-          className="inner-details-card mega-menu fixed   mx-auto w-full bg-white "
+          className={`inner-details-card mega-menu fixed mx-auto w-full bg-white transition-all duration-300 ease-in-out ${
+            isScrolling
+              ? "pointer-events-none translate-y-[-10px] opacity-0"
+              : "translate-y-0 opacity-100"
+          }`}
         >
           <div className="mx-auto ">
             <div className="flex">
               {/* Left sidebar - Navigation */}
-              <div className="w-80 border-r border-gray-200 bg-gray-50 py-6">
+              <div
+                className="w-80 overflow-y-auto border-r border-gray-200 bg-gray-50 py-6"
+                style={{ maxHeight: "80vh" }}
+              >
+                {/* Minimalistic modern square cards with refined borders */}
                 {activeNavItem.categories.map((category, idx) => (
-                  <div key={idx} className="mb-4">
-                    <h3 className="px-6 py-2 text-sm font-semibold text-gray-900">
+                  <div key={idx} className="mb-6">
+                    <h3 className="mb-3 px-6 text-xs font-bold uppercase tracking-wider text-gray-400">
                       {category.title}
                     </h3>
-                    <ul>
-                      {category.items.map((item, itemIdx) => (
-                        <li key={itemIdx}>
+                    <div className="grid grid-cols-2 gap-3 px-4">
+                      {category.items.map((item, itemIdx) => {
+                        // Get the icon component dynamically
+                        const IconComponent = getIconComponent(item.icon);
+
+                        return (
                           <button
+                            key={itemIdx}
                             onClick={() => {
                               handleCategorySelect(category.title);
                               handleItemSelect(item.name);
                             }}
-                            className={`flex w-full items-center px-6 py-2 text-sm ${
-                              selectedCategory === category.title && selectedItem === item.name
-                                ? "bg-[#a1226620] text-[#A12266] font-medium"
-                                : "text-gray-700 hover:bg-gray-100"
+                            className={`group flex aspect-square flex-col items-center justify-center rounded-xl border transition-all duration-300 ${
+                              selectedCategory === category.title &&
+                              selectedItem === item.name
+                                ? "border-[#A12266] bg-white shadow-sm"
+                                : "border-gray-100 bg-white hover:border-[#A12266] hover:shadow-sm"
                             }`}
                           >
-                            {item.name}
+                            <div
+                              className={`mb-3 flex h-14 w-14 items-center justify-center rounded-full transition-all duration-300 ${
+                                selectedCategory === category.title &&
+                                selectedItem === item.name
+                                  ? "bg-[#a1226610] text-[#A12266]"
+                                  : "bg-gray-50 text-gray-500 group-hover:bg-[#a1226610] group-hover:text-[#A12266]"
+                              }`}
+                            >
+                              <IconComponent size={28} />
+                            </div>
+
+                            <span
+                              className={`line-clamp-2 max-w-[80%] text-center text-sm font-light transition-colors duration-300 ${
+                                selectedCategory === category.title &&
+                                selectedItem === item.name
+                                  ? "font-semibold text-[#A12266] "
+                                  : " text-gray-700 group-hover:text-[#A12266]"
+                              }`}
+                            >
+                              {item.name}
+                            </span>
                           </button>
-                        </li>
-                      ))}
-                    </ul>
+                        );
+                      })}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -367,19 +526,28 @@ export default function HeaderNew() {
               {/* Main content area - Selected item details */}
               <div className="flex-1 p-8">
                 {selectedItemData && (
-                  <div className="flex flex-col h-full">
-                    <div className="flex items-start mb-6">
+                  <div className="flex h-full flex-col">
+                    <div className="mb-6 flex items-start">
                       {selectedItemData.icon && (
                         <div className="mr-6 rounded-full bg-[#a1226615] p-4">
-                          {React.createElement(getIconComponent(selectedItemData.icon), {
-                            size: 24,
-                            className: "text-[#A12266]",
-                          })}
+                          {React.createElement(
+                            getIconComponent(selectedItemData.icon),
+                            {
+                              size: 24,
+                              className: "text-[#A12266]",
+                            },
+                          )}
                         </div>
                       )}
                       <div>
-                        <h2 className="text-2xl font-bold text-gray-900">{selectedItemData.name}</h2>
-                        <p className="mt-2 text-gray-600">{selectedItemData.description}</p>
+                        <h2 className="text-2xl font-bold text-gray-900">
+                          {selectedItemData.name}
+                        </h2>
+                        <p className="mt-2 text-gray-600">
+                          {selectedItemData.description}
+                        </p>
+
+                        <div>custom content</div>
                       </div>
                     </div>
 
@@ -413,12 +581,20 @@ export default function HeaderNew() {
                 </div>
 
                 <ul className="space-y-3">
-                  {activeNavItem.sidebarContent.features.map((feature, index) => (
-                    <li key={index} className="flex items-center text-gray-700">
-                      <CheckCircle size={18} className="mr-2 text-[#A12266]" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
+                  {activeNavItem.sidebarContent.features.map(
+                    (feature, index) => (
+                      <li
+                        key={index}
+                        className="flex items-center text-gray-700"
+                      >
+                        <CheckCircle
+                          size={18}
+                          className="mr-2 text-[#A12266]"
+                        />
+                        <span>{feature}</span>
+                      </li>
+                    ),
+                  )}
                 </ul>
 
                 <div className="mt-6">
@@ -430,12 +606,12 @@ export default function HeaderNew() {
             </div>
 
             {/* Bottom CTA bar */}
-            <div className="flex justify-end space-x-6 border-t border-gray-200 p-4">
-              <button className="flex items-center text-gray-700 hover:text-gray-900">
+            <div className="flex justify-end space-x-6 rounded-bl-lg rounded-br-lg border-t border-gray-200   p-4">
+              <button className="flex items-center   text-gray-800">
                 <MessageCircle size={18} className="mr-2" />
                 <span>Contact Us</span>
               </button>
-              <button className="flex items-center text-gray-700 hover:text-gray-900">
+              <button className="flex items-center  text-gray-800">
                 <Play size={18} className="mr-2" />
                 <span>Watch demo</span>
               </button>
@@ -445,16 +621,16 @@ export default function HeaderNew() {
       )}
 
       {/* Overlay when mega menu is visible */}
-      {megaMenuVisible && (
-        <div
-          className="mega-menu-overlay"
-          onClick={() => {
-            setMegaMenuVisible(false);
-            setActiveDropdown(null);
-          }}
-          style={{ top: '73px' }}
-        />
-      )}
+      {/*{megaMenuVisible && (*/}
+      {/*  <div*/}
+      {/*    className="mega-menu-overlay"*/}
+      {/*    onClick={() => {*/}
+      {/*      setMegaMenuVisible(false);*/}
+      {/*      setActiveDropdown(null);*/}
+      {/*    }}*/}
+      {/*    style={{ top: "73px" }}*/}
+      {/*  />*/}
+      {/*)}*/}
     </>
   );
 }

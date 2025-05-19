@@ -29,6 +29,7 @@ body {
 }
 
 
+
 .sticky-menu .navbar-logo {
   @apply py-2;
 }
@@ -101,17 +102,31 @@ body {
 .hero-section {
   position: relative;
   width: 100%;
-  min-height: 100vh; /* Full viewport height */
+  min-height: 100vh;
   background-image: url('https://images.unsplash.com/photo-1717962690206-2d2f6ddac9db?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+  z-index: 1;
+}
 
 
+.hero-content {
+  position: relative;
+  z-index: 2;
 }
 
 
@@ -334,21 +349,25 @@ background-color: #fef4ea;
   line-height: 1.3333333333;
 }
 
-.inner-details-card{
-
-  inset-inline-start: 40px;;
-  inset-inline-end: 40px;;
-  inset-block-start: calc(5.71rem);
-  z-index: 999999;
+.inner-details-card {
+  position: fixed;
+  left: 40px;
+  right: 40px;
+  top: 90px;
+  /*height: calc(80vh - 90px);*/
+  z-index: 999;
   gap: 0;
-  inline-size: 95vw;
+  width: calc(100% - 80px);
   border-right: 1px solid #ceceea;
   border-bottom: 1px solid #ceceea;
   border-left: 1px solid #ceceea;
-  border-radius: 0 0 15px 15px;
-  background-color: #ffffff;
-  /*box-shadow: 0px 20rem 20rem 0px #00000087;*/
+  border-radius: 0 0 0.5rem 0.5rem !important;
+  /*background-color: #ffffff;*/
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.2s ease-out;
 }
+
+
 
 
 @keyframes fadeInOverlay {
@@ -362,11 +381,30 @@ background-color: #fef4ea;
   }
 }
 
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .mega-menu-overlay {
   position: fixed;
   inset: 0;
   z-index: 997;
   background-color: rgba(0, 0, 0, 0.5);
-
+  transition: opacity 0.2s ease, transform 0.2s ease;
   animation: fadeInOverlay 0.3s ease-out forwards;
 }
+
+
+.mega-menu-bottom-section{
+  background: #f33291;
+  background: -webkit-linear-gradient(119deg, #f33291 0%, #a12266 100%);
+  background: linear-gradient(119deg, #f33291 0%, #a12266 100%);
+}
+

@@ -107,8 +107,8 @@ export const navigationItems: NavigationItem[] = [
     },
   },
   {
-    id: "products",
-    title: "Products",
+    id: "what-we-offer",
+    title: "What We Offer",
     submenu: true,
     categories: [
       {
