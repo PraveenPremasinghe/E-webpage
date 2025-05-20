@@ -44,6 +44,7 @@ import {
 } from "lucide-react";
 import { navigationItems, NavigationItem } from "./navigationItems";
 import ContactForm from "@/components/ContactForm/ContactForm";
+import { TabsDemo } from "@/components/HeaderNew/dataList/tabs";
 
 // Icon mapping for dynamic rendering
 const IconMap: Record<string, any> = {
@@ -88,9 +89,35 @@ export default function HeaderNew() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [currentPath, setCurrentPath] = useState("");
 
   const headerRef = useRef<HTMLElement>(null);
   const megaMenuRef = useRef<HTMLDivElement>(null);
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const contactFormRef = useRef<HTMLDivElement>(null);
+
+
+
+  const navButtonRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+
+  // Update current path when component mounts or pathname changes
+  useEffect(() => {
+    const updateCurrentPath = () => {
+      setCurrentPath(window.location.pathname);
+    };
+
+    // Set initial path
+    updateCurrentPath();
+
+    // Add event listener for navigation changes (for SPA navigation)
+    window.addEventListener('popstate', updateCurrentPath);
+
+    return () => {
+      window.removeEventListener('popstate', updateCurrentPath);
+    };
+  }, []);
 
   // Find active dropdown content if available
   const activeNavItem = navigationItems.find(
@@ -116,6 +143,9 @@ export default function HeaderNew() {
       navigationItems.find((item) => item.id === dropdown)?.submenu
     ) {
       setMegaMenuVisible(true);
+
+
+
       // Set default selected category to first category
       const navItem = navigationItems.find((item) => item.id === dropdown);
       if (navItem && "categories" in navItem && navItem.categories.length > 0) {
@@ -127,6 +157,26 @@ export default function HeaderNew() {
     } else {
       setMegaMenuVisible(false);
     }
+  };
+
+  // Function to check if a nav item is active
+  const isNavItemActive = (item: NavigationItem) => {
+    // For dropdown items, check if it's the active dropdown
+    if (item.submenu) {
+      return activeDropdown === item.id;
+    }
+
+    // For regular links, check if the current path matches
+    const link = (item as any).link;
+
+    if (link === '/') {
+      // Special case for home page
+      return currentPath === '/';
+    }
+
+    // Check if the current path starts with the link path
+    // This handles both exact matches and child routes
+    return link && currentPath.startsWith(link);
   };
 
   // Handle click outside to close mega menu
@@ -165,11 +215,11 @@ export default function HeaderNew() {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
       clearTimeout(scrollTimer);
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [megaMenuVisible]);
 
@@ -221,13 +271,10 @@ export default function HeaderNew() {
 
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+    name: "",
+    email: "",
+    message: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-  const contactFormRef = useRef<HTMLDivElement>(null);
 
   const toggleContactForm = () => {
     setIsContactFormOpen(!isContactFormOpen);
@@ -238,11 +285,13 @@ export default function HeaderNew() {
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -252,9 +301,9 @@ export default function HeaderNew() {
 
     // Simulate form submission
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      await new Promise((resolve) => setTimeout(resolve, 1500));
       setSubmitSuccess(true);
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({ name: "", email: "", message: "" });
 
       // Reset success message after 3 seconds
       setTimeout(() => {
@@ -262,7 +311,7 @@ export default function HeaderNew() {
         setIsContactFormOpen(false);
       }, 3000);
     } catch (error) {
-      console.error('Submission error:', error);
+      console.error("Submission error:", error);
     } finally {
       setIsSubmitting(false);
     }
@@ -271,9 +320,12 @@ export default function HeaderNew() {
   // Close contact form when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (contactFormRef.current && !contactFormRef.current.contains(event.target as Node)) {
+      if (
+        contactFormRef.current &&
+        !contactFormRef.current.contains(event.target as Node)
+      ) {
         // Check if the clicked element is not the contact button
-        const contactButton = document.querySelector('.contact-button');
+        const contactButton = document.querySelector(".contact-button");
         if (contactButton && !contactButton.contains(event.target as Node)) {
           setIsContactFormOpen(false);
         }
@@ -281,13 +333,15 @@ export default function HeaderNew() {
     };
 
     if (isContactFormOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isContactFormOpen]);
+
+
 
 
   return (
@@ -326,18 +380,24 @@ export default function HeaderNew() {
 
           {/* Desktop Navigation */}
           <nav className="hidden flex-1 items-center justify-center space-x-1 md:flex">
-            {navigationItems.map((item) =>
-              item.submenu ? (
+            {navigationItems.map((item) => {
+              const isActive = isNavItemActive(item);
+
+              return item.submenu ? (
                 <div key={item.id} className="relative">
                   <button
+                    ref={(el) => {
+                      navButtonRefs.current[item.id] = el;
+                    }}
                     onClick={() => toggleDropdown(item.id)}
-                    className={`flex items-center rounded-full px-3 py-2 font-medium text-gray-700 hover:bg-[#a1226629] hover:text-[#A12266] ${
-                      activeDropdown === item.id
-                        ? "bg-[#a1226629] text-[#a4105f]"
-                        : ""
+                    className={`flex items-center rounded-full px-3 py-2 font-medium transition-all duration-200 hover:bg-[#fff] hover:text-[#A12266] ${
+                      isActive
+                        ? "bg-[#ffffff] text-[#a3004c] after:absolute after:-bottom-1 after:left-1/2 after:h-[3px]" +
+                        " after:w-[40%] after:-translate-x-1/2 after:rounded-full after:bg-[#A12266] after:content-['']"
+                        : "text-gray-700"
                     }`}
                   >
-                    {item.title}{" "}
+                    {item.title}
                     <ChevronDown
                       size={16}
                       className={`ml-1 transition-transform duration-200 ${
@@ -349,15 +409,19 @@ export default function HeaderNew() {
                   </button>
                 </div>
               ) : (
-                <a
+                <Link
                   key={item.id}
-                  href={(item as any).link}
-                  className="rounded-full px-3 py-2 font-medium text-gray-700 hover:bg-[#a1226629] hover:text-[#A12266]"
+                  href={(item as any).link || "#"}
+                  className={`relative rounded-full px-3 py-2 font-medium transition-all duration-200 hover:bg-[#fff] hover:text-[#A12266] ${
+                    isActive
+                      ? "text-[#a3004c] after:absolute after:-bottom-1 after:left-1/2 after:h-[3px] after:w-[70%] after:-translate-x-1/2 after:rounded-full after:bg-[#A12266] after:content-['']"
+                      : "text-gray-700"
+                  }`}
                 >
                   {item.title}
-                </a>
-              ),
-            )}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* CTA Buttons */}
@@ -386,12 +450,16 @@ export default function HeaderNew() {
         {isMenuOpen && (
           <div className="mt-4 border-t border-gray-200 pb-3 md:hidden">
             <div className="space-y-1 px-2 pt-2">
-              {navigationItems.map((item) =>
-                item.submenu ? (
+              {navigationItems.map((item) => {
+                const isActive = isNavItemActive(item);
+
+                return item.submenu ? (
                   <div key={item.id}>
                     <button
                       onClick={() => toggleDropdown(`mobile-${item.id}`)}
-                      className="flex w-full items-center justify-between rounded-md px-3 py-2 text-left font-medium text-gray-700 hover:bg-gray-100"
+                      className={`flex w-full items-center justify-between rounded-md px-3 py-2 text-left font-medium hover:bg-gray-100 ${
+                        isActive ? "text-[#A12266]" : "text-gray-700"
+                      }`}
                     >
                       <span>{item.title}</span>
                       <ChevronDown
@@ -429,23 +497,25 @@ export default function HeaderNew() {
                       )}
                   </div>
                 ) : (
-                  <a
+                  <Link
                     key={item.id}
-                    href={(item as any).link}
-                    className="block rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100"
+                    href={(item as any).link || "#"}
+                    className={`block rounded-md px-3 py-2 font-medium hover:bg-gray-100 ${
+                      isActive ? "text-[#A12266]" : "text-gray-700"
+                    }`}
                   >
                     {item.title}
-                  </a>
-                ),
-              )}
+                  </Link>
+                );
+              })}
 
               <div className="space-y-2 pt-4">
-                <a
-                  href="#"
+                <button
+                  onClick={toggleContactForm}
                   className="block w-full rounded-md border border-gray-300 px-4 py-2 text-center font-medium text-gray-700 hover:bg-gray-50"
                 >
                   Contact Us
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -454,183 +524,135 @@ export default function HeaderNew() {
 
       {/* Mega Menu - Only visible when a dropdown is active */}
       {megaMenuVisible && activeNavItem && "categories" in activeNavItem && (
-        <div
-          ref={megaMenuRef}
-          className={`inner-details-card mega-menu fixed mx-auto w-full bg-white transition-all duration-300 ease-in-out ${
-            isScrolling
-              ? "pointer-events-none translate-y-[-10px] opacity-0"
-              : "translate-y-0 opacity-100"
-          }`}
-        >
-          <div className="mx-auto ">
-            <div className="flex">
-              {/* Left sidebar - Navigation */}
-              <div
-                className="w-80 overflow-y-auto border-r border-gray-200 bg-gray-50 py-6"
-                style={{ maxHeight: "80vh" }}
-              >
-                {/* Minimalistic modern square cards with refined borders */}
-                {activeNavItem.categories.map((category, idx) => (
-                  <div key={idx} className="mb-6">
-                    <h3 className="mb-3 px-6 text-xs font-bold uppercase tracking-wider text-gray-400">
-                      {category.title}
-                    </h3>
-                    <div className="grid grid-cols-2 gap-3 px-4">
-                      {category.items.map((item, itemIdx) => {
-                        // Get the icon component dynamically
-                        const IconComponent = getIconComponent(item.icon);
 
-                        return (
-                          <button
-                            key={itemIdx}
-                            onClick={() => {
-                              handleCategorySelect(category.title);
-                              handleItemSelect(item.name);
-                            }}
-                            className={`group flex aspect-square flex-col items-center justify-center rounded-xl border transition-all duration-300 ${
-                              selectedCategory === category.title &&
-                              selectedItem === item.name
-                                ? "border-[#A12266] bg-white shadow-sm"
-                                : "border-gray-100 bg-white hover:border-[#A12266] hover:shadow-sm"
-                            }`}
-                          >
-                            <div
-                              className={`mb-3 flex h-14 w-14 items-center justify-center rounded-full transition-all duration-300 ${
+          <div
+            ref={megaMenuRef}
+            className={`inner-details-card mega-menu fixed mx-auto w-full bg-white transition-all duration-300 ease-in-out ${
+              isScrolling
+                ? "pointer-events-none translate-y-[-10px] opacity-0"
+                : "translate-y-0 opacity-100"
+            }`}
+          >
+            <div className="mx-auto">
+              <div className="flex h-[70vh]">
+                {/* Left sidebar - Navigation */}
+                <div
+                  className="w-80 overflow-y-auto border-r border-gray-200 bg-gray-50 py-6"
+                  style={{ maxHeight: "80vh" }}
+                >
+                  {/* Minimalistic modern square cards with refined borders */}
+                  {activeNavItem.categories.map((category, idx) => (
+                    <div key={idx} className="mb-6">
+                      <h3 className="mb-3 px-6 text-xs font-bold uppercase tracking-wider text-gray-400">
+                        {category.title}
+                      </h3>
+                      <div className="grid grid-cols-2 gap-3 px-4">
+                        {category.items.map((item, itemIdx) => {
+                          // Get the icon component dynamically
+                          const IconComponent = getIconComponent(item.icon);
+
+                          return (
+                            <button
+                              key={itemIdx}
+                              onClick={() => {
+                                handleCategorySelect(category.title);
+                                handleItemSelect(item.name);
+                              }}
+                              className={`group flex aspect-square flex-col items-center justify-center rounded-xl border transition-all duration-300 ${
                                 selectedCategory === category.title &&
                                 selectedItem === item.name
-                                  ? "bg-[#a1226610] text-[#A12266]"
-                                  : "bg-gray-50 text-gray-500 group-hover:bg-[#a1226610] group-hover:text-[#A12266]"
+                                  ? "border-[#A12266] bg-white shadow-sm"
+                                  : "border-gray-100 bg-white hover:border-[#A12266] hover:shadow-sm"
                               }`}
                             >
-                              <IconComponent size={28} />
-                            </div>
+                              <div
+                                className={`mb-3 flex h-14 w-14 items-center justify-center rounded-full transition-all duration-300 ${
+                                  selectedCategory === category.title &&
+                                  selectedItem === item.name
+                                    ? "bg-[#a1226610] text-[#A12266]"
+                                    : "bg-gray-50 text-gray-500 group-hover:bg-[#a1226610] group-hover:text-[#A12266]"
+                                }`}
+                              >
+                                <IconComponent size={28} />
+                              </div>
 
-                            <span
-                              className={`line-clamp-2 max-w-[80%] text-center text-sm font-light transition-colors duration-300 ${
-                                selectedCategory === category.title &&
-                                selectedItem === item.name
-                                  ? "font-semibold text-[#A12266] "
-                                  : " text-gray-700 group-hover:text-[#A12266]"
-                              }`}
-                            >
-                              {item.name}
-                            </span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Main content area - Selected item details */}
-              <div className="flex-1 p-8">
-                {selectedItemData && (
-                  <div className="flex h-full flex-col">
-                    <div className="mb-6 flex items-start">
-                      {selectedItemData.icon && (
-                        <div className="mr-6 rounded-full bg-[#a1226615] p-4">
-                          {React.createElement(
-                            getIconComponent(selectedItemData.icon),
-                            {
-                              size: 24,
-                              className: "text-[#A12266]",
-                            },
-                          )}
-                        </div>
-                      )}
-                      <div>
-                        <h2 className="text-2xl font-bold text-gray-900">
-                          {selectedItemData.name}
-                        </h2>
-                        <p className="mt-2 text-gray-600">
-                          {selectedItemData.description}
-                        </p>
-
-                        <div>custom content</div>
+                              <span
+                                className={`line-clamp-2 max-w-[80%] text-center text-sm font-light transition-colors duration-300 ${
+                                  selectedCategory === category.title &&
+                                  selectedItem === item.name
+                                    ? "font-semibold text-[#A12266] "
+                                    : " text-gray-700 group-hover:text-[#A12266]"
+                                }`}
+                              >
+                                {item.name}
+                              </span>
+                            </button>
+                          );
+                        })}
                       </div>
                     </div>
+                  ))}
+                </div>
 
-                    <div className="mt-auto">
-                      <a
-                        href="#"
-                        className="inline-flex items-center font-medium text-[#A12266] hover:underline"
-                      >
-                        Learn more about {selectedItemData.name}
-                        <ArrowRight size={16} className="ml-1" />
-                      </a>
+                {/* Main content area - Selected item details */}
+                <div className="flex-1 p-8">
+                  {selectedItemData && (
+                    <div className="flex h-full flex-col">
+                      <div className="mb-6 flex items-start">
+                        {selectedItemData.icon && (
+                          <div className="mr-6 rounded-full bg-[#a1226615] p-4">
+                            {React.createElement(
+                              getIconComponent(selectedItemData.icon),
+                              {
+                                size: 24,
+                                className: "text-[#A12266]",
+                              },
+                            )}
+                          </div>
+                        )}
+                        <div>
+                          <h2 className="text-2xl font-bold text-gray-900">
+                            {selectedItemData.name}
+                          </h2>
+                          <p className="mt-2 text-gray-600">
+                            {selectedItemData.description}
+                          </p>
+
+                          <div>
+                            <TabsDemo></TabsDemo>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="mt-auto">
+                        <a
+                          href="#"
+                          className="inline-flex items-center font-medium text-[#A12266] hover:underline"
+                        >
+                          Learn more about {selectedItemData.name}
+                          <ArrowRight size={16} className="ml-1" />
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Right sidebar - AI features */}
-              <div className="w-64 border-l border-gray-200 bg-[#a1226615] p-6">
-                <div className="mb-4">
-                  <h3 className="font-bold text-gray-800">
-                    {activeNavItem.sidebarContent.title}
-                  </h3>
-                  <div className="flex items-center">
-                    <span className="text-xl font-bold">
-                      {activeNavItem.sidebarContent.brandName.first}
-                    </span>
-                    <span className="text-xl font-bold text-[#A12266]">
-                      {activeNavItem.sidebarContent.brandName.highlight}
-                    </span>
-                  </div>
-                </div>
-
-                <ul className="space-y-3">
-                  {activeNavItem.sidebarContent.features.map(
-                    (feature, index) => (
-                      <li
-                        key={index}
-                        className="flex items-center text-gray-700"
-                      >
-                        <CheckCircle
-                          size={18}
-                          className="mr-2 text-[#A12266]"
-                        />
-                        <span>{feature}</span>
-                      </li>
-                    ),
                   )}
-                </ul>
-
-                <div className="mt-6">
-                  <button className="font-medium text-[#A12266] hover:underline">
-                    Learn More
-                  </button>
                 </div>
               </div>
-            </div>
 
-            {/* Bottom CTA bar */}
-            <div className="flex justify-end space-x-6 rounded-bl-lg rounded-br-lg border-t border-gray-200   p-4">
-              <button className="flex items-center   text-gray-800">
-                <MessageCircle size={18} className="mr-2" />
-                <span>Contact Us</span>
-              </button>
-              <button className="flex items-center  text-gray-800">
-                <Play size={18} className="mr-2" />
-                <span>Watch demo</span>
-              </button>
+              {/* Bottom CTA bar */}
+              <div className="flex justify-end space-x-6 rounded-bl-lg rounded-br-lg border-t border-gray-200 p-4">
+                <button className="flex items-center text-gray-800">
+                  <MessageCircle size={18} className="mr-2" />
+                  <span>Contact Us</span>
+                </button>
+                <button className="flex items-center text-gray-800">
+                  <Play size={18} className="mr-2" />
+                  <span>Watch demo</span>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
 
-      {/* Overlay when mega menu is visible */}
-      {/*{megaMenuVisible && (*/}
-      {/*  <div*/}
-      {/*    className="mega-menu-overlay"*/}
-      {/*    onClick={() => {*/}
-      {/*      setMegaMenuVisible(false);*/}
-      {/*      setActiveDropdown(null);*/}
-      {/*    }}*/}
-      {/*    style={{ top: "73px" }}*/}
-      {/*  />*/}
-      {/*)}*/}
+      )}
     </>
   );
 }

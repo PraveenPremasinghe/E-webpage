@@ -12,7 +12,6 @@ import ToasterContext from "./api/contex/ToasetContex";
 import React, { useEffect, useState } from "react";
 import PreLoader from "@/components/Common/PreLoader";
 import HeaderNew from "@/components/HeaderNew";
-import { NavbarDemo } from "@/components/HeaderNew/index2";
 
 export default function RootLayout({
   children,
@@ -44,7 +43,7 @@ export default function RootLayout({
               defaultTheme="light"
             >
               <ToasterContext />
-              <NavbarDemo />
+              <HeaderNew />
               {children}
               <Footer />
               <ScrollToTop />
