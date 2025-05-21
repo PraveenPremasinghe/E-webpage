@@ -46,7 +46,7 @@ export const navigationItems: NavigationItem[] = [
         title: "Industries",
         items: [
           {
-            name: "Enterprise",
+            name: "ERP",
             description: "Solutions for enterprise-scale organizations with complex needs.",
             icon: "Building"
           },

@@ -405,3 +405,6 @@ body {
 .no-visible-scrollbar::-webkit-scrollbar {
   display: none;
 }
+.leading-1-7{
+  line-height: 1.7 !important;
+}

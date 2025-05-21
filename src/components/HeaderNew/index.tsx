@@ -41,10 +41,19 @@ import {
   Package,
   TrendingUp,
   ArrowRight,
+  Check,
 } from "lucide-react";
 import { navigationItems, NavigationItem } from "./navigationItems";
 import ContactForm from "@/components/ContactForm/ContactForm";
 import { TabsDemo } from "@/components/HeaderNew/dataList/tabs";
+// import { Tabs } from "@/components/ui/tabs";
+import { Tabs, Tab, Card, CardBody, Button } from "@heroui/react";
+import { AnimatePresence, motion } from "framer-motion";
+import CEOMessageCard from "@/components/HeaderNew/AboutCompanyContent";
+import MinimalistCareersPage from "@/components/HeaderNew/CareersContent";
+import WhoWeEmpowerSection from "@/components/HeaderNew/WhoWeEmpower";
+import AboutCompanySection from "@/components/HeaderNew/AboutCompanyContent";
+import CareersSection from "@/components/HeaderNew/CareersContent";
 
 // Icon mapping for dynamic rendering
 const IconMap: Record<string, any> = {
@@ -97,9 +106,6 @@ export default function HeaderNew() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const contactFormRef = useRef<HTMLDivElement>(null);
-
-
-
   const navButtonRefs = useRef<Record<string, HTMLButtonElement | null>>({});
 
   // Update current path when component mounts or pathname changes
@@ -112,10 +118,10 @@ export default function HeaderNew() {
     updateCurrentPath();
 
     // Add event listener for navigation changes (for SPA navigation)
-    window.addEventListener('popstate', updateCurrentPath);
+    window.addEventListener("popstate", updateCurrentPath);
 
     return () => {
-      window.removeEventListener('popstate', updateCurrentPath);
+      window.removeEventListener("popstate", updateCurrentPath);
     };
   }, []);
 
@@ -144,8 +150,6 @@ export default function HeaderNew() {
     ) {
       setMegaMenuVisible(true);
 
-
-
       // Set default selected category to first category
       const navItem = navigationItems.find((item) => item.id === dropdown);
       if (navItem && "categories" in navItem && navItem.categories.length > 0) {
@@ -169,9 +173,9 @@ export default function HeaderNew() {
     // For regular links, check if the current path matches
     const link = (item as any).link;
 
-    if (link === '/') {
+    if (link === "/") {
       // Special case for home page
-      return currentPath === '/';
+      return currentPath === "/";
     }
 
     // Check if the current path starts with the link path
@@ -341,9 +345,6 @@ export default function HeaderNew() {
     };
   }, [isContactFormOpen]);
 
-
-
-
   return (
     <>
       <header
@@ -393,7 +394,7 @@ export default function HeaderNew() {
                     className={`flex items-center rounded-full px-3 py-2 font-medium transition-all duration-200 hover:bg-[#fff] hover:text-[#A12266] ${
                       isActive
                         ? "bg-[#ffffff] text-[#a3004c] after:absolute after:-bottom-1 after:left-1/2 after:h-[3px]" +
-                        " after:w-[40%] after:-translate-x-1/2 after:rounded-full after:bg-[#A12266] after:content-['']"
+                          " after:w-[40%] after:-translate-x-1/2 after:rounded-full after:bg-[#A12266] after:content-['']"
                         : "text-gray-700"
                     }`}
                   >
@@ -524,134 +525,187 @@ export default function HeaderNew() {
 
       {/* Mega Menu - Only visible when a dropdown is active */}
       {megaMenuVisible && activeNavItem && "categories" in activeNavItem && (
+        <div
+          ref={megaMenuRef}
+          className={`inner-details-card mega-menu fixed mx-auto w-full bg-white transition-all duration-300 ease-in-out ${
+            isScrolling
+              ? "pointer-events-none translate-y-[-10px] opacity-0"
+              : "translate-y-0 opacity-100"
+          }`}
+        >
+          <div className="mx-auto">
+            <div className="flex h-[70vh]">
+              {/* Left sidebar - Navigation */}
+              <div
+                className="w-80 overflow-y-auto border-r border-gray-200 bg-gray-50 py-6"
+                style={{ maxHeight: "80vh" }}
+              >
+                {/* Minimalistic modern square cards with refined borders */}
+                {activeNavItem.categories.map((category, idx) => (
+                  <div key={idx} className="mb-6">
+                    <h3 className="mb-3 px-6 text-xs font-bold uppercase tracking-wider text-gray-400">
+                      {category.title}
+                    </h3>
+                    <div className="grid grid-cols-2 gap-3 px-4">
+                      {category.items.map((item, itemIdx) => {
+                        // Get the icon component dynamically
+                        const IconComponent = getIconComponent(item.icon);
 
-          <div
-            ref={megaMenuRef}
-            className={`inner-details-card mega-menu fixed mx-auto w-full bg-white transition-all duration-300 ease-in-out ${
-              isScrolling
-                ? "pointer-events-none translate-y-[-10px] opacity-0"
-                : "translate-y-0 opacity-100"
-            }`}
-          >
-            <div className="mx-auto">
-              <div className="flex h-[70vh]">
-                {/* Left sidebar - Navigation */}
-                <div
-                  className="w-80 overflow-y-auto border-r border-gray-200 bg-gray-50 py-6"
-                  style={{ maxHeight: "80vh" }}
-                >
-                  {/* Minimalistic modern square cards with refined borders */}
-                  {activeNavItem.categories.map((category, idx) => (
-                    <div key={idx} className="mb-6">
-                      <h3 className="mb-3 px-6 text-xs font-bold uppercase tracking-wider text-gray-400">
-                        {category.title}
-                      </h3>
-                      <div className="grid grid-cols-2 gap-3 px-4">
-                        {category.items.map((item, itemIdx) => {
-                          // Get the icon component dynamically
-                          const IconComponent = getIconComponent(item.icon);
-
-                          return (
-                            <button
-                              key={itemIdx}
-                              onClick={() => {
-                                handleCategorySelect(category.title);
-                                handleItemSelect(item.name);
-                              }}
-                              className={`group flex aspect-square flex-col items-center justify-center rounded-xl border transition-all duration-300 ${
+                        return (
+                          <button
+                            key={itemIdx}
+                            onClick={() => {
+                              handleCategorySelect(category.title);
+                              handleItemSelect(item.name);
+                            }}
+                            className={`group flex aspect-square flex-col items-center justify-center rounded-xl border transition-all duration-300 ${
+                              selectedCategory === category.title &&
+                              selectedItem === item.name
+                                ? "border-[#A12266] bg-white shadow-sm"
+                                : "border-gray-100 bg-white hover:border-[#A12266] hover:shadow-sm"
+                            }`}
+                          >
+                            <div
+                              className={`mb-3 flex h-14 w-14 items-center justify-center rounded-full transition-all duration-300 ${
                                 selectedCategory === category.title &&
                                 selectedItem === item.name
-                                  ? "border-[#A12266] bg-white shadow-sm"
-                                  : "border-gray-100 bg-white hover:border-[#A12266] hover:shadow-sm"
+                                  ? "bg-[#a1226610] text-[#A12266]"
+                                  : "bg-gray-50 text-gray-500 group-hover:bg-[#a1226610] group-hover:text-[#A12266]"
                               }`}
                             >
-                              <div
-                                className={`mb-3 flex h-14 w-14 items-center justify-center rounded-full transition-all duration-300 ${
-                                  selectedCategory === category.title &&
-                                  selectedItem === item.name
-                                    ? "bg-[#a1226610] text-[#A12266]"
-                                    : "bg-gray-50 text-gray-500 group-hover:bg-[#a1226610] group-hover:text-[#A12266]"
-                                }`}
-                              >
-                                <IconComponent size={28} />
+                              <IconComponent size={28} />
+                            </div>
+
+                            <span
+                              className={`line-clamp-2 max-w-[80%] text-center text-sm font-light transition-colors duration-300 ${
+                                selectedCategory === category.title &&
+                                selectedItem === item.name
+                                  ? "font-semibold text-[#A12266] "
+                                  : " text-gray-700 group-hover:text-[#A12266]"
+                              }`}
+                            >
+                              {item.name}
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Main content area - Selected item details */}
+              <div className="flex-1 p-8">
+                {selectedItemData && (
+                  <div className="flex h-full flex-col">
+                    <div className="flex w-full flex-col items-center">
+                      <Tabs
+                        key="primary"
+                        aria-label="Tabs"
+                        color="primary"
+                        radius="sm"
+                        className=" mb-4"
+                        size="lg"
+                        variant="solid"
+                      >
+                        <Tab key="photos" title="Inventory Management">
+                          <div className="">
+                            <div className="space-y-10">
+                              {/* Hero Section */}
+                              <section className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
+                                <div>
+                                  <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+                                    Inventory Management
+                                  </h1>
+                                  <p className="mt-4 text-lg text-gray-600">
+                                    Track, organize, and optimize your inventory
+                                    with powerful tools
+                                  </p>
+                                  <p className="mt-6 text-gray-700">
+                                    Our inventory management system gives you
+                                    complete visibility and control over your
+                                    stock levels, helping you minimize costs
+                                    while ensuring you never run out of
+                                    essential items.
+                                  </p>
+                                </div>
+                                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                                  Image
+                                </div>
+                              </section>
+
+                              {/* Features Section */}
+                              <section>
+                                <h2 className="mb-6 text-2xl font-bold text-gray-900">
+                                  Key Features
+                                </h2>
+                                <div className="space-y-4">
+                                  <div className="flex items-start space-x-3">
+                                    <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-pink-100">
+                                      <Check className="h-4 w-4 text-pink-600" />
+                                    </div>
+                                    <span className="text-gray-700">
+                                      test 1
+                                    </span>
+                                  </div>
+                                </div>
+                              </section>
+
+                              {/* CTA Section */}
+                              <div className=" mx-auto max-w-5xl rounded-xl bg-gradient-to-r from-pink-600 to-pink-800 p-8 text-white shadow-lg">
+                                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+                                  <div>
+                                    <h2 className="text-2xl font-bold">
+                                      Ready to optimize your inventory?
+                                    </h2>
+                                    <p className="mt-2 text-pink-100">
+                                      Schedule a demo to see how our system fits
+                                      your needs
+                                    </p>
+                                  </div>
+                                  <Button className="mt-6 bg-white px-6 font-medium text-pink-600 hover:bg-pink-50 md:mt-0">
+                                    Request Demo
+                                  </Button>
+                                </div>
                               </div>
-
-                              <span
-                                className={`line-clamp-2 max-w-[80%] text-center text-sm font-light transition-colors duration-300 ${
-                                  selectedCategory === category.title &&
-                                  selectedItem === item.name
-                                    ? "font-semibold text-[#A12266] "
-                                    : " text-gray-700 group-hover:text-[#A12266]"
-                                }`}
-                              >
-                                {item.name}
-                              </span>
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Main content area - Selected item details */}
-                <div className="flex-1 p-8">
-                  {selectedItemData && (
-                    <div className="flex h-full flex-col">
-                      <div className="mb-6 flex items-start">
-                        {selectedItemData.icon && (
-                          <div className="mr-6 rounded-full bg-[#a1226615] p-4">
-                            {React.createElement(
-                              getIconComponent(selectedItemData.icon),
-                              {
-                                size: 24,
-                                className: "text-[#A12266]",
-                              },
-                            )}
+                            </div>
                           </div>
-                        )}
-                        <div>
-                          <h2 className="text-2xl font-bold text-gray-900">
-                            {selectedItemData.name}
-                          </h2>
-                          <p className="mt-2 text-gray-600">
-                            {selectedItemData.description}
-                          </p>
-
-                          <div>
-                            <TabsDemo></TabsDemo>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="mt-auto">
-                        <a
-                          href="#"
-                          className="inline-flex items-center font-medium text-[#A12266] hover:underline"
-                        >
-                          Learn more about {selectedItemData.name}
-                          <ArrowRight size={16} className="ml-1" />
-                        </a>
-                      </div>
+                        </Tab>
+                      </Tabs>
                     </div>
-                  )}
-                </div>
+
+                    <div className="mt-auto">
+                      <a
+                        href="#"
+                        className="inline-flex items-center font-medium text-[#A12266] hover:underline"
+                      >
+                        Learn more about {selectedItemData.name}
+                        <ArrowRight size={16} className="ml-1" />
+                      </a>
+                    </div>
+
+                    <AboutCompanySection></AboutCompanySection>
+                    <CareersSection></CareersSection>
+                    <WhoWeEmpowerSection></WhoWeEmpowerSection>
+                  </div>
+                )}
               </div>
 
-              {/* Bottom CTA bar */}
-              <div className="flex justify-end space-x-6 rounded-bl-lg rounded-br-lg border-t border-gray-200 p-4">
-                <button className="flex items-center text-gray-800">
-                  <MessageCircle size={18} className="mr-2" />
-                  <span>Contact Us</span>
-                </button>
-                <button className="flex items-center text-gray-800">
-                  <Play size={18} className="mr-2" />
-                  <span>Watch demo</span>
-                </button>
-              </div>
+            </div>
+
+            {/* Bottom CTA bar */}
+            <div className="flex justify-end space-x-6 rounded-bl-lg rounded-br-lg border-t border-gray-200 p-4">
+              <button className="flex items-center text-gray-800">
+                <MessageCircle size={18} className="mr-2" />
+                <span>Contact Us</span>
+              </button>
+              <button className="flex items-center text-gray-800">
+                <Play size={18} className="mr-2" />
+                <span>Watch demo</span>
+              </button>
             </div>
           </div>
-
+        </div>
       )}
     </>
   );
