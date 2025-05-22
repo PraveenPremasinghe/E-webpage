@@ -43,7 +43,7 @@ export default function Contact() {
         <div className="flex flex-col lg:flex-row">
           {/* Left Column - Contact Info */}
           <div className="lg:w-1/3 bg-gray-50 p-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Contact US</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">Contact Us</h2>
 
             {/* Support Card */}
             <div className="mb-8">
