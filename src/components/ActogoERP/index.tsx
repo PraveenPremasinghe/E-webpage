@@ -156,7 +156,7 @@ const ActogoERP = () => {
                     </span>
                   </h2>
                   <p className="mb-10 text-base font-light leading-relaxed text-body-color dark:text-dark-6">
-                    Actogo is Edhirya IT's flagship ERP platform — a powerful,
+                    Actogo is Edhirya IT&apos;s flagship ERP platform — a powerful,
                     AI-powered solution that helps businesses orchestrate
                     operations, automate workflows, and unlock actionable
                     insights.
@@ -219,7 +219,7 @@ const ActogoERP = () => {
                     </span>
                   </h2>
                   <p className="mb-10 text-base font-light leading-relaxed text-body-color dark:text-dark-6">
-                    Actogo is Edhirya IT's flagship ERP platform — a powerful,
+                    Actogo is Edhirya IT&apos;s flagship ERP platform — a powerful,
                     AI-powered solution that helps businesses orchestrate
                     operations, automate workflows, and unlock actionable
                     insights.
