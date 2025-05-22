@@ -43,10 +43,10 @@ export const navigationItems: NavigationItem[] = [
     submenu: true,
     categories: [
       {
-        title: " ",
+        title: "Industries",
         items: [
           {
-            name: "Enterprise",
+            name: "ERP",
             description: "Solutions for enterprise-scale organizations with complex needs.",
             icon: "Building"
           },
@@ -66,7 +66,32 @@ export const navigationItems: NavigationItem[] = [
             icon: "DollarSign"
           },
         ],
-      }
+      },
+      {
+        title: "Solutions",
+        items: [
+          {
+            name: "Digital Transformation",
+            description: "Modernize your business with end-to-end digital solutions.",
+            icon: "Layers"
+          },
+          {
+            name: "Cloud Migration",
+            description: "Seamlessly move your operations to cloud platforms.",
+            icon: "Cloud"
+          },
+          {
+            name: "Data Analytics",
+            description: "Turn your data into actionable business insights.",
+            icon: "BarChart"
+          },
+          {
+            name: "Security Solutions",
+            description: "Protect your business with enterprise-grade security.",
+            icon: "Shield"
+          },
+        ],
+      },
     ],
     sidebarContent: {
       title: "Powered by",

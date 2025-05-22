@@ -152,10 +152,10 @@ export default function HeaderNew() {
 
       // Set default selected category to first category
       const navItem = navigationItems.find((item) => item.id === dropdown);
-      if (navItem && "categories" in navItem && navItem.categories.length > 0) {
+      if (navItem && navItem.categories && navItem.categories.length > 0) {
         setSelectedCategory(navItem.categories[0].title);
-        if (navItem.categories[0].items.length > 0) {
-          setSelectedItem(navItem.categories[0].items[0].name);
+        if (navItem.categories[0].category.length > 0) {
+          setSelectedItem(navItem.categories[0].category[0].name);
         }
       }
     } else {
@@ -227,17 +227,18 @@ export default function HeaderNew() {
     };
   }, [megaMenuVisible]);
 
-  // Handle selecting a category
+// Handle selecting a category
   const handleCategorySelect = (categoryTitle: string) => {
     setSelectedCategory(categoryTitle);
+
     // Select first item of this category by default
     const navItem = navigationItems.find((item) => item.id === activeDropdown);
-    if (navItem && "categories" in navItem) {
+    if (navItem && navItem.categories) {
       const category = navItem.categories.find(
-        (cat) => cat.title === categoryTitle,
+        (cat) => cat.title === categoryTitle
       );
-      if (category && category.items.length > 0) {
-        setSelectedItem(category.items[0].name);
+      if (category && category.category.length > 0) {  // Changed from 'items' to 'category'
+        setSelectedItem(category.category[0].name);  // Changed from 'items' to 'category'
       }
     }
   };
@@ -252,17 +253,18 @@ export default function HeaderNew() {
     if (
       !activeNavItem ||
       !("categories" in activeNavItem) ||
+      !activeNavItem.categories ||
       !selectedCategory ||
       !selectedItem
     )
       return null;
 
     const category = activeNavItem.categories.find(
-      (cat) => cat.title === selectedCategory,
+      (cat) => cat.title === selectedCategory
     );
-    if (!category) return null;
+    if (!category || !category.category) return null;
 
-    return category.items.find((item) => item.name === selectedItem);
+    return category.category.find((item) => item.name === selectedItem);
   };
 
   const selectedItemData = getSelectedItemData();
@@ -349,7 +351,7 @@ export default function HeaderNew() {
     <>
       <header
         ref={headerRef}
-        className="shadow-nav fixed left-0 top-0 z-[9999] h-[90px] w-full border-b border-stroke  bg-white px-4  dark:border-dark-3/20 dark:bg-dark/10 sm:px-4 md:px-6 lg:px-8"
+        className="shadow-nav fixed left-0 top-0 z-[9999] h-[90px] w-full border-b border-stroke bg-white px-4 dark:border-dark-3/20 dark:bg-dark/10 sm:px-4 md:px-6 lg:px-8"
       >
         <div className="mx-auto flex max-w-9xl items-center justify-between">
           {/* Logo */}
@@ -388,7 +390,7 @@ export default function HeaderNew() {
                 <div key={item.id} className="relative">
                   <button
                     ref={(el) => {
-                      navButtonRefs.current[item.id] = el;
+                      if (el) navButtonRefs.current[item.id] = el;
                     }}
                     onClick={() => toggleDropdown(item.id)}
                     className={`flex items-center rounded-full px-3 py-2 font-medium transition-all duration-200 hover:bg-[#fff] hover:text-[#A12266] ${
@@ -412,7 +414,7 @@ export default function HeaderNew() {
               ) : (
                 <Link
                   key={item.id}
-                  href={(item as any).link || "#"}
+                  href={item.link || "#"}
                   className={`relative rounded-full px-3 py-2 font-medium transition-all duration-200 hover:bg-[#fff] hover:text-[#A12266] ${
                     isActive
                       ? "text-[#a3004c] after:absolute after:-bottom-1 after:left-1/2 after:h-[3px] after:w-[70%] after:-translate-x-1/2 after:rounded-full after:bg-[#A12266] after:content-['']"
@@ -474,14 +476,14 @@ export default function HeaderNew() {
                     </button>
                     {activeDropdown === `mobile-${item.id}` &&
                       item.submenu &&
-                      "categories" in item && (
+                      item.categories && (
                         <div className="ml-4 space-y-1">
                           {item.categories.map((category, idx) => (
                             <div key={idx}>
                               <div className="py-1 font-medium text-gray-700">
                                 {category.title}
                               </div>
-                              {category.items
+                              {category.category
                                 .slice(0, 3)
                                 .map((subitem, subidx) => (
                                   <a
@@ -500,7 +502,7 @@ export default function HeaderNew() {
                 ) : (
                   <Link
                     key={item.id}
-                    href={(item as any).link || "#"}
+                    href={item.link || "#"}
                     className={`block rounded-md px-3 py-2 font-medium hover:bg-gray-100 ${
                       isActive ? "text-[#A12266]" : "text-gray-700"
                     }`}
@@ -534,20 +536,20 @@ export default function HeaderNew() {
           }`}
         >
           <div className="mx-auto">
-            <div className="flex h-[70vh]">
+            <div className="flex h-[80vh]">
               {/* Left sidebar - Navigation */}
               <div
                 className="w-80 overflow-y-auto border-r border-gray-200 bg-gray-50 py-6"
                 style={{ maxHeight: "80vh" }}
               >
                 {/* Minimalistic modern square cards with refined borders */}
-                {activeNavItem.categories.map((category, idx) => (
+                {activeNavItem.categories?.map((category, idx) => (
                   <div key={idx} className="mb-6">
                     <h3 className="mb-3 px-6 text-xs font-bold uppercase tracking-wider text-gray-400">
                       {category.title}
                     </h3>
                     <div className="grid grid-cols-2 gap-3 px-4">
-                      {category.items.map((item, itemIdx) => {
+                      {category.category.map((item, itemIdx) => {
                         // Get the icon component dynamically
                         const IconComponent = getIconComponent(item.icon);
 
@@ -598,7 +600,7 @@ export default function HeaderNew() {
               <div className="flex-1 p-8">
                 {selectedItemData && (
                   <div className="flex h-full flex-col">
-                    <div className="flex w-full flex-col items-center">
+                    <div className="flex w-full flex-col  ">
                       <Tabs
                         key="primary"
                         aria-label="Tabs"
@@ -608,69 +610,77 @@ export default function HeaderNew() {
                         size="lg"
                         variant="solid"
                       >
-                        <Tab key="photos" title="Inventory Management">
-                          <div className="">
-                            <div className="space-y-10">
-                              {/* Hero Section */}
-                              <section className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
-                                <div>
-                                  <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-                                    Inventory Management
-                                  </h1>
-                                  <p className="mt-4 text-lg text-gray-600">
-                                    Track, organize, and optimize your inventory
-                                    with powerful tools
-                                  </p>
-                                  <p className="mt-6 text-gray-700">
-                                    Our inventory management system gives you
-                                    complete visibility and control over your
-                                    stock levels, helping you minimize costs
-                                    while ensuring you never run out of
-                                    essential items.
-                                  </p>
-                                </div>
-                                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                                  Image
-                                </div>
-                              </section>
-
-                              {/* Features Section */}
-                              <section>
-                                <h2 className="mb-6 text-2xl font-bold text-gray-900">
-                                  Key Features
-                                </h2>
-                                <div className="space-y-4">
-                                  <div className="flex items-start space-x-3">
-                                    <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-pink-100">
-                                      <Check className="h-4 w-4 text-pink-600" />
-                                    </div>
-                                    <span className="text-gray-700">
-                                      test 1
-                                    </span>
-                                  </div>
-                                </div>
-                              </section>
-
-                              {/* CTA Section */}
-                              <div className=" mx-auto max-w-5xl rounded-xl bg-gradient-to-r from-pink-600 to-pink-800 p-8 text-white shadow-lg">
-                                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+                        {selectedItemData.tabs?.map((tab, index) => (
+                          <Tab key={index} title={tab.title}>
+                            <div className="">
+                              <div className="space-y-10">
+                                {/* Hero Section */}
+                                <section className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
                                   <div>
-                                    <h2 className="text-2xl font-bold">
-                                      Ready to optimize your inventory?
-                                    </h2>
-                                    <p className="mt-2 text-pink-100">
-                                      Schedule a demo to see how our system fits
-                                      your needs
+                                    <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+                                      {tab.title}
+                                    </h1>
+                                    <p className="mt-4 text-lg text-gray-600">
+                                      {tab.subtitle}
+                                    </p>
+                                    <p className="mt-6 text-gray-700">
+                                      {tab.description}
                                     </p>
                                   </div>
-                                  <Button className="mt-6 bg-white px-6 font-medium text-pink-600 hover:bg-pink-50 md:mt-0">
-                                    Request Demo
-                                  </Button>
+                                  <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                                    <img
+                                      src={`/images/${tab.image}`}
+                                      alt={tab.title}
+                                      className="rounded-lg shadow-md"
+                                    />
+                                  </div>
+                                </section>
+
+                                {/* Features Section */}
+                                <section>
+                                  <h2 className="mb-6 text-2xl font-bold text-gray-900">
+                                    Key Features
+                                  </h2>
+                                  <div className="space-y-4">
+                                    {tab.features.map(
+                                      (feature, featureIndex) => (
+                                        <div
+                                          key={featureIndex}
+                                          className="flex items-start space-x-3"
+                                        >
+                                          <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-pink-100">
+                                            <Check className="h-4 w-4 text-pink-600" />
+                                          </div>
+                                          <span className="text-gray-700">
+                                            {feature}
+                                          </span>
+                                        </div>
+                                      ),
+                                    )}
+                                  </div>
+                                </section>
+
+                                {/* CTA Section */}
+                                <div className=" mx-auto max-w-5xl rounded-xl bg-gradient-to-r from-pink-600 to-pink-800 p-8 text-white shadow-lg">
+                                  <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+                                    <div>
+                                      <h2 className="text-2xl font-bold">
+                                           Ready to optimize your {tab.title}?
+                                      </h2>
+                                      <p className="mt-2 text-pink-100">
+                                        Schedule a demo to see how our system
+                                        fits your needs
+                                      </p>
+                                    </div>
+                                    <Button className="mt-6 bg-white px-6 font-medium text-pink-600 hover:bg-pink-50 md:mt-0">
+                                      Request Demo
+                                    </Button>
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        </Tab>
+                          </Tab>
+                        ))}
                       </Tabs>
                     </div>
 
@@ -690,7 +700,6 @@ export default function HeaderNew() {
                   </div>
                 )}
               </div>
-
             </div>
 
             {/* Bottom CTA bar */}
