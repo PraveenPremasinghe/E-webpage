@@ -53,7 +53,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="font-bold text-lg mb-2">Chat to support</h3>
-                  <p className="text-gray-600 text-sm mb-2">We're here to help with any technical questions.</p>
+                  <p className="text-gray-600 text-sm mb-2">We&apos;re here to help with any technical questions.</p>
                   <a
                     href="mailto:support@edhirya.com"
                     className="inline-flex items-center text-[#9c27b0] hover:text-[#7b1fa2] font-medium transition-colors group"
@@ -168,7 +168,7 @@ export default function Contact() {
           {/* Right Column - Contact Form */}
           <div className="lg:w-2/3 p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Send us a message</h2>
-            <p className="text-gray-500 mb-6">Fill out the form below and we'll get back to you as soon as possible.</p>
+            <p className="text-gray-500 mb-6">Fill out the form below and we&apos;ll get back to you as soon as possible.</p>
 
             {isSubmitted ? (
               <div className="bg-green-50 p-6 rounded-lg text-green-700 text-center border border-green-100">
@@ -184,7 +184,7 @@ export default function Contact() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-medium mb-2">Message Sent!</h3>
-                <p className="text-green-600">Thank you for reaching out. We'll get back to you as soon as possible.</p>
+                <p className="text-green-600">Thank you for reaching out. We&apos;ll get back to you as soon as possible.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">

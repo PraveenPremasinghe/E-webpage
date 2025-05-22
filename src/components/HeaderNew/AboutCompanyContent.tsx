@@ -91,7 +91,7 @@ export default function AboutCompanySection() {
 
               <p className="text-xl md:text-2xl text-center text-gray-800 dark:text-gray-200 leading-1-7 relative z-10">
                 Our mission is to transform how businesses leverage technology for growth and innovation. We believe in
-                creating solutions that not only solve today's challenges but anticipate tomorrow's opportunities.
+                creating solutions that not only solve today&apos;s challenges but anticipate tomorrow&apos;s opportunities.
               </p>
 
               <div className="absolute -bottom-12 -right-4 text-7xl text-primary opacity-20 font-serif">❞</div>

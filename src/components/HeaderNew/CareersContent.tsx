@@ -151,7 +151,7 @@ export default function CareersSection() {
       <div className="mt-16 text-center">
         <h3 className="text-2xl font-bold mb-4">Ready to join our team?</h3>
         <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-          We're always looking for talented individuals who are passionate about technology and innovation.
+          We&apos;re always looking for talented individuals who are passionate about technology and innovation.
         </p>
         <button className="px-8 py-3 bg-primary text-white rounded-full hover:bg-gray-800 transition-colors">
           Apply Now
