@@ -126,9 +126,17 @@ export default function HeaderNew() {
   }, []);
 
   // Find active dropdown content if available
-  const activeNavItem = navigationItems.find(
-    (item) => item.id === activeDropdown && item.submenu,
-  );
+  // const activeNavItem = navigationItems.find(
+  //   (item) => item.id === activeDropdown && item.submenu,
+  // );
+
+  const activeNavItem = navigationItems.find((item) => {
+    const match = item.id === activeDropdown && item.submenu;
+    console.log(
+      `Checking item: ${item.id}, submenu: ${item.submenu} → Match: ${match}`,
+    );
+    return match;
+  });
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -227,7 +235,7 @@ export default function HeaderNew() {
     };
   }, [megaMenuVisible]);
 
-// Handle selecting a category
+  // Handle selecting a category
   const handleCategorySelect = (categoryTitle: string) => {
     setSelectedCategory(categoryTitle);
 
@@ -235,10 +243,11 @@ export default function HeaderNew() {
     const navItem = navigationItems.find((item) => item.id === activeDropdown);
     if (navItem && navItem.categories) {
       const category = navItem.categories.find(
-        (cat) => cat.title === categoryTitle
+        (cat) => cat.title === categoryTitle,
       );
-      if (category && category.category.length > 0) {  // Changed from 'items' to 'category'
-        setSelectedItem(category.category[0].name);  // Changed from 'items' to 'category'
+      if (category && category.category.length > 0) {
+        // Changed from 'items' to 'category'
+        setSelectedItem(category.category[0].name); // Changed from 'items' to 'category'
       }
     }
   };
@@ -260,7 +269,7 @@ export default function HeaderNew() {
       return null;
 
     const category = activeNavItem.categories.find(
-      (cat) => cat.title === selectedCategory
+      (cat) => cat.title === selectedCategory,
     );
     if (!category || !category.category) return null;
 
@@ -535,185 +544,207 @@ export default function HeaderNew() {
               : "translate-y-0 opacity-100"
           }`}
         >
-          <div className="mx-auto">
-            <div className="flex h-[80vh]">
-              {/* Left sidebar - Navigation */}
-              <div
-                className="w-80 overflow-y-auto border-r border-gray-200 bg-gray-50 py-6"
-                style={{ maxHeight: "80vh" }}
-              >
-                {/* Minimalistic modern square cards with refined borders */}
-                {activeNavItem.categories?.map((category, idx) => (
-                  <div key={idx} className="mb-6">
-                    <h3 className="mb-3 px-6 text-xs font-bold uppercase tracking-wider text-gray-400">
-                      {category.title}
-                    </h3>
-                    <div className="grid grid-cols-2 gap-3 px-4">
-                      {category.category.map((item, itemIdx) => {
-                        // Get the icon component dynamically
-                        const IconComponent = getIconComponent(item.icon);
-
-                        return (
-                          <button
-                            key={itemIdx}
-                            onClick={() => {
-                              handleCategorySelect(category.title);
-                              handleItemSelect(item.name);
-                            }}
-                            className={`group flex aspect-square flex-col items-center justify-center rounded-xl border transition-all duration-300 ${
-                              selectedCategory === category.title &&
-                              selectedItem === item.name
-                                ? "border-[#A12266] bg-white shadow-sm"
-                                : "border-gray-100 bg-white hover:border-[#A12266] hover:shadow-sm"
-                            }`}
-                          >
-                            <div
-                              className={`mb-3 flex h-14 w-14 items-center justify-center rounded-full transition-all duration-300 ${
-                                selectedCategory === category.title &&
-                                selectedItem === item.name
-                                  ? "bg-[#a1226610] text-[#A12266]"
-                                  : "bg-gray-50 text-gray-500 group-hover:bg-[#a1226610] group-hover:text-[#A12266]"
-                              }`}
-                            >
-                              <IconComponent size={28} />
-                            </div>
-
-                            <span
-                              className={`line-clamp-2 max-w-[80%] text-center text-sm font-light transition-colors duration-300 ${
-                                selectedCategory === category.title &&
-                                selectedItem === item.name
-                                  ? "font-semibold text-[#A12266] "
-                                  : " text-gray-700 group-hover:text-[#A12266]"
-                              }`}
-                            >
-                              {item.name}
-                            </span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                ))}
+          {activeNavItem.id === "about-company" && (
+            <div className="mx-auto">
+              <div className="flex h-[80vh]">
+                <AboutCompanySection />
               </div>
+            </div>
+          )}
 
-              {/* Main content area - Selected item details */}
-              <div className="flex-1 p-8">
-                {selectedItemData && (
-                  <div className="flex h-full flex-col">
-                    <div className="flex w-full flex-col  ">
-                      <Tabs
-                        key="primary"
-                        aria-label="Tabs"
-                        color="primary"
-                        radius="sm"
-                        className=" mb-4"
-                        size="lg"
-                        variant="solid"
-                      >
-                        {selectedItemData.tabs?.map((tab, index) => (
-                          <Tab key={index} title={tab.title}>
-                            <div className="">
-                              <div className="space-y-10">
-                                {/* Hero Section */}
-                                <section className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
-                                  <div>
-                                    <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-                                      {tab.title}
-                                    </h1>
-                                    <p className="mt-4 text-lg text-gray-600">
-                                      {tab.subtitle}
-                                    </p>
-                                    <p className="mt-6 text-gray-700">
-                                      {tab.description}
-                                    </p>
-                                  </div>
-                                  <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                                    <img
-                                      src={`/images/${tab.image}`}
-                                      alt={tab.title}
-                                      className="rounded-lg shadow-md"
-                                    />
-                                  </div>
-                                </section>
+          {activeNavItem.id === "careers" && (
+            <div className="mx-auto">
+              <div className="flex h-[80vh]">
+                <CareersSection />
+              </div>
+            </div>
+          )}
 
-                                {/* Features Section */}
-                                <section>
-                                  <h2 className="mb-6 text-2xl font-bold text-gray-900">
-                                    Key Features
-                                  </h2>
-                                  <div className="space-y-4">
-                                    {tab.features.map(
-                                      (feature, featureIndex) => (
-                                        <div
-                                          key={featureIndex}
-                                          className="flex items-start space-x-3"
-                                        >
-                                          <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-pink-100">
-                                            <Check className="h-4 w-4 text-pink-600" />
-                                          </div>
-                                          <span className="text-gray-700">
-                                            {feature}
-                                          </span>
-                                        </div>
-                                      ),
-                                    )}
-                                  </div>
-                                </section>
+          {Array.isArray(activeNavItem?.categories) &&
+            activeNavItem.categories.length > 0 && (
+              <div className="mx-auto">
+                <div className="flex h-[80vh]">
+                  {/* Left sidebar - Navigation */}
+                  <div
+                    className="w-80 overflow-y-auto border-r border-gray-200 bg-gray-50 py-6"
+                    style={{ maxHeight: "80vh" }}
+                  >
+                    {/* Minimalistic modern square cards with refined borders */}
+                    {activeNavItem.categories?.map((category, idx) => (
+                      <div key={idx} className="mb-6">
+                        <h3 className="mb-3 px-6 text-xs font-bold uppercase tracking-wider text-gray-400">
+                          {category.title}
+                        </h3>
+                        <div className="grid grid-cols-2 gap-3 px-4">
+                          {category.category.map((item, itemIdx) => {
+                            // Get the icon component dynamically
+                            const IconComponent = getIconComponent(item.icon);
 
-                                {/* CTA Section */}
-                                <div className=" mx-auto max-w-5xl rounded-xl bg-gradient-to-r from-pink-600 to-pink-800 p-8 text-white shadow-lg">
-                                  <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                                    <div>
-                                      <h2 className="text-2xl font-bold">
-                                           Ready to optimize your {tab.title}?
+                            return (
+                              <button
+                                key={itemIdx}
+                                onClick={() => {
+                                  handleCategorySelect(category.title);
+                                  handleItemSelect(item.name);
+                                }}
+                                className={`group flex aspect-square flex-col items-center justify-center rounded-xl border transition-all duration-300 ${
+                                  selectedCategory === category.title &&
+                                  selectedItem === item.name
+                                    ? "border-[#A12266] bg-white shadow-sm"
+                                    : "border-gray-100 bg-white hover:border-[#A12266] hover:shadow-sm"
+                                }`}
+                              >
+                                <div
+                                  className={`mb-3 flex h-14 w-14 items-center justify-center rounded-full transition-all duration-300 ${
+                                    selectedCategory === category.title &&
+                                    selectedItem === item.name
+                                      ? "bg-[#a1226610] text-[#A12266]"
+                                      : "bg-gray-50 text-gray-500 group-hover:bg-[#a1226610] group-hover:text-[#A12266]"
+                                  }`}
+                                >
+                                  <IconComponent size={28} />
+                                </div>
+
+                                <span
+                                  className={`line-clamp-2 max-w-[80%] text-center text-sm font-light transition-colors duration-300 ${
+                                    selectedCategory === category.title &&
+                                    selectedItem === item.name
+                                      ? "font-semibold text-[#A12266] "
+                                      : " text-gray-700 group-hover:text-[#A12266]"
+                                  }`}
+                                >
+                                  {item.name}
+                                </span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Main content area - Selected item details */}
+                  <div className="flex-1 p-8">
+                    {activeNavItem.id === "who-we-empower" && (
+                      <div className="mx-auto">
+                        <div className="flex h-[80vh]">
+                          <WhoWeEmpowerSection itemData={selectedItemData!} />
+                        </div>
+                      </div>
+                    )}
+                    {selectedItemData && (
+                      <div className="flex h-full flex-col">
+                        <div className="flex w-full flex-col  ">
+                          <Tabs
+                            key="primary"
+                            aria-label="Tabs"
+                            color="primary"
+                            radius="sm"
+                            className=" mb-4"
+                            size="lg"
+                            variant="solid"
+                          >
+                            {selectedItemData.tabs?.map((tab, index) => (
+                              <Tab key={index} title={tab.title}>
+                                <div className="">
+                                  <div className="space-y-10">
+                                    {/* Hero Section */}
+                                    <section className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
+                                      <div>
+                                        <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+                                          {tab.title}
+                                        </h1>
+                                        <p className="mt-4 text-lg text-gray-600">
+                                          {tab.subtitle}
+                                        </p>
+                                        <p className="mt-6 text-gray-700">
+                                          {tab.description}
+                                        </p>
+                                      </div>
+                                      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                                        <img
+                                          src={`/images/${tab.image}`}
+                                          alt={tab.title}
+                                          className="rounded-lg shadow-md"
+                                        />
+                                      </div>
+                                    </section>
+
+                                    {/* Features Section */}
+                                    <section>
+                                      <h2 className="mb-6 text-2xl font-bold text-gray-900">
+                                        Key Features
                                       </h2>
-                                      <p className="mt-2 text-pink-100">
-                                        Schedule a demo to see how our system
-                                        fits your needs
-                                      </p>
+                                      <div className="space-y-4">
+                                        {tab.features.map(
+                                          (feature, featureIndex) => (
+                                            <div
+                                              key={featureIndex}
+                                              className="flex items-start space-x-3"
+                                            >
+                                              <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-pink-100">
+                                                <Check className="h-4 w-4 text-pink-600" />
+                                              </div>
+                                              <span className="text-gray-700">
+                                                {feature}
+                                              </span>
+                                            </div>
+                                          ),
+                                        )}
+                                      </div>
+                                    </section>
+
+                                    {/* CTA Section */}
+                                    <div className=" mx-auto max-w-5xl rounded-xl bg-gradient-to-r from-pink-600 to-pink-800 p-8 text-white shadow-lg">
+                                      <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+                                        <div>
+                                          <h2 className="text-2xl font-bold">
+                                            Ready to optimize your {tab.title}?
+                                          </h2>
+                                          <p className="mt-2 text-pink-100">
+                                            Schedule a demo to see how our
+                                            system fits your needs
+                                          </p>
+                                        </div>
+                                        <Button className="mt-6 bg-white px-6 font-medium text-pink-600 hover:bg-pink-50 md:mt-0">
+                                          Request Demo
+                                        </Button>
+                                      </div>
                                     </div>
-                                    <Button className="mt-6 bg-white px-6 font-medium text-pink-600 hover:bg-pink-50 md:mt-0">
-                                      Request Demo
-                                    </Button>
                                   </div>
                                 </div>
-                              </div>
-                            </div>
-                          </Tab>
-                        ))}
-                      </Tabs>
-                    </div>
+                              </Tab>
+                            ))}
+                          </Tabs>
+                        </div>
 
-                    <div className="mt-auto">
-                      <a
-                        href="#"
-                        className="inline-flex items-center font-medium text-[#A12266] hover:underline"
-                      >
-                        Learn more about {selectedItemData.name}
-                        <ArrowRight size={16} className="ml-1" />
-                      </a>
-                    </div>
-
-                    <AboutCompanySection></AboutCompanySection>
-                    <CareersSection></CareersSection>
-                    <WhoWeEmpowerSection></WhoWeEmpowerSection>
+                        <div className="mt-auto">
+                          <a
+                            href="#"
+                            className="inline-flex items-center font-medium text-[#A12266] hover:underline"
+                          >
+                            Learn more about {selectedItemData.name}
+                            <ArrowRight size={16} className="ml-1" />
+                          </a>
+                        </div>
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-            </div>
+                </div>
 
-            {/* Bottom CTA bar */}
-            <div className="flex justify-end space-x-6 rounded-bl-lg rounded-br-lg border-t border-gray-200 p-4">
-              <button className="flex items-center text-gray-800">
-                <MessageCircle size={18} className="mr-2" />
-                <span>Contact Us</span>
-              </button>
-              <button className="flex items-center text-gray-800">
-                <Play size={18} className="mr-2" />
-                <span>Watch demo</span>
-              </button>
-            </div>
-          </div>
+                {/* Bottom CTA bar */}
+                <div className="flex justify-end space-x-6 rounded-bl-lg rounded-br-lg border-t border-gray-200 p-4">
+                  <button className="flex items-center text-gray-800">
+                    <MessageCircle size={18} className="mr-2" />
+                    <span>Contact Us</span>
+                  </button>
+                  <button className="flex items-center text-gray-800">
+                    <Play size={18} className="mr-2" />
+                    <span>Watch demo</span>
+                  </button>
+                </div>
+              </div>
+            )}
         </div>
       )}
     </>
