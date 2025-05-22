@@ -56,7 +56,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
               </div>
               <h4 className="mb-2 text-xl font-medium text-gray-800">Thank You!</h4>
               <p className="text-gray-600">
-                Your message has been sent successfully. We'll get back to you soon.
+                Your message has been sent successfully. We`&apos;ll get back to you soon.
               </p>
             </div>
           ) : (

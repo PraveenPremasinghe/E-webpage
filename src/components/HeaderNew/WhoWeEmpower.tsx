@@ -127,7 +127,7 @@ export default function WhoWeEmpowerSection({ itemData  }: { itemData : Category
               Ready to transform your business?
             </h3>
             <p className="mb-4 text-sm text-gray-600 dark:text-gray-300">
-              Let's discuss how Edhirya can help you achieve your technology and
+              Let&apos;s discuss how Edhirya can help you achieve your technology and
               business goals with our client-first approach.
             </p>
             <button className="rounded-full bg-primary px-6 py-2 text-sm text-white transition-colors hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200">
