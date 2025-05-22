@@ -83,11 +83,11 @@ export default function CareersSection() {
   ]
 
   return (
-    <div className=" ">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Header */}
-      <div className="mb-12">
-        <div className="inline-block px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700 mb-4">Career</div>
-        <h1 className="text-4xl md:text-5xl font-bold mb-8">Work With Us</h1>
+      <div className="mb-12 ">
+        <div className="inline-block px-3 py-1 bg-pink-100 text-primary rounded-full text-sm  mb-4">Career</div>
+        <h1 className="text-3xl md:text-5xl font-bold mb-8 ">Work With Us</h1>
 
         {/* Filters */}
         {/*<div className="flex justify-between items-center">*/}
@@ -153,55 +153,55 @@ export default function CareersSection() {
         <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
           We're always looking for talented individuals who are passionate about technology and innovation.
         </p>
-        <button className="px-8 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition-colors">
-          View All Positions
+        <button className="px-8 py-3 bg-primary text-white rounded-full hover:bg-gray-800 transition-colors">
+          Apply Now
         </button>
       </div>
       {/* Application Process */}
-      <div className="mt-14">
-        <h2 className="text-2xl font-bold mb-10 text-center">Our Application Process</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white border border-gray-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow relative">
-            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-black text-white w-8 h-8 rounded-full flex items-center justify-center font-medium">
-              1
-            </div>
-            <h3 className="font-bold text-lg mb-3 mt-4 text-center">Send us your application</h3>
-            <p className="text-gray-600">
-              Upload your CV through the form provided. We're an equal opportunity employer and are committed to
-              creating an inclusive environment for everyone.
-            </p>
-          </div>
+      {/*<div className="mt-14">*/}
+      {/*  <h2 className="text-2xl font-bold mb-10 text-center">Our Application Process</h2>*/}
+      {/*  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">*/}
+      {/*    <div className="bg-pink-50 border border-pink-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow relative">*/}
+      {/*      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-medium">*/}
+      {/*        1*/}
+      {/*      </div>*/}
+      {/*      <h3 className="font-bold text-lg mb-3 mt-4 text-center">Send us your application</h3>*/}
+      {/*      <p className="text-gray-600 text-center">*/}
+      {/*        Upload your CV through the form provided. We're an equal opportunity employer and are committed to*/}
+      {/*        creating an inclusive environment for everyone.*/}
+      {/*      </p>*/}
+      {/*    </div>*/}
 
-          <div className="bg-white border border-gray-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow relative">
-            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-black text-white w-8 h-8 rounded-full flex items-center justify-center font-medium">
-              2
-            </div>
-            <h3 className="font-bold text-lg mb-3 mt-4 text-center">We shortlist applications</h3>
-            <p className="text-gray-600">
-              If shortlisted, we will contact you to schedule an aptitude test. If you're not shortlisted, we will still
-              keep your application and match it with future openings.
-            </p>
-          </div>
+      {/*    <div className="bg-pink-50 border border-pink-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow relative">*/}
+      {/*      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-medium">*/}
+      {/*        2*/}
+      {/*      </div>*/}
+      {/*      <h3 className="font-bold text-lg mb-3 mt-4 text-center">We shortlist applications</h3>*/}
+      {/*      <p className="text-gray-600 text-center">*/}
+      {/*        If shortlisted, we will contact you to schedule an aptitude test. If you're not shortlisted, we will still*/}
+      {/*        keep your application and match it with future openings.*/}
+      {/*      </p>*/}
+      {/*    </div>*/}
 
-          <div className="bg-white border border-gray-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow relative">
-            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-black text-white w-8 h-8 rounded-full flex items-center justify-center font-medium">
-              3
-            </div>
-            <h3 className="font-bold text-lg mb-3 mt-4 text-center">Let's talk</h3>
-            <p className="text-gray-600">Excel at the aptitude test and we will schedule two rounds of interviews.</p>
-          </div>
+      {/*    <div className="bg-pink-50 border border-pink-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow relative">*/}
+      {/*      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-medium">*/}
+      {/*        3*/}
+      {/*      </div>*/}
+      {/*      <h3 className="font-bold text-lg mb-3 mt-4 text-center">Let's talk</h3>*/}
+      {/*      <p className="text-gray-600 text-center">Excel at the aptitude test and we will schedule two rounds of interviews.</p>*/}
+      {/*    </div>*/}
 
-          <div className="bg-white border border-gray-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow relative">
-            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-black text-white w-8 h-8 rounded-full flex items-center justify-center font-medium">
-              4
-            </div>
-            <h3 className="font-bold text-lg mb-3 mt-4 text-center">Join us</h3>
-            <p className="text-gray-600">
-              You will receive an offer of employment. Accept it, and you officially become a part of Edhirya IT.
-            </p>
-          </div>
-        </div>
-      </div>
+      {/*    <div className="bg-pink-50 border border-pink-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow relative">*/}
+      {/*      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-medium">*/}
+      {/*        4*/}
+      {/*      </div>*/}
+      {/*      <h3 className="font-bold text-lg mb-3 mt-4 text-center">Join us</h3>*/}
+      {/*      <p className="text-gray-600 text-center">*/}
+      {/*        You will receive an offer of employment. Accept it, and you officially become a part of Edhirya IT.*/}
+      {/*      </p>*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
 
 
     </div>

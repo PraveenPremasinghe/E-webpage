@@ -214,7 +214,7 @@ export const navigationItems: NavigationItem[] = [
         category:[
           {
             name: "Startup Founders",
-            subtitle: "Empowering entrepreneurs with scalable tech and growth tools.",
+            subtitle: "Startup founders are visionary entrepreneurs who identify problems, develop innovative solutions, and build early-stage companies from the ground up, often navigating risk, uncertainty, and rapid growth",
             icon: "Rocket",
             points: [
               { text: "MVP Development & Scaling", icon: "Code" },

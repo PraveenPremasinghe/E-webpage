@@ -10,7 +10,7 @@ export default function AboutCompanySection() {
   }, []);
 
   return (
-    <div className="relative overflow-hidden w-full bg-white dark:bg-gray-900   flex items-center justify-center">
+    <div className="relative overflow-hidden w-full   dark:bg-gray-900   flex items-center justify-center">
       {/* Background abstract elements */}
       <div className="absolute inset-0 opacity-5 dark:opacity-10">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary rounded-full filter blur-3xl"></div>

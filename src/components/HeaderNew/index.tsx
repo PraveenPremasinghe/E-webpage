@@ -606,7 +606,7 @@ export default function HeaderNew() {
                                 </div>
 
                                 <span
-                                  className={`line-clamp-2 max-w-[80%] text-center text-sm font-light transition-colors duration-300 ${
+                                  className={`line-clamp-2 max-w-[80%] text-center text-sm font-medium leading-snug transition-colors duration-300 ${
                                     selectedCategory === category.title &&
                                     selectedItem === item.name
                                       ? "font-semibold text-[#A12266] "
@@ -624,7 +624,7 @@ export default function HeaderNew() {
                   </div>
 
                   {/* Main content area - Selected item details */}
-                  <div className="flex-1 p-8">
+                  <div className="flex-1 p-8 overflow-auto">
                     {activeNavItem.id === "who-we-empower" && (
                       <div className="mx-auto">
                         <div className="flex h-[80vh]">
@@ -633,7 +633,7 @@ export default function HeaderNew() {
                       </div>
                     )}
                     {selectedItemData && (
-                      <div className="flex h-full flex-col">
+                      <div className="flex   flex-col">
                         <div className="flex w-full flex-col  ">
                           <Tabs
                             key="primary"
@@ -654,7 +654,7 @@ export default function HeaderNew() {
                                         <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-3xl">
                                           {tab.title}
                                         </h1>
-                                        <p className="mt-4 text-lg text-gray-600">
+                                        <p className="mt-1 text-lg text-gray-600">
                                           {tab.subtitle}
                                         </p>
                                         <p className="mt-6 text-gray-700">
