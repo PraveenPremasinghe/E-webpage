@@ -6,11 +6,25 @@ export interface Tab {
   image: string;
 }
 
+export interface CategoryPoints{
+  text: string;
+  icon: string;
+}
+
+interface CaseStudy {
+  title: string;
+  description: string;
+  highlights: string[];
+  stats: { label: string; value: string }[];
+}
+
 export interface CategoryItem {
   name: string;
   subtitle: string;
   icon: string;
   tabs?: Tab[];
+  points? : CategoryPoints[];
+  caseStudy? : CaseStudy  // changes this
 }
 
 export interface Category {
@@ -194,18 +208,94 @@ export const navigationItems: NavigationItem[] = [
     id: "who-we-empower",
     title: "Who We Empower",
     submenu: true,
+    categories: [
+      {
+        title: "Who We Empower",
+        category:[
+          {
+            name: "Startup Founders",
+            subtitle: "Empowering entrepreneurs with scalable tech and growth tools.",
+            icon: "Rocket",
+            points: [
+              { text: "MVP Development & Scaling", icon: "Code" },
+              { text: "Technical Co-founding", icon: "Users" },
+              { text: "Investor-ready Solutions", icon: "LineChart" },
+              { text: "Growth-focused Architecture", icon: "CheckCircle" },
+            ],
+            caseStudy: {
+              title: "TechLaunch MVP Scaling",
+              description:
+                "We helped TechLaunch scale their MVP to meet growing demand while securing their next funding round.",
+              highlights: [
+                "12-week implementation timeline",
+                "Architecture redesign & optimization",
+                "DevOps implementation & automation",
+              ],
+              stats: [
+                { label: "User Capacity", value: "4x" },
+                { label: "Funding Secured", value: "$2M" },
+                { label: "Less Tech Debt", value: "60%" },
+              ],
+            },
+          },
+          {
+            name: "Franchise Networks",
+            subtitle: "Centralized solutions to manage and grow franchise ecosystems.",
+            icon: "Network",
+            points: [
+              { text: "MVP Development & Scaling", icon: "Code" },
+              { text: "Technical Co-founding", icon: "Users" },
+              { text: "Investor-ready Solutions", icon: "LineChart" },
+              { text: "Growth-focused Architecture", icon: "CheckCircle" },
+            ],
+            caseStudy: {
+              title: "TechLaunch MVP Scaling",
+              description:
+                "We helped TechLaunch scale their MVP to meet growing demand while securing their next funding round.",
+              highlights: [
+                "12-week implementation timeline",
+                "Architecture redesign & optimization",
+                "DevOps implementation & automation",
+              ],
+              stats: [
+                { label: "User Capacity", value: "4x" },
+                { label: "Funding Secured", value: "$2M" },
+                { label: "Less Tech Debt", value: "60%" },
+              ],
+            },
+          },
+          {
+            name: "Tech Investors",
+            subtitle: "Insights and tools to evaluate and scale tech portfolios.",
+            icon: "DollarSign",
+          },
+          {
+            name: "Strategic Outsourcing",
+            subtitle: "Smart outsourcing strategies for cost-effective execution.",
+            icon: "Briefcase",
+          },
+          {
+            name: "Tech Partnerships",
+            subtitle: "Collaborate on innovation with integrated tech ecosystems.",
+            icon: "Link",
+          },
+        ]
+      }
+    ],
     component: "WhoWeEmpowerSection",
   },
   {
     id: "about-company",
     title: "About Company",
     submenu: true,
+    categories: [],
     component: "AboutCompanySection",
   },
   {
     id: "careers",
     title: "Careers",
     submenu: true,
+    categories: [],
     component: "CareersSection",
   },
   {
