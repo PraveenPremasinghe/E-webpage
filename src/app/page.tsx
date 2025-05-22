@@ -19,6 +19,7 @@ import AIBot from "@/components/AIBot";
 import ActogoERP from "@/components/ActogoERP";
 import Platform from "@/components/Platform";
 import IndustrySolutionsSection from "@/components/TailoredSolution";
+import {HeroUIProvider} from "@heroui/react";
 
 export const metadata: Metadata = {
   title: "Edhirya IT - Crafting the Future of Digital Innovation",
@@ -30,6 +31,7 @@ export default function Home() {
 
   return (
     <main>
+       <HeroUIProvider>
       <ScrollUp />
       <Hero />
       {/*<AIBot/>*/}
@@ -50,7 +52,7 @@ export default function Home() {
       {/*<Team />*/}
       {/*<HomeBlogSection posts={posts} />*/}
       <Contact />
-
+   </HeroUIProvider>
     </main>
   );
 }

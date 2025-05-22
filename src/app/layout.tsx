@@ -6,6 +6,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "next-themes";
 import "../styles/index.css";
+import "../styles/header-css.css"
 import "../styles/prism-vsc-dark-plus.css";
 import ToasterContext from "./api/contex/ToasetContex";
 import React, { useEffect, useState } from "react";

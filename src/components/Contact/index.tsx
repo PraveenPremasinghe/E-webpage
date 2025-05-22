@@ -1,195 +1,293 @@
-const Contact = () => {
+"use client"
+
+import type React from "react"
+
+import { useState } from "react"
+import { Headset, Navigation, Phone, MapPin } from "lucide-react"
+
+export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  })
+
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    // Simulate form submission
+    setTimeout(() => {
+      setIsSubmitting(false)
+      setIsSubmitted(true)
+      setFormData({ name: "", email: "", subject: "", message: "" })
+
+      // Reset success message after 5 seconds
+      setTimeout(() => setIsSubmitted(false), 5000)
+    }, 1500)
+  }
+
   return (
-    <section id="contact" className="relative py-20 md:py-[120px]">
-      <div className="absolute left-0 top-0 -z-[1] h-full w-full dark:bg-dark"></div>
-      <div className="absolute left-0 top-0 -z-[1] h-1/2 w-full bg-[#A12266] dark:bg-dark-700 lg:h-[45%] xl:h-1/2"></div>
-      <div className="container px-4">
-        <div className="-mx-4 flex flex-wrap items-center">
-          <div className="w-full px-4 lg:w-7/12 xl:w-8/12">
-            <div className="ud-contact-content-wrapper">
-              <div className="ud-contact-title mb-12 lg:mb-[150px]">
-                <span className="mb-6 block text-base font-medium text-white dark:text-white">
-                  CONTACT US
-                </span>
-                <h2 className="max-w-[560px] text-[55px] font-semibold leading-[1.14] text-white dark:text-white">
-                  Let&#39;s talk about your problem.
-                </h2>
+    <div className="py-12 px-4 sm:px-6 lg:px-8">
+      {/* Main Card Container */}
+      <div className="w-full max-w-6xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden">
+        <div className="flex flex-col lg:flex-row">
+          {/* Left Column - Contact Info */}
+          <div className="lg:w-1/3 bg-gray-50 p-8">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">Contact US</h2>
+
+            {/* Support Card */}
+            <div className="mb-8">
+              <div className="flex items-start space-x-4">
+                <div className="w-10 h-10 rounded-full bg-[#9c27b0]/10 flex items-center justify-center flex-shrink-0">
+                  <Headset className="h-5 w-5 text-[#9c27b0]" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg mb-2">Chat to support</h3>
+                  <p className="text-gray-600 text-sm mb-2">We're here to help with any technical questions.</p>
+                  <a
+                    href="mailto:support@edhirya.com"
+                    className="inline-flex items-center text-[#9c27b0] hover:text-[#7b1fa2] font-medium transition-colors group"
+                  >
+                    support@edhirya.com
+                    <svg
+                      className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </a>
+                </div>
               </div>
-              <div className="container mx-auto px-4 py-12">
-                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                  {/* Address LK */}
-                  <div className="flex items-start">
-                    <div className="mr-6 text-primary">
-                      <svg
-                        width="29"
-                        height="35"
-                        viewBox="0 0 29 35"
-                        className="h-8 w-8 fill-current"
-                      >
-                        <path d="M14.5 0.710938C6.89844 0.710938 0.664062 6.72656 0.664062 14.0547C0.664062 19.9062 9.03125 29.5859 12.6406 33.5234C13.1328 34.0703 13.7891 34.3437 14.5 34.3437C15.2109 34.3437 15.8672 34.0703 16.3594 33.5234C19.9688 29.6406 28.3359 19.9062 28.3359 14.0547C28.3359 6.67188 22.1016 0.710938 14.5 0.710938ZM14.9375 32.2109C14.6641 32.4844 14.2812 32.4844 14.0625 32.2109C11.3828 29.3125 2.57812 19.3594 2.57812 14.0547C2.57812 7.71094 7.9375 2.625 14.5 2.625C21.0625 2.625 26.4219 7.76562 26.4219 14.0547C26.4219 19.3594 17.6172 29.2578 14.9375 32.2109Z" />
-                        <path d="M14.5 8.58594C11.2734 8.58594 8.59375 11.2109 8.59375 14.4922C8.59375 17.7188 11.2187 20.3984 14.5 20.3984C17.7812 20.3984 20.4062 17.7734 20.4062 14.4922C20.4062 11.2109 17.7266 8.58594 14.5 8.58594ZM14.5 18.4297C12.3125 18.4297 10.5078 16.625 10.5078 14.4375C10.5078 12.25 12.3125 10.4453 14.5 10.4453C16.6875 10.4453 18.4922 12.25 18.4922 14.4375C18.4922 16.625 16.6875 18.4297 14.5 18.4297Z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="mb-3 text-lg font-semibold text-dark dark:text-white">
-                        Sri Lanka Office
-                      </h3>
-                      <p className="text-base text-body-color dark:text-dark-6">
-                        No 426/25, Welipara,
-                        <br />
-                        Thalawathugoda, Sri Lanka
-                      </p>
-                    </div>
-                  </div>
+            </div>
 
-                  {/* Address UK */}
-                  <div className="flex items-start">
-                    <div className="mr-6 text-primary">
-                      <svg
-                        width="29"
-                        height="35"
-                        viewBox="0 0 29 35"
-                        className="h-8 w-8 fill-current"
-                      >
-                        <path d="M14.5 0.710938C6.89844 0.710938 0.664062 6.72656 0.664062 14.0547C0.664062 19.9062 9.03125 29.5859 12.6406 33.5234C13.1328 34.0703 13.7891 34.3437 14.5 34.3437C15.2109 34.3437 15.8672 34.0703 16.3594 33.5234C19.9688 29.6406 28.3359 19.9062 28.3359 14.0547C28.3359 6.67188 22.1016 0.710938 14.5 0.710938ZM14.9375 32.2109C14.6641 32.4844 14.2812 32.4844 14.0625 32.2109C11.3828 29.3125 2.57812 19.3594 2.57812 14.0547C2.57812 7.71094 7.9375 2.625 14.5 2.625C21.0625 2.625 26.4219 7.76562 26.4219 14.0547C26.4219 19.3594 17.6172 29.2578 14.9375 32.2109Z" />
-                        <path d="M14.5 8.58594C11.2734 8.58594 8.59375 11.2109 8.59375 14.4922C8.59375 17.7188 11.2187 20.3984 14.5 20.3984C17.7812 20.3984 20.4062 17.7734 20.4062 14.4922C20.4062 11.2109 17.7266 8.58594 14.5 8.58594ZM14.5 18.4297C12.3125 18.4297 10.5078 16.625 10.5078 14.4375C10.5078 12.25 12.3125 10.4453 14.5 10.4453C16.6875 10.4453 18.4922 12.25 18.4922 14.4375C18.4922 16.625 16.6875 18.4297 14.5 18.4297Z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="mb-3 text-lg font-semibold text-dark dark:text-white">
-                        UK Office
-                      </h3>
-                      <p className="text-base text-body-color dark:text-dark-6">
-                        34 Parsons Hill,
-                        <br />
-                        Birmingham, B68 9BX,
-                        <br />
-                        United Kingdom
-                      </p>
-                    </div>
-                  </div>
+            {/* Visit Us Card */}
+            <div className="mb-8">
+              <div className="flex items-start space-x-4">
+                <div className="w-10 h-10 rounded-full bg-[#4caf50]/10 flex items-center justify-center flex-shrink-0">
+                  <Navigation className="h-5 w-5 text-[#4caf50]" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg mb-2">Visit us</h3>
+                  <p className="text-gray-600 text-sm mb-2">Visit our office headquarters in person.</p>
+                  <a
+                    href="https://maps.google.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-[#4caf50] hover:text-[#388e3c] font-medium transition-colors group"
+                  >
+                    View on Google Maps
+                    <svg
+                      className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
 
-                  {/* Contact Info */}
-                  <div className="flex items-start">
-                    <div className="mr-6 text-primary">
-                      <svg
-                        width="34"
-                        height="25"
-                        viewBox="0 0 34 25"
-                        className="h-8 w-8 fill-current"
-                      >
-                        <path d="M30.5156 0.960938H3.17188C1.42188 0.960938 0 2.38281 0 4.13281V20.9219C0 22.6719 1.42188 24.0938 3.17188 24.0938H30.5156C32.2656 24.0938 33.6875 22.6719 33.6875 20.9219V4.13281C33.6875 2.38281 32.2656 0.960938 30.5156 0.960938ZM30.5156 2.875C30.7891 2.875 31.0078 2.92969 31.2266 3.09375L17.6094 11.3516C17.1172 11.625 16.5703 11.625 16.0781 11.3516L2.46094 3.09375C2.67969 2.98438 2.89844 2.875 3.17188 2.875H30.5156ZM30.5156 22.125H3.17188C2.51562 22.125 1.91406 21.5781 1.91406 20.8672V5.00781L15.0391 12.9922C15.5859 13.3203 16.1875 13.4844 16.7891 13.4844C17.3906 13.4844 17.9922 13.3203 18.5391 12.9922L31.6641 5.00781V20.8672C31.7734 21.5781 31.1719 22.125 30.5156 22.125Z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="mb-3 text-lg font-semibold text-dark dark:text-white">
-                        Contact Us
-                      </h3>
-                      <p className="text-base text-body-color dark:text-dark-6">
-                        Email:{" "}
-                        <a
-                          href="mailto:web@edhirya.com"
-                          className="transition-colors hover:text-primary"
-                        >
-                          web@edhirya.com
-                        </a>
-                      </p>
-                      <p className="mt-1 text-base text-body-color dark:text-dark-6">
-                        Phone:{" "}
-                        <a
-                          href="tel:+94112786007"
-                          className="transition-colors hover:text-primary"
-                        >
-                          +94 112 786 007
-                        </a>
-                      </p>
-                    </div>
+            {/* Call Us Card */}
+            <div className="mb-8">
+              <div className="flex items-start space-x-4">
+                <div className="w-10 h-10 rounded-full bg-[#ff9800]/10 flex items-center justify-center flex-shrink-0">
+                  <Phone className="h-5 w-5 text-[#ff9800]" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg mb-2">Call us</h3>
+                  <p className="text-gray-600 text-sm mb-2">Mon-Fri from 8am to 5pm for phone support.</p>
+                  <a
+                    href="tel:+94112786007"
+                    className="inline-flex items-center text-[#ff9800] hover:text-[#f57c00] font-medium transition-colors group"
+                  >
+                    +94 112 786 007
+                    <svg
+                      className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Offices */}
+            <div>
+              <h3 className="font-bold text-xl mb-4 text-gray-800">Our Offices</h3>
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="w-10 h-10 rounded-full bg-[#2196f3]/10 flex items-center justify-center flex-shrink-0">
+                    <MapPin className="h-5 w-5 text-[#2196f3]" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg mb-1">Sri Lanka Office</h3>
+                    <p className="text-gray-600 text-sm">
+                      No 426/25, Welipara,
+                      <br />
+                      Thalawathugoda, Sri Lanka
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="w-10 h-10 rounded-full bg-[#2196f3]/10 flex items-center justify-center flex-shrink-0">
+                    <MapPin className="h-5 w-5 text-[#2196f3]" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg mb-1">UK Office</h3>
+                    <p className="text-gray-600 text-sm">
+                      34 Parsons Hill,
+                      <br />
+                      Birmingham, B68 9BX,
+                      <br />
+                      United Kingdom
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="w-full px-4 lg:w-5/12 xl:w-4/12">
-            <div
-              className="wow fadeInUp rounded-lg bg-white px-8 py-10 shadow-testimonial dark:bg-dark-2 dark:shadow-none sm:px-10 sm:py-12 md:p-[60px] lg:p-10 lg:px-10 lg:py-12 2xl:p-[60px]"
-              data-wow-delay=".2s
-              "
-            >
-              <h3 className="mb-8 text-2xl font-semibold text-dark dark:text-white md:text-[28px] md:leading-[1.42]">
-                Send us a Message
-              </h3>
-              <form>
-                <div className="mb-[22px]">
-                  <label
-                    htmlFor="fullName"
-                    className="mb-4 block text-sm text-body-color dark:text-dark-6"
+
+          {/* Right Column - Contact Form */}
+          <div className="lg:w-2/3 p-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Send us a message</h2>
+            <p className="text-gray-500 mb-6">Fill out the form below and we'll get back to you as soon as possible.</p>
+
+            {isSubmitted ? (
+              <div className="bg-green-50 p-6 rounded-lg text-green-700 text-center border border-green-100">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg
+                    className="w-8 h-8 text-green-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    Full Name*
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <h3 className="text-xl font-medium mb-2">Message Sent!</h3>
+                <p className="text-green-600">Thank you for reaching out. We'll get back to you as soon as possible.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="text-gray-700 font-medium mb-2 block">
+                    Name
                   </label>
                   <input
-                    type="text"
-                    name="fullName"
-                    placeholder="Enter Name"
-                    className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 rounded-lg border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2  focus:border-transparent"
+                    placeholder="Your name"
+                    required
                   />
                 </div>
-                <div className="mb-[22px]">
-                  <label
-                    htmlFor="email"
-                    className="mb-4 block text-sm text-body-color dark:text-dark-6"
-                  >
-                    Email*
+
+                <div>
+                  <label htmlFor="email" className="text-gray-700 font-medium mb-2 block">
+                    Email
                   </label>
                   <input
-                    type="email"
+                    id="email"
                     name="email"
-                    placeholder="Enter Email"
-                    className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 rounded-lg border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#e91e63] focus:border-transparent"
+                    placeholder="Your email address"
+                    required
                   />
                 </div>
-                <div className="mb-[22px]">
-                  <label
-                    htmlFor="phone"
-                    className="mb-4 block text-sm text-body-color dark:text-dark-6"
-                  >
-                    Phone*
+
+                <div>
+                  <label htmlFor="subject" className="text-gray-700 font-medium mb-2 block">
+                    Subject
                   </label>
                   <input
-                    type="text"
-                    name="phone"
-                    placeholder="Enter Phone"
-                    className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 rounded-lg border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#e91e63] focus:border-transparent"
+                    placeholder="What is this regarding?"
+                    required
                   />
                 </div>
-                <div className="mb-[30px]">
-                  <label
-                    htmlFor="message"
-                    className="mb-4 block text-sm text-body-color dark:text-dark-6"
-                  >
-                    Message*
+
+                <div>
+                  <label htmlFor="message" className="text-gray-700 font-medium mb-2 block">
+                    Message
                   </label>
                   <textarea
+                    id="message"
                     name="message"
-                    rows={1}
-                    placeholder="type your message here"
-                    className="w-full resize-none border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 rounded-lg border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#e91e63] focus:border-transparent"
+                    placeholder="Your message"
+                    rows={5}
+                    required
                   ></textarea>
                 </div>
-                <div className="mb-0">
-                  <button
-                    type="submit"
-                    className="inline-flex items-center justify-center rounded-md bg-primary px-10 py-3 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-primary/90"
-                  >
-                    Send
-                  </button>
-                </div>
+
+                <button
+                  type="submit"
+                  className="w-full py-3 bg-[#212121] hover:bg-[#424242] text-white font-medium rounded-lg transition-all"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <span className="flex items-center justify-center">
+                      <svg
+                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
+                      </svg>
+                      Sending...
+                    </span>
+                  ) : (
+                    "Send Message"
+                  )}
+                </button>
               </form>
-            </div>
+            )}
           </div>
         </div>
       </div>
-    </section>
-  );
-};
-
-export default Contact;
+    </div>
+  )
+}
