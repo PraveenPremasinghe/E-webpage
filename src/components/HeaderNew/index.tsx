@@ -366,7 +366,7 @@ export default function HeaderNew() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <div className="flex items-center">
-              <div className="w-60 max-w-full px-4">
+              <div className="w-60 max-w-full">
                 <Link href="/" className="navbar-logo block w-full py-5">
                   <Image
                     src="/images/logo/edhirya-it-logo.webp"
@@ -566,7 +566,7 @@ export default function HeaderNew() {
                 <div className="flex h-[80vh]">
                   {/* Left sidebar - Navigation */}
                   <div
-                    className="w-80 overflow-y-auto border-r border-gray-200 bg-gray-50 py-6"
+                    className="w-70 overflow-y-auto border-r border-gray-200 bg-gray-50 py-6"
                     style={{ maxHeight: "80vh" }}
                   >
                     {/* Minimalistic modern square cards with refined borders */}
@@ -587,7 +587,7 @@ export default function HeaderNew() {
                                   handleCategorySelect(category.title);
                                   handleItemSelect(item.name);
                                 }}
-                                className={`group flex aspect-square flex-col items-center justify-center rounded-xl border transition-all duration-300 ${
+                                className={`group flex aspect-square w-[7rem] flex-col items-center justify-center rounded-xl border transition-all duration-300 ${
                                   selectedCategory === category.title &&
                                   selectedItem === item.name
                                     ? "border-[#A12266] bg-white shadow-sm"

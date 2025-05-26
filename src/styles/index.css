@@ -343,7 +343,8 @@ body {
   /*height: calc(80vh - 90px);*/
   z-index: 999;
   gap: 0;
-  width: calc(100% - 80px);
+  /*width: calc(100% - 400px);*/
+  width: 96rem;
   border-right: 1px solid #ceceea;
   border-bottom: 1px solid #ceceea;
   border-left: 1px solid #ceceea;
