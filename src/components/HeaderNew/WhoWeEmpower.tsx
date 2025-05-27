@@ -47,10 +47,10 @@ export default function WhoWeEmpowerSection({ itemData  }: { itemData : Category
       </section>
 
       {/* Case Study + CTA */}
-      <div className="mt-10 flex flex-col gap-8 lg:flex-row">
+      <div className="mt-10 flex flex-col gap-8 lg:flex-row ">
         {/* Case Study Card */}
-        <div className="flex-1">
-          <div className="relative overflow-hidden rounded-lg bg-gradient-to-r from-pink-600 to-pink-800 p-6 text-white">
+        <div className="flex-1 ">
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-pink-600 to-pink-800 p-6 text-white">
             <div className="absolute inset-0 opacity-10">
               <svg
                 width="100%"
@@ -103,7 +103,7 @@ export default function WhoWeEmpowerSection({ itemData  }: { itemData : Category
                     {itemData.caseStudy?.stats?.map((stat, ids) => (
                       <div
                         key={ids}
-                        className="rounded-lg bg-white p-3 text-center backdrop-blur-sm"
+                        className="rounded-2xl bg-white p-3 text-center backdrop-blur-sm"
                       >
                         <div className="text-3xl font-bold text-pink-800">
                           {stat.value}
@@ -122,7 +122,7 @@ export default function WhoWeEmpowerSection({ itemData  }: { itemData : Category
 
         {/* CTA Card */}
         <div className="flex-shrink-0 lg:w-80 xl:w-96">
-          <div className="flex flex-col justify-center rounded-lg border border-gray-200 bg-pink-100 p-6 dark:border-gray-700 dark:bg-gray-900">
+          <div className="flex flex-col justify-center rounded-2xl border border-gray-200 bg-pink-100 p-6 dark:border-gray-700 dark:bg-gray-900">
             <h3 className="mb-2 text-lg font-bold">
               Ready to transform your business?
             </h3>
@@ -133,6 +133,7 @@ export default function WhoWeEmpowerSection({ itemData  }: { itemData : Category
             <button className="rounded-full bg-primary px-6 py-2 text-sm text-white transition-colors hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200">
               Schedule a Consultation
             </button>
+
           </div>
         </div>
       </div>
