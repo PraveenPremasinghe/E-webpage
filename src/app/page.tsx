@@ -39,7 +39,7 @@ export default function Home() {
       {/*<AIBot/>*/}
       <Clients />
 
-         <ContactModal/>
+         {/*<ContactModal/>*/}
       <Platform/>
        <IndustrySolutionsSection/>
       <Features />
