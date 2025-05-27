@@ -47,13 +47,26 @@ import { navigationItems, NavigationItem } from "./navigationItems";
 import ContactForm from "@/components/ContactForm/ContactForm";
 import { TabsDemo } from "@/components/HeaderNew/dataList/tabs";
 // import { Tabs } from "@/components/ui/tabs";
-import { Tabs, Tab, Card, CardBody, Button } from "@heroui/react";
+import {
+  Tabs,
+  Tab,
+  Card,
+  CardBody,
+  Button,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  useDisclosure
+} from "@heroui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import CEOMessageCard from "@/components/HeaderNew/AboutCompanyContent";
 import MinimalistCareersPage from "@/components/HeaderNew/CareersContent";
 import WhoWeEmpowerSection from "@/components/HeaderNew/WhoWeEmpower";
 import AboutCompanySection from "@/components/HeaderNew/AboutCompanyContent";
 import CareersSection from "@/components/HeaderNew/CareersContent";
+import {  PrimaryButton } from "@/components/ui/ShinyButton";
+
 
 // Icon mapping for dynamic rendering
 const IconMap: Record<string, any> = {
@@ -173,23 +186,21 @@ export default function HeaderNew() {
 
   // Function to check if a nav item is active
   const isNavItemActive = (item: NavigationItem) => {
-    // For dropdown items, check if it's the active dropdown
-    if (item.submenu) {
-      return activeDropdown === item.id;
+    // If a dropdown is active, only highlight it
+    if (activeDropdown) {
+      return item.id === activeDropdown;
     }
 
-    // For regular links, check if the current path matches
+    // No dropdown active, check based on route
     const link = (item as any).link;
 
     if (link === "/") {
-      // Special case for home page
       return currentPath === "/";
     }
 
-    // Check if the current path starts with the link path
-    // This handles both exact matches and child routes
     return link && currentPath.startsWith(link);
   };
+
 
   // Handle click outside to close mega menu
   useEffect(() => {
@@ -227,11 +238,28 @@ export default function HeaderNew() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    // Menu positioning logic
+    const handleMenuPosition = () => {
+      if (megaMenuVisible && megaMenuRef.current) {
+        const menu = megaMenuRef.current;
+        menu.style.willChange = 'transform, opacity';
+        void menu.offsetWidth; // Trigger reflow
+        menu.classList.add('active');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleMenuPosition(); // Initialize menu position
 
     return () => {
       clearTimeout(scrollTimer);
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
+
+      // Cleanup menu positioning
+      if (megaMenuRef.current) {
+        megaMenuRef.current.classList.remove('active');
+        megaMenuRef.current.style.willChange = '';
+      }
     };
   }, [megaMenuVisible]);
 
@@ -285,11 +313,7 @@ export default function HeaderNew() {
   };
 
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+
 
   const toggleContactForm = () => {
     setIsContactFormOpen(!isContactFormOpen);
@@ -310,27 +334,27 @@ export default function HeaderNew() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      setSubmitSuccess(true);
-      setFormData({ name: "", email: "", message: "" });
-
-      // Reset success message after 3 seconds
-      setTimeout(() => {
-        setSubmitSuccess(false);
-        setIsContactFormOpen(false);
-      }, 3000);
-    } catch (error) {
-      console.error("Submission error:", error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   setIsSubmitting(true);
+  //
+  //   // Simulate form submission
+  //   try {
+  //     await new Promise((resolve) => setTimeout(resolve, 1500));
+  //     setSubmitSuccess(true);
+  //     setFormData({ name: "", email: "", message: "" });
+  //
+  //     // Reset success message after 3 seconds
+  //     setTimeout(() => {
+  //       setSubmitSuccess(false);
+  //       setIsContactFormOpen(false);
+  //     }, 3000);
+  //   } catch (error) {
+  //     console.error("Submission error:", error);
+  //   } finally {
+  //     setIsSubmitting(false);
+  //   }
+  // };
 
   // Close contact form when clicking outside
   useEffect(() => {
@@ -355,6 +379,25 @@ export default function HeaderNew() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isContactFormOpen]);
+
+
+  const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    onOpenChange();
+  };
 
   return (
     <>
@@ -439,7 +482,7 @@ export default function HeaderNew() {
           {/* CTA Buttons */}
           <div className="hidden items-center space-x-2 md:flex">
             <button
-              onClick={toggleContactForm}
+              onClick={onOpen}
               className="contact-button rounded-full bg-[#A12266] px-4 py-2 font-medium text-white transition-colors hover:bg-[#8a1c57]"
             >
               Contact Us
@@ -447,15 +490,108 @@ export default function HeaderNew() {
           </div>
 
           {/* Contact Form Overlay */}
-          <ContactForm
-            isOpen={isContactFormOpen}
-            onClose={() => setIsContactFormOpen(false)}
-            onSubmit={handleSubmit}
-            formData={formData}
-            isSubmitting={isSubmitting}
-            submitSuccess={submitSuccess}
-            handleInputChange={handleInputChange}
-          />
+          {/*<ContactForm*/}
+          {/*  isOpen={isContactFormOpen}*/}
+          {/*  onClose={() => setIsContactFormOpen(false)}*/}
+          {/*  onSubmit={handleSubmit}*/}
+          {/*  formData={formData}*/}
+          {/*  isSubmitting={isSubmitting}*/}
+          {/*  submitSuccess={submitSuccess}*/}
+          {/*  handleInputChange={handleInputChange}*/}
+          {/*/>*/}
+
+ <Modal isOpen={isOpen} onOpenChange={onOpenChange} backdrop="blur" size="lg">
+        <ModalContent className="max-w-md">
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-2 p-6 text-center text-3xl font-bold">
+                Let&apos;s Have A Chat 👋
+                <p className="text-lg font-normal text-gray-500">
+                  We&apos;ll Get Back To You Soon
+                </p>
+              </ModalHeader>
+
+              <ModalBody className="relative pb-20"> {/* Added padding-bottom */}
+                <form onSubmit={handleSubmit} className="space-y-6"> {/* Added padding-bottom */}
+                  <div>
+                    <label htmlFor="name" className="mb-2 block font-medium text-gray-700">
+                      Name
+                    </label>
+                    <input
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#a12266]"
+                      placeholder="Your name"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="mb-2 block font-medium text-gray-700">
+                      Email
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#a12266]"
+                      placeholder="Your email address"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="message" className="mb-2 block font-medium text-gray-700">
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      className="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#a12266]"
+                      placeholder="Your message"
+                      rows={5}
+                      required
+                    ></textarea>
+                  </div>
+
+                  <div className="text-center">
+                    <PrimaryButton
+                      dotColor="bg-primary"
+                      textColor="text-primary"
+                      hoverTextColor="text-white"
+                      backgroundColor="bg-[#a122661a]"
+                      borderColor="border-pink-800"
+                    >
+                      Send Message
+                    </PrimaryButton>
+                  </div>
+                </form>
+
+                {/* Phone number section */}
+                <div
+                  className="absolute bottom-0 left-0 right-0 rounded-b-[10px] border-t border-gray-200 bg-primary p-4">
+  <div className="text-center text-2xl text-white">
+    <span>Call us: </span>
+    <a
+      href="tel:+94458718711"
+      className="font-semibold hover:underline"
+    >
+      +94 45871 8711
+    </a>
+  </div>
+</div>
+              </ModalBody>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+
         </div>
 
         {/* Mobile menu, show/hide based on menu state */}
@@ -536,13 +672,20 @@ export default function HeaderNew() {
 
       {/* Mega Menu - Only visible when a dropdown is active */}
       {megaMenuVisible && activeNavItem && "categories" in activeNavItem && (
+        // <div
+        //   ref={megaMenuRef}
+        //   className={`inner-details-card mega-menu fixed mx-auto w-full bg-white transition-all duration-300 ease-in-out ${
+        //     isScrolling
+        //       ? "pointer-events-none translate-y-[-10px] opacity-0"
+        //       : "translate-y-0 opacity-100"
+        //   }`}
+        // >
+
         <div
           ref={megaMenuRef}
-          className={`inner-details-card mega-menu fixed mx-auto w-full bg-white transition-all duration-300 ease-in-out ${
-            isScrolling
-              ? "pointer-events-none translate-y-[-10px] opacity-0"
-              : "translate-y-0 opacity-100"
-          }`}
+          className={`inner-details-card mega-menu fixed mx-auto w-full bg-white transition-all duration-300 ease-in-out 
+    ${megaMenuVisible ? "active" : ""} 
+    ${isScrolling ? "pointer-events-none translate-y-[-10px] opacity-0" : "translate-y-0 opacity-100"}`}
         >
           {activeNavItem.id === "about-company" && (
             <div className="mx-auto">
@@ -569,15 +712,14 @@ export default function HeaderNew() {
                     className="w-70 overflow-y-auto border-r border-gray-200 bg-gray-50 py-6"
                     style={{ maxHeight: "80vh" }}
                   >
-                    {/* Minimalistic modern square cards with refined borders */}
+                    {/* Cards with matching size to original (7rem × 7rem) but updated visual style */}
                     {activeNavItem.categories?.map((category, idx) => (
-                      <div key={idx} className="mb-6">
-                        <h3 className="mb-3 px-6 text-xs font-bold uppercase tracking-wider text-gray-400">
+                      <div key={idx} className="mb-8">
+                        <h3 className="mb-4 px-6 text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500">
                           {category.title}
                         </h3>
-                        <div className="grid grid-cols-2 gap-3 px-4">
+                        <div className="grid grid-cols-2 gap-4 px-4">
                           {category.category.map((item, itemIdx) => {
-                            // Get the icon component dynamically
                             const IconComponent = getIconComponent(item.icon);
 
                             return (
@@ -587,34 +729,36 @@ export default function HeaderNew() {
                                   handleCategorySelect(category.title);
                                   handleItemSelect(item.name);
                                 }}
-                                className={`group flex aspect-square w-[7rem] flex-col items-center justify-center rounded-xl border transition-all duration-300 ${
+                                className={`group relative flex aspect-square w-[7rem] flex-col items-center justify-center rounded-xl border transition-all duration-300 ${
                                   selectedCategory === category.title &&
                                   selectedItem === item.name
-                                    ? "border-[#A12266] bg-white shadow-sm"
-                                    : "border-gray-100 bg-white hover:border-[#A12266] hover:shadow-sm"
+                                    ? "-translate-y-0.5 border-pink-600 bg-pink-50/20 shadow-sm dark:bg-pink-900/20"
+                                    : "border-gray-200 bg-white hover:-translate-y-0.5 hover:border-pink-600 hover:bg-pink-50/20 hover:shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-pink-900/10"
                                 }`}
                               >
                                 <div
-                                  className={`mb-3 flex h-14 w-14 items-center justify-center rounded-full transition-all duration-300 ${
+                                  className={`mb-3 flex h-10 w-10 items-center justify-center rounded-full transition-colors ${
                                     selectedCategory === category.title &&
                                     selectedItem === item.name
-                                      ? "bg-[#a1226610] text-[#A12266]"
-                                      : "bg-gray-50 text-gray-500 group-hover:bg-[#a1226610] group-hover:text-[#A12266]"
+                                      ? "bg-pink-50/40 text-pink-600 dark:bg-pink-900/30 dark:text-pink-400"
+                                      : "bg-gray-50/50 text-gray-500 group-hover:bg-pink-50/30 group-hover:text-pink-600 dark:bg-gray-700/50 dark:text-gray-300 dark:group-hover:bg-pink-900/20 dark:group-hover:text-pink-400"
                                   }`}
                                 >
-                                  <IconComponent size={28} />
+                                  <IconComponent size={20} />
                                 </div>
 
                                 <span
-                                  className={`line-clamp-2 max-w-[80%] text-center text-sm font-medium leading-snug transition-colors duration-300 ${
+                                  className={`line-clamp-2 px-1 text-center text-sm transition-colors ${
                                     selectedCategory === category.title &&
                                     selectedItem === item.name
-                                      ? "font-semibold text-[#A12266] "
-                                      : " text-gray-700 group-hover:text-[#A12266]"
+                                      ? "font-semibold text-pink-600 dark:text-pink-400"
+                                      : "font-medium text-gray-700 group-hover:text-pink-600 dark:text-gray-200 dark:group-hover:text-pink-400"
                                   }`}
                                 >
                                   {item.name}
                                 </span>
+
+
                               </button>
                             );
                           })}
@@ -624,7 +768,7 @@ export default function HeaderNew() {
                   </div>
 
                   {/* Main content area - Selected item details */}
-                  <div className="flex-1 p-8 overflow-auto">
+                  <div className="flex-1 overflow-auto p-8">
                     {activeNavItem.id === "who-we-empower" && (
                       <div className="mx-auto">
                         <div className="flex h-[80vh]">
@@ -638,7 +782,6 @@ export default function HeaderNew() {
                           <Tabs
                             key="primary"
                             aria-label="Tabs"
-                            color="primary"
                             radius="sm"
                             className=" mb-4"
                             size="lg"
@@ -706,9 +849,22 @@ export default function HeaderNew() {
                                             system fits your needs
                                           </p>
                                         </div>
-                                        <Button className="mt-6 bg-white px-6 font-medium text-pink-600 hover:bg-pink-50 md:mt-0">
-                                          Request Demo
-                                        </Button>
+                                        <div className="flex flex-col items-center justify-center gap-4 ">
+                                          <PrimaryButton>
+                                            Request Demo
+                                          </PrimaryButton>
+
+                                          <a
+                                            href="#"
+                                            className="inline-flex items-center font-medium text-[#fff] hover:underline"
+                                          >
+                                            Learn more
+                                            <ArrowRight
+                                              size={16}
+                                              className="ml-1"
+                                            />
+                                          </a>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
@@ -716,16 +872,6 @@ export default function HeaderNew() {
                               </Tab>
                             ))}
                           </Tabs>
-                        </div>
-
-                        <div className="mt-auto">
-                          <a
-                            href="#"
-                            className="inline-flex items-center font-medium text-[#A12266] hover:underline"
-                          >
-                            Learn more about {selectedItemData.name}
-                            <ArrowRight size={16} className="ml-1" />
-                          </a>
                         </div>
                       </div>
                     )}

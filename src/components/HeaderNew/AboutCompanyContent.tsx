@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { PrimaryButton } from "@/components/ui/ShinyButton";
 
 export default function AboutCompanySection() {
   const [isInView, setIsInView] = useState(false);
@@ -105,16 +106,17 @@ export default function AboutCompanySection() {
               transition={{ duration: 0.6, delay: 1.2 }}
             >
               <div className="flex items-center justify-center gap-4 flex-wrap">
-                <motion.button
-                  className="bg-primary hover:bg-primary/90 text-white py-3 px-6 rounded-full flex items-center gap-2 transition-all shadow-lg hover:shadow-primary/30"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
+
+
+                <PrimaryButton
+                  dotColor="bg-primary"
+                  textColor="text-primary"
+                  hoverTextColor="text-white"
+                  backgroundColor="bg-[#a122661a]"
+                  borderColor="border-pink-800"
                 >
-                  <span>Meet the team</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </motion.button>
+  Meet the team
+</PrimaryButton>
 
 
               </div>

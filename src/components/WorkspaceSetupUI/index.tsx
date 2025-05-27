@@ -26,9 +26,7 @@ const WorkspaceSetupUI = () => {
 
   return (
     <div className="relative">
-      {/* Decorative elements */}
-      <div className="absolute -top-10 -right-10 w-20 h-20 bg-pink-500 opacity-10 rounded-full blur-xl"></div>
-      <div className="absolute -bottom-8 -left-8 w-16 h-16 bg-blue-500 opacity-10 rounded-full blur-xl"></div>
+
 
       {/* Glass-morphism card */}
       <div className="backdrop-blur-sm bg-white/90 dark:bg-gray-900/90 rounded-3xl shadow-xl border border-gray-200 dark:border-gray-800 w-full max-w-lg p-6 transform transition-all hover:scale-[1.01]">

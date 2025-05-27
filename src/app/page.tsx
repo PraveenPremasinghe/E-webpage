@@ -20,6 +20,8 @@ import ActogoERP from "@/components/ActogoERP";
 import Platform from "@/components/Platform";
 import IndustrySolutionsSection from "@/components/TailoredSolution";
 import {HeroUIProvider} from "@heroui/react";
+import  ContactModal  from "@/components/HeaderNew/test";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "Edhirya IT - Crafting the Future of Digital Innovation",
@@ -36,13 +38,15 @@ export default function Home() {
       <Hero />
       {/*<AIBot/>*/}
       <Clients />
+
+         <ContactModal/>
       <Platform/>
        <IndustrySolutionsSection/>
       <Features />
       <OurServices/>
       <WeOffer/>
 
-      <About />
+      {/*<About />*/}
       <ActogoERP/>
       <Partners/>
       {/*<CallToAction />*/}

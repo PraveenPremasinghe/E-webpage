@@ -1,7 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+
+
 import { FlipWords } from '@/components/ui/lip-words';
+import { AnimatedBeamDemo } from "@/components/ui/animated-beam";
 
 const Hero = () => {
   const words = ['smarter', 'faster', 'scalable', 'secure'];
@@ -10,11 +13,11 @@ const Hero = () => {
     <>
       <section id="home" className="hero-section min-h-screen w-full bg-white relative">
 
-        <div className=" w-full h-full sm:px-6 lg:px-32 hero-content">
+        <div className=" w-full h-full sm:px-6 lg:px-32 hero-content ">
           <div className="flex h-full flex-col items-center justify-between gap-8 py-12 md:py-16 lg:flex-row lg:py-20">
             {/* Left side - Title and content */}
             <div className="flex  flex-col justify-center space-y-6 lg:w-2/3 ">
-              <div className=" ">
+              <div className="glassmorphism-effect w-fit h-fit  p-10">
                 <h1
                   className="text-6xl font-normal tracking-tight text-white dark:text-neutral-400 md:text-6xl lg:text-8xl">
                   Build <FlipWords words={words} />
@@ -24,13 +27,11 @@ const Hero = () => {
                   className="text-6xl font-normal tracking-tight text-white dark:text-neutral-400 md:text-6xl lg:text-8xl">
                   digital solutions
                 </h1>
-                <p className="mt-2 max-w-sm text-lg text-white md:mt-3 md:max-w-lg md:text-lg lg:text-xl">
+                <p className="mt-3 max-w-sm text-lg text-white md:mt-10 md:max-w-lg md:text-lg lg:text-xl">
                   A compelling subheading that explains your value proposition
                   in clear terms.
                 </p>
-              </div>
-
-              <div>
+                 <div>
                 <button
                   type="submit"
                   className="text-md group relative isolation-auto z-10 mt-7 flex items-center justify-center gap-2 overflow-hidden rounded-full border-2 border-gray-50 bg-pink-700 px-4 py-2 text-white shadow-xl backdrop-blur-md before:absolute before:-left-full before:-z-10 before:aspect-square before:w-full before:rounded-full before:bg-black before:transition-all before:duration-700 hover:text-gray-50 before:hover:left-0 before:hover:w-full before:hover:scale-150 before:hover:duration-700 lg:font-semibold"
@@ -48,10 +49,14 @@ const Hero = () => {
                   </svg>
                 </button>
               </div>
+              </div>
+
+
             </div>
 
-            <div className="flex w-full items-center justify-center lg:w-1/2">
-              sfgdfgh
+            <div className="flex w-full items-center justify-center lg:w-1/2 ">
+
+              {/*<AnimatedBeamDemo/>*/}
             </div>
           </div>
         </div>
