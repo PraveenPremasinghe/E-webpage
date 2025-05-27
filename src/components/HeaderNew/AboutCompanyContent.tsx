@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { PrimaryButton } from "@/components/ui/ShinyButton";
+import { useRouter } from "next/navigation";
 
 export default function AboutCompanySection() {
   const [isInView, setIsInView] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     // Set animation to start when component mounts
     setIsInView(true);
   }, []);
+
+
+  const navigateAboutus = () => {
+    router.push('/about');
+  };
 
   return (
     <div className="relative overflow-hidden w-full   dark:bg-gray-900   flex items-center justify-center">
@@ -114,6 +121,7 @@ export default function AboutCompanySection() {
                   hoverTextColor="text-white"
                   backgroundColor="bg-[#a122661a]"
                   borderColor="border-pink-800"
+                  onClick={navigateAboutus}
                 >
   Meet the team
 </PrimaryButton>
