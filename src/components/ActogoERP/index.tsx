@@ -52,7 +52,7 @@ const ActogoERP = () => {
   <div className="container px-4 sm:px-6 mx-auto">
 
 
-    <div className="mx-auto flex w-full flex-wrap justify-center px-4 sm:px-6 lg:px-8">
+    <div className="mx-auto flex w-full flex-wrap justify-center px-4 sm:px-6 lg:px-8 mb-8">
       <div
         className={`wow fadeInUp w-full px-4 ${
            "mx-auto text-center"
@@ -61,7 +61,7 @@ const ActogoERP = () => {
         style={{ maxWidth: "735px" }}
       >
 
-          <span className="mb-3 block text-center sm:mb-4">
+          <span className="mb-3 mt-3 block text-center sm:mb-4">
             <div
               className="inline-flex items-center rounded-full border border-zinc-200 bg-white px-4 py-1.5 text-sm font-medium text-zinc-950">
               <div
@@ -107,7 +107,7 @@ const ActogoERP = () => {
                     onClick={() => toggleDescription(index)}
                     className={`flex w-full cursor-pointer flex-col justify-between gap-4 px-4 py-3 rounded-lg transition-all duration-300 ${
                       activeTab === index
-                        ? "border-l-4 border-pink-700 bg-blue-900/50 bg-opacity-50 backdrop-blur-sm"
+                        ? "border-l-4 border-pink-700 bg-pink-900/50 bg-opacity-50 backdrop-blur-sm"
                         : "hover:bg-zinc-800/50"
                     }`}
                   >
@@ -143,7 +143,7 @@ const ActogoERP = () => {
                   type="submit"
                   className="group relative isolation-auto z-10 flex w-full items-center justify-center gap-2 overflow-hidden rounded-full border-2 border-gray-50 bg-pink-700 px-6 py-3 text-white shadow-xl backdrop-blur-md before:absolute before:-left-full before:-z-10 before:aspect-square before:w-full before:rounded-full before:bg-black before:transition-all before:duration-700 hover:text-gray-50 before:hover:left-0 before:hover:w-full before:hover:scale-150 before:hover:duration-700"
                 >
-                  <span className="text-sm md:text-base font-medium">I'm interested</span>
+                  <span className="text-sm md:text-base font-medium">I&apos;m interested</span>
                   <svg
                     className="h-6 w-6 rotate-45 rounded-full border border-gray-100 p-1.5 text-gray-50 duration-300 ease-linear group-hover:rotate-90 group-hover:border-none group-hover:bg-gray-50"
                     viewBox="0 0 16 19"
@@ -192,6 +192,7 @@ const ActogoERP = () => {
                     />
                   ))}
                 </div>
+
               </div>
 
               {/* Content with animation */}
@@ -206,7 +207,7 @@ const ActogoERP = () => {
                   >
                     <div className="relative h-full">
                       <Safari
-                        url="www.actogo.com/ERP"
+                        url="www.actogo.com"
                         mode="simple"
                         className="w-full h-full"
                         imageSrc={tabs[activeTab].image}
