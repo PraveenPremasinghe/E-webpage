@@ -15,7 +15,7 @@ import { WobbleCard } from '@/components/ui/wobble-card';
 
 const WeOffer = () => {
   return (
-    <section className="we-offer-section-bg pb-10 pt-10 dark:bg-dark sm:mt-20 md:mt-24 lg:mt-32">
+    <section className="we-offer-section-bg sm:py-24 md:py-28">
   <div className="container ">
         <SectionTitle
           subtitle='What we offer ?'
