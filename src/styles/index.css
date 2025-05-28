@@ -474,3 +474,7 @@ body {
 html:has(.fixed.inset-0.z-50) {
   overflow: hidden;
 }
+.custom-mobile-drawer{
+  border-radius: 0;
+  padding: 15px;
+}
