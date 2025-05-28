@@ -22,26 +22,19 @@ const SectionTitle = ({
       >
         {subtitle && (
           <span className="mb-3 block text-center sm:mb-4">
-            {/*<span*/}
-            {/*  className="inline-block rounded-full bg-[#a122661a] px-4 py-1 text-sm font-medium text-primary sm:px-4 sm:py-1 sm:text-base md:text-[1rem]">*/}
-            {/*  {subtitle}*/}
-            {/*</span>*/}
-
-            <div
-              className="inline-flex items-center rounded-full border border-zinc-200 bg-white px-4 py-1.5 text-sm font-medium text-zinc-950">
-              <div
-                className="mr-2 size-2 rounded-full bg-gradient-to-r from-[#a12266] via-[#a12266] to-[#FF7DAA]"></div>
+            <div className="inline-flex items-center rounded-full border border-zinc-200 bg-white px-4 py-1.5 text-sm font-medium text-zinc-950">
+              <div className="mr-2 size-2 rounded-full bg-gradient-to-r from-[#a12266] via-[#a12266] to-[#FF7DAA]"></div>
               {subtitle}
             </div>
           </span>
         )}
 
+        <h2 className="mb-3 text-center text-4xl font-medium tracking-tight text-zinc-950 lg:text-5xl">
+          {" "}
+          {title}
+        </h2>
 
-        <h2 className="mb-3 text-center font-medium text-4xl text-zinc-950 tracking-tight lg:text-5xl"> {title}</h2>
-
-        <p className="text-center text-lg text-zinc-500">
-          {paragraph}
-        </p>
+        <p className="text-center text-lg text-zinc-500">{paragraph}</p>
       </div>
     </div>
   );
