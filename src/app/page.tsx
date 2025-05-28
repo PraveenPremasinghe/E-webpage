@@ -19,44 +19,44 @@ import AIBot from "@/components/AIBot";
 import ActogoERP from "@/components/ActogoERP";
 import Platform from "@/components/Platform";
 import IndustrySolutionsSection from "@/components/TailoredSolution";
-import {HeroUIProvider} from "@heroui/react";
-import  ContactModal  from "@/components/HeaderNew/test";
+import { HeroUIProvider } from "@heroui/react";
+import ContactModal from "@/components/HeaderNew/test";
 import React from "react";
 
 export const metadata: Metadata = {
   title: "Edhirya IT - Crafting the Future of Digital Innovation",
-  description: "Edhirya IT empowers businesses with cutting-edge digital solutions. From SaaS platforms to customized IT services, we help you innovate, scale, and lead the future. Explore our futuristic, minimalistic technologies designed for the modern world.",
+  description:
+    "Edhirya IT empowers businesses with cutting-edge digital solutions. From SaaS platforms to customized IT services, we help you innovate, scale, and lead the future. Explore our futuristic, minimalistic technologies designed for the modern world.",
 };
 
 export default function Home() {
   const posts = getAllPosts(["title", "date", "excerpt", "coverImage", "slug"]);
 
   return (
-    <main>
-       <HeroUIProvider>
-      <ScrollUp />
-      <Hero />
-      {/*<AIBot/>*/}
-      <Clients />
+    <main className="bg-zinc-50">
+      <HeroUIProvider>
+        <ScrollUp />
+        <Hero />
+        {/*<AIBot/>*/}
+        <Clients />
+        {/*<ContactModal/>*/}
+        <Platform />
+        <IndustrySolutionsSection />
+        <Features />
+        {/*<OurServices/>*/}
+        <WeOffer />
 
-         {/*<ContactModal/>*/}
-      <Platform/>
-       <IndustrySolutionsSection/>
-      <Features />
-      <OurServices/>
-      <WeOffer/>
-
-      {/*<About />*/}
-      <ActogoERP/>
-      <Partners/>
-      {/*<CallToAction />*/}
-      {/*<Pricing />*/}
-      {/*<Testimonials />*/}
-      {/*<Faq />*/}
-      {/*<Team />*/}
-      {/*<HomeBlogSection posts={posts} />*/}
-      <Contact />
-   </HeroUIProvider>
+        {/*<About />*/}
+        <ActogoERP />
+        <Partners />
+        {/*<CallToAction />*/}
+        {/*<Pricing />*/}
+        {/*<Testimonials />*/}
+        {/*<Faq />*/}
+        {/*<Team />*/}
+        {/*<HomeBlogSection posts={posts} />*/}
+        <Contact />
+      </HeroUIProvider>
     </main>
   );
 }

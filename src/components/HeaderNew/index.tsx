@@ -162,9 +162,7 @@ export default function HeaderNew() {
 
   const activeNavItem = navigationItems.find((item) => {
     const match = item.id === activeDropdown && item.submenu;
-    console.log(
-      `Checking item: ${item.id}, submenu: ${item.submenu} → Match: ${match}`,
-    );
+
     return match;
   });
 
@@ -717,7 +715,7 @@ export default function HeaderNew() {
                                             </div>
                                             <div className="flex flex-col items-center justify-center gap-4">
                                               <PrimaryButton>
-                                                Request Demo
+                                                I&apos;m interested
                                               </PrimaryButton>
                                               <a
                                                 href="#"
@@ -925,7 +923,7 @@ export default function HeaderNew() {
                                         </div>
                                         <div className="flex flex-col items-center justify-center gap-4 ">
                                           <PrimaryButton>
-                                            Request Demo
+                                           I&apos;m interested
                                           </PrimaryButton>
 
                                           {activeNavItem ? (

@@ -94,7 +94,7 @@ const ActogoERP = () => {
                       type="submit"
                       className="text-md group relative isolation-auto z-10 mt-7 flex items-center justify-center gap-2 overflow-hidden rounded-full border-2 border-gray-50 bg-pink-700 px-4 py-2 text-white shadow-xl backdrop-blur-md before:absolute before:-left-full before:-z-10 before:aspect-square before:w-full before:rounded-full before:bg-black before:transition-all before:duration-700 hover:text-gray-50 before:hover:left-0 before:hover:w-full before:hover:scale-150 before:hover:duration-700 lg:font-semibold"
                     >
-                      Request Demo
+                      I&apos;m interested
                       <svg
                         className="h-7 w-7 rotate-45 justify-end rounded-full border border-gray-100 p-2 text-gray-50 duration-300 ease-linear group-hover:rotate-90 group-hover:border-none group-hover:bg-gray-50"
                         viewBox="0 0 16 19"

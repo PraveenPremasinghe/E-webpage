@@ -15,7 +15,7 @@ import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules';
 
 const Features = () => {
   return (
-    <section className="pt-10 dark:bg-dark sm:pt-24 md:pt-32">
+    <section className="sm:py-24 md:py-28">
       <div className="">
         <SectionTitle
           subtitle="Who We Are ?"

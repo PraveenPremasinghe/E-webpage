@@ -19,21 +19,25 @@ import { WorldMap } from "@/components/ui/world-map";
 
 const Platform = () => {
   return (
-    <section className="pt-10 dark:bg-dark sm:pt-24 md:pt-32">
+    <section className="sm:pt-24 md:pt-0 md:pb-24">
       <div className="">
         <div className="container">
           <div className="wow fadeInUp" data-wow-delay=".2s">
             <div className="-mx-4 flex flex-wrap items-center">
               <div className="w-full px-4 lg:w-1/2">
                 <div className="mb-12   lg:mb-0">
-                  <h1
-                    className="mb-4 text-3xl font-medium sm:text-center md:text-left leading-tight text-dark dark:text-white sm:mb-6 sm:text-4xl md:mb-8 md:text-5xl lg:mb-10 lg:text-6xl xl:text-7xl">
-                    A Platform That Adapts To You
-                  </h1>
-                  <p
-                    className="mb-4 text-base font-light leading-relaxed text-gray-500 dark:text-white sm:mb-5 sm:text-lg sm:leading-[1.5] md:text-xl lg:mb-6 lg:text-2xl">
-                    From Finance and HR to service workflows and reporting, our
-                    platform fits your business, not the other way around.
+                  <h2 className="mb-3 max-w-[600px] text-4xl font-medium text-zinc-900 lg:text-[3.2rem] lg:leading-tight">
+                    AI-Powered Business{" "}
+                    <span className="bg-gradient-to-r from-[#a12266] to-[#e94b8b] bg-clip-text text-transparent">
+                      Adaptation Engine
+                    </span>
+                  </h2>
+                  <p className="mb-4 max-w-[600px] text-lg text-zinc-600 lg:text-xl lg:leading-8">
+                    We don&apos;t just integrate with your workflows—we{" "}
+                    <strong>learn</strong> and <strong>evolve</strong> with
+                    them. Our platform continuously optimizes finance, HR, and
+                    operations using real-time data, reducing manual work by up
+                    to 80% while providing actionable insights.
                   </p>
 
                   <div className="flex ">
@@ -81,12 +85,9 @@ const Platform = () => {
         {/*    </div>*/}
         {/*  </div>*/}
         {/*</section>*/}
-
-
-
       </div>
     </section>
-);
+  );
 };
 
 export default Platform;

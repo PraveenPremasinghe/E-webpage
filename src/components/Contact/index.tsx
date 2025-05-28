@@ -77,60 +77,60 @@ export default function Contact() {
     </div>
 
               {/* Visit Us Card */}
-              <div className="bg-white rounded-2xl p-6 h-full flex flex-col">
-      <div className="flex items-start space-x-4 flex-grow">
-        <div className="w-10 h-10 rounded-full bg-[#a12266]/10 flex items-center justify-center flex-shrink-0">
-          <Navigation className="h-5 w-5 text-[#a12266]" />
-        </div>
-        <div className="flex-1">
-          <h3 className="font-bold text-lg mb-2">Visit us</h3>
-          <p className="text-gray-600 text-sm mb-4">Visit our office headquarters in person.</p>
-          <a
-            href="https://maps.google.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center text-[#a12266] hover:text-[#a12266] font-medium transition-colors group mt-auto"
-          >
-            View on Google Maps
-            <svg
-              className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
+    {/*          <div className="bg-white rounded-2xl p-6 h-full flex flex-col">*/}
+    {/*  <div className="flex items-start space-x-4 flex-grow">*/}
+    {/*    <div className="w-10 h-10 rounded-full bg-[#a12266]/10 flex items-center justify-center flex-shrink-0">*/}
+    {/*      <Navigation className="h-5 w-5 text-[#a12266]" />*/}
+    {/*    </div>*/}
+    {/*    <div className="flex-1">*/}
+    {/*      <h3 className="font-bold text-lg mb-2">Visit us</h3>*/}
+    {/*      <p className="text-gray-600 text-sm mb-4">Visit our office headquarters in person.</p>*/}
+    {/*      <a*/}
+    {/*        href="https://maps.google.com"*/}
+    {/*        target="_blank"*/}
+    {/*        rel="noopener noreferrer"*/}
+    {/*        className="inline-flex items-center text-[#a12266] hover:text-[#a12266] font-medium transition-colors group mt-auto"*/}
+    {/*      >*/}
+    {/*        View on Google Maps*/}
+    {/*        <svg*/}
+    {/*          className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform"*/}
+    {/*          fill="none"*/}
+    {/*          viewBox="0 0 24 24"*/}
+    {/*          stroke="currentColor"*/}
+    {/*        >*/}
+    {/*          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />*/}
+    {/*        </svg>*/}
+    {/*      </a>*/}
+    {/*    </div>*/}
+    {/*  </div>*/}
+    {/*</div>*/}
 
               {/* Call Us Card */}
-              <div className="bg-white rounded-2xl p-6 h-full flex flex-col">
-      <div className="flex items-start space-x-4 flex-grow">
-        <div className="w-10 h-10 rounded-full bg-[#a12266]/10 flex items-center justify-center flex-shrink-0">
-          <Phone className="h-5 w-5 text-[#a12266]" />
-        </div>
-        <div className="flex-1">
-          <h3 className="font-bold text-lg mb-2">Call us</h3>
-          <p className="text-gray-600 text-sm mb-4">Mon-Fri from 8am to 5pm for phone support.</p>
-          <a
-            href="tel:+94112786007"
-            className="inline-flex items-center text-[#a12266] hover:text-[#a12266] font-medium transition-colors group mt-auto"
-          >
-            +94 112 786 007
-            <svg
-              className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
+    {/*          <div className="bg-white rounded-2xl p-6 h-full flex flex-col">*/}
+    {/*  <div className="flex items-start space-x-4 flex-grow">*/}
+    {/*    <div className="w-10 h-10 rounded-full bg-[#a12266]/10 flex items-center justify-center flex-shrink-0">*/}
+    {/*      <Phone className="h-5 w-5 text-[#a12266]" />*/}
+    {/*    </div>*/}
+    {/*    <div className="flex-1">*/}
+    {/*      <h3 className="font-bold text-lg mb-2">Call us</h3>*/}
+    {/*      <p className="text-gray-600 text-sm mb-4">Mon-Fri from 8am to 5pm for phone support.</p>*/}
+    {/*      <a*/}
+    {/*        href="tel:+94112786007"*/}
+    {/*        className="inline-flex items-center text-[#a12266] hover:text-[#a12266] font-medium transition-colors group mt-auto"*/}
+    {/*      >*/}
+    {/*        +94 112 786 007*/}
+    {/*        <svg*/}
+    {/*          className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform"*/}
+    {/*          fill="none"*/}
+    {/*          viewBox="0 0 24 24"*/}
+    {/*          stroke="currentColor"*/}
+    {/*        >*/}
+    {/*          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />*/}
+    {/*        </svg>*/}
+    {/*      </a>*/}
+    {/*    </div>*/}
+    {/*  </div>*/}
+    {/*</div>*/}
 
               {/* Offices Section */}
               <div className="bg-white rounded-2xl p-6">
