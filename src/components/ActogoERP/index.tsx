@@ -10,6 +10,7 @@ import { WobbleCard } from '@/components/ui/wobble-card';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Link from 'next/link';
+import { Safari } from "@/components/ui/SafariInterface";
 
 const ActogoERP = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -47,206 +48,181 @@ const ActogoERP = () => {
   ];
 
   return (
-    <section className=" pb-10 pt-10 dark:bg-dark sm:pt-24 md:pt-32">
-      <div className="container ">
-        <SectionTitle
-          subtitle="ActoGo ERP Platform"
-          title="One Platform. Multiple Possibilities."
-          paragraph="Actogo ERP is a comprehensive enterprise resource planning solution that integrates all your critical business functions into a single, unified platform."
-        />
-        <div className="mt-14 px-4 sm:px-6">
-          <div className="wow fadeInUp" data-wow-delay=".2s">
-            <div className="flex flex-col  lg:flex-row">
-              {/* Vertical Tabs - Left Side */}
-              <div className="w-full lg:w-1/3">
-                <div className="flex flex-col space-y-2">
-                  {tabs.map((tab, index) => (
-                    <div key={index}>
-                      <div
-                        onClick={() => toggleDescription(index)}
-                        className={`flex w-full cursor-pointer  flex-col justify-between gap-4  px-3  text-left transition-all duration-300 ${
-                          activeTab === index
-                            ? "border-l-4 border-pink-700 dark:bg-blue-900/50 "
-                            : " "
-                        }`}
-                      >
-                        <h3 className="border-b-2 border-gray-50 py-2 text-xl font-semibold dark:border-gray-600">
-                          {tab.title}
-                        </h3>
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{
-                            height: expandedTab === index ? "auto" : 0,
-                            opacity: expandedTab === index ? 1 : 0,
-                          }}
-                          transition={{ duration: 0.2 }}
-                          className="overflow-hidden"
-                        >
-                          <div className="text-md text-gray-600 dark:text-gray-300">
-                            {tab.description}
-                          </div>
-                        </motion.div>
-                      </div>
-                    </div>
-                  ))}
-                  <div>
-                    <button
-                      type="submit"
-                      className="text-md group relative isolation-auto z-10 mt-7 flex items-center justify-center gap-2 overflow-hidden rounded-full border-2 border-gray-50 bg-pink-700 px-4 py-2 text-white shadow-xl backdrop-blur-md before:absolute before:-left-full before:-z-10 before:aspect-square before:w-full before:rounded-full before:bg-black before:transition-all before:duration-700 hover:text-gray-50 before:hover:left-0 before:hover:w-full before:hover:scale-150 before:hover:duration-700 lg:font-semibold"
-                    >
-                      Request Demo
-                      <svg
-                        className="h-7 w-7 rotate-45 justify-end rounded-full border border-gray-100 p-2 text-gray-50 duration-300 ease-linear group-hover:rotate-90 group-hover:border-none group-hover:bg-gray-50"
-                        viewBox="0 0 16 19"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
-                          className="fill-gray-100 group-hover:fill-gray-700"
-                        ></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
+    <section className="bg-zinc-950 py-16 sm:py-24 md:py-28">
+  <div className="container px-4 sm:px-6 mx-auto">
 
-              {/* Image Display - Right Side */}
-              <div className="w-full lg:w-2/3">
-                <div className="relative  h-[500px] overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800">
-                  {tabs[activeTab]?.image && (
+
+    <div className="mx-auto flex w-full flex-wrap justify-center px-4 sm:px-6 lg:px-8 mb-8">
+      <div
+        className={`wow fadeInUp w-full px-4 ${
+           "mx-auto text-center"
+        }`}
+        data-wow-delay=".1s"
+        style={{ maxWidth: "735px" }}
+      >
+
+          <span className="mb-3 mt-3 block text-center sm:mb-4">
+            <div
+              className="inline-flex items-center rounded-full border border-zinc-200 bg-white px-4 py-1.5 text-sm font-medium text-zinc-950">
+              <div
+                className="mr-2 size-2 rounded-full bg-gradient-to-r from-[#a12266] via-[#a12266] to-[#FF7DAA]"></div>
+              ActoGo ERP Platform
+            </div>
+          </span>
+
+
+        <h2 className="mb-3 text-center text-4xl font-medium tracking-tight  lg:text-5xl text-white">
+          {" "}
+          One Platform. Multiple Possibilities.
+        </h2>
+
+        <p className="text-center text-lg text-white">Actogo ERP is a comprehensive enterprise resource planning solution that integrates all your critical business functions into a single, unified platform.</p>
+      </div>
+    </div>
+
+    <div className="mt-14">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="wow fadeInUp"
+        data-wow-delay=".2s"
+      >
+        <div className="flex flex-col gap-8 lg:flex-row lg:gap-12">
+          {/* Vertical Tabs - Left Side */}
+          <div className="w-full lg:w-1/3">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex flex-col space-y-4"
+            >
+              {tabs.map((tab, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <div
+                    onClick={() => toggleDescription(index)}
+                    className={`flex w-full cursor-pointer flex-col justify-between gap-4 px-4 py-3 rounded-lg transition-all duration-300 ${
+                      activeTab === index
+                        ? "border-l-4 border-pink-700 bg-pink-900/50 bg-opacity-50 backdrop-blur-sm"
+                        : "hover:bg-zinc-800/50"
+                    }`}
+                  >
+                    <h3 className="text-lg md:text-xl font-semibold text-white">
+                      {tab.title}
+                    </h3>
                     <motion.div
-                      key={activeTab}
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{
+                        height: expandedTab === index ? "auto" : 0,
+                        opacity: expandedTab === index ? 1 : 0,
+                      }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="text-sm md:text-base text-gray-300 pb-2">
+                        {tab.description}
+                      </div>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              ))}
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+                className="mt-4"
+              >
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  type="submit"
+                  className="group relative isolation-auto z-10 flex w-full items-center justify-center gap-2 overflow-hidden rounded-full border-2 border-gray-50 bg-pink-700 px-6 py-3 text-white shadow-xl backdrop-blur-md before:absolute before:-left-full before:-z-10 before:aspect-square before:w-full before:rounded-full before:bg-black before:transition-all before:duration-700 hover:text-gray-50 before:hover:left-0 before:hover:w-full before:hover:scale-150 before:hover:duration-700"
+                >
+                  <span className="text-sm md:text-base font-medium">I&apos;m interested</span>
+                  <svg
+                    className="h-6 w-6 rotate-45 rounded-full border border-gray-100 p-1.5 text-gray-50 duration-300 ease-linear group-hover:rotate-90 group-hover:border-none group-hover:bg-gray-50"
+                    viewBox="0 0 16 19"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
+                      className="fill-gray-100 group-hover:fill-gray-700"
+                    />
+                  </svg>
+                </motion.button>
+              </motion.div>
+            </motion.div>
+          </div>
+
+          {/* Image Display - Right Side */}
+          <div className="w-full lg:w-2/3">
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="relative p-6 sm:p-8 md:p-10 rounded-2xl overflow-hidden h-full min-h-[400px]"
+            >
+              {/* Gradient background layers */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#FB923C] via-[#F472B6] to-[#E879F9]">
+                {/* Radial white fade */}
+                <div
+                  className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_70%)]" />
+
+                {/* Noise texture */}
+                <div className="absolute inset-0 z-10 bg-[url('/noise.png')] opacity-[0.02] mix-blend-color-dodge" />
+
+                {/* Vertical stripes pattern */}
+                <div className="absolute inset-0 flex">
+                  {[...Array(20)].map((_, i) => (
+                    <motion.div
+                      key={i}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <img
-                        src={tabs[activeTab].image}
-                        alt={tabs[activeTab].title}
-                        className="h-full w-full object-cover"
+                      transition={{ delay: 0.4 + (i * 0.02) }}
+                      className="h-full w-12 lg:w-6"
+                      style={{
+                        background: 'linear-gradient(90deg, #D9D9D903 0%, #00000033 50%, #FFFFFF03 100%)',
+                        mixBlendMode: 'overlay'
+                      }}
+                    />
+                  ))}
+                </div>
+
+              </div>
+
+              {/* Content with animation */}
+              <div className="relative z-20 h-full flex items-center justify-center">
+                {tabs[activeTab]?.image && (
+                  <motion.div
+                    key={activeTab}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="w-full h-full"
+                  >
+                    <div className="relative h-full">
+                      <Safari
+                        url="www.actogo.com"
+                        mode="simple"
+                        className="w-full h-full"
+                        imageSrc={tabs[activeTab].image}
                       />
-                    </motion.div>
-                  )}
-                  <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/50 to-transparent p-6">
-                    <div>
-                      <h3 className="text-2xl font-bold text-white">
-                        {tabs[activeTab].title}
-                      </h3>
-                      <p className="mt-2 text-gray-200">
-                        {tabs[activeTab].description}
-                      </p>
                     </div>
-                  </div>
-                </div>
+                  </motion.div>
+                )}
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
-
-        <div className="mt-32 px-4 sm:px-6">
-          <div className="wow fadeInUp" data-wow-delay=".2s">
-            <div className="flex flex-col lg:flex-row">
-              {/* Text Content */}
-              <div className="w-full lg:w-1/2">
-                <div className="lg:mb-0 lg:pr-10">
-                  <h2 className="mb-5 text-3xl font-medium leading-tight dark:text-white sm:text-[28px] sm:leading-[1.2]">
-                    We are powered by{" "}
-                    <span className="font-semibold text-primary">
-                      #CA Sri Lanka
-                    </span>
-                  </h2>
-                  <p className="mb-10 text-base font-light leading-relaxed text-body-color dark:text-dark-6">
-                    Actogo is Edhirya IT&apos;s flagship ERP platform — a powerful,
-                    AI-powered solution that helps businesses orchestrate
-                    operations, automate workflows, and unlock actionable
-                    insights.
-                  </p>
-                  <button
-                    type="submit"
-                    className="text-md group relative isolation-auto z-10 mt-7 flex items-center justify-center gap-2 overflow-hidden rounded-full border-2 border-gray-50 bg-pink-700 px-4 py-2 text-white shadow-xl backdrop-blur-md before:absolute before:-left-full before:-z-10 before:aspect-square before:w-full before:rounded-full before:bg-black before:transition-all before:duration-700 hover:text-gray-50 before:hover:left-0 before:hover:w-full before:hover:scale-150 before:hover:duration-700 lg:font-semibold"
-                  >
-                    Read More
-                    <svg
-                      className="h-7 w-7 rotate-45 justify-end rounded-full border border-gray-100 p-2 text-gray-50 duration-300 ease-linear group-hover:rotate-90 group-hover:border-none group-hover:bg-gray-50"
-                      viewBox="0 0 16 19"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
-                        className="fill-gray-100 group-hover:fill-gray-700"
-                      ></path>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-
-              {/* Image - Mobile: full width, Desktop: half width */}
-              <div className="mt-8 w-full lg:mt-0 lg:w-1/2">
-                <div className="h-[300px] sm:h-[400px] lg:pl-10">
-                  <img
-                    src="/images/products/email-cover.png"
-                    alt="Actogo ERP"
-                    className="h-full w-full rounded-lg object-cover object-center shadow-md"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-20 px-4 sm:px-6">
-          <div className="wow fadeInUp" data-wow-delay=".2s">
-            <div className="flex flex-col-reverse lg:flex-row">
-              {/* Image - Mobile: full width below text, Desktop: half width left */}
-              <div className="mt-8 w-full lg:mt-0 lg:w-1/2">
-                <div className="h-[300px] sm:h-[400px] lg:pr-10">
-                  <img
-                    src="/images/products/email-cover.png"
-                    alt="Actogo ERP"
-                    className="h-full w-full rounded-lg object-cover object-center shadow-md"
-                  />
-                </div>
-              </div>
-
-              {/* Text Content */}
-              <div className="w-full lg:w-1/2">
-                <div className="lg:pl-10">
-                  <h2
-                    className="mb-5 text-3xl font-medium leading-tight dark:text-white sm:text-[28px] sm:leading-[1.2]">
-                    We are powered by{" "}
-                    <span className="font-semibold text-primary">
-                      #Gonuts with donuts
-                    </span>
-                  </h2>
-                  <p className="mb-10 text-base font-light leading-relaxed text-body-color dark:text-dark-6">
-                    Actogo is Edhirya IT&apos;s flagship ERP platform — a powerful,
-                    AI-powered solution that helps businesses orchestrate
-                    operations, automate workflows, and unlock actionable
-                    insights.
-                  </p>
-                  <button
-                    type="submit"
-                    className="text-md group relative isolation-auto z-10 mt-7 flex items-center justify-center gap-2 overflow-hidden rounded-full border-2 border-gray-50 bg-pink-700 px-4 py-2 text-white shadow-xl backdrop-blur-md before:absolute before:-left-full before:-z-10 before:aspect-square before:w-full before:rounded-full before:bg-black before:transition-all before:duration-700 hover:text-gray-50 before:hover:left-0 before:hover:w-full before:hover:scale-150 before:hover:duration-700 lg:font-semibold"
-                  >
-                    Read More
-                    <svg
-                      className="h-7 w-7 rotate-45 justify-end rounded-full border border-gray-100 p-2 text-gray-50 duration-300 ease-linear group-hover:rotate-90 group-hover:border-none group-hover:bg-gray-50"
-                      viewBox="0 0 16 19"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
-                        className="fill-gray-100 group-hover:fill-gray-700"
-                      ></path>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+      </motion.div>
+    </div>
+  </div>
+</section>
   );
 };
 

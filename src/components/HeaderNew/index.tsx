@@ -42,6 +42,7 @@ import {
   TrendingUp,
   ArrowRight,
   Check,
+  ChevronLeft,
 } from "lucide-react";
 import { navigationItems, NavigationItem } from "./navigationItems";
 import ContactForm from "@/components/ContactForm/ContactForm";
@@ -57,7 +58,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalBody,
-  useDisclosure
+  useDisclosure, Drawer, DrawerContent, DrawerHeader, DrawerBody, DrawerFooter, menuItem
 } from "@heroui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import CEOMessageCard from "@/components/HeaderNew/AboutCompanyContent";
@@ -65,7 +66,7 @@ import MinimalistCareersPage from "@/components/HeaderNew/CareersContent";
 import WhoWeEmpowerSection from "@/components/HeaderNew/WhoWeEmpower";
 import AboutCompanySection from "@/components/HeaderNew/AboutCompanyContent";
 import CareersSection from "@/components/HeaderNew/CareersContent";
-import {  PrimaryButton } from "@/components/ui/ShinyButton";
+import { PrimaryButton } from "@/components/ui/ShinyButton";
 
 
 // Icon mapping for dynamic rendering
@@ -112,14 +113,29 @@ export default function HeaderNew() {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   const [isScrolling, setIsScrolling] = useState(false);
   const [currentPath, setCurrentPath] = useState("");
+  // Add this state to track mobile menu selections
+  const [mobileSelectedItemData, setMobileSelectedItemData] =
+    useState<any>(null);
 
   const headerRef = useRef<HTMLElement>(null);
   const megaMenuRef = useRef<HTMLDivElement>(null);
-
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const contactFormRef = useRef<HTMLDivElement>(null);
   const navButtonRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+
+  const {
+    isOpen: isModalOpen,
+    onOpen: onModalOpen,
+    onOpenChange: onModalOpenChange
+  } = useDisclosure();
+
+  const {
+    isOpen: isDrawerOpen,
+    onOpen: onDrawerOpen,
+    onClose: onDrawerClose,
+    onOpenChange: onDrawerOpenChange
+  } = useDisclosure();
 
   // Update current path when component mounts or pathname changes
   useEffect(() => {
@@ -145,9 +161,7 @@ export default function HeaderNew() {
 
   const activeNavItem = navigationItems.find((item) => {
     const match = item.id === activeDropdown && item.submenu;
-    console.log(
-      `Checking item: ${item.id}, submenu: ${item.submenu} → Match: ${match}`,
-    );
+
     return match;
   });
 
@@ -201,7 +215,6 @@ export default function HeaderNew() {
     return link && currentPath.startsWith(link);
   };
 
-
   // Handle click outside to close mega menu
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -242,23 +255,23 @@ export default function HeaderNew() {
     const handleMenuPosition = () => {
       if (megaMenuVisible && megaMenuRef.current) {
         const menu = megaMenuRef.current;
-        menu.style.willChange = 'transform, opacity';
+        menu.style.willChange = "transform, opacity";
         void menu.offsetWidth; // Trigger reflow
-        menu.classList.add('active');
+        menu.classList.add("active");
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     handleMenuPosition(); // Initialize menu position
 
     return () => {
       clearTimeout(scrollTimer);
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
 
       // Cleanup menu positioning
       if (megaMenuRef.current) {
-        megaMenuRef.current.classList.remove('active');
-        megaMenuRef.current.style.willChange = '';
+        megaMenuRef.current.classList.remove("active");
+        megaMenuRef.current.style.willChange = "";
       }
     };
   }, [megaMenuVisible]);
@@ -313,7 +326,6 @@ export default function HeaderNew() {
   };
 
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
-
 
   const toggleContactForm = () => {
     setIsContactFormOpen(!isContactFormOpen);
@@ -381,22 +393,23 @@ export default function HeaderNew() {
   }, [isContactFormOpen]);
 
 
-  const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    message: ""
+    message: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-    onOpenChange();
+    onModalOpenChange();
   };
 
   return (
@@ -425,12 +438,13 @@ export default function HeaderNew() {
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button
-              onClick={toggleMenu}
-              className="rounded-md p-2 text-gray-700 hover:bg-[#a1226629] hover:text-[#A12266]"
+            <Button
+              onPress={isDrawerOpen ? onDrawerClose : onDrawerOpen}
+              variant="ghost"
+              size="sm"
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+              {isDrawerOpen ? <X size={24} /> : <Menu size={24} />}
+            </Button>
           </div>
 
           {/* Desktop Navigation */}
@@ -482,204 +496,285 @@ export default function HeaderNew() {
           {/* CTA Buttons */}
           <div className="hidden items-center space-x-2 md:flex">
             <button
-              onClick={onOpen}
+              onClick={onModalOpen}
               className="contact-button rounded-full bg-[#A12266] px-4 py-2 font-medium text-white transition-colors hover:bg-[#8a1c57]"
             >
               Contact Us
             </button>
           </div>
-
-          {/* Contact Form Overlay */}
-          {/*<ContactForm*/}
-          {/*  isOpen={isContactFormOpen}*/}
-          {/*  onClose={() => setIsContactFormOpen(false)}*/}
-          {/*  onSubmit={handleSubmit}*/}
-          {/*  formData={formData}*/}
-          {/*  isSubmitting={isSubmitting}*/}
-          {/*  submitSuccess={submitSuccess}*/}
-          {/*  handleInputChange={handleInputChange}*/}
-          {/*/>*/}
-
- <Modal isOpen={isOpen} onOpenChange={onOpenChange} backdrop="blur" size="lg">
-        <ModalContent className="max-w-md">
-          {(onClose) => (
-            <>
-              <ModalHeader className="flex flex-col gap-2 p-6 text-center text-3xl font-bold">
-                Let&apos;s Have A Chat 👋
-                <p className="text-lg font-normal text-gray-500">
-                  We&apos;ll Get Back To You Soon
-                </p>
-              </ModalHeader>
-
-              <ModalBody className="relative pb-20"> {/* Added padding-bottom */}
-                <form onSubmit={handleSubmit} className="space-y-6"> {/* Added padding-bottom */}
-                  <div>
-                    <label htmlFor="name" className="mb-2 block font-medium text-gray-700">
-                      Name
-                    </label>
-                    <input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#a12266]"
-                      placeholder="Your name"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="mb-2 block font-medium text-gray-700">
-                      Email
-                    </label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#a12266]"
-                      placeholder="Your email address"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="mb-2 block font-medium text-gray-700">
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      className="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#a12266]"
-                      placeholder="Your message"
-                      rows={5}
-                      required
-                    ></textarea>
-                  </div>
-
-                  <div className="text-center">
-                    <PrimaryButton
-                      dotColor="bg-primary"
-                      textColor="text-primary"
-                      hoverTextColor="text-white"
-                      backgroundColor="bg-[#a122661a]"
-                      borderColor="border-pink-800"
-                    >
-                      Send Message
-                    </PrimaryButton>
-                  </div>
-                </form>
-
-                {/* Phone number section */}
-                <div
-                  className="absolute bottom-0 left-0 right-0 rounded-b-[10px] border-t border-gray-200 bg-primary p-4">
-  <div className="text-center text-2xl text-white">
-    <span>Call us: </span>
-    <a
-      href="tel:+94458718711"
-      className="font-semibold hover:underline"
-    >
-      +94 45871 8711
-    </a>
-  </div>
-</div>
-              </ModalBody>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
-
         </div>
-
-        {/* Mobile menu, show/hide based on menu state */}
-        {isMenuOpen && (
-          <div className="mt-4 border-t border-gray-200 pb-3 md:hidden">
-            <div className="space-y-1 px-2 pt-2">
-              {navigationItems.map((item) => {
-                const isActive = isNavItemActive(item);
-
-                return item.submenu ? (
-                  <div key={item.id}>
-                    <button
-                      onClick={() => toggleDropdown(`mobile-${item.id}`)}
-                      className={`flex w-full items-center justify-between rounded-md px-3 py-2 text-left font-medium hover:bg-gray-100 ${
-                        isActive ? "text-[#A12266]" : "text-gray-700"
-                      }`}
-                    >
-                      <span>{item.title}</span>
-                      <ChevronDown
-                        size={16}
-                        className={`transform transition-transform duration-200 ${
-                          activeDropdown === `mobile-${item.id}`
-                            ? "rotate-180"
-                            : ""
-                        }`}
-                      />
-                    </button>
-                    {activeDropdown === `mobile-${item.id}` &&
-                      item.submenu &&
-                      item.categories && (
-                        <div className="ml-4 space-y-1">
-                          {item.categories.map((category, idx) => (
-                            <div key={idx}>
-                              <div className="py-1 font-medium text-gray-700">
-                                {category.title}
-                              </div>
-                              {category.category
-                                .slice(0, 3)
-                                .map((subitem, subidx) => (
-                                  <a
-                                    key={subidx}
-                                    href="#"
-                                    className="block rounded-md px-3 py-2 text-gray-600 hover:bg-gray-100"
-                                  >
-                                    {subitem.name}
-                                  </a>
-                                ))}
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                  </div>
-                ) : (
-                  <Link
-                    key={item.id}
-                    href={item.link || "#"}
-                    className={`block rounded-md px-3 py-2 font-medium hover:bg-gray-100 ${
-                      isActive ? "text-[#A12266]" : "text-gray-700"
-                    }`}
-                  >
-                    {item.title}
-                  </Link>
-                );
-              })}
-
-              <div className="space-y-2 pt-4">
-                <button
-                  onClick={toggleContactForm}
-                  className="block w-full rounded-md border border-gray-300 px-4 py-2 text-center font-medium text-gray-700 hover:bg-gray-50"
-                >
-                  Contact Us
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
       </header>
+
+      {/***************************   */}
+
+      {/***************************   */}
+      <div>
+        <Drawer
+          isOpen={isDrawerOpen}
+          onOpenChange={onDrawerOpenChange}
+          className="mobile-drawer"
+        >
+          <DrawerContent className="custom-mobile-drawer top-[90px] h-[calc(100vh-90px)]">
+            {(onClose) => (
+              <>
+                <DrawerBody className="relative overflow-hidden">
+                  <AnimatePresence mode="wait">
+                    {!mobileSelectedItemData ? (
+                      <motion.div
+                        key="menu-items"
+                        initial={{ x: -100, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        exit={{ x: 100, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="absolute inset-0"
+                      >
+                        {/* Mobile menu items */}
+                        {navigationItems.map((item) => {
+                          const isActive = isNavItemActive(item);
+                          return item.submenu ? (
+                            <div key={item.id}>
+                              <button
+                                onClick={() => {
+                                  toggleDropdown(`mobile-${item.id}`);
+                                  console.log(item.title);
+                                  setSelectedCategory(item.title);
+                                  if(item.title === "About Company") {
+                                    setMobileSelectedItemData(
+                                      item.title,
+                                    );
+                                  }
+
+                                }}
+                                className={`flex w-full items-center justify-between rounded-md px-3 py-2 text-left font-medium hover:bg-gray-100 ${
+                                  isActive
+                                    ? "bg-pink-50 text-[#A12266]"
+                                    : "text-gray-700"
+                                }`}
+                              >
+                                <span>{item.title}</span>
+                                <ChevronDown
+                                  size={16}
+                                  className={`transform transition-transform duration-200 ${
+                                    activeDropdown === `mobile-${item.id}`
+                                      ? item.title === "About Company" ? "" : "rotate-180"
+                                      : ""
+                                  }`}
+                                />
+                              </button>
+
+                              {activeDropdown === `mobile-${item.id}` &&
+                                item.submenu &&
+                                item.categories && (
+                                  <div className="ml-4 space-y-1">
+                                    {item.categories.map((category, idx) => (
+                                      <div key={idx}>
+                                        {category.category.map(
+                                          (subitem, subidx) => {
+                                            // Check if this subitem is the currently selected one
+                                            const isSubitemActive =
+                                              mobileSelectedItemData?.id ===
+                                              item.id;
+                                            return (
+                                              <a
+                                                key={subidx}
+                                                href="#"
+                                                onClick={(e) => {
+                                                  e.preventDefault();
+                                                  setMobileSelectedItemData(
+                                                    subitem,
+                                                  );
+                                                }}
+                                                className={`block rounded-md px-3 py-2 transition-colors hover:bg-gray-100 ${
+                                                  isSubitemActive
+                                                    ? "bg-pink-50 font-medium text-[#A12266]"
+                                                    : "text-gray-600"
+                                                }`}
+                                              >
+                                                {subitem.name}
+                                              </a>
+                                            );
+                                          },
+                                        )}
+                                      </div>
+                                    ))}
+                                  </div>
+                                )}
+                            </div>
+                          ) : (
+                            <Link
+                              key={item.id}
+                              href={item.link || "#"}
+                              className={`block rounded-md px-3 py-2 font-medium hover:bg-gray-100 transition-colors ${
+                                isActive ? "text-[#A12266] bg-pink-50" : "text-gray-700"
+                              }`}
+                            >
+                        {item.title}
+                      </Link>
+                          );
+                        })}
+                        <div className="space-y-2 pt-4">
+                          <button
+                            onClick={toggleContactForm}
+                            className="block w-full rounded-md border border-gray-300 px-4 py-2 text-center font-medium text-gray-700 hover:bg-gray-50"
+                          >
+                            Contact Us
+                          </button>
+                        </div>
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                        key="item-details"
+                        initial={{ x: 100, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        exit={{ x: -100, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="absolute inset-0 overflow-y-auto "
+                      >
+                        {/* Mobile item details view */}
+                        <div className="mb-4 flex items-center justify-between">
+                          <button
+                            onClick={() => setMobileSelectedItemData(null)}
+                            className="flex items-center text-gray-600"
+                          >
+                            <ChevronLeft size={20} className="mr-1" />
+                            Back
+                          </button>
+                        </div>
+
+
+                        {/* Render the selected item details */}
+                        <div className="space-y-6">
+                          <div className="flex flex-col">
+                            <div className="flex w-full flex-col">
+                              {selectedCategory === "About Company" && (
+                                <div className="mx-auto">
+                                  <div className="flex h-[80vh]">
+                                    <AboutCompanySection />
+                                  </div>
+                                </div>
+                              )}
+                              {selectedCategory === "Who We Empower" && (
+                                <div className="mx-auto">
+                                  <div className="flex h-[80vh]">
+                                    <WhoWeEmpowerSection itemData={mobileSelectedItemData!} />
+                                  </div>
+                                </div>
+                              )}
+                              <Tabs
+                                key="primary"
+                                aria-label="Tabs"
+                                radius="sm"
+                                className="mb-4"
+                                size="lg"
+                                variant="solid"
+                              >
+                                {mobileSelectedItemData.tabs?.map(
+                                  (tab: any, index: number) => (
+                                    <Tab key={index} title={tab.title}>
+                                      <div className="space-y-10">
+                                        {/* Hero Section */}
+                                        <section className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
+                                          <div>
+                                            <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+                                              {tab.title}
+                                            </h1>
+                                            <p className="mt-1 text-lg text-gray-600">
+                                              {tab.subtitle}
+                                            </p>
+                                            <p className="mt-6 text-gray-700">
+                                              {tab.description}
+                                            </p>
+                                          </div>
+                                          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                                            <img
+                                              src={`/images/${tab.image}`}
+                                              alt={tab.title}
+                                              className="rounded-lg shadow-md"
+                                            />
+                                          </div>
+                                        </section>
+
+                                        {/* Features Section */}
+                                        <section>
+                                          <h2 className="mb-6 text-2xl font-bold text-gray-900">
+                                            Key Features
+                                          </h2>
+                                          <div className="space-y-4">
+                                            {tab.features.map(
+                                              (
+                                                feature: any,
+                                                featureIndex: any,
+                                              ) => (
+                                                <div
+                                                  key={featureIndex}
+                                                  className="flex items-start space-x-3"
+                                                >
+                                                  <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-pink-100">
+                                                    <Check className="h-4 w-4 text-pink-600" />
+                                                  </div>
+                                                  <span className="text-gray-700">
+                                                    {feature}
+                                                  </span>
+                                                </div>
+                                              ),
+                                            )}
+                                          </div>
+                                        </section>
+
+                                        {/* CTA Section */}
+                                        <div className="mx-auto max-w-5xl rounded-xl bg-gradient-to-r from-pink-600 to-pink-800 p-8 text-white shadow-lg">
+                                          <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+                                            <div>
+                                              <h2 className="text-2xl font-bold">
+                                                Ready to optimize your{" "}
+                                                {tab.title}?
+                                              </h2>
+                                              <p className="mt-2 text-pink-100">
+                                                Schedule a demo to see how our
+                                                system fits your needs
+                                              </p>
+                                            </div>
+                                            <div className="flex flex-col items-center justify-center gap-4">
+                                              <PrimaryButton>
+                                                I&apos;m interested
+                                              </PrimaryButton>
+                                              <a
+                                                href="#"
+                                                className="inline-flex items-center font-medium text-[#fff] hover:underline"
+                                              >
+                                                Learn more
+                                                <ArrowRight
+                                                  size={16}
+                                                  className="ml-1"
+                                                />
+                                              </a>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </Tab>
+                                  ),
+                                )}
+                              </Tabs>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </DrawerBody>
+              </>
+            )}
+          </DrawerContent>
+        </Drawer>
+      </div>
+      {/***************************   */}
+
+
 
       {/* Mega Menu - Only visible when a dropdown is active */}
       {megaMenuVisible && activeNavItem && "categories" in activeNavItem && (
-        // <div
-        //   ref={megaMenuRef}
-        //   className={`inner-details-card mega-menu fixed mx-auto w-full bg-white transition-all duration-300 ease-in-out ${
-        //     isScrolling
-        //       ? "pointer-events-none translate-y-[-10px] opacity-0"
-        //       : "translate-y-0 opacity-100"
-        //   }`}
-        // >
+
 
         <div
           ref={megaMenuRef}
@@ -757,8 +852,6 @@ export default function HeaderNew() {
                                 >
                                   {item.name}
                                 </span>
-
-
                               </button>
                             );
                           })}
@@ -851,19 +944,45 @@ export default function HeaderNew() {
                                         </div>
                                         <div className="flex flex-col items-center justify-center gap-4 ">
                                           <PrimaryButton>
-                                            Request Demo
+                                           I&apos;m interested
                                           </PrimaryButton>
 
-                                          <a
-                                            href="#"
-                                            className="inline-flex items-center font-medium text-[#fff] hover:underline"
-                                          >
-                                            Learn more
-                                            <ArrowRight
-                                              size={16}
-                                              className="ml-1"
-                                            />
-                                          </a>
+                                          {activeNavItem ? (
+                                            activeNavItem.id ===
+                                            "what-we-offer" ? (
+                                              <Link
+                                                href={{
+                                                  pathname: "/our-service",
+                                                  query: {
+                                                    title: tab.title,
+                                                    subtitle: tab.subtitle,
+                                                    description:
+                                                      tab.description,
+                                                    image: tab.image,
+                                                  },
+                                                  hash: "overview",
+                                                }}
+                                                className="inline-flex items-center font-medium text-[#fff] hover:underline"
+                                              >
+                                                Learn more
+                                                <ArrowRight
+                                                  size={16}
+                                                  className="ml-1"
+                                                />
+                                              </Link>
+                                            ) : (
+                                              <a
+                                                href="#"
+                                                className="inline-flex items-center font-medium text-[#fff] hover:underline"
+                                              >
+                                                Learn more
+                                                <ArrowRight
+                                                  size={16}
+                                                  className="ml-1"
+                                                />
+                                              </a>
+                                            )
+                                          ) : null}
                                         </div>
                                       </div>
                                     </div>
@@ -893,6 +1012,111 @@ export default function HeaderNew() {
             )}
         </div>
       )}
+
+      <Modal
+        isOpen={isModalOpen}
+        onOpenChange={onModalOpenChange}
+        backdrop="blur"
+        size="lg"
+      >
+        <ModalContent className="max-w-md">
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-2 p-6 text-center text-3xl font-bold">
+                Let&apos;s Have A Chat 👋
+                <p className="text-lg font-normal text-gray-500">
+                  We&apos;ll Get Back To You Soon
+                </p>
+              </ModalHeader>
+
+              <ModalBody className="relative pb-20">
+                {" "}
+                {/* Added padding-bottom */}
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {" "}
+                  {/* Added padding-bottom */}
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="mb-2 block font-medium text-gray-700"
+                    >
+                      Name
+                    </label>
+                    <input
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#a12266]"
+                      placeholder="Your name"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="mb-2 block font-medium text-gray-700"
+                    >
+                      Email
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#a12266]"
+                      placeholder="Your email address"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="mb-2 block font-medium text-gray-700"
+                    >
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      className="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#a12266]"
+                      placeholder="Your message"
+                      rows={5}
+                      required
+                    ></textarea>
+                  </div>
+                  <div className="text-center">
+                    <PrimaryButton
+                      dotColor="bg-primary"
+                      textColor="text-primary"
+                      hoverTextColor="text-white"
+                      backgroundColor="bg-[#a122661a]"
+                      borderColor="border-pink-800"
+                    >
+                      Send Message
+                    </PrimaryButton>
+                  </div>
+                </form>
+                {/* Phone number section */}
+                <div className="absolute bottom-0 left-0 right-0 rounded-b-[10px] border-t border-gray-200 bg-primary p-4">
+                  <div className="text-center text-2xl text-white">
+                    <span>Call us: </span>
+                    <a
+                      href="tel:+94458718711"
+                      className="font-semibold hover:underline"
+                    >
+                      +94 45871 8711
+                    </a>
+                  </div>
+                </div>
+              </ModalBody>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
     </>
   );
 }
