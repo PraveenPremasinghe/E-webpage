@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -9,8 +11,12 @@ import {
   Users,
 } from "lucide-react";
 import Breadcrumb from "@/components/Common/Breadcrumb";
+import { useSearchParams } from "next/navigation";
 
 export default function OurService() {
+  const searchParams = useSearchParams();
+  const titleFromTab = searchParams.get("title");
+
   const processSteps = [
     {
       number: "01",
@@ -92,18 +98,25 @@ export default function OurService() {
     },
   ];
 
+  const title = searchParams.get("title");
+  const subtitle = searchParams.get("subtitle");
+  const description = searchParams.get("description");
+  const image = searchParams.get("image");
+
   const serviceContent = {
-    title: "Custom Software Development",
+    title: title || "Custom Software Development",
     description:
+      description ||
       "Transforming ideas into powerful software solutions that drive business growth",
-    heroImage: "/services/software.jpg",
-    heroTitle: "Custom Software Development",
+    heroImage: image ? `/images/${image}` : "/services/software.jpg",
+    heroTitle: title || "Custom Software Development",
     heroSubtitle:
+      subtitle ||
       "Transforming ideas into powerful software solutions that drive business growth",
   };
 
   return (
-    <main >
+    <main>
       <Breadcrumb pageName="Solutions by Industry " />
 
       {/* Navigation Bar */}
@@ -291,8 +304,8 @@ export default function OurService() {
                   Ready to Transform Your Business?
                 </h2>
                 <p className="mb-4 text-lg opacity-90">
-                  Let&apos;s discuss how our custom software solutions can help you
-                  achieve your business goals.
+                  Let&apos;s discuss how our custom software solutions can help
+                  you achieve your business goals.
                 </p>
                 <ul className="mb-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium">
                   <li className="flex items-center">

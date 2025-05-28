@@ -928,16 +928,42 @@ export default function HeaderNew() {
                                             Request Demo
                                           </PrimaryButton>
 
-                                          <a
-                                            href="#"
-                                            className="inline-flex items-center font-medium text-[#fff] hover:underline"
-                                          >
-                                            Learn more
-                                            <ArrowRight
-                                              size={16}
-                                              className="ml-1"
-                                            />
-                                          </a>
+                                          {activeNavItem ? (
+                                            activeNavItem.id ===
+                                            "what-we-offer" ? (
+                                              <Link
+                                                href={{
+                                                  pathname: "/our-service",
+                                                  query: {
+                                                    title: tab.title,
+                                                    subtitle: tab.subtitle,
+                                                    description:
+                                                      tab.description,
+                                                    image: tab.image,
+                                                  },
+                                                  hash: "overview",
+                                                }}
+                                                className="inline-flex items-center font-medium text-[#fff] hover:underline"
+                                              >
+                                                Learn more
+                                                <ArrowRight
+                                                  size={16}
+                                                  className="ml-1"
+                                                />
+                                              </Link>
+                                            ) : (
+                                              <a
+                                                href="#"
+                                                className="inline-flex items-center font-medium text-[#fff] hover:underline"
+                                              >
+                                                Learn more
+                                                <ArrowRight
+                                                  size={16}
+                                                  className="ml-1"
+                                                />
+                                              </a>
+                                            )
+                                          ) : null}
                                         </div>
                                       </div>
                                     </div>
