@@ -58,7 +58,12 @@ import {
   ModalContent,
   ModalHeader,
   ModalBody,
-  useDisclosure, Drawer, DrawerContent, DrawerHeader, DrawerBody, DrawerFooter
+  useDisclosure,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerBody,
+  DrawerFooter,
 } from "@heroui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import CEOMessageCard from "@/components/HeaderNew/AboutCompanyContent";
@@ -67,7 +72,6 @@ import WhoWeEmpowerSection from "@/components/HeaderNew/WhoWeEmpower";
 import AboutCompanySection from "@/components/HeaderNew/AboutCompanyContent";
 import CareersSection from "@/components/HeaderNew/CareersContent";
 import { PrimaryButton } from "@/components/ui/ShinyButton";
-
 
 // Icon mapping for dynamic rendering
 const IconMap: Record<string, any> = {
@@ -104,6 +108,7 @@ const IconMap: Record<string, any> = {
   Package,
   TrendingUp,
 };
+import { usePathname, useSearchParams } from "next/navigation";
 
 export default function HeaderNew() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -140,20 +145,15 @@ export default function HeaderNew() {
 
   // Update current path when component mounts or pathname changes
   useEffect(() => {
-    const updateCurrentPath = () => {
-      setCurrentPath(window.location.pathname);
-    };
+  const updateCurrentPath = () => {
+    setCurrentPath(window.location.pathname);
+  };
 
-    // Set initial path
-    updateCurrentPath();
+  updateCurrentPath();
+  window.addEventListener("popstate", updateCurrentPath);
+  return () => window.removeEventListener("popstate", updateCurrentPath);
+}, []);
 
-    // Add event listener for navigation changes (for SPA navigation)
-    window.addEventListener("popstate", updateCurrentPath);
-
-    return () => {
-      window.removeEventListener("popstate", updateCurrentPath);
-    };
-  }, []);
 
   // Find active dropdown content if available
   // const activeNavItem = navigationItems.find(
@@ -201,22 +201,38 @@ export default function HeaderNew() {
     }
   };
 
+const pathname = usePathname();
+const searchParams = useSearchParams();
+const tabId = searchParams.get("id");
+
   // Function to check if a nav item is active
   const isNavItemActive = (item: NavigationItem) => {
-    // If a dropdown is active, only highlight it
-    if (activeDropdown) {
-      return item.id === activeDropdown;
-    }
-
-    // No dropdown active, check based on route
-    const link = (item as any).link;
-
-    if (link === "/") {
-      return currentPath === "/";
-    }
-
-    return link && currentPath.startsWith(link);
+  // Dynamically map tabId prefixes to menu item IDs
+  const idPrefixToMenuIdMap: Record<string, string> = {
+    "erp_inventory_management": "solutions-by-industry",
+    "healthcare_": "solutions-by-industry",
+    "erp_platform_operational_backbone": "what-we-offer",
+    "sales_": "what-we-offer",
+    "saas_": "what-we-offer",
+    "smart_docs_": "what-we-offer",
+    "egovernance_": "what-we-offer",
+    "bis_": "what-we-offer",
+    "who_we_empower_": "who-we-empower",
   };
+
+  if (pathname === "/our-service" && tabId) {
+    for (const prefix in idPrefixToMenuIdMap) {
+      if (tabId.startsWith(prefix)) {
+        return item.id === idPrefixToMenuIdMap[prefix];
+      }
+    }
+  }
+
+  // Default logic
+  if (item.link === "/") return pathname === "/";
+  return item.link && pathname.startsWith(item.link);
+};
+
 
   // Handle click outside to close mega menu
   useEffect(() => {
@@ -413,6 +429,11 @@ export default function HeaderNew() {
     e.preventDefault();
     console.log("Form submitted:", formData);
     onModalOpenChange();
+  };
+  const handleLinkClick = () => {
+    setMobileSelectedItemData(null);
+    onDrawerClose();
+    setActiveDropdown(null);
   };
 
   return (
@@ -846,7 +867,14 @@ export default function HeaderNew() {
                     {activeNavItem.id === "who-we-empower" && (
                       <div className="mx-auto">
                         <div className="flex h-[80vh]">
-                          <WhoWeEmpowerSection itemData={selectedItemData!} />
+                          <WhoWeEmpowerSection
+                            itemData={selectedItemData!}
+                            onNavigate={() => {
+                              setMobileSelectedItemData(null);
+                              onDrawerClose();
+                              setActiveDropdown(null);
+                            }}
+                          />
                         </div>
                       </div>
                     )}
@@ -928,42 +956,20 @@ export default function HeaderNew() {
                                             Request Demo
                                           </PrimaryButton>
 
-                                          {activeNavItem ? (
-                                            activeNavItem.id ===
-                                            "what-we-offer" ? (
-                                              <Link
-                                                href={{
-                                                  pathname: "/our-service",
-                                                  query: {
-                                                    title: tab.title,
-                                                    subtitle: tab.subtitle,
-                                                    description:
-                                                      tab.description,
-                                                    image: tab.image,
-                                                  },
-                                                  hash: "overview",
-                                                }}
-                                                className="inline-flex items-center font-medium text-[#fff] hover:underline"
-                                              >
-                                                Learn more
-                                                <ArrowRight
-                                                  size={16}
-                                                  className="ml-1"
-                                                />
-                                              </Link>
-                                            ) : (
-                                              <a
-                                                href="#"
-                                                className="inline-flex items-center font-medium text-[#fff] hover:underline"
-                                              >
-                                                Learn more
-                                                <ArrowRight
-                                                  size={16}
-                                                  className="ml-1"
-                                                />
-                                              </a>
-                                            )
-                                          ) : null}
+                                          <Link
+                                            href={{
+                                              pathname: "/our-service",
+                                              query: { id: tab.id },
+                                            }}
+                                            onClick={handleLinkClick}
+                                            className="inline-flex items-center font-medium text-[#fff] hover:underline"
+                                          >
+                                            Learn more
+                                            <ArrowRight
+                                              size={16}
+                                              className="ml-1"
+                                            />
+                                          </Link>
                                         </div>
                                       </div>
                                     </div>

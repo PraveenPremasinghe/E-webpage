@@ -1,22 +1,96 @@
-"use client"
+"use client";
 
-import React, { useState } from "react"
-import { motion } from "framer-motion"
-import { ArrowRight, CheckCircle, TrendingUp, Code, Users, LineChart, Rocket, Check } from "lucide-react";
-import { IconMap } from "@tabler/icons-react";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  CheckCircle,
+  TrendingUp,
+  Code,
+  Users,
+  LineChart,
+  Rocket,
+  Check,
+  Building,
+  Heart,
+  GraduationCap,
+  DollarSign,
+  Layers,
+  Cloud,
+  BarChart,
+  Shield,
+  Smartphone,
+  Globe,
+  Palette,
+  Brain,
+  Link as LinkIcon,
+  Cpu,
+  ClipboardList,
+  Server,
+  Store,
+  Landmark,
+  Book,
+  Handshake,
+  FileText,
+  BookOpen,
+  Calendar,
+  Briefcase,
+  Coffee,
+  Gift,
+  Award,
+  Package,
+} from "lucide-react";
+
+const IconMap: Record<string, any> = {
+  Building,
+  Heart,
+  GraduationCap,
+  DollarSign,
+  Layers,
+  Cloud,
+  BarChart,
+  Shield,
+  Code,
+  Smartphone,
+  Globe,
+  Palette,
+  Brain,
+  Link: LinkIcon,
+  Cpu,
+  Users,
+  ClipboardList,
+  Server,
+  Rocket,
+  Store,
+  Landmark,
+  Book,
+  Handshake,
+  FileText,
+  BookOpen,
+  Calendar,
+  Briefcase,
+  Coffee,
+  Gift,
+  Award,
+  Package,
+  TrendingUp,
+};
 import { CategoryItem } from "@/components/HeaderNew/navigationItems";
+import Link from "next/link";
 
-
-
-export default function WhoWeEmpowerSection({ itemData  }: { itemData : CategoryItem }) {
+export default function WhoWeEmpowerSection({
+  itemData,
+  onNavigate,
+}: {
+  itemData: CategoryItem;
+  onNavigate: () => void;
+}) {
   const [isHovered, setIsHovered] = useState(false);
-  if (!itemData ) return null;
-
-
+  if (!itemData) return null;
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 space-y-10">
+      <section className="grid grid-cols-1 items-center gap-8 space-y-10 lg:grid-cols-2">
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-3xl">
             {itemData.name}
@@ -26,7 +100,7 @@ export default function WhoWeEmpowerSection({ itemData  }: { itemData : Category
         </div>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <img
-            src={  "/placeholder.jpg"}
+            src={"/placeholder.jpg"}
             alt={itemData.name}
             className="rounded-lg shadow-md"
           />
@@ -34,7 +108,7 @@ export default function WhoWeEmpowerSection({ itemData  }: { itemData : Category
       </section>
 
       {/* Features Section */}
-      <section className="space-y-4 mt-10">
+      <section className="mt-10 space-y-4">
         <h2 className="mb-6 text-2xl font-bold text-gray-900">Key Features</h2>
         {itemData.points?.map((point, idx) => (
           <div key={idx} className="flex items-start space-x-3">
@@ -122,18 +196,36 @@ export default function WhoWeEmpowerSection({ itemData  }: { itemData : Category
 
         {/* CTA Card */}
         <div className="flex-shrink-0 lg:w-80 xl:w-96">
-          <div className="flex flex-col justify-center rounded-2xl border border-gray-200 bg-pink-100 p-6 dark:border-gray-700 dark:bg-gray-900">
-            <h3 className="mb-2 text-lg font-bold">
-              Ready to transform your business?
-            </h3>
-            <p className="mb-4 text-sm text-gray-600 dark:text-gray-300">
-              Let&apos;s discuss how Edhirya can help you achieve your technology and
-              business goals with our client-first approach.
-            </p>
-            <button className="rounded-full bg-primary px-6 py-2 text-sm text-white transition-colors hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200">
-              Schedule a Consultation
-            </button>
+          <div className="flex h-full flex-col justify-between gap-4 rounded-2xl border border-gray-200 bg-pink-100 p-6 dark:border-gray-700 dark:bg-gray-900">
+            <div>
+              <h3 className="mb-2 text-lg font-bold">
+                Ready to transform your business?
+              </h3>
+              <p className="mb-4 text-sm text-gray-600 dark:text-gray-300">
+                Let&apos;s discuss how Edhirya can help you achieve your
+                technology and business goals with our client-first approach.
+              </p>
+            </div>
 
+            <div className="flex flex-col gap-3">
+              <button className="rounded-full bg-primary px-6 py-2 text-sm text-white transition-colors hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200">
+                Schedule a Consultation
+              </button>
+
+              {itemData.id && (
+                <Link
+                  href={{
+                    pathname: "/our-service",
+                    query: { id: itemData.id },
+                  }}
+                  onClick={onNavigate}
+                  className="inline-flex items-center text-sm font-medium text-pink-600 hover:underline dark:text-pink-400"
+                >
+                  Learn more
+                  <ArrowRight size={16} className="ml-1" />
+                </Link>
+              )}
+            </div>
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ export interface Tab {
   description: string;
   features: string[];
   image: string;
+  id?: string;
 }
 
 export interface CategoryPoints {
@@ -24,7 +25,8 @@ export interface CategoryItem {
   icon: string;
   tabs?: Tab[];
   points?: CategoryPoints[];
-  caseStudy?: CaseStudy; // changes this
+  caseStudy?: CaseStudy;
+  id? : string;
 }
 
 export interface Category {
@@ -62,6 +64,7 @@ export const navigationItems: NavigationItem[] = [
             icon: "Building",
             tabs: [
               {
+                id: "erp_inventory_management",
                 title: "Inventory Management",
                 subtitle: "Real-time control over stock and availability.",
                 description:
@@ -75,6 +78,7 @@ export const navigationItems: NavigationItem[] = [
                 image: "erp_inventory.jpg",
               },
               {
+                id: "erp_procurement",
                 title: "Procurement",
                 subtitle: "Simplify purchase processes with automation.",
                 description:
@@ -95,6 +99,7 @@ export const navigationItems: NavigationItem[] = [
             icon: "Hospital",
             tabs: [
               {
+                id: "healthcare_patient_management",
                 title: "Patient Management",
                 subtitle: "Centralized patient records and appointments.",
                 description:
@@ -108,6 +113,7 @@ export const navigationItems: NavigationItem[] = [
                 image: "healthcare_patient.jpg",
               },
               {
+                id: "healthcare_billing_system",
                 title: "Billing System",
                 subtitle: "Streamline invoicing and insurance claims.",
                 description:
@@ -141,11 +147,12 @@ export const navigationItems: NavigationItem[] = [
             icon: "Heart",
             tabs: [
               {
+                id: "erp_platform_operational_backbone",
                 title: "Operational Backbone",
                 subtitle:
                   "Manage inventory, procurement, and fulfilment with flexibility",
                 description:
-                  "Built with the basics done right and the architecture ready to expand, this ERP gives you the operational backbone to manage inventory, procurement, and fulfilment—while staying ready for whatever's next. Because in business, the unplanned isn't a surprise—it's expected. And planning for it is what keeps you in control.",
+                  "Built with the basics done right and the architecture ready to expand...",
                 features: [
                   "Inventory management",
                   "Procurement automation",
@@ -164,10 +171,10 @@ export const navigationItems: NavigationItem[] = [
             icon: "Sales",
             tabs: [
               {
+                id: "sales_and_engagement_customer_lifecycle",
                 title: "Customer Lifecycle",
                 subtitle: "From lead generation to long-term retention",
-                description:
-                  "From lead generation to long-term retention, it brings every customer interaction into one clear, connected flow. It's built to help you stay consistent in how you engage, reward, and communicate—because the way you retain customers shapes how your brand is remembered. And when retention becomes a system, brand growth becomes a habit.",
+                description: "From lead generation to long-term retention...",
                 features: [
                   "Lead management",
                   "Customer segmentation",
@@ -186,10 +193,11 @@ export const navigationItems: NavigationItem[] = [
             icon: "SaaS",
             tabs: [
               {
+                id: "saas_solutions_co_created_platforms",
                 title: "Co-Created Platforms",
                 subtitle: "Better ways of working through collaboration",
                 description:
-                  "We don't just deliver tools—we co-create better ways of working. Every subscription is a step toward optimizing the day-to-day, reducing waste, and strengthening the core of your industry. These platforms evolve with your input, adapt without disruption, and move beyond features toward something lasting: progress you can measure, and impact your customers will feel.",
+                  "We don't just deliver tools—we co-create better ways of working...",
                 features: [
                   "Custom workflow design",
                   "Continuous improvement",
@@ -208,10 +216,11 @@ export const navigationItems: NavigationItem[] = [
             icon: "Documents",
             tabs: [
               {
+                id: "smart_docs_and_data_document_automation",
                 title: "Document Automation",
                 subtitle: "Move faster, stay compliant, and focus on decisions",
                 description:
-                  "Automate document generation, approvals, signatures, and storage—so you can move faster, stay compliant, and focus on decisions, not file formats.",
+                  "Automate document generation, approvals, signatures, and storage...",
                 features: [
                   "Template-based generation",
                   "Approval workflows",
@@ -230,10 +239,11 @@ export const navigationItems: NavigationItem[] = [
             icon: "Governance",
             tabs: [
               {
+                id: "egovernance_and_b2b_trusted_processes",
                 title: "Trusted Processes",
                 subtitle: "Run operations with built-in confidence",
                 description:
-                  "Whether it's shareholder voting or internal tendering, our platforms help you run processes people can trust—with audit trails, control, and confidence built in.",
+                  "Whether it's shareholder voting or internal tendering...",
                 features: [
                   "Secure voting systems",
                   "Transparent tendering",
@@ -252,10 +262,10 @@ export const navigationItems: NavigationItem[] = [
             icon: "Platform",
             tabs: [
               {
+                id: "bis_platform_foundation_for_growth",
                 title: "Foundation for Growth",
                 subtitle: "Alignment, automation, and adaptability",
-                description:
-                  "With our core business information system, you don't just get tools—you get alignment, automation, and a foundation that adapts as you grow.",
+                description: "With our core business information system...",
                 features: [
                   "Centralized data hub",
                   "Process automation",
@@ -280,6 +290,7 @@ export const navigationItems: NavigationItem[] = [
         title: "Who We Empower",
         category: [
           {
+            id: "who_we_empower_startup_founders",
             name: "Startup Founders",
             subtitle:
               "Startup founders are visionary entrepreneurs who identify problems, develop innovative solutions, and build early-stage companies from the ground up, often navigating risk, uncertainty, and rapid growth",
@@ -307,6 +318,7 @@ export const navigationItems: NavigationItem[] = [
             },
           },
           {
+            id: "who_we_empower_franchise_networks",
             name: "Franchise Networks",
             subtitle:
               "Centralized solutions to manage and grow franchise ecosystems.",
@@ -334,18 +346,21 @@ export const navigationItems: NavigationItem[] = [
             },
           },
           {
+            id: "who_we_empower_tech_investors",
             name: "Tech Investors",
             subtitle:
               "Insights and tools to evaluate and scale tech portfolios.",
             icon: "DollarSign",
           },
           {
+            id: "who_we_empower_strategic_outsourcing",
             name: "Strategic Outsourcing",
             subtitle:
               "Smart outsourcing strategies for cost-effective execution.",
             icon: "Briefcase",
           },
           {
+            id: "who_we_empower_tech_partnerships",
             name: "Tech Partnerships",
             subtitle:
               "Collaborate on innovation with integrated tech ecosystems.",
