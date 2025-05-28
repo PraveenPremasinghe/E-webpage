@@ -58,7 +58,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalBody,
-  useDisclosure, Drawer, DrawerContent, DrawerHeader, DrawerBody, DrawerFooter
+  useDisclosure, Drawer, DrawerContent, DrawerHeader, DrawerBody, DrawerFooter, menuItem
 } from "@heroui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import CEOMessageCard from "@/components/HeaderNew/AboutCompanyContent";
@@ -123,7 +123,6 @@ export default function HeaderNew() {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const contactFormRef = useRef<HTMLDivElement>(null);
   const navButtonRefs = useRef<Record<string, HTMLButtonElement | null>>({});
-
 
   const {
     isOpen: isModalOpen,
@@ -537,6 +536,14 @@ export default function HeaderNew() {
                               <button
                                 onClick={() => {
                                   toggleDropdown(`mobile-${item.id}`);
+                                  console.log(item.title);
+                                  setSelectedCategory(item.title);
+                                  if(item.title === "About Company") {
+                                    setMobileSelectedItemData(
+                                      item.title,
+                                    );
+                                  }
+
                                 }}
                                 className={`flex w-full items-center justify-between rounded-md px-3 py-2 text-left font-medium hover:bg-gray-100 ${
                                   isActive
@@ -639,6 +646,20 @@ export default function HeaderNew() {
                         <div className="space-y-6">
                           <div className="flex flex-col">
                             <div className="flex w-full flex-col">
+                              {selectedCategory === "About Company" && (
+                                <div className="mx-auto">
+                                  <div className="flex h-[80vh]">
+                                    <AboutCompanySection />
+                                  </div>
+                                </div>
+                              )}
+                              {selectedCategory === "Who We Empower" && (
+                                <div className="mx-auto">
+                                  <div className="flex h-[80vh]">
+                                    <WhoWeEmpowerSection itemData={mobileSelectedItemData!} />
+                                  </div>
+                                </div>
+                              )}
                               <Tabs
                                 key="primary"
                                 aria-label="Tabs"

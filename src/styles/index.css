@@ -455,6 +455,12 @@ body {
 }
 
 
+.mobile-drawer{
+}
+
+.mobile-drawer button[aria-label="Close"] {
+  display: none;
+}
 
 
 .custom-mobile-drawer{
