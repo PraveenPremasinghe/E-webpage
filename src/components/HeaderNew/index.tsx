@@ -42,6 +42,7 @@ import {
   TrendingUp,
   ArrowRight,
   Check,
+  ChevronLeft,
 } from "lucide-react";
 import { navigationItems, NavigationItem } from "./navigationItems";
 import ContactForm from "@/components/ContactForm/ContactForm";
@@ -57,7 +58,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalBody,
-  useDisclosure
+  useDisclosure,
 } from "@heroui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import CEOMessageCard from "@/components/HeaderNew/AboutCompanyContent";
@@ -65,8 +66,7 @@ import MinimalistCareersPage from "@/components/HeaderNew/CareersContent";
 import WhoWeEmpowerSection from "@/components/HeaderNew/WhoWeEmpower";
 import AboutCompanySection from "@/components/HeaderNew/AboutCompanyContent";
 import CareersSection from "@/components/HeaderNew/CareersContent";
-import {  PrimaryButton } from "@/components/ui/ShinyButton";
-
+import { PrimaryButton } from "@/components/ui/ShinyButton";
 
 // Icon mapping for dynamic rendering
 const IconMap: Record<string, any> = {
@@ -112,6 +112,9 @@ export default function HeaderNew() {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   const [isScrolling, setIsScrolling] = useState(false);
   const [currentPath, setCurrentPath] = useState("");
+  // Add this state to track mobile menu selections
+  const [mobileSelectedItemData, setMobileSelectedItemData] =
+    useState<any>(null);
 
   const headerRef = useRef<HTMLElement>(null);
   const megaMenuRef = useRef<HTMLDivElement>(null);
@@ -201,7 +204,6 @@ export default function HeaderNew() {
     return link && currentPath.startsWith(link);
   };
 
-
   // Handle click outside to close mega menu
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -242,23 +244,23 @@ export default function HeaderNew() {
     const handleMenuPosition = () => {
       if (megaMenuVisible && megaMenuRef.current) {
         const menu = megaMenuRef.current;
-        menu.style.willChange = 'transform, opacity';
+        menu.style.willChange = "transform, opacity";
         void menu.offsetWidth; // Trigger reflow
-        menu.classList.add('active');
+        menu.classList.add("active");
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     handleMenuPosition(); // Initialize menu position
 
     return () => {
       clearTimeout(scrollTimer);
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
 
       // Cleanup menu positioning
       if (megaMenuRef.current) {
-        megaMenuRef.current.classList.remove('active');
-        megaMenuRef.current.style.willChange = '';
+        megaMenuRef.current.classList.remove("active");
+        megaMenuRef.current.style.willChange = "";
       }
     };
   }, [megaMenuVisible]);
@@ -313,7 +315,6 @@ export default function HeaderNew() {
   };
 
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
-
 
   const toggleContactForm = () => {
     setIsContactFormOpen(!isContactFormOpen);
@@ -380,17 +381,18 @@ export default function HeaderNew() {
     };
   }, [isContactFormOpen]);
 
-
-  const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    message: ""
+    message: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -489,186 +491,155 @@ export default function HeaderNew() {
             </button>
           </div>
 
-          {/* Contact Form Overlay */}
-          {/*<ContactForm*/}
-          {/*  isOpen={isContactFormOpen}*/}
-          {/*  onClose={() => setIsContactFormOpen(false)}*/}
-          {/*  onSubmit={handleSubmit}*/}
-          {/*  formData={formData}*/}
-          {/*  isSubmitting={isSubmitting}*/}
-          {/*  submitSuccess={submitSuccess}*/}
-          {/*  handleInputChange={handleInputChange}*/}
-          {/*/>*/}
-
- <Modal isOpen={isOpen} onOpenChange={onOpenChange} backdrop="blur" size="lg">
-        <ModalContent className="max-w-md">
-          {(onClose) => (
-            <>
-              <ModalHeader className="flex flex-col gap-2 p-6 text-center text-3xl font-bold">
-                Let&apos;s Have A Chat 👋
-                <p className="text-lg font-normal text-gray-500">
-                  We&apos;ll Get Back To You Soon
-                </p>
-              </ModalHeader>
-
-              <ModalBody className="relative pb-20"> {/* Added padding-bottom */}
-                <form onSubmit={handleSubmit} className="space-y-6"> {/* Added padding-bottom */}
-                  <div>
-                    <label htmlFor="name" className="mb-2 block font-medium text-gray-700">
-                      Name
-                    </label>
-                    <input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#a12266]"
-                      placeholder="Your name"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="mb-2 block font-medium text-gray-700">
-                      Email
-                    </label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#a12266]"
-                      placeholder="Your email address"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="mb-2 block font-medium text-gray-700">
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      className="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#a12266]"
-                      placeholder="Your message"
-                      rows={5}
-                      required
-                    ></textarea>
-                  </div>
-
-                  <div className="text-center">
-                    <PrimaryButton
-                      dotColor="bg-primary"
-                      textColor="text-primary"
-                      hoverTextColor="text-white"
-                      backgroundColor="bg-[#a122661a]"
-                      borderColor="border-pink-800"
-                    >
-                      Send Message
-                    </PrimaryButton>
-                  </div>
-                </form>
-
-                {/* Phone number section */}
-                <div
-                  className="absolute bottom-0 left-0 right-0 rounded-b-[10px] border-t border-gray-200 bg-primary p-4">
-  <div className="text-center text-2xl text-white">
-    <span>Call us: </span>
-    <a
-      href="tel:+94458718711"
-      className="font-semibold hover:underline"
-    >
-      +94 45871 8711
-    </a>
-  </div>
-</div>
-              </ModalBody>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
 
         </div>
 
-        {/* Mobile menu, show/hide based on menu state */}
+
+        {/* Mobile menu */}
         {isMenuOpen && (
-          <div className="mt-4 border-t border-gray-200 pb-3 md:hidden">
-            <div className="space-y-1 px-2 pt-2">
-              {navigationItems.map((item) => {
-                const isActive = isNavItemActive(item);
-
-                return item.submenu ? (
-                  <div key={item.id}>
-                    <button
-                      onClick={() => toggleDropdown(`mobile-${item.id}`)}
-                      className={`flex w-full items-center justify-between rounded-md px-3 py-2 text-left font-medium hover:bg-gray-100 ${
-                        isActive ? "text-[#A12266]" : "text-gray-700"
-                      }`}
-                    >
-                      <span>{item.title}</span>
-                      <ChevronDown
-                        size={16}
-                        className={`transform transition-transform duration-200 ${
-                          activeDropdown === `mobile-${item.id}`
-                            ? "rotate-180"
-                            : ""
-                        }`}
-                      />
-                    </button>
-                    {activeDropdown === `mobile-${item.id}` &&
-                      item.submenu &&
-                      item.categories && (
-                        <div className="ml-4 space-y-1">
-                          {item.categories.map((category, idx) => (
-                            <div key={idx}>
-                              <div className="py-1 font-medium text-gray-700">
-                                {category.title}
-                              </div>
-                              {category.category
-                                .slice(0, 3)
-                                .map((subitem, subidx) => (
-                                  <a
-                                    key={subidx}
-                                    href="#"
-                                    className="block rounded-md px-3 py-2 text-gray-600 hover:bg-gray-100"
-                                  >
-                                    {subitem.name}
-                                  </a>
-                                ))}
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                  </div>
-                ) : (
-                  <Link
-                    key={item.id}
-                    href={item.link || "#"}
-                    className={`block rounded-md px-3 py-2 font-medium hover:bg-gray-100 ${
-                      isActive ? "text-[#A12266]" : "text-gray-700"
-                    }`}
-                  >
-                    {item.title}
-                  </Link>
-                );
-              })}
-
-              <div className="space-y-2 pt-4">
+          <div className="mt-4 border-t border-gray-200 pb-3 md:hidden bg-white">
+          {/* Mobile menu items */}
+            {navigationItems.map((item) => {
+              const isActive = isNavItemActive(item);
+              return item.submenu ? (
+                <div key={item.id}>
                 <button
-                  onClick={toggleContactForm}
-                  className="block w-full rounded-md border border-gray-300 px-4 py-2 text-center font-medium text-gray-700 hover:bg-gray-50"
+                  onClick={() => {
+                    if (item.categories?.[0]?.category?.[0]) {
+                      setMobileSelectedItemData(item.categories[0].category[0]);
+                    }
+                    toggleDropdown(`mobile-${item.id}`);
+                  }}
+                  className={`flex w-full items-center justify-between rounded-md px-3 py-2 text-left font-medium hover:bg-gray-100 ${
+                    isActive ? "text-[#A12266]" : "text-gray-700"
+                  }`}
                 >
-                  Contact Us
+                  <span>{item.title}</span>
+                  <ChevronDown
+                    size={16}
+                    className={`transform transition-transform duration-200 ${
+                      activeDropdown === `mobile-${item.id}` ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                  {activeDropdown === `mobile-${item.id}` && item.submenu && item.categories && (
+                    <div className="ml-4 space-y-1">
+                    {item.categories.map((category, idx) => (
+                      <div key={idx}>
+                        {category.category.map((subitem, subidx) => (
+                          <a
+                            key={subidx}
+                            href="#"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setMobileSelectedItemData(subitem);
+                            }}
+                            className="block rounded-md px-3 py-2 text-gray-600 hover:bg-gray-100"
+                          >
+                            {subitem.name}
+                          </a>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                  )}
+              </div>
+              ) : (
+                <Link
+                  key={item.id}
+                  href={item.link || "#"}
+                  className={`block rounded-md px-3 py-2 font-medium hover:bg-gray-100 ${
+                    isActive ? "text-[#A12266]" : "text-gray-700"
+                  }`}
+                >
+                {item.title}
+              </Link>
+              );
+            })}
+
+            {/* Contact Us button */}
+            <div className="space-y-2 pt-4">
+            <button
+              onClick={toggleContactForm}
+              className="block w-full rounded-md border border-gray-300 px-4 py-2 text-center font-medium text-gray-700 hover:bg-gray-50"
+            >
+              Contact Us
+            </button>
+          </div>
+        </div>
+        )}
+    </header>
+
+      {/************************** Mobile megamenu *****************************/}
+      {/* Mobile item details view */}
+      {mobileSelectedItemData && (
+        <div className=" inset-0 mt-20 z-50 bg-white p-4 overflow-y-auto">
+        <div className="flex justify-between items-center mb-4">
+          <button
+            onClick={() => setMobileSelectedItemData(null)}
+            className="flex items-center text-gray-600"
+          >
+            <ChevronLeft size={20} className="mr-1" />
+            Back
+          </button>
+          <button
+            onClick={() => setIsMenuOpen(false)}
+            className="p-2 text-gray-500 hover:text-gray-700"
+          >
+            <X size={20} />
+          </button>
+        </div>
+
+          {/* Render the selected item details */}
+          <div className="space-y-6">
+          {mobileSelectedItemData.tabs?.map((tab: any, index: number) => (
+            <div key={index}>
+              <h1 className="text-2xl font-bold text-gray-900">{tab.title}</h1>
+              <p className="mt-1 text-gray-600">{tab.subtitle}</p>
+              <p className="mt-4 text-gray-700">{tab.description}</p>
+
+              {tab.image && (
+                <img
+                  src={`/images/${tab.image}`}
+                  alt={tab.title}
+                  className="mt-4 rounded-lg shadow-md w-full"
+                />
+              )}
+
+              {tab.features && (
+                <div className="mt-6">
+                  <h2 className="text-xl font-bold text-gray-900">Key Features</h2>
+                  <div className="mt-2 space-y-2">
+                    {tab.features.map((feature: string, featureIndex: number) => (
+                      <div key={featureIndex} className="flex items-start">
+                        <div className="flex-shrink-0 mt-1">
+                          <Check className="h-5 w-5 text-pink-600" />
+                        </div>
+                        <p className="ml-2 text-gray-700">{feature}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div className="mt-8 p-4 bg-gradient-to-r from-pink-600 to-pink-800 rounded-lg text-white">
+                <h2 className="text-xl font-bold">Ready to optimize your {tab.title}?</h2>
+                <p className="mt-1 text-pink-100">
+                  Schedule a demo to see how our system fits your needs
+                </p>
+                <button className="mt-4 px-4 py-2 bg-white text-pink-700 rounded-md font-medium">
+                  Request Demo
                 </button>
               </div>
             </div>
-          </div>
-        )}
-      </header>
+          ))}
+        </div>
+      </div>
+      )}
+
+
+      {/************************** Mobile megamenu *****************************/}
 
       {/* Mega Menu - Only visible when a dropdown is active */}
       {megaMenuVisible && activeNavItem && "categories" in activeNavItem && (
@@ -757,8 +728,6 @@ export default function HeaderNew() {
                                 >
                                   {item.name}
                                 </span>
-
-
                               </button>
                             );
                           })}
@@ -893,6 +862,113 @@ export default function HeaderNew() {
             )}
         </div>
       )}
+
+
+
+      <Modal
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        backdrop="blur"
+        size="lg"
+      >
+            <ModalContent className="max-w-md">
+              {(onClose) => (
+                <>
+                  <ModalHeader className="flex flex-col gap-2 p-6 text-center text-3xl font-bold">
+                    Let&apos;s Have A Chat 👋
+                    <p className="text-lg font-normal text-gray-500">
+                      We&apos;ll Get Back To You Soon
+                    </p>
+                  </ModalHeader>
+
+                  <ModalBody className="relative pb-20">
+                    {" "}
+                    {/* Added padding-bottom */}
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                      {" "}
+                      {/* Added padding-bottom */}
+                      <div>
+                        <label
+                          htmlFor="name"
+                          className="mb-2 block font-medium text-gray-700"
+                        >
+                          Name
+                        </label>
+                        <input
+                          id="name"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          className="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#a12266]"
+                          placeholder="Your name"
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="email"
+                          className="mb-2 block font-medium text-gray-700"
+                        >
+                          Email
+                        </label>
+                        <input
+                          id="email"
+                          name="email"
+                          type="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          className="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#a12266]"
+                          placeholder="Your email address"
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="message"
+                          className="mb-2 block font-medium text-gray-700"
+                        >
+                          Message
+                        </label>
+                        <textarea
+                          id="message"
+                          name="message"
+                          value={formData.message}
+                          onChange={handleChange}
+                          className="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#a12266]"
+                          placeholder="Your message"
+                          rows={5}
+                          required
+                        ></textarea>
+                      </div>
+                      <div className="text-center">
+                        <PrimaryButton
+                          dotColor="bg-primary"
+                          textColor="text-primary"
+                          hoverTextColor="text-white"
+                          backgroundColor="bg-[#a122661a]"
+                          borderColor="border-pink-800"
+                        >
+                          Send Message
+                        </PrimaryButton>
+                      </div>
+                    </form>
+                    {/* Phone number section */}
+                    <div className="absolute bottom-0 left-0 right-0 rounded-b-[10px] border-t border-gray-200 bg-primary p-4">
+                      <div className="text-center text-2xl text-white">
+                        <span>Call us: </span>
+                        <a
+                          href="tel:+94458718711"
+                          className="font-semibold hover:underline"
+                        >
+                          +94 45871 8711
+                        </a>
+                      </div>
+                    </div>
+                  </ModalBody>
+                </>
+              )}
+            </ModalContent>
+          </Modal>
     </>
   );
 }
