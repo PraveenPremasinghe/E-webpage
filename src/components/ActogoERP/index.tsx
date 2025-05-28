@@ -50,11 +50,35 @@ const ActogoERP = () => {
   return (
     <section className="bg-zinc-950 py-16 sm:py-24 md:py-28">
   <div className="container px-4 sm:px-6 mx-auto">
-    <SectionTitle
-      subtitle="ActoGo ERP Platform"
-      title="One Platform. Multiple Possibilities."
-      paragraph="Actogo ERP is a comprehensive enterprise resource planning solution that integrates all your critical business functions into a single, unified platform."
-    />
+
+
+    <div className="mx-auto flex w-full flex-wrap justify-center px-4 sm:px-6 lg:px-8">
+      <div
+        className={`wow fadeInUp w-full px-4 ${
+           "mx-auto text-center"
+        }`}
+        data-wow-delay=".1s"
+        style={{ maxWidth: "735px" }}
+      >
+
+          <span className="mb-3 block text-center sm:mb-4">
+            <div
+              className="inline-flex items-center rounded-full border border-zinc-200 bg-white px-4 py-1.5 text-sm font-medium text-zinc-950">
+              <div
+                className="mr-2 size-2 rounded-full bg-gradient-to-r from-[#a12266] via-[#a12266] to-[#FF7DAA]"></div>
+              ActoGo ERP Platform
+            </div>
+          </span>
+
+
+        <h2 className="mb-3 text-center text-4xl font-medium tracking-tight  lg:text-5xl text-white">
+          {" "}
+          One Platform. Multiple Possibilities.
+        </h2>
+
+        <p className="text-center text-lg text-white">Actogo ERP is a comprehensive enterprise resource planning solution that integrates all your critical business functions into a single, unified platform.</p>
+      </div>
+    </div>
 
     <div className="mt-14">
       <motion.div
