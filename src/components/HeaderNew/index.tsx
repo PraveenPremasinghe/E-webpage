@@ -556,7 +556,7 @@ export default function HeaderNew() {
                                   size={16}
                                   className={`transform transition-transform duration-200 ${
                                     activeDropdown === `mobile-${item.id}`
-                                      ? "rotate-180"
+                                      ? item.title === "About Company" ? "" : "rotate-180"
                                       : ""
                                   }`}
                                 />
