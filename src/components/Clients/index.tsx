@@ -12,7 +12,7 @@ import SectionTitle from "@/components/Common/SectionTitle";
 
 const Clients = () => {
   return (
-    <section className="sm:pt-24 md:pt-24 dark:bg-dark">
+    <section className="pt-10 pb-10 sm:pt-18 sm:pb-18 md:pt-24 md:pb-12">
 <div className="container">
        <SectionTitle
          subtitle="Powering Innovation Across Industries"
@@ -20,7 +20,7 @@ const Clients = () => {
          paragraph=" "
        />
 
-   <div className="container px-4 sm:pt-24 md:pt-24 md:pb-24 relative overflow-hidden">
+   <div className="container px-4 mt-8 sm:mt-12   relative overflow-hidden">
   {/* Masked Swiper container */}
      <div className="swiper-mask">
     <Swiper

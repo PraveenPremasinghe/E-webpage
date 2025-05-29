@@ -165,7 +165,7 @@ const ActogoERP = () => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="relative p-6 sm:p-8 md:p-10 rounded-2xl overflow-hidden h-full min-h-[400px]"
+              className="relative p-6 sm:p-8 md:p-10 rounded-2xl overflow-hidden h-full "
             >
               {/* Gradient background layers */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#FB923C] via-[#F472B6] to-[#E879F9]">

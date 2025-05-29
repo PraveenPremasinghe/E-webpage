@@ -14,7 +14,7 @@ import SingleClient from "@/components/Clients/SingleClient";
 
 const Partners = () => {
   return (
-    <section className="dark:bg-dark sm:pt-24 md:pt-24">
+    <section className="mt-8 sm:mt-12 mg:pt-12 md:pb-12">
       <div className="container">
         <SectionTitle
           subtitle="Partner With Us"
@@ -22,7 +22,7 @@ const Partners = () => {
           paragraph="We collaborate with leading global tech platforms."
         />
 
-        <div className="container relative overflow-hidden px-4 sm:pt-24 md:pb-24 md:pt-24">
+        <div className="container px-4 mt-8 sm:mt-12   relative overflow-hidden">
           {/* Masked Swiper container */}
           <div className="swiper-mask">
             <Swiper

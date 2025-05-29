@@ -153,7 +153,7 @@ export const navigationItems: NavigationItem[] = [
                   "Scalable architecture",
                   "Real-time analytics",
                 ],
-                image: "erp_operations.jpg",
+                image: "images/megaMenu/erp_operations.webp",
               },
             ],
           },

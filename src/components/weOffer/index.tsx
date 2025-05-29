@@ -15,7 +15,7 @@ import { WobbleCard } from '@/components/ui/wobble-card';
 
 const WeOffer = () => {
   return (
-    <section className="we-offer-section-bg sm:py-24 md:py-28">
+    <section className="we-offer-section-bg pt-10 pb-10 sm:pt-18 sm:pb-18 md:pt-24 md:pb-24">
   <div className="container ">
         <SectionTitle
           subtitle='What we offer ?'
@@ -23,7 +23,7 @@ const WeOffer = () => {
           paragraph='Where innovation meets real-world performance.'
         />
 
-        <div className=' mt-14 px-4 sm:px-6'>
+        <div className=' mt-14 px-4 sm:px-0'>
           <div className='wow fadeInUp' data-wow-delay='.2s'>
            <div className='mx-auto grid w-full max-w-7xl grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-2 lg:gap-8'>
   {/* First Card */}

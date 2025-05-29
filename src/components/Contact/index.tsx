@@ -39,7 +39,7 @@ export default function Contact() {
 
   return (
 
-    <div className="py-12 px-4 sm:px-6 lg:px-8  bg-primary">
+    <div className="py-24 px-4 sm:px-6 lg:px-8  bg-primary">
       {/* Main Card Container */}
       <div className="w-full max-w-6xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden">
         <div className="flex flex-col lg:flex-row">

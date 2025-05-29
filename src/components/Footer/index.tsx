@@ -261,7 +261,7 @@ const Footer = () => {
             <h2 className="select-none text-6xl font-bold text-pink-200 sm:text-7xl md:text-8xl lg:text-[11rem]">
                 <TextHoverEffect text="[E]dhirya IT." />
             </h2>
-            <div>    <p className="text-base text-gray-7">
+            <div>    <p className=" text-gray-7 text-sm md:text-md">
                   Designed and Developed by{" "}
               <Link
                 href=" "

@@ -17,7 +17,7 @@ import React from "react";
 
 const Features = () => {
   return (
-    <section className="sm:py-24 md:py-28">
+    <section className="pt-10 pb-10 sm:pt-18 sm:pb-18 md:pt-24 md:pb-24">
       <div className="">
         <SectionTitle
           subtitle="Who We Are ?"
@@ -27,7 +27,7 @@ const Features = () => {
 
         <div className="container pt-20">
           <div className="wow fadeInUp" data-wow-delay=".2s">
-            <div className="-mx-4 flex flex-wrap items-center">
+            <div className=" flex flex-wrap items-center">
               <div className="w-full px-4 md:px-6 lg:w-1/2 lg:px-8">
                 <div className="mb-8 max-w-full text-center md:max-w-[540px] lg:mb-0">
                   <h1 className="mb-3 max-w-[600px] text-4xl font-medium text-zinc-900 lg:text-[3.2rem] lg:leading-tight">
