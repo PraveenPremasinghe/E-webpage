@@ -174,7 +174,7 @@ const ActogoERP = () => {
                   className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_70%)]" />
 
                 {/* Noise texture */}
-                <div className="absolute inset-0 z-10 bg-[url('/noise.png')] opacity-[0.02] mix-blend-color-dodge" />
+                <div className="absolute inset-0 z-10 bg-[url(' ')] opacity-[0.02] mix-blend-color-dodge" />
 
                 {/* Vertical stripes pattern */}
                 <div className="absolute inset-0 flex">

@@ -123,7 +123,7 @@ body {
 }
 
 .hero-glassmorphism-effect{
-  backdrop-filter: blur(25px) saturate(70%);
+  backdrop-filter: blur(25px) saturate(70%) !important;
   -webkit-backdrop-filter: blur(25px) saturate(200%);
   background-color: rgb(0 0 0 / 12%);
   border-radius: 0 0 50px 0;
@@ -352,7 +352,7 @@ body {
   right: max(2rem, calc(50% - min(96rem, 100vw)/2));
   width: min(96rem, 100%);
   max-width: 96rem;
-  z-index: 999;
+  z-index: 998;
   border: 1px solid #ceceea;
   border-top: none;
   border-radius: 0 0 0.5rem 0.5rem;
@@ -502,4 +502,19 @@ body {
   border-radius: 20px;
 }
 
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - 1rem));
+  }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+.group-hover\:pause:hover .animate-marquee {
+  animation-play-state: paused;
+}
 

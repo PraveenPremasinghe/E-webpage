@@ -107,3 +107,6 @@ sm:py-24 md:py-28
 
 
         mt-8 sm:mt-12 t-0 md:pb-24
+
+
+        bg-gradient-to-r from-[#a12266] to-[#e94b8b] bg-clip-text text-transparent

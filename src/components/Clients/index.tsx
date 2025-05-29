@@ -1,59 +1,26 @@
-"use client"; // If you're using Next.js 13+ app router
+import { cn } from "@/lib/utils";
+import { Marquee } from "@/components/ui/marqueeSlider";
+import { clientsData } from "@/components/Clients/clientsData";
+import { SwiperSlide } from "swiper/react";
+import SingleClient from "@/components/Clients/SingleClient";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, FreeMode } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/autoplay";
-import "swiper/css/free-mode";
 
-import SingleClient from "./SingleClient";
-import { clientsData } from "./clientsData";
-import SectionTitle from "@/components/Common/SectionTitle";
 
-const Clients = () => {
+export default function MainClient() {
   return (
-    <section className="pt-10 pb-10 sm:pt-18 sm:pb-18 md:pt-24 md:pb-12">
-<div className="container">
-       <SectionTitle
-         subtitle="Powering Innovation Across Industries"
-         title="Trusted by Industry Leaders Around the World"
-         paragraph=" "
-       />
-
-   <div className="container px-4 mt-8 sm:mt-12   relative overflow-hidden">
-  {/* Masked Swiper container */}
-     <div className="swiper-mask">
-    <Swiper
-      modules={[Autoplay, FreeMode]}
-      slidesPerView={4}
-      spaceBetween={30}
-      speed={15000}
-      freeMode={true}
-      autoplay={{
-        delay: 0,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-      }}
-      loop={true}
-      breakpoints={{
-        320: { slidesPerView: 1 },
-        640: { slidesPerView: 2 },
-        1024: { slidesPerView: 4 },
-      }}
-    >
-      {clientsData.map((client, i) => (
-        <SwiperSlide key={i}>
+    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+      <Marquee pauseOnHover className="[--duration:20s]">
+       {clientsData.map((client, i) => (
+         <div key={i}>
           <div className="flex items-center justify-center">
             <SingleClient client={client} />
           </div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
-  </div>
-</div>
-</div>
-    </section>
-  );
-};
+        </div>
+       ))}
+      </Marquee>
 
-export default Clients;
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
+    </div>
+  );
+}

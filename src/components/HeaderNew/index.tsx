@@ -874,6 +874,7 @@ export default function HeaderNew() {
                     {selectedItemData && (
                       <div className="flex   flex-col">
                         <div className="flex w-full flex-col  ">
+
                           <Tabs
                             key="primary"
                             aria-label="Tabs"
@@ -898,20 +899,9 @@ export default function HeaderNew() {
                                         <p className="mt-6 max-w-3xl   leading-relaxed text-gray-700 dark:text-gray-400  ">
                                           {tab.description}
                                         </p>
-                                      </div>
-
-                                      <div className="w-full lg:w-1/2 mega-menu-img  ">
-                                        <img
-                                          src={`/${tab.image}`}
-                                          alt={tab.title}
-                                          className=" transition-all duration-500 group-hover:scale-105"
-                                        />
-                                      </div>
-                                    </section>
-
-                                    {/* Features Section */}
-                                    <section>
-                                      <h2 className="mb-6 text-2xl font-bold text-gray-900">
+                                        {/* Features Section */}
+                                        <section>
+                                      <h2 className="mb-6 mt-4 text-2xl font-bold text-gray-900">
                                         Key Features
                                       </h2>
                                       <div className="space-y-4">
@@ -932,6 +922,17 @@ export default function HeaderNew() {
                                         )}
                                       </div>
                                     </section>
+                                      </div>
+
+                                      <div className="w-full lg:w-1/2 mega-menu-img  ">
+                                        <img
+                                          src={`/${tab.image}`}
+                                          alt={tab.title}
+                                          className=" transition-all duration-500 group-hover:scale-105"
+                                        />
+                                      </div>
+                                    </section>
+
 
                                     {/* CTA Section */}
                                     <div className=" mx-auto max-w-5xl rounded-xl bg-gradient-to-r from-pink-600 to-pink-800 p-8 text-white shadow-lg">
@@ -989,6 +990,7 @@ export default function HeaderNew() {
                                         </div>
                                       </div>
                                     </div>
+
                                   </div>
                                 </div>
                               </Tab>
@@ -1021,6 +1023,11 @@ export default function HeaderNew() {
         onOpenChange={onModalOpenChange}
         backdrop="blur"
         size="lg"
+        className="z-[999]"
+        classNames={{
+          backdrop: "z-[999]",
+          wrapper: "z-[999]"
+        }}
       >
         <ModalContent className="max-w-md">
           {(onClose) => (
