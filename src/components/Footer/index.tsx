@@ -21,7 +21,7 @@ const Footer = () => {
                 <div className=" max-w-full">
                   <Link href="/" className="navbar-logo block w-full py-5">
                     <Image
-                      src="/images/logo/edhirya-it-logo.webp"
+                      src="/images/logo/edhirya-it-logo-bg.jpg"
                       alt="Edhirya IT Logo"
                       width={200}
                       height={30}
@@ -259,8 +259,8 @@ const Footer = () => {
         {/* Large Chatbase Text */}
         <div className="border-t border-gray-800 pt-8">
           <div className="text-center">
-            <h2 className="select-none text-6xl font-bold text-pink-200 sm:text-7xl md:text-8xl lg:text-[11rem]">
-                [E]dhirya IT
+            <h2 className="select-none text-6xl font-bold text-pink-200 sm:text-7xl md:text-8xl lg:text-[13rem]">
+                [E]dhirya IT.
             </h2>
           </div>
         </div>
