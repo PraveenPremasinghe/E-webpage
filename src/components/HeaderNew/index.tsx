@@ -43,6 +43,8 @@ import {
   ArrowRight,
   Check,
   ChevronLeft,
+  BrickWall,
+  Car, Shirt, Percent, Target, Webcam, Database
 } from "lucide-react";
 import { navigationItems, NavigationItem } from "./navigationItems";
 import ContactForm from "@/components/ContactForm/ContactForm";
@@ -86,7 +88,7 @@ const IconMap: Record<string, any> = {
   Shield,
   Code,
   Smartphone,
-  Globe,
+  Globe,Shirt,
   Palette,
   Brain,
   Link: LinkIcon,
@@ -108,6 +110,8 @@ const IconMap: Record<string, any> = {
   Award,
   Package,
   TrendingUp,
+  BrickWall,
+  Car,Percent,Target,Webcam,Database
 };
 import { usePathname, useSearchParams } from "next/navigation";
 

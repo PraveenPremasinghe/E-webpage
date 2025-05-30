@@ -1,15 +1,12 @@
-import Image from "next/image";
-import Link from "next/link";
-
 import { FlipWords } from "@/components/ui/lip-words";
-import { AnimatedBeamDemo } from "@/components/ui/animated-beam";
 import { SparklesCore } from "@/components/ui/sparkles";
-import { Vortex } from "../ui/vortex";
 import MainClient from "@/components/Clients";
 import React from "react";
 
+
 const Hero = () => {
-  const words = ["smarter", "faster", "scalable", "secure"];
+  const words = ["Smarter", "Faster", "Scalable", "Secure"];
+
 
   return (
     <>
@@ -17,7 +14,7 @@ const Hero = () => {
         <div className="flex h-screen w-full  flex-col lg:flex-row">
           {/* Left side - Red background */}
           {/* Left side - Red background */}
-          <div className="hero-glassmorphism-effect flex w-full items-center justify-center md:w-2/5">
+          <div className="hero-glassmorphism-effect flex w-full items-center justify-center md:w-2/5 ">
             <div className="relative flex h-screen w-full flex-col">
               {/* Full-screen SparklesCore with gradients */}
               <div className="absolute inset-0 h-full w-full">
@@ -25,7 +22,7 @@ const Hero = () => {
                 <SparklesCore
                   background="transparent"
                   minSize={0.2}
-                  maxSize={0.5}
+                  maxSize={0.7}
                   particleDensity={2000}
                   className="h-full w-full"
                   particleColor="#FFFFFF"
@@ -50,6 +47,8 @@ const Hero = () => {
                     in clear terms.
                   </p>
                   <button
+
+
                     type="submit"
                     className="text-md group relative mt-7 flex items-center justify-center gap-2 overflow-hidden rounded-full border-2 border-white bg-pink-700 px-4 py-2 text-white shadow-xl hover:bg-pink-800"
                   >
@@ -69,9 +68,9 @@ const Hero = () => {
               </div>
 
               {/* MainClient at the bottom */}
-              <div className="relative pb-4">
-                <div className="ml-6 mb-3 font-semibold text-lg text-white text-center">
-                 Powering the world’s most forward-thinking companies.
+              <div className="relative pb-2">
+                <div className="mb-3 ml-6 text-center text-lg font-medium text-white">
+                  Powering the world’s most forward-thinking companies.
                 </div>
                 <div className="swiper-mask">
                   <MainClient />
@@ -89,8 +88,8 @@ const Hero = () => {
           </div>
 
           {/* Right side - Blue background */}
-          <div className="hero-section-right flex w-3/5 items-center justify-center ">
-            <div className="text-center text-white"></div>
+          <div className="hero-section-right _relation_1lgfw_11 flex  w-3/5 ">
+            <div className="  "></div>
           </div>
         </div>
       </section>

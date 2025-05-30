@@ -13,6 +13,7 @@ import IndustrySolutionsSection from "@/components/TailoredSolution";
 import React from "react";
 import OurClient from "@/components/Clients/index2";
 
+
 export const metadata: Metadata = {
   title: "Edhirya IT - Crafting the Future of Digital Innovation",
   description:

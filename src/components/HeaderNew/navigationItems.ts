@@ -169,7 +169,7 @@ export const navigationItems: NavigationItem[] = [
           {
             name: "Construction",
             subtitle: "Project management for construction businesses.",
-            icon: "brick-wall",
+            icon: "BrickWall",
             tabs: [
               {
                 id: "construction_pasg",
@@ -229,7 +229,7 @@ export const navigationItems: NavigationItem[] = [
           {
             name: "Beauty",
             subtitle: "Salon and spa management software.",
-            icon: "Sparkles", // Lucide icon for beauty/salon
+            icon: "Shirt", // Lucide icon for beauty/salon
             tabs: [
               {
                 id: "beauty_beautech_salon_spa",
@@ -284,7 +284,7 @@ export const navigationItems: NavigationItem[] = [
             name: "Sales & Engagement",
             subtitle:
               "A platform that helps relationships grow—with structure, consistency, and space to scale.",
-            icon: "Sales",
+            icon: "Percent",
             tabs: [
               {
                 id: "sales_and_engagement_customer_lifecycle",
@@ -307,7 +307,7 @@ export const navigationItems: NavigationItem[] = [
             name: "SaaS Solutions",
             subtitle:
               "Purpose-built platforms, developed as friendships—not just products.",
-            icon: "SaaS",
+            icon: "Target",
             tabs: [
               {
                 id: "saas_solutions_co_created_platforms",
@@ -330,7 +330,7 @@ export const navigationItems: NavigationItem[] = [
             name: "Smart Docs & Data",
             subtitle:
               "Take the manual out of your documents, and put control back in.",
-            icon: "Documents",
+            icon: "Database",
             tabs: [
               {
                 id: "smart_docs_and_data_document_automation",
@@ -353,7 +353,7 @@ export const navigationItems: NavigationItem[] = [
             name: "eGovernance & B2B",
             subtitle:
               "Structure, transparency, and speed—for decisions that matter.",
-            icon: "Governance",
+            icon: "Landmark",
             tabs: [
               {
                 id: "egovernance_and_b2b_trusted_processes",
@@ -376,7 +376,7 @@ export const navigationItems: NavigationItem[] = [
             name: "BIS Platform",
             subtitle:
               "The backbone of everything we build—and everything you scale.",
-            icon: "Platform",
+            icon: "Webcam",
             tabs: [
               {
                 id: "bis_platform_foundation_for_growth",
