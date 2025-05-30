@@ -21,8 +21,9 @@ const Features = () => {
       <div className="">
         <SectionTitle
           subtitle="Who We Are ?"
-          title="Manual to magical, digitally perfected."
-          paragraph="Our vast experience leveraged to solve your problems – across verticals."
+          title="Engineering Intelligent Cloud Solutions for Tomorrow’s Enterprises"
+          paragraph="At Edhirya IT, we design and build intelligent, secure, and scalable technology platforms — helping businesses modernize operations and unlock new opportunities.
+"
         />
 
         <div className="container pt-20">
@@ -78,7 +79,7 @@ const Features = () => {
                   {/* Slide 1 */}
                   <SwiperSlide>
                     <img
-                      src="/images/products/email-cover.png"
+                      src="/images/office/office1.jpg"
                       alt="Slide 1"
                       className="h-full w-full rounded-xl object-cover shadow-md"
                     />
@@ -87,7 +88,7 @@ const Features = () => {
                   {/* Slide 2 */}
                   <SwiperSlide>
                     <img
-                      src="/images/products/email-cover.png"
+                      src="/images/office/office2.jpg"
                       alt="Slide 2"
                       className="h-full w-full rounded-xl object-cover shadow-md"
                     />

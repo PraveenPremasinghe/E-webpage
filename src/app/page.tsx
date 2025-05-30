@@ -39,7 +39,7 @@ export default function Home() {
       {/*<About />*/}
       <ActogoERP />
       <Contact />
-      <Partners />
+      {/*<Partners />*/}
       {/*<CallToAction />*/}
       {/*<Pricing />*/}
       {/*<Testimonials />*/}

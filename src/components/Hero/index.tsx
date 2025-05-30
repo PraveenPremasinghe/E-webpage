@@ -38,7 +38,7 @@ const Hero = () => {
 
     {/* Content container - centered */}
     <div className="flex-1 flex flex-col items-center justify-center relative">
-      <div className="rounded-lg p-8">
+      <div className="rounded-lg p-8 mt-8">
         <h1 className="text-4xl font-normal tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
           Build <FlipWords words={words} />
         </h1>

@@ -2,19 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { Client } from "@/types/client";
 
-const SingleClient = ({ client }: { client: Client }) => {
+const SingleClient2 = ({ client }: { client: Client }) => {
   const { title, link, logo, logoWhite } = client;
 
   return (
-    <div className="ud-single-logo mb-5 mr-10 bg-zinc-50 py-2 px-4 rounded-full transition-transform hover:scale-105">
+    <div className="ud-single-logo mb-5 mr-10  p-4 rounded-full transition-transform hover:scale-105">
       <Link href={link} target="_blank" rel="nofollow noopener">
-        <div className="relative w-16 h-8 sm:w-18 sm:h-9 md:w-20 md:h-10 lg:w-22 lg:h-11 xl:w-24 xl:h-12 flex items-center justify-center">
+        <div className="relative w-24 h-12 sm:w-28 sm:h-14 md:w-32 md:h-16 lg:w-36 lg:h-18 xl:w-40 xl:h-20 flex items-center justify-center">
           {/* Light mode logo */}
           <Image
             src={logo}
             alt={title}
             fill
-            sizes="(max-width: 640px) 64px, (max-width: 768px) 72px, (max-width: 1024px) 80px, (max-width: 1280px) 88px, 96px"
+            sizes="(max-width: 640px) 96px, (max-width: 768px) 112px, (max-width: 1024px) 128px, (max-width: 1280px) 144px, 160px"
             className="object-contain dark:hidden"
           />
 
@@ -24,7 +24,7 @@ const SingleClient = ({ client }: { client: Client }) => {
               src={logoWhite}
               alt={title}
               fill
-              sizes="(max-width: 640px) 64px, (max-width: 768px) 72px, (max-width: 1024px) 80px, (max-width: 1280px) 88px, 96px"
+              sizes="(max-width: 640px) 96px, (max-width: 768px) 112px, (max-width: 1024px) 128px, (max-width: 1280px) 144px, 160px"
               className="object-contain hidden dark:block"
             />
           )}
@@ -34,4 +34,4 @@ const SingleClient = ({ client }: { client: Client }) => {
   );
 };
 
-export default SingleClient;
+export default SingleClient2;
