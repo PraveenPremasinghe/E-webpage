@@ -2,7 +2,7 @@
 
 import About from "@/components/About";
 import Breadcrumb from "@/components/Common/Breadcrumb";
-import Team from "@/components/Team";
+
 import { Metadata } from "next";
 import Link from "next/link";
 import { useState } from "react";
