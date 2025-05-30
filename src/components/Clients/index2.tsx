@@ -6,13 +6,13 @@ import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/free-mode";
 
-import SingleClient from "./SingleClient";
-import { clientsData } from "./clientsData";
+import SingleClient2 from "./SingleClient2";
+import { clientsData } from "./clientsData2";
 import SectionTitle from "@/components/Common/SectionTitle";
 
 const OurClient = () => {
   return (
-    <section className="pt-10 pb-10 sm:pt-18 sm:pb-18 md:pt-24 md:pb-12">
+    <section className="pt-10 pb-10 sm:pt-18 sm:pb-18 md:pt-24 md:pb-12 bg-white">
 <div className="container">
        <SectionTitle
          subtitle="Powering Innovation Across Industries"
@@ -44,7 +44,7 @@ const OurClient = () => {
       {clientsData.map((client, i) => (
         <SwiperSlide key={i}>
           <div className="flex items-center justify-center">
-            <SingleClient client={client} />
+            <SingleClient2 client={client} />
           </div>
         </SwiperSlide>
       ))}
