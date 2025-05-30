@@ -64,6 +64,7 @@ export const navigationItems: NavigationItem[] = [
             icon: "Building",
             tabs: [
               {
+                id: "erp_inventory_management",
                 title: "Saltside Technologies & Ikman.lk",
                 subtitle: "ERP solution for classifieds and marketplace management.",
                 description: "Integrated ERP tools built to manage operations efficiently for Saltside Technologies.",
@@ -71,6 +72,7 @@ export const navigationItems: NavigationItem[] = [
                 image: "images/megaMenu/erp_operations.webp",
               },
               {
+                id: "erp_business_register",
                 title: "National Business Register & Start.Biz",
                 subtitle: "Digital business registration and compliance management.",
                 description: "Complete ERP suite for government-driven business registration services.",
@@ -78,6 +80,7 @@ export const navigationItems: NavigationItem[] = [
                 image: "images/megaMenu/erp_operations.webp",
               },
               {
+                id: "erp_inventory_tracking",
                 title: "Inventory Management",
                 subtitle: "Real-time control over stock and availability.",
                 description: "Ideal for businesses needing accurate stock tracking and alerts.",
@@ -85,6 +88,7 @@ export const navigationItems: NavigationItem[] = [
                 image: "images/megaMenu/erp_operations.webp",
               },
               {
+                id: "erp_procurement",
                 title: "Procurement",
                 subtitle: "Simplify purchase processes with automation.",
                 description: "Ensure compliance, reduce costs, and manage vendors effectively.",
@@ -99,6 +103,7 @@ export const navigationItems: NavigationItem[] = [
             icon: "Hospital",
             tabs: [
               {
+                id: "healthcare_dentalpro",
                 title: "DentalPro",
                 subtitle: "Dental clinic management system.",
                 description: "Appointment, patient records, and billing for dental practices.",
@@ -106,6 +111,7 @@ export const navigationItems: NavigationItem[] = [
                 image: "images/megaMenu/erp_operations.webp",
               },
               {
+                id: "healthcare_patient_management",
                 title: "Patient Management",
                 subtitle: "Centralized patient records and appointments.",
                 description: "EHR integration, appointment scheduling, and follow-ups made easy.",
@@ -113,6 +119,7 @@ export const navigationItems: NavigationItem[] = [
                 image: "images/megaMenu/erp_operations.webp",
               },
               {
+                id: "healthcare_billing_system",
                 title: "Billing System",
                 subtitle: "Streamline invoicing and insurance claims.",
                 description: "Automated medical billing with insurance support and transparency.",
@@ -127,6 +134,7 @@ export const navigationItems: NavigationItem[] = [
             icon: "Utensils",
             tabs: [
               {
+                id: "food_gonuts_with_donuts",
                 title: "Gonuts with Donuts",
                 subtitle: "POS and kitchen management for retail chains.",
                 description: "End-to-end food outlet management from kitchen to cashier.",
@@ -134,6 +142,7 @@ export const navigationItems: NavigationItem[] = [
                 image: "images/megaMenu/erp_operations.webp",
               },
               {
+                id: "food_pak_supermarket",
                 title: "PAK Supermarket",
                 subtitle: "Supermarket ERP and inventory automation.",
                 description: "Retail-focused ERP solution for stock, billing, and CRM.",
@@ -148,6 +157,7 @@ export const navigationItems: NavigationItem[] = [
             icon: "ShieldCheck",
             tabs: [
               {
+                id: "government_slsCa",
                 title: "SlsCa",
                 subtitle: "Smart compliance and automation for authorities.",
                 description: "Public sector ERP built for compliance, document flow, and approvals.",
@@ -162,6 +172,7 @@ export const navigationItems: NavigationItem[] = [
             icon: "Hammer",
             tabs: [
               {
+                id: "construction_pasg",
                 title: "Pasg",
                 subtitle: "Site and material tracking for contractors.",
                 description: "Manage construction workflows with procurement and project modules.",
@@ -176,6 +187,7 @@ export const navigationItems: NavigationItem[] = [
             icon: "Car",
             tabs: [
               {
+                id: "automotive_amvms",
                 title: "AMVMS",
                 subtitle: "Automated Motor Vehicle Management System.",
                 description: "Complete solution for managing vehicle registrations and inspections.",
@@ -190,6 +202,7 @@ export const navigationItems: NavigationItem[] = [
             icon: "FileText",
             tabs: [
               {
+                id: "accounting_hrm",
                 title: "HRM",
                 subtitle: "Human Resource and Payroll Management.",
                 description: "Streamlined employee data, payroll processing, and leave tracking.",
@@ -204,6 +217,7 @@ export const navigationItems: NavigationItem[] = [
             icon: "Book",
             tabs: [
               {
+                id: "education_ca",
                 title: "CA",
                 subtitle: "Student & course management for educational institutes.",
                 description: "ERP tailored for course registration, grading, and communication.",
@@ -218,6 +232,7 @@ export const navigationItems: NavigationItem[] = [
             icon: "Sparkles",
             tabs: [
               {
+                id: "beauty_beautech_salon_spa",
                 title: "Beautech Salon & Spa Management System",
                 subtitle: "Appointment and staff management for beauty businesses.",
                 description: "Boost customer experience and simplify your spa/salon operations.",
@@ -246,6 +261,7 @@ export const navigationItems: NavigationItem[] = [
             icon: "Heart",
             tabs: [
               {
+                id: "erp_platform_operational_backbone",
                 title: "Saltside Technologies",
                 subtitle:
                   "Manage inventory, procurement, and fulfilment with flexibility",
@@ -270,6 +286,7 @@ export const navigationItems: NavigationItem[] = [
             icon: "Sales",
             tabs: [
               {
+                id: "sales_and_engagement_customer_lifecycle",
                 title: "Customer Lifecycle",
                 subtitle: "From lead generation to long-term retention",
                 description:
@@ -292,6 +309,7 @@ export const navigationItems: NavigationItem[] = [
             icon: "SaaS",
             tabs: [
               {
+                id: "saas_solutions_co_created_platforms",
                 title: "Co-Created Platforms",
                 subtitle: "Better ways of working through collaboration",
                 description:
@@ -314,6 +332,7 @@ export const navigationItems: NavigationItem[] = [
             icon: "Documents",
             tabs: [
               {
+                id: "smart_docs_and_data_document_automation",
                 title: "Document Automation",
                 subtitle: "Move faster, stay compliant, and focus on decisions",
                 description:
@@ -336,6 +355,7 @@ export const navigationItems: NavigationItem[] = [
             icon: "Governance",
             tabs: [
               {
+                id: "egovernance_and_b2b_trusted_processes",
                 title: "Trusted Processes",
                 subtitle: "Run operations with built-in confidence",
                 description:
@@ -358,6 +378,7 @@ export const navigationItems: NavigationItem[] = [
             icon: "Platform",
             tabs: [
               {
+                id: "bis_platform_foundation_for_growth",
                 title: "Foundation for Growth",
                 subtitle: "Alignment, automation, and adaptability",
                 description:
@@ -386,6 +407,7 @@ export const navigationItems: NavigationItem[] = [
         title: "Who We Empower",
         category: [
           {
+            id: "who_we_empower_startup_founders",
             name: "Startup Founders",
             subtitle:
               "Startup founders are visionary entrepreneurs who identify problems, develop innovative solutions, and build early-stage companies from the ground up, often navigating risk, uncertainty, and rapid growth",
@@ -413,6 +435,7 @@ export const navigationItems: NavigationItem[] = [
             },
           },
           {
+            id: "who_we_empower_franchise_networks",
             name: "Franchise Networks",
             subtitle:
               "Centralized solutions to manage and grow franchise ecosystems.",
@@ -440,6 +463,7 @@ export const navigationItems: NavigationItem[] = [
             },
           },
           {
+            id: "who_we_empower_tech_investors",
             name: "Tech Investors",
             subtitle:
               "Insights and tools to evaluate and scale tech portfolios.",
@@ -467,6 +491,7 @@ export const navigationItems: NavigationItem[] = [
             },
           },
           {
+            id: "who_we_empower_strategic_outsourcing",
             name: "Strategic Outsourcing",
             subtitle:
               "Smart outsourcing strategies for cost-effective execution.",
@@ -494,6 +519,7 @@ export const navigationItems: NavigationItem[] = [
             },
           },
           {
+            id: "who_we_empower_tech_partnerships",
             name: "Tech Partnerships",
             subtitle:
               "Collaborate on innovation with integrated tech ecosystems.",
