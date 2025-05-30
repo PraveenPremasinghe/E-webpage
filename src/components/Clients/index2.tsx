@@ -10,7 +10,7 @@ import SingleClient from "./SingleClient";
 import { clientsData } from "./clientsData";
 import SectionTitle from "@/components/Common/SectionTitle";
 
-const Clients = () => {
+const OurClient = () => {
   return (
     <section className="pt-10 pb-10 sm:pt-18 sm:pb-18 md:pt-24 md:pb-12">
 <div className="container">
@@ -60,4 +60,4 @@ const Clients = () => {
   );
 };
 
-export default Clients;
+export default OurClient;

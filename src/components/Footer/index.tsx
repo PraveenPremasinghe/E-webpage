@@ -11,7 +11,7 @@ import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 
 const Footer = () => {
   return (
-    <footer className="bg-zinc-950 px-4 py-12 text-white sm:px-6 lg:px-8 ">
+    <footer className="bg-slate-900 px-4 py-12 text-white sm:px-6 lg:px-8 ">
       <div className="mx-auto max-w-7xl">
         {/* Main Footer Content */}
         <div className="mb-12 mt-12 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-5">

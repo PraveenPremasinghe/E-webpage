@@ -1003,16 +1003,17 @@ export default function HeaderNew() {
                 </div>
 
                 {/* Bottom CTA bar */}
-                <div className="flex justify-end space-x-6 rounded-bl-lg rounded-br-lg border-t border-gray-200 p-4">
-                  <button className="flex items-center text-gray-800">
-                    <MessageCircle size={18} className="mr-2" />
-                    <span>Contact Us</span>
-                  </button>
-                  <button className="flex items-center text-gray-800">
-                    <Play size={18} className="mr-2" />
-                    <span>Watch demo</span>
-                  </button>
-                </div>
+                {/*<div className="flex justify-end space-x-6 rounded-bl-lg rounded-br-lg border-t border-gray-200 p-4">*/}
+                {/*  <button className="flex items-center text-gray-800">*/}
+                {/*    <MessageCircle size={18} className="mr-2" />*/}
+                {/*    <span>Contact Us</span>*/}
+                {/*  </button>*/}
+                {/*  <button className="flex items-center text-gray-800">*/}
+                {/*    <Play size={18} className="mr-2" />*/}
+                {/*    <span>Watch demo</span>*/}
+                {/*  </button>*/}
+                {/*</div>*/}
+
               </div>
             )}
         </div>

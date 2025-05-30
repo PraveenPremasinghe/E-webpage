@@ -48,7 +48,7 @@ const ActogoERP = () => {
   ];
 
   return (
-    <section className="bg-zinc-950 py-16 sm:py-24 md:py-28">
+    <section className="bg-slate-900 py-16 sm:py-24 md:py-28">
   <div className="container px-4 sm:px-6 mx-auto">
 
 

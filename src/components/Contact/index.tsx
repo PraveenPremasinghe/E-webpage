@@ -5,6 +5,7 @@ import type React from "react"
 import { useState } from "react"
 import { Headset, Navigation, Phone, MapPin } from "lucide-react"
 import { WavyBackground } from "@/components/ui/wavy-background";
+import { motion } from "framer-motion";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -255,41 +256,28 @@ export default function Contact() {
                   ></textarea>
                 </div>
 
+
                 <button
+
                   type="submit"
-                  className="w-full py-3 bg-[#212121] hover:bg-[#424242] text-white font-medium rounded-lg transition-all"
-                  disabled={isSubmitting}
+                  className="group relative isolation-auto z-10 flex w-full items-center justify-center gap-2 overflow-hidden rounded-full border-2 border-gray-50 bg-pink-700 px-6 py-3 text-white shadow-xl backdrop-blur-md before:absolute before:-left-full before:-z-10 before:aspect-square before:w-full before:rounded-full before:bg-black before:transition-all before:duration-700 hover:text-gray-50 before:hover:left-0 before:hover:w-full before:hover:scale-150 before:hover:duration-700"
                 >
-                  {isSubmitting ? (
-                    <span className="flex items-center justify-center">
-                      <svg
-                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <circle
-                          className="opacity-25"
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="currentColor"
-                          strokeWidth="4"
-                        ></circle>
-                        <path
-                          className="opacity-75"
-                          fill="currentColor"
-                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                        ></path>
-                      </svg>
-                      Sending...
-                    </span>
-                  ) : (
-                    "Send Message"
-                  )}
+                  <span className="text-sm md:text-base font-medium">Send Now</span>
+                  <svg
+                    className="h-6 w-6 rotate-45 rounded-full border border-gray-100 p-1.5 text-gray-50 duration-300 ease-linear group-hover:rotate-90 group-hover:border-none group-hover:bg-gray-50"
+                    viewBox="0 0 16 19"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
+                      className="fill-gray-100 group-hover:fill-gray-700"
+                    />
+                  </svg>
                 </button>
+
+
               </form>
-            )}
+              )}
           </div>
         </div>
       </div>
