@@ -8,7 +8,7 @@ const SingleClient = ({ client }: { client: Client }) => {
   return (
     <div className="ud-single-logo mb-5 mr-10 bg-zinc-50 py-2 px-4 rounded-full transition-transform hover:scale-105">
       <Link href={link} target="_blank" rel="nofollow noopener">
-        <div className="relative w-16 h-8 sm:w-18 sm:h-9 md:w-20 md:h-10 lg:w-22 lg:h-11 xl:w-24 xl:h-12 flex items-center justify-center">
+        <div className="relative w-16 h-8 sm:w-18 sm:h-7 md:w-22 md:h-8 lg:w-24 lg:h-11 xl:w-26 xl:h-10 flex items-center justify-center">
           {/* Light mode logo */}
           <Image
             src={logo}

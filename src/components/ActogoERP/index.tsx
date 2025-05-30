@@ -23,27 +23,28 @@ const ActogoERP = () => {
 
   const tabs = [
     {
-      title: 'CRM & Sales',
+      title: 'Task Management',
       description:
-        'From idea to execution, effortlessly plan, organize, and track campaigns that deliver results.',
-      image: '/images/products/accto-img.png',
+        'Efficiently plan, assign, and monitor tasks to ensure on-time project delivery and team productivity.',
+      image: '/images/products/taskm.png',
     },
     {
-      title: 'Inventory Management',
+      title: 'Leave Management',
       description:
-        'Quickly identify and resolve product problems with streamlined workflows.',
-      image: '/images/products/email-cover.png',
+        'Simplify employee leave tracking, approvals, and reporting with a centralized system.',
+      image: '/images/products/leavem.png',
     },
     {
-      title: 'Finance & Budgeting',
+      title: 'Expense Management',
       description:
-        'Keep your systems running smoothly with real-time monitoring.',
-      image: '/images/products/Strategic-img.png',
+        'Track, manage, and control expenses with real-time reporting and automated approvals.',
+      image: '/images/products/expensm.png',
     },
     {
-      title: 'HR & Payroll',
-      description: 'Discover more ways our platform can help your business.',
-      image: '/images/products/accto-img.png',
+      title: 'Assigned Task Management',
+      description:
+        'Monitor individual workloads and progress with role-based task assignment and performance tracking.',
+      image: '/images/products/assigntask.png',
     },
   ];
 

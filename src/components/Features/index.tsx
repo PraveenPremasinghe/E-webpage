@@ -39,7 +39,7 @@ const Features = () => {
                   </h1>
 
                   {/* Description */}
-                  <h2 className="mb-4 text-base font-medium  text-dark dark:text-white sm:mb-5 sm:text-lg sm:!leading-[1.8] md:text-2xl">
+                  <h2 className="mb-4 text-base font-medium  text-zinc-700 dark:text-white sm:mb-5 sm:text-lg sm:!leading-[1.8] md:text-2xl">
                     &quot;Over the years we&apos;ve developed sophisticated
                     tools, platforms and digital products with cutting edge
                     technology and helped grow businesses rapidly. It&apos;s a
@@ -171,7 +171,7 @@ const Features = () => {
           <div className="absolute bottom-[-24px] right-[-15px] w-[300px] sm:bottom-[-36px] sm:right-[-20px] sm:w-[400px] md:bottom-[-48px] md:right-[-30px] md:w-[350px] lg:w-[650px]">
             <div className="modern-image-mask rounded-tl-[15px] border-l border-t border-white border-opacity-30 bg-white/20 p-2 sm:rounded-tl-[20px] sm:p-3 md:rounded-tl-[30px] md:p-4">
               <img
-                src="/images/hero/email-cover2.png"
+                src="/images/hero/ai10.jpg"
                 alt="AI Brain"
                 className="h-auto w-full object-contain"
               />

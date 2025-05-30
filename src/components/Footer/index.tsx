@@ -22,10 +22,10 @@ const Footer = () => {
                 <div className=" max-w-full">
                   <Link href="/" className="navbar-logo block w-full py-5">
                     <Image
-                      src="/images/logo/edhirya-it-logo-bg.jpg"
+                      src="/images/logo/edhirya-it-logo.png"
                       alt="Edhirya IT Logo"
                       width={200}
-                      height={30}
+                      height={40}
                       className="header-logo w-full"
                     />
                   </Link>

@@ -15,6 +15,12 @@ const imageSources = [
   '/images/team/hirusha.jpeg',
   '/images/team/yshoda.jpeg',
   '/images/team/pasindu.jpeg',
+  '/images/team/ranjula.JPG',
+  '/images/team/janith.jpeg',
+  '/images/team/rashitha.jpeg',
+  '/images/team/hashan.png',
+  '/images/team/isira.png',
+  '/images/team/nimila.jpeg',
 
 
 ];

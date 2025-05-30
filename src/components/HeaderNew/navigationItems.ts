@@ -4,6 +4,7 @@ export interface Tab {
   description: string;
   features: string[];
   image: string;
+  id?: string;
 }
 
 export interface CategoryPoints {
@@ -25,6 +26,7 @@ export interface CategoryItem {
   tabs?: Tab[];
   points?: CategoryPoints[];
   caseStudy?: CaseStudy; // changes this
+  id? : string;
 }
 
 export interface Category {
@@ -59,32 +61,38 @@ export const navigationItems: NavigationItem[] = [
           {
             name: "ERP",
             subtitle: "Streamline your supply chain and operations.",
-            icon: "Building",
+            icon: "Building", // from lucide-react
             tabs: [
               {
-                title: "Inventory Management",
-                subtitle: "Real-time control over stock and availability.",
-                description:
-                  "Ideal for businesses needing accurate stock tracking and alerts.",
-                features: [
-                  "Stock visibility",
-                  "Reorder levels",
-                  "Batch tracking",
-                  "Warehouse mapping",
-                ],
+                id: "erp_inventory_management",
+                title: "Saltside Technologies & Ikman.lk",
+                subtitle: "ERP solution for classifieds and marketplace management.",
+                description: "Integrated ERP tools built to manage operations efficiently for Saltside Technologies.",
+                features: ["Inventory management", "Vendor tracking", "Workflow automation", "Real-time reporting"],
                 image: "images/megaMenu/erp_operations.webp",
               },
               {
+                id: "erp_business_register",
+                title: "National Business Register & Start.Biz",
+                subtitle: "Digital business registration and compliance management.",
+                description: "Complete ERP suite for government-driven business registration services.",
+                features: ["Registration workflow", "User management", "Document handling", "Audit trails"],
+                image: "images/megaMenu/erp_operations.webp",
+              },
+              {
+                id: "erp_inventory_tracking",
+                title: "Inventory Management",
+                subtitle: "Real-time control over stock and availability.",
+                description: "Ideal for businesses needing accurate stock tracking and alerts.",
+                features: ["Stock visibility", "Reorder levels", "Batch tracking", "Warehouse mapping"],
+                image: "images/megaMenu/erp_operations.webp",
+              },
+              {
+                id: "erp_procurement",
                 title: "Procurement",
                 subtitle: "Simplify purchase processes with automation.",
-                description:
-                  "Ensure compliance, reduce costs, and manage vendors effectively.",
-                features: [
-                  "Purchase order automation",
-                  "Vendor management",
-                  "Approval workflows",
-                  "Budget control",
-                ],
+                description: "Ensure compliance, reduce costs, and manage vendors effectively.",
+                features: ["Purchase order automation", "Vendor management", "Approval workflows", "Budget control"],
                 image: "images/megaMenu/erp_operations.webp",
               },
             ],
@@ -92,32 +100,143 @@ export const navigationItems: NavigationItem[] = [
           {
             name: "Healthcare",
             subtitle: "Empower hospitals with integrated solutions.",
-            icon: "Hospital",
+            icon: "Heart", // Lucide icon for healthcare
             tabs: [
               {
-                title: "Patient Management",
-                subtitle: "Centralized patient records and appointments.",
-                description:
-                  "EHR integration, appointment scheduling, and follow-ups made easy.",
-                features: [
-                  "EHR integration",
-                  "Appointment booking",
-                  "Patient history tracking",
-                  "Telemedicine support",
-                ],
+                id: "healthcare_dentalpro",
+                title: "DentalPro",
+                subtitle: "Dental clinic management system.",
+                description: "Appointment, patient records, and billing for dental practices.",
+                features: ["Dental charting", "EHR", "Billing", "Patient history"],
                 image: "images/megaMenu/erp_operations.webp",
               },
               {
+                id: "healthcare_patient_management",
+                title: "Patient Management",
+                subtitle: "Centralized patient records and appointments.",
+                description: "EHR integration, appointment scheduling, and follow-ups made easy.",
+                features: ["EHR integration", "Appointment booking", "Patient history tracking", "Telemedicine support"],
+                image: "images/megaMenu/erp_operations.webp",
+              },
+              {
+                id: "healthcare_billing_system",
                 title: "Billing System",
                 subtitle: "Streamline invoicing and insurance claims.",
-                description:
-                  "Automated medical billing with insurance support and transparency.",
-                features: [
-                  "Medical coding",
-                  "Insurance claim tracking",
-                  "Invoice generation",
-                  "Payment gateway integration",
-                ],
+                description: "Automated medical billing with insurance support and transparency.",
+                features: ["Medical coding", "Insurance claim tracking", "Invoice generation", "Payment gateway integration"],
+                image: "images/megaMenu/erp_operations.webp",
+              },
+            ],
+          },
+          {
+            name: "Food",
+            subtitle: "Modern tech for food and retail businesses.",
+            icon: "Coffee", // Lucide icon for food & beverage
+            tabs: [
+              {
+                id: "food_gonuts_with_donuts",
+                title: "Gonuts with Donuts",
+                subtitle: "POS and kitchen management for retail chains.",
+                description: "End-to-end food outlet management from kitchen to cashier.",
+                features: ["POS integration", "Order management", "Customer loyalty", "Inventory sync"],
+                image: "images/megaMenu/erp_operations.webp",
+              },
+              {
+                id: "food_pak_supermarket",
+                title: "PAK Supermarket",
+                subtitle: "Supermarket ERP and inventory automation.",
+                description: "Retail-focused ERP solution for stock, billing, and CRM.",
+                features: ["Multi-location stock", "Billing", "Offers & promotions", "Customer analytics"],
+                image: "images/megaMenu/erp_operations.webp",
+              },
+            ],
+          },
+          {
+            name: "Government",
+            subtitle: "Digitization for public sector operations.",
+            icon: "Landmark", // Lucide icon for government
+            tabs: [
+              {
+                id: "government_slsCa",
+                title: "SlsCa",
+                subtitle: "Smart compliance and automation for authorities.",
+                description: "Public sector ERP built for compliance, document flow, and approvals.",
+                features: ["Document tracking", "eForms", "Role-based access", "Secure logs"],
+                image: "images/megaMenu/erp_operations.webp",
+              },
+            ],
+          },
+          {
+            name: "Construction",
+            subtitle: "Project management for construction businesses.",
+            icon: "brick-wall",
+            tabs: [
+              {
+                id: "construction_pasg",
+                title: "Pasg",
+                subtitle: "Site and material tracking for contractors.",
+                description: "Manage construction workflows with procurement and project modules.",
+                features: ["Site progress", "Material requests", "Contractor logs", "Timesheet integration"],
+                image: "images/megaMenu/erp_operations.webp",
+              },
+            ],
+          },
+          {
+            name: "Automotive",
+            subtitle: "Digitally transform vehicle-related services.",
+            icon: "Car", // Lucide icon for automotive
+            tabs: [
+              {
+                id: "automotive_amvms",
+                title: "AMVMS",
+                subtitle: "Automated Motor Vehicle Management System.",
+                description: "Complete solution for managing vehicle registrations and inspections.",
+                features: ["Vehicle database", "Inspection records", "License renewals", "Reporting"],
+                image: "images/megaMenu/erp_operations.webp",
+              },
+            ],
+          },
+          {
+            name: "Accounting",
+            subtitle: "HR and finance operations in one place.",
+            icon: "FileText", // Lucide icon for accounting/HR
+            tabs: [
+              {
+                id: "accounting_hrm",
+                title: "HRM",
+                subtitle: "Human Resource and Payroll Management.",
+                description: "Streamlined employee data, payroll processing, and leave tracking.",
+                features: ["Payslips", "Leave approvals", "Attendance", "Employee portal"],
+                image: "images/megaMenu/erp_operations.webp",
+              },
+            ],
+          },
+          {
+            name: "Education",
+            subtitle: "Modern learning and management systems.",
+            icon: "BookOpen", // Lucide icon for education
+            tabs: [
+              {
+                id: "education_ca",
+                title: "CA",
+                subtitle: "Student & course management for educational institutes.",
+                description: "ERP tailored for course registration, grading, and communication.",
+                features: ["Course catalogs", "Timetable", "Exam results", "Notifications"],
+                image: "images/megaMenu/erp_operations.webp",
+              },
+            ],
+          },
+          {
+            name: "Beauty",
+            subtitle: "Salon and spa management software.",
+            icon: "Sparkles", // Lucide icon for beauty/salon
+            tabs: [
+              {
+                id: "beauty_beautech_salon_spa",
+                title: "Beautech Salon & Spa Management System",
+                subtitle: "Appointment and staff management for beauty businesses.",
+                description: "Boost customer experience and simplify your spa/salon operations.",
+                features: ["Online bookings", "Stylist schedules", "Service tracking", "Customer profiles"],
                 image: "images/megaMenu/erp_operations.webp",
               },
             ],
@@ -125,7 +244,9 @@ export const navigationItems: NavigationItem[] = [
         ],
       },
     ],
-  },
+  }
+
+  ,
   {
     id: "what-we-offer",
     title: "What We Offer",
@@ -141,7 +262,8 @@ export const navigationItems: NavigationItem[] = [
             icon: "Heart",
             tabs: [
               {
-                title: "Operational Backbone",
+                id: "erp_platform_operational_backbone",
+                title: "Saltside Technologies",
                 subtitle:
                   "Manage inventory, procurement, and fulfilment with flexibility",
                 description:
@@ -155,6 +277,7 @@ export const navigationItems: NavigationItem[] = [
                 ],
                 image: "images/megaMenu/erp_operations.webp",
               },
+
             ],
           },
           {
@@ -164,6 +287,7 @@ export const navigationItems: NavigationItem[] = [
             icon: "Sales",
             tabs: [
               {
+                id: "sales_and_engagement_customer_lifecycle",
                 title: "Customer Lifecycle",
                 subtitle: "From lead generation to long-term retention",
                 description:
@@ -186,6 +310,7 @@ export const navigationItems: NavigationItem[] = [
             icon: "SaaS",
             tabs: [
               {
+                id: "saas_solutions_co_created_platforms",
                 title: "Co-Created Platforms",
                 subtitle: "Better ways of working through collaboration",
                 description:
@@ -197,7 +322,7 @@ export const navigationItems: NavigationItem[] = [
                   "Impact measurement",
                   "Customer feedback loops",
                 ],
-               image: "images/megaMenu/SaaS-Solutions.webp",
+                image: "images/megaMenu/SaaS-Solutions.webp",
               },
             ],
           },
@@ -208,6 +333,7 @@ export const navigationItems: NavigationItem[] = [
             icon: "Documents",
             tabs: [
               {
+                id: "smart_docs_and_data_document_automation",
                 title: "Document Automation",
                 subtitle: "Move faster, stay compliant, and focus on decisions",
                 description:
@@ -219,7 +345,7 @@ export const navigationItems: NavigationItem[] = [
                   "Secure storage",
                   "Version control",
                 ],
-              image: "images/megaMenu/erp_operations.webp",
+                image: "images/megaMenu/erp_operations.webp",
               },
             ],
           },
@@ -230,6 +356,7 @@ export const navigationItems: NavigationItem[] = [
             icon: "Governance",
             tabs: [
               {
+                id: "egovernance_and_b2b_trusted_processes",
                 title: "Trusted Processes",
                 subtitle: "Run operations with built-in confidence",
                 description:
@@ -241,7 +368,7 @@ export const navigationItems: NavigationItem[] = [
                   "Role-based access",
                   "Compliance tracking",
                 ],
-              image: "images/megaMenu/erp_operations.webp",
+                image: "images/megaMenu/erp_operations.webp",
               },
             ],
           },
@@ -252,6 +379,7 @@ export const navigationItems: NavigationItem[] = [
             icon: "Platform",
             tabs: [
               {
+                id: "bis_platform_foundation_for_growth",
                 title: "Foundation for Growth",
                 subtitle: "Alignment, automation, and adaptability",
                 description:
@@ -280,6 +408,7 @@ export const navigationItems: NavigationItem[] = [
         title: "Who We Empower",
         category: [
           {
+            id: "who_we_empower_startup_founders",
             name: "Startup Founders",
             subtitle:
               "Startup founders are visionary entrepreneurs who identify problems, develop innovative solutions, and build early-stage companies from the ground up, often navigating risk, uncertainty, and rapid growth",
@@ -307,6 +436,7 @@ export const navigationItems: NavigationItem[] = [
             },
           },
           {
+            id: "who_we_empower_franchise_networks",
             name: "Franchise Networks",
             subtitle:
               "Centralized solutions to manage and grow franchise ecosystems.",
@@ -334,6 +464,7 @@ export const navigationItems: NavigationItem[] = [
             },
           },
           {
+            id: "who_we_empower_tech_investors",
             name: "Tech Investors",
             subtitle:
               "Insights and tools to evaluate and scale tech portfolios.",
@@ -361,6 +492,7 @@ export const navigationItems: NavigationItem[] = [
             },
           },
           {
+            id: "who_we_empower_strategic_outsourcing",
             name: "Strategic Outsourcing",
             subtitle:
               "Smart outsourcing strategies for cost-effective execution.",
@@ -388,6 +520,7 @@ export const navigationItems: NavigationItem[] = [
             },
           },
           {
+            id: "who_we_empower_tech_partnerships",
             name: "Tech Partnerships",
             subtitle:
               "Collaborate on innovation with integrated tech ecosystems.",
