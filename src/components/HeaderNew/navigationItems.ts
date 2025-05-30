@@ -59,7 +59,7 @@ export const navigationItems: NavigationItem[] = [
           {
             name: "ERP",
             subtitle: "Streamline your supply chain and operations.",
-            icon: "Building",
+            icon: "Building", // from lucide-react
             tabs: [
               {
                 title: "Saltside Technologies & Ikman.lk",
@@ -94,7 +94,7 @@ export const navigationItems: NavigationItem[] = [
           {
             name: "Healthcare",
             subtitle: "Empower hospitals with integrated solutions.",
-            icon: "Hospital",
+            icon: "Heart", // Lucide icon for healthcare
             tabs: [
               {
                 title: "DentalPro",
@@ -122,7 +122,7 @@ export const navigationItems: NavigationItem[] = [
           {
             name: "Food",
             subtitle: "Modern tech for food and retail businesses.",
-            icon: "Utensils",
+            icon: "Coffee", // Lucide icon for food & beverage
             tabs: [
               {
                 title: "Gonuts with Donuts",
@@ -143,7 +143,7 @@ export const navigationItems: NavigationItem[] = [
           {
             name: "Government",
             subtitle: "Digitization for public sector operations.",
-            icon: "ShieldCheck",
+            icon: "Landmark", // Lucide icon for government
             tabs: [
               {
                 title: "SlsCa",
@@ -157,7 +157,7 @@ export const navigationItems: NavigationItem[] = [
           {
             name: "Construction",
             subtitle: "Project management for construction businesses.",
-            icon: "Hammer",
+            icon: "brick-wall",
             tabs: [
               {
                 title: "Pasg",
@@ -171,7 +171,7 @@ export const navigationItems: NavigationItem[] = [
           {
             name: "Automotive",
             subtitle: "Digitally transform vehicle-related services.",
-            icon: "Car",
+            icon: "Car", // Lucide icon for automotive
             tabs: [
               {
                 title: "AMVMS",
@@ -185,7 +185,7 @@ export const navigationItems: NavigationItem[] = [
           {
             name: "Accounting",
             subtitle: "HR and finance operations in one place.",
-            icon: "FileText",
+            icon: "FileText", // Lucide icon for accounting/HR
             tabs: [
               {
                 title: "HRM",
@@ -199,7 +199,7 @@ export const navigationItems: NavigationItem[] = [
           {
             name: "Education",
             subtitle: "Modern learning and management systems.",
-            icon: "Book",
+            icon: "BookOpen", // Lucide icon for education
             tabs: [
               {
                 title: "CA",
@@ -213,7 +213,7 @@ export const navigationItems: NavigationItem[] = [
           {
             name: "Beauty",
             subtitle: "Salon and spa management software.",
-            icon: "Sparkles",
+            icon: "Sparkles", // Lucide icon for beauty/salon
             tabs: [
               {
                 title: "Beautech Salon & Spa Management System",
@@ -228,6 +228,7 @@ export const navigationItems: NavigationItem[] = [
       },
     ],
   }
+
   ,
   {
     id: "what-we-offer",
