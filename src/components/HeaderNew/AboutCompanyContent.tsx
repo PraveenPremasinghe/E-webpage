@@ -73,7 +73,7 @@ export default function AboutCompanySection() {
               animate={{ y: isInView ? 0 : 30, opacity: isInView ? 1 : 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
             >
-              <h2 className="mb-2 bg-clip-text text-center text-3xl font-bold text-primary text-transparent md:text-4xl lg:text-5xl">
+              <h2 className="mb-2   text-center text-3xl font-bold bg-gradient-to-r from-[#a12266] to-[#e94b8b] bg-clip-text text-transparent md:text-4xl lg:text-5xl">
                 Asanka Ediriweera
               </h2>
               <motion.p

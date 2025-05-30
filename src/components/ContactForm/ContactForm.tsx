@@ -1,5 +1,5 @@
 // ContactForm.tsx
-import { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { X, Send, Loader2, CheckCircle } from 'lucide-react';
 
 interface ContactFormProps {
@@ -30,7 +30,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed right-4 top-20 z-50 w-80 md:w-96 bg-black bg-opacity-50  transition-opacity duration-300">
+    <div className="fixed right-4 top-20 z-999 w-80 md:w-96 bg-black bg-opacity-50  transition-opacity duration-300">
       <div
         ref={formRef}
         className="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-xl transition-all duration-300"

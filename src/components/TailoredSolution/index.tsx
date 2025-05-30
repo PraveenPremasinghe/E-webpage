@@ -71,7 +71,8 @@ const IndustrySolutionsSection = () => {
 
   return (
 
-    <section className="container pt-10 sm:pt-24 md:pt-32 dark:bg-dark">
+    <section className="bg-white pt-10 pb-10 sm:pt-18 sm:pb-18 md:pt-24 md:pb-24">
+      <div className="container">
       <SectionTitle
         subtitle="We Provide Solutions"
         title="Tailored Solutions, Proven Results"
@@ -186,6 +187,7 @@ const IndustrySolutionsSection = () => {
             </div>
           </div>
         ))}
+      </div>
       </div>
     </section>
 

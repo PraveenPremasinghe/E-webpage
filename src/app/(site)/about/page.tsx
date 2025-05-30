@@ -2,11 +2,11 @@
 
 import About from "@/components/About";
 import Breadcrumb from "@/components/Common/Breadcrumb";
-import Team from "@/components/Team";
 import { Metadata } from "next";
 import Link from "next/link";
 import { useState } from "react";
 import { OurJourneyTimeline } from "@/components/OurJourney";
+import TeamShowcase from "@/components/Team/SingleTeam";
 
 const AboutPage = () => {
   const [activeTab, setActiveTab] = useState("mission");
@@ -68,20 +68,20 @@ const AboutPage = () => {
         </div>
       </nav>
 
-      <section id="About" className="pb-28 pt-20 dark:bg-dark-2">
+      <section id="About" className="pb-20 pt-20 dark:bg-dark-2">
         <div className="container">
           <div className="wow fadeInUp" data-wow-delay=".2s">
             <div className="-mx-4 flex flex-wrap items-center justify-between">
               <div className="w-full px-4 ">
                 <div className=" text-center">
-                  <h2 className="mb-5 text-7xl font-medium   leading-tight dark:text-white  sm:leading-[1.2]">
+                  <h2 className="mb-5 text-2xl font-medium leading-tight dark:text-white   sm:leading-[1.2] md:text-5xl  lg:text-6xl">
                     We Are
-                    <span className="font-semibold text-primary">
+                    <span className="font-semibold bg-gradient-to-r from-[#a12266] to-[#e94b8b] bg-clip-text text-transparent">
                       {" "}
                       #Edhirya IT
                     </span>
                   </h2>
-                  <p className="mb-10 mt-10  text-3xl font-light leading-[1.8] text-body-color dark:text-dark-6">
+                  <p className="mb-10 mt-10  text-2xl font-light leading-[1.8] text-body-color dark:text-dark-6">
                     Founded in 2010, Edhirya IT has consistently positioned
                     itself at the forefront of technological innovation,
                     specialising in delivering top-tier IT solutions to bridge
@@ -102,14 +102,14 @@ const AboutPage = () => {
 
       <section
         id="MissionVision"
-        className="bg-gradient-to-br from-gray-50 to-white py-16 dark:from-gray-900 dark:to-gray-800"
+        className="bg-zinc-50 py-16 dark:from-gray-900 dark:to-gray-800"
       >
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-16 text-center">
-            <h2 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white">
+            <h2 className="mb-3 text-center text-4xl font-medium tracking-tight text-zinc-950 lg:text-5xl">
               Our Guiding Principles
             </h2>
-            <p className="mx-auto max-w-3xl text-lg text-gray-600 dark:text-gray-300">
+            <p className="mx-auto max-w-3xl text-center text-lg text-zinc-500">
               The foundation of everything we do at our company
             </p>
           </div>
@@ -375,11 +375,8 @@ const AboutPage = () => {
         <OurJourneyTimeline />
       </div>
 
-      <div id="">
-        <About />
-      </div>
       <div id="team">
-        <Team />
+        <TeamShowcase />
       </div>
     </main>
   );

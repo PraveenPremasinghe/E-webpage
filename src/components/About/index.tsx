@@ -1,11 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 
 const About = () => {
   return (
     <section
       id="about"
-      className="we-offer-section-bg pb-28 pt-10 sm:pt-24 md:pt-32 dark:bg-dark"
+      className="we-offer-section-bg pb-28 pt-10 dark:bg-dark sm:pt-24 md:pt-32"
     >
       <div className="container">
         <div className="wow fadeInUp" data-wow-delay=".2s">
@@ -13,7 +12,7 @@ const About = () => {
             <div className="w-full lg:w-2/3">
               <div className=" mx-10">
                 <img
-                  src='/images/products/email-cover.png'
+                  src="/images/products/email-cover.png"
                   alt="Actogo ERP"
                   className="h-full w-full object-cover"
                 />
