@@ -35,14 +35,14 @@ const Hero = () => {
               {/* Content container - centered */}
               <div className="relative flex flex-1 flex-col items-center justify-center">
                 <div className="mt-8 rounded-lg p-8">
-                  <h1 className="text-4xl font-normal tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+                  <h1 className="text-6xl font-normal tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
                     Build <FlipWords words={words} />
                   </h1>
-                  <h1 className="text-4xl font-normal tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+                  <h1 className="text-5xl font-normal tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
                     digital solutions
                   </h1>
 
-                  <p className="mt-3 text-lg text-white md:mt-10 md:text-lg lg:text-xl">
+                  <p className="mt-5 text-lg text-white md:mt-10 md:text-lg lg:text-xl">
                     A compelling subheading that explains your value proposition
                     in clear terms.
                   </p>
