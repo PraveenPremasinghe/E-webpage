@@ -25,7 +25,7 @@ const OurClient = () => {
      <div className="swiper-mask">
     <Swiper
       modules={[Autoplay, FreeMode]}
-      slidesPerView={4}
+      slidesPerView={5}
       spaceBetween={30}
       speed={15000}
       freeMode={true}
@@ -38,7 +38,7 @@ const OurClient = () => {
       breakpoints={{
         320: { slidesPerView: 1 },
         640: { slidesPerView: 2 },
-        1024: { slidesPerView: 4 },
+        1024: { slidesPerView: 6 },
       }}
     >
       {clientsData.map((client, i) => (

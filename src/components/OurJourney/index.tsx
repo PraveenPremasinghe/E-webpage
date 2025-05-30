@@ -10,7 +10,7 @@ export function OurJourneyTimeline() {
       projectName: 'NBR CRM Upgrade & Cloud Migration',
       description:
         'Extended CRM system functionality, migrated web infrastructure to AWS, and integrated Smarta.com’s Business Builder.',
-      image: '/images/OurJourneyTimeline/nbr.png',
+      image: '/images/OurJourneyTimeline/NBR-Feature.webp',
       points: [
         'Enhanced CRM to support offshore companies',
         'Migrated websites and databases to AWS',
@@ -37,7 +37,7 @@ export function OurJourneyTimeline() {
       projectName: 'Ikman.lk Technology Partnership',
       description:
         'Implemented SMS voucher system, Xero integration, and long-term development agreement with Ikman.lk.',
-      image: '/images/OurJourneyTimeline/ikmanlk.png',
+      image: '/images/OurJourneyTimeline/ikman.webp',
       points: [
         'Built SMS-based voucher selling platform',
         'Integrated Ikman.lk’s backend with Xero accounting software',
@@ -50,7 +50,7 @@ export function OurJourneyTimeline() {
       projectName: 'Enterprise Solutions for Ikman.lk',
       description:
         'Developed HR and rider apps, transitioned to Java backend, and migrated hosting to Microsoft Azure.',
-      image: '/images/OurJourneyTimeline/ikmanlk.png',
+      image: '/images/OurJourneyTimeline/ikman.webp',
       points: [
         'Launched HR system for Ikman.lk, Bikroy, and Tonaton',
         'Created Android rider app for logistics team',
@@ -63,7 +63,7 @@ export function OurJourneyTimeline() {
       projectName: 'Advanced Integrations & Public Services',
       description:
         'Integrated CRM and accounting, enhanced support tools, and developed public sector mobile prototypes.',
-      image: '/images/OurJourneyTimeline/nbr.png',
+      image: '/images/OurJourneyTimeline/ikman.webp',
       points: [
         'Integrated TAS Books with CRM for automation',
         'Enabled Zendesk and payment gateway integration for Ikman.lk',
@@ -89,7 +89,7 @@ export function OurJourneyTimeline() {
       projectName: 'Product Launches and Microsoft Partnership',
       description:
         'Achieved Microsoft partnership and released major platforms including DentalPro and vehicle management system.',
-      image: '/images/OurJourneyTimeline/edhiryaerp.png',
+      image: '/images/OurJourneyTimeline/dentalpro.png',
       points: [
         'Became a Microsoft Partner',
         'Developed and deployed Sixth Gear vehicle maintenance system',
@@ -101,7 +101,7 @@ export function OurJourneyTimeline() {
       projectName: 'Digital Transformation and National eVoting',
       description:
         'Modernized legacy CRM for NBR, delivered ERP & POS for GonutswithDonuts, and built nationwide eVoting platform.',
-      image: '/images/OurJourneyTimeline/nbr.png',
+      image: '/images/OurJourneyTimeline/NBR-Feature.webp',
       points: [
         'Upgraded NBR CRM to a paperless system approved by Natwest Bank',
         'Built ERP and POS platform with distributor and BOM management for GonutswithDonuts',

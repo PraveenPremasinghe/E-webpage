@@ -18,10 +18,11 @@ const WeOffer = () => {
     <section className="we-offer-section-bg pt-10 pb-10 sm:pt-18 sm:pb-18 md:pt-24 md:pb-24">
   <div className="container ">
         <SectionTitle
-          subtitle='What we offer ?'
-          title='One Platform. Multiple Possibilities.'
-          paragraph='Where innovation meets real-world performance.'
+          subtitle="Our Expertise"
+          title="Smarter Solutions for Digital Growth"
+          paragraph="From AI-powered ERP platforms to full-cycle product development, we deliver scalable technology solutions tailored for startups, SMEs, and enterprises."
         />
+
 
         <div className=' mt-14 px-4 sm:px-0'>
           <div className='wow fadeInUp' data-wow-delay='.2s'>
@@ -82,7 +83,7 @@ const WeOffer = () => {
     </div>
     <div className='w-10'>
       <img
-        src='/images/products/Strategic-img.png'
+        src='/images/products/statgi.png'
         alt='linear demo image'
         className='absolute -bottom-6 -right-4 h-full w-full rounded-2xl object-contain sm:-bottom-8 lg:-right-[55%]'
       />
