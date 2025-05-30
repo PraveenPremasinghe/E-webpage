@@ -12,9 +12,9 @@ const SectionTitle = ({
   center?: boolean;
 }) => {
   return (
-    <div className="mx-auto flex w-full flex-wrap justify-center px-4 sm:px-6 lg:px-8">
+    <div className="mx-auto flex w-full flex-wrap justify-center px-0 md:px-6 lg:px-8">
       <div
-        className={`wow fadeInUp w-full px-4 ${
+        className={`wow fadeInUp w-full px-0 md:px-4 ${
           center ? "mx-auto text-center" : ""
         }`}
         data-wow-delay=".1s"

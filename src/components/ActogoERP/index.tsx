@@ -48,7 +48,7 @@ const ActogoERP = () => {
   ];
 
   return (
-    <section className="bg-zinc-950 py-16 sm:py-24 md:py-28">
+    <section className="bg-slate-900 py-16 sm:py-24 md:py-28">
   <div className="container px-4 sm:px-6 mx-auto">
 
 
@@ -165,7 +165,7 @@ const ActogoERP = () => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="relative p-6 sm:p-8 md:p-10 rounded-2xl overflow-hidden h-full min-h-[400px]"
+              className="relative p-6 sm:p-8 md:p-10 rounded-2xl overflow-hidden h-full "
             >
               {/* Gradient background layers */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#FB923C] via-[#F472B6] to-[#E879F9]">
@@ -174,7 +174,7 @@ const ActogoERP = () => {
                   className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_70%)]" />
 
                 {/* Noise texture */}
-                <div className="absolute inset-0 z-10 bg-[url('/noise.png')] opacity-[0.02] mix-blend-color-dodge" />
+                <div className="absolute inset-0 z-10 bg-[url(' ')] opacity-[0.02] mix-blend-color-dodge" />
 
                 {/* Vertical stripes pattern */}
                 <div className="absolute inset-0 flex">

@@ -63,7 +63,7 @@ const Platform = () => {
 
 
   return (
-    <section className="sm:pt-24 md:pt-0 md:pb-24">
+    <section className="pt-0 pb-10 sm:pt-18 sm:pb-18 md:pt-12 md:pb-24">
       <div className="">
        <div className="container">
   <motion.div

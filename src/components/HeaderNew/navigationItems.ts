@@ -72,7 +72,7 @@ export const navigationItems: NavigationItem[] = [
                   "Batch tracking",
                   "Warehouse mapping",
                 ],
-                image: "erp_inventory.jpg",
+                image: "images/megaMenu/erp_operations.webp",
               },
               {
                 title: "Procurement",
@@ -85,7 +85,7 @@ export const navigationItems: NavigationItem[] = [
                   "Approval workflows",
                   "Budget control",
                 ],
-                image: "erp_procurement.jpg",
+                image: "images/megaMenu/erp_operations.webp",
               },
             ],
           },
@@ -105,7 +105,7 @@ export const navigationItems: NavigationItem[] = [
                   "Patient history tracking",
                   "Telemedicine support",
                 ],
-                image: "healthcare_patient.jpg",
+                image: "images/megaMenu/erp_operations.webp",
               },
               {
                 title: "Billing System",
@@ -118,7 +118,7 @@ export const navigationItems: NavigationItem[] = [
                   "Invoice generation",
                   "Payment gateway integration",
                 ],
-                image: "healthcare_billing.jpg",
+                image: "images/megaMenu/erp_operations.webp",
               },
             ],
           },
@@ -153,7 +153,7 @@ export const navigationItems: NavigationItem[] = [
                   "Scalable architecture",
                   "Real-time analytics",
                 ],
-                image: "erp_operations.jpg",
+                image: "images/megaMenu/erp_operations.webp",
               },
             ],
           },
@@ -175,7 +175,7 @@ export const navigationItems: NavigationItem[] = [
                   "Loyalty programs",
                   "Unified communication",
                 ],
-                image: "sales_engagement.jpg",
+                image: "images/megaMenu/Sales-Engagement.webp",
               },
             ],
           },
@@ -197,7 +197,7 @@ export const navigationItems: NavigationItem[] = [
                   "Impact measurement",
                   "Customer feedback loops",
                 ],
-                image: "saas_collaboration.jpg",
+               image: "images/megaMenu/SaaS-Solutions.webp",
               },
             ],
           },
@@ -219,7 +219,7 @@ export const navigationItems: NavigationItem[] = [
                   "Secure storage",
                   "Version control",
                 ],
-                image: "smart_docs.jpg",
+              image: "images/megaMenu/erp_operations.webp",
               },
             ],
           },
@@ -241,7 +241,7 @@ export const navigationItems: NavigationItem[] = [
                   "Role-based access",
                   "Compliance tracking",
                 ],
-                image: "egovernance.jpg",
+              image: "images/megaMenu/erp_operations.webp",
               },
             ],
           },
@@ -263,7 +263,7 @@ export const navigationItems: NavigationItem[] = [
                   "Integration ready",
                   "Real-time insights",
                 ],
-                image: "bis_platform.jpg",
+                image: "images/megaMenu/erp_operations.webp",
               },
             ],
           },
@@ -302,7 +302,7 @@ export const navigationItems: NavigationItem[] = [
               stats: [
                 { label: "User Capacity", value: "4x" },
                 { label: "Funding Secured", value: "$2M" },
-                { label: "Less Tech Debt", value: "60%" },
+
               ],
             },
           },
@@ -312,24 +312,24 @@ export const navigationItems: NavigationItem[] = [
               "Centralized solutions to manage and grow franchise ecosystems.",
             icon: "Network",
             points: [
-              { text: "MVP Development & Scaling", icon: "Code" },
-              { text: "Technical Co-founding", icon: "Users" },
-              { text: "Investor-ready Solutions", icon: "LineChart" },
-              { text: "Growth-focused Architecture", icon: "CheckCircle" },
+              { text: "Unified Dashboard Systems", icon: "LayoutDashboard" },
+              { text: "Automated Reporting & Analytics", icon: "BarChart3" },
+              { text: "Multi-location Management", icon: "MapPin" },
+              { text: "Custom Role-based Access", icon: "ShieldCheck" },
             ],
             caseStudy: {
-              title: "TechLaunch MVP Scaling",
+              title: "FranchiseSync Platform",
               description:
-                "We helped TechLaunch scale their MVP to meet growing demand while securing their next funding round.",
+                "We developed a scalable system to unify operations across 50+ franchise locations.",
               highlights: [
-                "12-week implementation timeline",
-                "Architecture redesign & optimization",
-                "DevOps implementation & automation",
+                "Centralized operations portal",
+                "Franchisee training modules",
+                "Integrated POS & inventory tools",
               ],
               stats: [
-                { label: "User Capacity", value: "4x" },
-                { label: "Funding Secured", value: "$2M" },
-                { label: "Less Tech Debt", value: "60%" },
+                { label: "Operational Efficiency", value: "70%↑" },
+                { label: "Support Tickets Reduced", value: "50%" },
+
               ],
             },
           },
@@ -338,24 +338,87 @@ export const navigationItems: NavigationItem[] = [
             subtitle:
               "Insights and tools to evaluate and scale tech portfolios.",
             icon: "DollarSign",
+            points: [
+              { text: "Due Diligence Platforms", icon: "ClipboardCheck" },
+              { text: "Tech Valuation Dashboards", icon: "TrendingUp" },
+              { text: "Post-Investment Monitoring", icon: "MonitorCheck" },
+              { text: "Custom Reporting Tools", icon: "FileBarChart" },
+            ],
+            caseStudy: {
+              title: "InvestorView Analytics Suite",
+              description:
+                "Enabled real-time portfolio tracking and risk visibility for a leading venture capital firm.",
+              highlights: [
+                "Custom investor dashboard",
+                "Data-driven risk analysis",
+                "Startup milestone tracking",
+              ],
+              stats: [
+                { label: "Portfolio ROI Visibility", value: "100%" },
+                { label: "Decision Speed Improved", value: "40%" },
+
+              ],
+            },
           },
           {
             name: "Strategic Outsourcing",
             subtitle:
               "Smart outsourcing strategies for cost-effective execution.",
             icon: "Briefcase",
+            points: [
+              { text: "Dedicated Offshore Teams", icon: "Users" },
+              { text: "Process Automation", icon: "Settings2" },
+              { text: "Agile Project Management", icon: "Activity" },
+              { text: "Timezone-aligned Support", icon: "Clock" },
+            ],
+            caseStudy: {
+              title: "OpsBridge Delivery Network",
+              description:
+                "We helped a Fortune 500 company reduce costs by streamlining development and support through offshore teams.",
+              highlights: [
+                "Nearshore & offshore team integration",
+                "Agile sprints with local PM oversight",
+                "High SLA compliance & quality controls",
+              ],
+              stats: [
+                { label: "Cost Reduction", value: "45%" },
+                { label: "Time to Market", value: "30% faster" },
+
+              ],
+            },
           },
           {
             name: "Tech Partnerships",
             subtitle:
               "Collaborate on innovation with integrated tech ecosystems.",
             icon: "Link",
+            points: [
+              { text: "API-first Integration", icon: "Plug" },
+              { text: "Joint GTM Strategy", icon: "Target" },
+              { text: "Custom Product Co-builds", icon: "Box" },
+              { text: "Innovation Sprints", icon: "Zap" },
+            ],
+            caseStudy: {
+              title: "FusionTech Alliance Launch",
+              description:
+                "Together with FusionTech, we co-developed a data analytics module now used across 3 continents.",
+              highlights: [
+                "Joint R&D team setup",
+                "Integrated deployment pipelines",
+                "Global rollout support",
+              ],
+              stats: [
+                { label: "Time to MVP", value: "8 weeks" },
+                { label: "Shared Clients Onboarded", value: "15+" },
+              ],
+            },
           },
         ],
       },
     ],
     component: "WhoWeEmpowerSection",
-  },
+  }
+  ,
   {
     id: "about-company",
     title: "About Company",

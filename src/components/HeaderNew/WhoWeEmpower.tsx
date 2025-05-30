@@ -99,7 +99,7 @@ export default function WhoWeEmpowerSection({ itemData  }: { itemData : Category
                 </div>
 
                 <div className="md:w-1/3">
-                  <div className="grid grid-cols-3 gap-2 md:grid-cols-1 md:grid-rows-3">
+                  <div className="grid grid-cols-2 gap-2 md:grid-cols-1 md:grid-rows-2">
                     {itemData.caseStudy?.stats?.map((stat, ids) => (
                       <div
                         key={ids}

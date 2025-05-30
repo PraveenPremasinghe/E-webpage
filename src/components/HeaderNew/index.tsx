@@ -58,7 +58,13 @@ import {
   ModalContent,
   ModalHeader,
   ModalBody,
-  useDisclosure, Drawer, DrawerContent, DrawerHeader, DrawerBody, DrawerFooter, menuItem
+  useDisclosure,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerBody,
+  DrawerFooter,
+  menuItem,
 } from "@heroui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import CEOMessageCard from "@/components/HeaderNew/AboutCompanyContent";
@@ -67,7 +73,6 @@ import WhoWeEmpowerSection from "@/components/HeaderNew/WhoWeEmpower";
 import AboutCompanySection from "@/components/HeaderNew/AboutCompanyContent";
 import CareersSection from "@/components/HeaderNew/CareersContent";
 import { PrimaryButton } from "@/components/ui/ShinyButton";
-
 
 // Icon mapping for dynamic rendering
 const IconMap: Record<string, any> = {
@@ -127,14 +132,14 @@ export default function HeaderNew() {
   const {
     isOpen: isModalOpen,
     onOpen: onModalOpen,
-    onOpenChange: onModalOpenChange
+    onOpenChange: onModalOpenChange,
   } = useDisclosure();
 
   const {
     isOpen: isDrawerOpen,
     onOpen: onDrawerOpen,
     onClose: onDrawerClose,
-    onOpenChange: onDrawerOpenChange
+    onOpenChange: onDrawerOpenChange,
   } = useDisclosure();
 
   // Update current path when component mounts or pathname changes
@@ -392,7 +397,6 @@ export default function HeaderNew() {
     };
   }, [isContactFormOpen]);
 
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -538,12 +542,9 @@ export default function HeaderNew() {
                                   toggleDropdown(`mobile-${item.id}`);
                                   console.log(item.title);
                                   setSelectedCategory(item.title);
-                                  if(item.title === "About Company") {
-                                    setMobileSelectedItemData(
-                                      item.title,
-                                    );
+                                  if (item.title === "About Company") {
+                                    setMobileSelectedItemData(item.title);
                                   }
-
                                 }}
                                 className={`flex w-full items-center justify-between rounded-md px-3 py-2 text-left font-medium hover:bg-gray-100 ${
                                   isActive
@@ -556,7 +557,9 @@ export default function HeaderNew() {
                                   size={16}
                                   className={`transform transition-transform duration-200 ${
                                     activeDropdown === `mobile-${item.id}`
-                                      ? item.title === "About Company" ? "" : "rotate-180"
+                                      ? item.title === "About Company"
+                                        ? ""
+                                        : "rotate-180"
                                       : ""
                                   }`}
                                 />
@@ -604,12 +607,14 @@ export default function HeaderNew() {
                             <Link
                               key={item.id}
                               href={item.link || "#"}
-                              className={`block rounded-md px-3 py-2 font-medium hover:bg-gray-100 transition-colors ${
-                                isActive ? "text-[#A12266] bg-pink-50" : "text-gray-700"
+                              className={`block rounded-md px-3 py-2 font-medium transition-colors hover:bg-gray-100 ${
+                                isActive
+                                  ? "bg-pink-50 text-[#A12266]"
+                                  : "text-gray-700"
                               }`}
                             >
-                        {item.title}
-                      </Link>
+                              {item.title}
+                            </Link>
                           );
                         })}
                         <div className="space-y-2 pt-4">
@@ -641,7 +646,6 @@ export default function HeaderNew() {
                           </button>
                         </div>
 
-
                         {/* Render the selected item details */}
                         <div className="space-y-6">
                           <div className="flex flex-col">
@@ -656,7 +660,9 @@ export default function HeaderNew() {
                               {selectedCategory === "Who We Empower" && (
                                 <div className="mx-auto">
                                   <div className="flex h-[80vh]">
-                                    <WhoWeEmpowerSection itemData={mobileSelectedItemData!} />
+                                    <WhoWeEmpowerSection
+                                      itemData={mobileSelectedItemData!}
+                                    />
                                   </div>
                                 </div>
                               )}
@@ -770,12 +776,8 @@ export default function HeaderNew() {
       </div>
       {/***************************   */}
 
-
-
       {/* Mega Menu - Only visible when a dropdown is active */}
       {megaMenuVisible && activeNavItem && "categories" in activeNavItem && (
-
-
         <div
           ref={megaMenuRef}
           className={`inner-details-card mega-menu fixed mx-auto w-full bg-white transition-all duration-300 ease-in-out 
@@ -872,6 +874,7 @@ export default function HeaderNew() {
                     {selectedItemData && (
                       <div className="flex   flex-col">
                         <div className="flex w-full flex-col  ">
+
                           <Tabs
                             key="primary"
                             aria-label="Tabs"
@@ -885,30 +888,20 @@ export default function HeaderNew() {
                                 <div className="">
                                   <div className="space-y-10">
                                     {/* Hero Section */}
-                                    <section className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
-                                      <div>
-                                        <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+                                    <section className="flex h-full flex-col gap-8 lg:flex-row">
+                                      <div className="flex w-full flex-col lg:w-1/2">
+                                        <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-3xl md:text-4xl">
                                           {tab.title}
                                         </h1>
-                                        <p className="mt-1 text-lg text-gray-600">
+                                        <p className="mt-3 text-lg text-gray-600 dark:text-gray-300 sm:text-lg">
                                           {tab.subtitle}
                                         </p>
-                                        <p className="mt-6 text-gray-700">
+                                        <p className="mt-6 max-w-3xl   leading-relaxed text-gray-700 dark:text-gray-400  ">
                                           {tab.description}
                                         </p>
-                                      </div>
-                                      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                                        <img
-                                          src={`/images/${tab.image}`}
-                                          alt={tab.title}
-                                          className="rounded-lg shadow-md"
-                                        />
-                                      </div>
-                                    </section>
-
-                                    {/* Features Section */}
-                                    <section>
-                                      <h2 className="mb-6 text-2xl font-bold text-gray-900">
+                                        {/* Features Section */}
+                                        <section>
+                                      <h2 className="mb-6 mt-4 text-2xl font-bold text-gray-900">
                                         Key Features
                                       </h2>
                                       <div className="space-y-4">
@@ -929,6 +922,17 @@ export default function HeaderNew() {
                                         )}
                                       </div>
                                     </section>
+                                      </div>
+
+                                      <div className="w-full lg:w-1/2 mega-menu-img  ">
+                                        <img
+                                          src={`/${tab.image}`}
+                                          alt={tab.title}
+                                          className=" transition-all duration-500 group-hover:scale-105"
+                                        />
+                                      </div>
+                                    </section>
+
 
                                     {/* CTA Section */}
                                     <div className=" mx-auto max-w-5xl rounded-xl bg-gradient-to-r from-pink-600 to-pink-800 p-8 text-white shadow-lg">
@@ -944,7 +948,7 @@ export default function HeaderNew() {
                                         </div>
                                         <div className="flex flex-col items-center justify-center gap-4 ">
                                           <PrimaryButton>
-                                           I&apos;m interested
+                                            I&apos;m interested
                                           </PrimaryButton>
 
                                           {activeNavItem ? (
@@ -986,6 +990,7 @@ export default function HeaderNew() {
                                         </div>
                                       </div>
                                     </div>
+
                                   </div>
                                 </div>
                               </Tab>
@@ -998,16 +1003,17 @@ export default function HeaderNew() {
                 </div>
 
                 {/* Bottom CTA bar */}
-                <div className="flex justify-end space-x-6 rounded-bl-lg rounded-br-lg border-t border-gray-200 p-4">
-                  <button className="flex items-center text-gray-800">
-                    <MessageCircle size={18} className="mr-2" />
-                    <span>Contact Us</span>
-                  </button>
-                  <button className="flex items-center text-gray-800">
-                    <Play size={18} className="mr-2" />
-                    <span>Watch demo</span>
-                  </button>
-                </div>
+                {/*<div className="flex justify-end space-x-6 rounded-bl-lg rounded-br-lg border-t border-gray-200 p-4">*/}
+                {/*  <button className="flex items-center text-gray-800">*/}
+                {/*    <MessageCircle size={18} className="mr-2" />*/}
+                {/*    <span>Contact Us</span>*/}
+                {/*  </button>*/}
+                {/*  <button className="flex items-center text-gray-800">*/}
+                {/*    <Play size={18} className="mr-2" />*/}
+                {/*    <span>Watch demo</span>*/}
+                {/*  </button>*/}
+                {/*</div>*/}
+
               </div>
             )}
         </div>
@@ -1018,6 +1024,11 @@ export default function HeaderNew() {
         onOpenChange={onModalOpenChange}
         backdrop="blur"
         size="lg"
+        className="z-[999]"
+        classNames={{
+          backdrop: "z-[999]",
+          wrapper: "z-[999]"
+        }}
       >
         <ModalContent className="max-w-md">
           {(onClose) => (

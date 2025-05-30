@@ -7,13 +7,14 @@ import {
 } from 'lucide-react'
 import Image from "next/image";
 import React from "react";
+import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 
 const Footer = () => {
   return (
-    <footer className="bg-primary px-4 py-12 text-white sm:px-6 lg:px-8">
+    <footer className="bg-slate-900 px-4 py-12 text-white sm:px-6 lg:px-8 ">
       <div className="mx-auto max-w-7xl">
         {/* Main Footer Content */}
-        <div className="mb-8 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-5">
+        <div className="mb-12 mt-12 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-5">
           {/* Logo and About Section */}
           <div className="lg:col-span-1">
             <div className="mb-6 flex items-center">
@@ -21,7 +22,7 @@ const Footer = () => {
                 <div className=" max-w-full">
                   <Link href="/" className="navbar-logo block w-full py-5">
                     <Image
-                      src="/images/logo/edhirya-it-logo.webp"
+                      src="/images/logo/edhirya-it-logo-bg.jpg"
                       alt="Edhirya IT Logo"
                       width={200}
                       height={30}
@@ -35,8 +36,6 @@ const Footer = () => {
             <p className="mb-6 text-sm text-white">
               Innovative IT solutions tailored to your business needs.
             </p>
-
-
 
             {/* Social Icons */}
             <div className="flex space-x-4">
@@ -257,13 +256,28 @@ const Footer = () => {
         </div>
 
         {/* Large Chatbase Text */}
-        <div className="border-t border-gray-800 pt-8">
+        <div className="border-t border-gray-800 ">
           <div className="text-center">
             <h2 className="select-none text-6xl font-bold text-pink-200 sm:text-7xl md:text-8xl lg:text-[11rem]">
-                [E]dhirya IT
+                <TextHoverEffect text="[E]dhirya IT." />
             </h2>
+            <div>    <p className=" text-gray-7 text-sm md:text-md">
+                  Designed and Developed by{" "}
+              <Link
+                href=" "
+                rel="nofollow noopner noreferrer"
+                target="_blank"
+                className="text-gray-1 hover:underline"
+              >
+                      © 2024 Edhirtya IT.
+                  </Link>
+                </p></div>
           </div>
         </div>
+
+
+
+
       </div>
     </footer>
   );
