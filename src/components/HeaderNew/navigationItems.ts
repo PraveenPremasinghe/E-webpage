@@ -62,29 +62,31 @@ export const navigationItems: NavigationItem[] = [
             icon: "Building",
             tabs: [
               {
+                title: "Saltside Technologies & Ikman.lk",
+                subtitle: "ERP solution for classifieds and marketplace management.",
+                description: "Integrated ERP tools built to manage operations efficiently for Saltside Technologies.",
+                features: ["Inventory management", "Vendor tracking", "Workflow automation", "Real-time reporting"],
+                image: "images/megaMenu/erp_operations.webp",
+              },
+              {
+                title: "National Business Register & Start.Biz",
+                subtitle: "Digital business registration and compliance management.",
+                description: "Complete ERP suite for government-driven business registration services.",
+                features: ["Registration workflow", "User management", "Document handling", "Audit trails"],
+                image: "images/megaMenu/erp_operations.webp",
+              },
+              {
                 title: "Inventory Management",
                 subtitle: "Real-time control over stock and availability.",
-                description:
-                  "Ideal for businesses needing accurate stock tracking and alerts.",
-                features: [
-                  "Stock visibility",
-                  "Reorder levels",
-                  "Batch tracking",
-                  "Warehouse mapping",
-                ],
+                description: "Ideal for businesses needing accurate stock tracking and alerts.",
+                features: ["Stock visibility", "Reorder levels", "Batch tracking", "Warehouse mapping"],
                 image: "images/megaMenu/erp_operations.webp",
               },
               {
                 title: "Procurement",
                 subtitle: "Simplify purchase processes with automation.",
-                description:
-                  "Ensure compliance, reduce costs, and manage vendors effectively.",
-                features: [
-                  "Purchase order automation",
-                  "Vendor management",
-                  "Approval workflows",
-                  "Budget control",
-                ],
+                description: "Ensure compliance, reduce costs, and manage vendors effectively.",
+                features: ["Purchase order automation", "Vendor management", "Approval workflows", "Budget control"],
                 image: "images/megaMenu/erp_operations.webp",
               },
             ],
@@ -95,29 +97,129 @@ export const navigationItems: NavigationItem[] = [
             icon: "Hospital",
             tabs: [
               {
+                title: "DentalPro",
+                subtitle: "Dental clinic management system.",
+                description: "Appointment, patient records, and billing for dental practices.",
+                features: ["Dental charting", "EHR", "Billing", "Patient history"],
+                image: "images/megaMenu/erp_operations.webp",
+              },
+              {
                 title: "Patient Management",
                 subtitle: "Centralized patient records and appointments.",
-                description:
-                  "EHR integration, appointment scheduling, and follow-ups made easy.",
-                features: [
-                  "EHR integration",
-                  "Appointment booking",
-                  "Patient history tracking",
-                  "Telemedicine support",
-                ],
+                description: "EHR integration, appointment scheduling, and follow-ups made easy.",
+                features: ["EHR integration", "Appointment booking", "Patient history tracking", "Telemedicine support"],
                 image: "images/megaMenu/erp_operations.webp",
               },
               {
                 title: "Billing System",
                 subtitle: "Streamline invoicing and insurance claims.",
-                description:
-                  "Automated medical billing with insurance support and transparency.",
-                features: [
-                  "Medical coding",
-                  "Insurance claim tracking",
-                  "Invoice generation",
-                  "Payment gateway integration",
-                ],
+                description: "Automated medical billing with insurance support and transparency.",
+                features: ["Medical coding", "Insurance claim tracking", "Invoice generation", "Payment gateway integration"],
+                image: "images/megaMenu/erp_operations.webp",
+              },
+            ],
+          },
+          {
+            name: "Food",
+            subtitle: "Modern tech for food and retail businesses.",
+            icon: "Utensils",
+            tabs: [
+              {
+                title: "Gonuts with Donuts",
+                subtitle: "POS and kitchen management for retail chains.",
+                description: "End-to-end food outlet management from kitchen to cashier.",
+                features: ["POS integration", "Order management", "Customer loyalty", "Inventory sync"],
+                image: "images/megaMenu/erp_operations.webp",
+              },
+              {
+                title: "PAK Supermarket",
+                subtitle: "Supermarket ERP and inventory automation.",
+                description: "Retail-focused ERP solution for stock, billing, and CRM.",
+                features: ["Multi-location stock", "Billing", "Offers & promotions", "Customer analytics"],
+                image: "images/megaMenu/erp_operations.webp",
+              },
+            ],
+          },
+          {
+            name: "Government",
+            subtitle: "Digitization for public sector operations.",
+            icon: "ShieldCheck",
+            tabs: [
+              {
+                title: "SlsCa",
+                subtitle: "Smart compliance and automation for authorities.",
+                description: "Public sector ERP built for compliance, document flow, and approvals.",
+                features: ["Document tracking", "eForms", "Role-based access", "Secure logs"],
+                image: "images/megaMenu/erp_operations.webp",
+              },
+            ],
+          },
+          {
+            name: "Construction",
+            subtitle: "Project management for construction businesses.",
+            icon: "Hammer",
+            tabs: [
+              {
+                title: "Pasg",
+                subtitle: "Site and material tracking for contractors.",
+                description: "Manage construction workflows with procurement and project modules.",
+                features: ["Site progress", "Material requests", "Contractor logs", "Timesheet integration"],
+                image: "images/megaMenu/erp_operations.webp",
+              },
+            ],
+          },
+          {
+            name: "Automotive",
+            subtitle: "Digitally transform vehicle-related services.",
+            icon: "Car",
+            tabs: [
+              {
+                title: "AMVMS",
+                subtitle: "Automated Motor Vehicle Management System.",
+                description: "Complete solution for managing vehicle registrations and inspections.",
+                features: ["Vehicle database", "Inspection records", "License renewals", "Reporting"],
+                image: "images/megaMenu/erp_operations.webp",
+              },
+            ],
+          },
+          {
+            name: "Accounting",
+            subtitle: "HR and finance operations in one place.",
+            icon: "FileText",
+            tabs: [
+              {
+                title: "HRM",
+                subtitle: "Human Resource and Payroll Management.",
+                description: "Streamlined employee data, payroll processing, and leave tracking.",
+                features: ["Payslips", "Leave approvals", "Attendance", "Employee portal"],
+                image: "images/megaMenu/erp_operations.webp",
+              },
+            ],
+          },
+          {
+            name: "Education",
+            subtitle: "Modern learning and management systems.",
+            icon: "Book",
+            tabs: [
+              {
+                title: "CA",
+                subtitle: "Student & course management for educational institutes.",
+                description: "ERP tailored for course registration, grading, and communication.",
+                features: ["Course catalogs", "Timetable", "Exam results", "Notifications"],
+                image: "images/megaMenu/erp_operations.webp",
+              },
+            ],
+          },
+          {
+            name: "Beauty",
+            subtitle: "Salon and spa management software.",
+            icon: "Sparkles",
+            tabs: [
+              {
+                title: "Beautech Salon & Spa Management System",
+                subtitle: "Appointment and staff management for beauty businesses.",
+                description: "Boost customer experience and simplify your spa/salon operations.",
+                features: ["Online bookings", "Stylist schedules", "Service tracking", "Customer profiles"],
                 image: "images/megaMenu/erp_operations.webp",
               },
             ],
@@ -125,7 +227,8 @@ export const navigationItems: NavigationItem[] = [
         ],
       },
     ],
-  },
+  }
+  ,
   {
     id: "what-we-offer",
     title: "What We Offer",
@@ -141,7 +244,7 @@ export const navigationItems: NavigationItem[] = [
             icon: "Heart",
             tabs: [
               {
-                title: "Operational Backbone",
+                title: "Saltside Technologies",
                 subtitle:
                   "Manage inventory, procurement, and fulfilment with flexibility",
                 description:
@@ -155,6 +258,7 @@ export const navigationItems: NavigationItem[] = [
                 ],
                 image: "images/megaMenu/erp_operations.webp",
               },
+
             ],
           },
           {
