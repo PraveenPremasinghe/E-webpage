@@ -43,7 +43,6 @@ import {
   ArrowRight,
   Check,
   ChevronLeft,
-
 } from "lucide-react";
 import { navigationItems, NavigationItem } from "./navigationItems";
 import ContactForm from "@/components/ContactForm/ContactForm";
@@ -110,6 +109,7 @@ const IconMap: Record<string, any> = {
   Package,
   TrendingUp,
 };
+import { usePathname, useSearchParams } from "next/navigation";
 
 export default function HeaderNew() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -149,15 +149,9 @@ export default function HeaderNew() {
       setCurrentPath(window.location.pathname);
     };
 
-    // Set initial path
     updateCurrentPath();
-
-    // Add event listener for navigation changes (for SPA navigation)
     window.addEventListener("popstate", updateCurrentPath);
-
-    return () => {
-      window.removeEventListener("popstate", updateCurrentPath);
-    };
+    return () => window.removeEventListener("popstate", updateCurrentPath);
   }, []);
 
   // Find active dropdown content if available
@@ -204,22 +198,52 @@ export default function HeaderNew() {
     }
   };
 
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const tabId = searchParams.get("id");
+
   // Function to check if a nav item is active
   const isNavItemActive = (item: NavigationItem) => {
-    // If a dropdown is active, only highlight it
-    if (activeDropdown) {
-      return item.id === activeDropdown;
+    const idPrefixToMenuIdMap: Record<string, string> = {
+      // From "solutions-by-industry"
+      erp_inventory_management: "solutions-by-industry",
+      erp_business_register: "solutions-by-industry",
+      erp_inventory_tracking: "solutions-by-industry",
+      erp_procurement: "solutions-by-industry",
+      healthcare_: "solutions-by-industry",
+      food_: "solutions-by-industry",
+      government_: "solutions-by-industry",
+      construction_: "solutions-by-industry",
+      automotive_: "solutions-by-industry",
+      accounting_: "solutions-by-industry",
+      education_: "solutions-by-industry",
+      beauty_: "solutions-by-industry",
+
+      // From "what-we-offer"
+      erp_platform_: "what-we-offer",
+      sales_and_engagement_: "what-we-offer",
+      saas_solutions_: "what-we-offer",
+      smart_docs_and_data_: "what-we-offer",
+      egovernance_and_b2b_: "what-we-offer",
+      bis_platform_: "what-we-offer",
+
+      // From "who-we-empower"
+      who_we_empower_: "who-we-empower",
+    };
+
+    if (pathname === "/our-service" && tabId) {
+      for (const prefix in idPrefixToMenuIdMap) {
+        if (tabId.startsWith(prefix)) {
+          return item.id === idPrefixToMenuIdMap[prefix];
+        }
+      }
     }
 
-    // No dropdown active, check based on route
-    const link = (item as any).link;
-
-    if (link === "/") {
-      return currentPath === "/";
-    }
-
-    return link && currentPath.startsWith(link);
+    // Default fallback logic
+    if (item.link === "/") return pathname === "/";
+    return item.link && pathname.startsWith(item.link);
   };
+
 
   // Handle click outside to close mega menu
   useEffect(() => {
@@ -415,6 +439,11 @@ export default function HeaderNew() {
     e.preventDefault();
     console.log("Form submitted:", formData);
     onModalOpenChange();
+  };
+  const handleLinkClick = () => {
+    setMobileSelectedItemData(null);
+    onDrawerClose();
+    setActiveDropdown(null);
   };
 
   return (
@@ -662,7 +691,12 @@ export default function HeaderNew() {
                                 <div className="mx-auto">
                                   <div className="flex h-[80vh]">
                                     <WhoWeEmpowerSection
-                                      itemData={mobileSelectedItemData!}
+                                      itemData={selectedItemData!}
+                                      onNavigate={() => {
+                                        setMobileSelectedItemData(null);
+                                        onDrawerClose();
+                                        setActiveDropdown(null);
+                                      }}
                                     />
                                   </div>
                                 </div>
@@ -865,18 +899,23 @@ export default function HeaderNew() {
 
                   {/* Main content area - Selected item details */}
                   <div className="flex-1 overflow-auto p-8">
-  {activeNavItem.id === "who-we-empower" && (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="mx-auto"
-    >
-      <div className="flex h-[80vh]">
-        <WhoWeEmpowerSection itemData={selectedItemData!} />
-      </div>
-    </motion.div>
-  )}
+                    {activeNavItem.id === "who-we-empower" && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5 }}
+                        className="mx-auto"
+                      >
+                        <WhoWeEmpowerSection
+                          itemData={selectedItemData!}
+                          onNavigate={() => {
+                            setMobileSelectedItemData(null);
+                            onDrawerClose();
+                            setActiveDropdown(null);
+                          }}
+                        />
+                      </motion.div>
+                    )}
                     {selectedItemData && (
                       <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -884,161 +923,180 @@ export default function HeaderNew() {
                         transition={{ duration: 0.5 }}
                         className="flex flex-col"
                       >
-      <div className="flex w-full flex-col">
-        <Tabs
-          key="primary"
-          aria-label="Tabs"
-          radius="sm"
-          className="mb-4"
-          size="lg"
-          variant="solid"
-        >
-          {selectedItemData.tabs?.map((tab, index) => (
-            <Tab key={index} title={tab.title}>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3, delay: 0.2 }}
-              >
-                <div className="space-y-10">
-                  {/* Hero Section */}
-                  <section className="flex h-full flex-col gap-8 lg:flex-row">
-                    <motion.div
-                      initial={{ x: -20, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      transition={{ duration: 0.5 }}
-                      className="flex w-full flex-col lg:w-1/2"
-                    >
-                      <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-3xl md:text-3xl">
-                        {tab.title}
-                      </h1>
-                      <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.2 }}
-                        className="mt-3 text-lg text-gray-600 dark:text-gray-300 sm:text-lg"
-                      >
-                        {tab.subtitle}
-                      </motion.p>
-                      <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.3 }}
-                        className="mt-6 max-w-3xl leading-relaxed text-gray-700 dark:text-gray-400"
-                      >
-                        {tab.description}
-                      </motion.p>
-                      {/* Features Section */}
-                      <motion.section
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.4 }}
-                      >
-                        <h2 className="mb-6 mt-4 text-2xl font-bold text-gray-900">
-                          Key Features
-                        </h2>
-                        <div className="space-y-4">
-                          {tab.features.map((feature, featureIndex) => (
-                            <motion.div
-                              key={featureIndex}
-                              initial={{ opacity: 0, x: -10 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: 0.1 * featureIndex }}
-                              className="flex items-start space-x-3"
-                            >
-                              <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-pink-100">
-                                <Check className="h-4 w-4 text-pink-600" />
-                              </div>
-                              <span className="text-gray-700">{feature}</span>
-                            </motion.div>
-                          ))}
+                        <div className="flex w-full flex-col">
+                          <Tabs
+                            key="primary"
+                            aria-label="Tabs"
+                            radius="sm"
+                            className="mb-4"
+                            size="lg"
+                            variant="solid"
+                          >
+                            {selectedItemData.tabs?.map((tab, index) => (
+                              <Tab key={index} title={tab.title}>
+                                <motion.div
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ duration: 0.3, delay: 0.2 }}
+                                >
+                                  <div className="space-y-10">
+                                    {/* Hero Section */}
+                                    <section className="flex h-full flex-col gap-8 lg:flex-row">
+                                      <motion.div
+                                        initial={{ x: -20, opacity: 0 }}
+                                        animate={{ x: 0, opacity: 1 }}
+                                        transition={{ duration: 0.5 }}
+                                        className="flex w-full flex-col lg:w-1/2"
+                                      >
+                                        <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-3xl md:text-3xl">
+                                          {tab.title}
+                                        </h1>
+                                        <motion.p
+                                          initial={{ opacity: 0 }}
+                                          animate={{ opacity: 1 }}
+                                          transition={{ delay: 0.2 }}
+                                          className="mt-3 text-lg text-gray-600 dark:text-gray-300 sm:text-lg"
+                                        >
+                                          {tab.subtitle}
+                                        </motion.p>
+                                        <motion.p
+                                          initial={{ opacity: 0 }}
+                                          animate={{ opacity: 1 }}
+                                          transition={{ delay: 0.3 }}
+                                          className="mt-6 max-w-3xl leading-relaxed text-gray-700 dark:text-gray-400"
+                                        >
+                                          {tab.description}
+                                        </motion.p>
+                                        {/* Features Section */}
+                                        <motion.section
+                                          initial={{ opacity: 0 }}
+                                          animate={{ opacity: 1 }}
+                                          transition={{ delay: 0.4 }}
+                                        >
+                                          <h2 className="mb-6 mt-4 text-2xl font-bold text-gray-900">
+                                            Key Features
+                                          </h2>
+                                          <div className="space-y-4">
+                                            {tab.features.map(
+                                              (feature, featureIndex) => (
+                                                <motion.div
+                                                  key={featureIndex}
+                                                  initial={{
+                                                    opacity: 0,
+                                                    x: -10,
+                                                  }}
+                                                  animate={{ opacity: 1, x: 0 }}
+                                                  transition={{
+                                                    delay: 0.1 * featureIndex,
+                                                  }}
+                                                  className="flex items-start space-x-3"
+                                                >
+                                                  <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-pink-100">
+                                                    <Check className="h-4 w-4 text-pink-600" />
+                                                  </div>
+                                                  <span className="text-gray-700">
+                                                    {feature}
+                                                  </span>
+                                                </motion.div>
+                                              ),
+                                            )}
+                                          </div>
+                                        </motion.section>
+                                      </motion.div>
+
+                                      <motion.div
+                                        initial={{ scale: 0.9, opacity: 0 }}
+                                        animate={{ scale: 1, opacity: 1 }}
+                                        transition={{
+                                          duration: 0.5,
+                                          delay: 0.3,
+                                        }}
+                                        className="mega-menu-img w-full lg:w-1/2"
+                                      >
+                                        <img
+                                          src={`/${tab.image}`}
+                                          alt={tab.title}
+                                          className="transition-all duration-500 group-hover:scale-105"
+                                        />
+                                      </motion.div>
+                                    </section>
+
+                                    {/* CTA Section */}
+                                    <motion.div
+                                      initial={{ opacity: 0, y: 20 }}
+                                      animate={{ opacity: 1, y: 0 }}
+                                      transition={{ delay: 0.5 }}
+                                      className="mx-auto max-w-5xl rounded-xl bg-gradient-to-r from-pink-600 to-pink-800 p-8 text-white shadow-lg"
+                                      whileHover={{ scale: 1.01 }}
+                                    >
+                                      <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+                                        <div>
+                                          <h2 className="text-2xl font-bold">
+                                            Ready to optimize your {tab.title}?
+                                          </h2>
+                                          <p className="mt-2 text-pink-100">
+                                            Schedule a demo to see how our
+                                            system fits your needs
+                                          </p>
+                                        </div>
+                                        <div className="flex flex-col items-center justify-center gap-4">
+                                          <motion.div
+                                            whileHover={{ scale: 1.05 }}
+                                            whileTap={{ scale: 0.95 }}
+                                          >
+                                            <PrimaryButton>
+                                              I&apos;m interested
+                                            </PrimaryButton>
+                                          </motion.div>
+
+                                          {activeNavItem ? (
+                                            [
+                                              "what-we-offer",
+                                              "solutions-by-industry",
+                                            ].includes(activeNavItem.id) ? (
+                                              <motion.div whileHover={{ x: 5 }}>
+                                                <Link
+                                                  href={{
+                                                    pathname: "/our-service",
+                                                    query: { id: tab.id },
+                                                  }}
+                                                  onClick={handleLinkClick}
+                                                  className="inline-flex items-center font-medium text-[#fff] hover:underline"
+                                                >
+                                                  Learn more
+                                                  <ArrowRight
+                                                    size={16}
+                                                    className="ml-1"
+                                                  />
+                                                </Link>
+                                              </motion.div>
+                                            ) : (
+                                              <motion.div whileHover={{ x: 5 }}>
+                                                <a
+                                                  href="#"
+                                                  className="inline-flex items-center font-medium text-[#fff] hover:underline"
+                                                >
+                                                  Learn more
+                                                  <ArrowRight
+                                                    size={16}
+                                                    className="ml-1"
+                                                  />
+                                                </a>
+                                              </motion.div>
+                                            )
+                                          ) : null}
+                                        </div>
+                                      </div>
+                                    </motion.div>
+                                  </div>
+                                </motion.div>
+                              </Tab>
+                            ))}
+                          </Tabs>
                         </div>
-                      </motion.section>
-                    </motion.div>
-
-                    <motion.div
-                      initial={{ scale: 0.9, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.5, delay: 0.3 }}
-                      className="w-full lg:w-1/2 mega-menu-img"
-                    >
-                      <img
-                        src={`/${tab.image}`}
-                        alt={tab.title}
-                        className="transition-all duration-500 group-hover:scale-105"
-                      />
-                    </motion.div>
-                  </section>
-
-                  {/* CTA Section */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
-                    className="mx-auto max-w-5xl rounded-xl bg-gradient-to-r from-pink-600 to-pink-800 p-8 text-white shadow-lg"
-                    whileHover={{ scale: 1.01 }}
-                  >
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                      <div>
-                        <h2 className="text-2xl font-bold">
-                          Ready to optimize your {tab.title}?
-                        </h2>
-                        <p className="mt-2 text-pink-100">
-                          Schedule a demo to see how our system fits your needs
-                        </p>
-                      </div>
-                      <div className="flex flex-col items-center justify-center gap-4">
-                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                          <PrimaryButton>
-                            I&apos;m interested
-                          </PrimaryButton>
-                        </motion.div>
-
-                        {activeNavItem ? (
-                          activeNavItem.id === "what-we-offer" ? (
-                            <motion.div whileHover={{ x: 5 }}>
-                              <Link
-                                href={{
-                                  pathname: "/our-service",
-                                  query: {
-                                    title: tab.title,
-                                    subtitle: tab.subtitle,
-                                    description: tab.description,
-                                    image: tab.image,
-                                  },
-                                  hash: "overview",
-                                }}
-                                className="inline-flex items-center font-medium text-[#fff] hover:underline"
-                              >
-                                Learn more
-                                <ArrowRight size={16} className="ml-1" />
-                              </Link>
-                            </motion.div>
-                          ) : (
-                            <motion.div whileHover={{ x: 5 }}>
-                              <a
-                                href="#"
-                                className="inline-flex items-center font-medium text-[#fff] hover:underline"
-                              >
-                                Learn more
-                                <ArrowRight size={16} className="ml-1" />
-                              </a>
-                            </motion.div>
-                          )
-                        ) : null}
-                      </div>
-                    </div>
-                  </motion.div>
-                </div>
-              </motion.div>
-            </Tab>
-          ))}
-        </Tabs>
-      </div>
-    </motion.div>
+                      </motion.div>
                     )}
-</div>
-
+                  </div>
                 </div>
 
                 {/* Bottom CTA bar */}
@@ -1052,7 +1110,6 @@ export default function HeaderNew() {
                 {/*    <span>Watch demo</span>*/}
                 {/*  </button>*/}
                 {/*</div>*/}
-
               </div>
             )}
         </div>
@@ -1066,7 +1123,7 @@ export default function HeaderNew() {
         className="z-[999]"
         classNames={{
           backdrop: "z-[999]",
-          wrapper: "z-[999]"
+          wrapper: "z-[999]",
         }}
       >
         <ModalContent className="max-w-sm">
