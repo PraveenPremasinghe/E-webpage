@@ -39,7 +39,8 @@ export const FlipWords = ({
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.5 }}
           className={cn(
-            "inline-block text-left text-gary-900 dark:text-neutral-100 px-2",
+            "inline-block text-left text-gary-900 dark:text-neutral-100 px-2 " +
+            "bg-gradient-to-r from-rose-500 to-purple-600 bg-clip-text text-transparent animate-gradient",
             className
           )}
         >
