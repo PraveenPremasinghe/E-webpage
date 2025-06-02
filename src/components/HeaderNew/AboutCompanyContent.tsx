@@ -38,11 +38,11 @@ export default function AboutCompanySection() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <div className="relative aspect-square overflow-hidden rounded-xl shadow-lg md:aspect-auto md:h-[500px]">
-              <div className="h-full w-full bg-gray-200 dark:bg-gray-800">
+              <div className="h-full w-full bg-gray-100 dark:bg-gray-800">
                 <img
-                  src="/api/placeholder/600/600"
+                  src="/images/clientLogo/CEO 4.webp"
                   alt="Asanka Ediriweera, CEO"
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-contain"
                 />
               </div>
 
