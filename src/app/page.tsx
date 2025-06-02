@@ -12,6 +12,7 @@ import Platform from "@/components/Platform";
 import IndustrySolutionsSection from "@/components/TailoredSolution";
 import React from "react";
 import OurClient from "@/components/Clients/index2";
+import SmoothScroll from "@/components/ui/SmoothScroll";
 
 
 export const metadata: Metadata = {
@@ -24,8 +25,9 @@ export default function Home() {
   const posts = getAllPosts(["title", "date", "excerpt", "coverImage", "slug"]);
 
   return (
+
     <main className="bg-zinc-50">
-      {/*<HeroUIProvider>*/}
+
       <ScrollUp />
       <Hero />
       {/*<AIBot/>*/}
@@ -36,7 +38,6 @@ export default function Home() {
       <Features />
       {/*<OurServices/>*/}
       <WeOffer />
-
       {/*<About />*/}
       <ActogoERP />
       <Contact />
@@ -48,7 +49,7 @@ export default function Home() {
       {/*<Team />*/}
       {/*<HomeBlogSection posts={posts} />*/}
 
-      {/*</HeroUIProvider>*/}
     </main>
+
   );
 }

@@ -158,11 +158,11 @@ export default function Contact() {
           <div>
             <h3 className="font-bold text-lg mb-1">UK Office</h3>
             <p className="text-gray-600 text-sm">
-              34 Parsons Hill,
+             22 Dudley Road
               <br />
-              Birmingham, B68 9BX,
+             Kingswinford,
               <br />
-              United Kingdom
+              DY6 8BS
             </p>
           </div>
         </div>
