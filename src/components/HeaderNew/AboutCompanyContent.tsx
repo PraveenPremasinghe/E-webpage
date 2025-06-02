@@ -20,10 +20,10 @@ export default function AboutCompanySection() {
   return (
     <div className="relative flex w-full   items-center   justify-center overflow-hidden dark:bg-gray-900">
       {/* Background abstract elements */}
-      <div className="absolute inset-0 opacity-5 dark:opacity-10">
-        <div className="absolute left-1/4 top-0 h-96 w-96 rounded-full bg-primary blur-3xl filter"></div>
-        <div className="absolute bottom-0 right-1/4 h-64 w-64 rounded-full bg-indigo-500 blur-3xl filter"></div>
-      </div>
+      {/*<div className="absolute inset-0 opacity-5 dark:opacity-10">*/}
+      {/*  <div className="absolute left-1/4 top-0 h-96 w-96 rounded-full bg-primary blur-3xl filter"></div>*/}
+      {/*  <div className="absolute bottom-0 right-1/4 h-64 w-64 rounded-full bg-indigo-500 blur-3xl filter"></div>*/}
+      {/*</div>*/}
 
       <div className="container relative z-10 mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center gap-8 md:flex-row lg:gap-16">
@@ -37,8 +37,8 @@ export default function AboutCompanySection() {
             }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="relative aspect-square overflow-hidden rounded-xl shadow-lg md:aspect-auto md:h-[500px]">
-              <div className="h-full w-full bg-gray-100 dark:bg-gray-800">
+            <div className="relative aspect-square overflow-hidden rounded-2xl   md:aspect-auto md:h-[500px]">
+              <div className="h-full w-full  ">
                 <img
                   src="/images/clientLogo/CEO 4.webp"
                   alt="Asanka Ediriweera, CEO"
@@ -46,18 +46,7 @@ export default function AboutCompanySection() {
                 />
               </div>
 
-              {/* Decorative elements */}
-              <motion.div
-                className="absolute -bottom-6 -right-6 h-48 w-48 rounded-full border-8 border-primary opacity-30"
-                animate={{
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-              />
+
             </div>
           </motion.div>
 

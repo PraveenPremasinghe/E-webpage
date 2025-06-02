@@ -22,4 +22,11 @@ export const clientsData: Client[] = [
     logoWhite: "/images/clientLogo/mainClientLogo/Amazon_logo_White.png",
     link: "#",
   },
+  {
+    id: 4,
+    title: "Logitech",
+    logo: "/images/clientLogo/mainClientLogo/Logitech-Logo.png",
+    logoWhite: "/images/clientLogo/mainClientLogo/Logitech-Logo.png",
+    link: "#",
+  },
 ];
