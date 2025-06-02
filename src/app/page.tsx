@@ -12,7 +12,7 @@ import Platform from "@/components/Platform";
 import IndustrySolutionsSection from "@/components/TailoredSolution";
 import React from "react";
 import OurClient from "@/components/Clients/index2";
-import SmoothScroll from "@/components/ui/SmoothScroll";
+
 
 
 export const metadata: Metadata = {
