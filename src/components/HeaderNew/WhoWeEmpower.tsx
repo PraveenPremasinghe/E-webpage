@@ -90,53 +90,95 @@ export default function WhoWeEmpowerSection({
   return (
     <div className="flex flex-col">
   {/* Hero Section - Improved layout */}
-      <section className="grid grid-cols-1  lg:grid-cols-2   ">
-    <div className="space-y-4">
+      <section className="grid grid-cols-1 lg:grid-cols-2">
+    <motion.div
+      className="space-y-4"
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <div>
-        <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-3xl md:text-3xl">
+        <motion.h1
+          className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-3xl md:text-3xl"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: 0.5 }}
+        >
           {itemData.name}
-        </h1>
-        <p className="mt-2 text-lg text-gray-600 dark:text-gray-300 sm:text-lg">{itemData.name}</p>
+        </motion.h1>
+        <motion.p
+          className="mt-2 text-lg text-gray-600 dark:text-gray-300 sm:text-lg"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+        >
+          {itemData.name}
+        </motion.p>
       </div>
-      <div className="prose prose-lg text-gray-700">
+      <motion.div
+        className="prose prose-lg text-gray-700"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.5 }}
+      >
         <p>{itemData.subtitle}</p>
-      </div>
-    </div>
-    <div className="relative aspect-video overflow-hidden  ">
+      </motion.div>
+      {/* Features Section - Enhanced card style */}
+      <section className="space-y-6">
+        <motion.h2
+          className="mb-6 mt-4 text-2xl font-bold text-gray-900"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+        >
+          Key Features
+        </motion.h2>
+        <div className="space-y-4">
+          {itemData.points?.map((point, idx) => (
+            <motion.div
+              key={idx}
+              className="flex items-start space-x-4 transition-all"
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5 + idx * 0.1, duration: 0.3 }}
+              whileHover={{ x: 5 }}
+            >
+              <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-pink-100">
+                <Check className="h-5 w-5 text-pink-600" />
+              </div>
+              <div>
+                <span className="text-gray-700">{point.text}</span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+    </motion.div>
+
+    <motion.div
+      className="relative aspect-video overflow-hidden"
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.7, type: "spring" }}
+    >
       <img
         src={`/${itemData.image}`}
         alt={itemData.name}
         className="absolute h-full w-full object-cover"
       />
-    </div>
-
-        {/* Features Section - Enhanced card style */}
-        <section className="space-y-6 ">
-    <h2 className="mb-6 mt-4 text-2xl font-bold text-gray-900">Key Features</h2>
-    <div className="space-y-4">
-      {itemData.points?.map((point, idx) => (
-        <div
-          key={idx}
-          className="flex items-start space-x-4   transition-all"
-        >
-          <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-pink-100">
-            <Check className="h-5 w-5 text-pink-600" />
-          </div>
-          <div>
-            <span className="text-gray-700">{point.text}</span>
-          </div>
-        </div>
-      ))}
-    </div>
+    </motion.div>
   </section>
-  </section>
-
-
 
       {/* Case Study + CTA - Improved side-by-side layout */}
-      <div className="grid gap-8 lg:grid-cols-3 mt-4">
+      <div className="mt-4 grid gap-8 lg:grid-cols-3">
     {/* Case Study Card - Full width */}
-        <div className="lg:col-span-2">
+        <motion.div
+          className="lg:col-span-2"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
       <div
         className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-pink-600 to-pink-800 p-8 text-white shadow-xl">
         {/* Grid pattern background */}
@@ -166,20 +208,39 @@ export default function WhoWeEmpowerSection({
         <div className="relative z-10">
           <div className="flex flex-col gap-8 md:flex-row">
             <div className="md:w-2/3">
-              <h3 className="mb-4 text-2xl font-bold">
+              <motion.h3
+                className="mb-4 text-2xl font-bold"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+              >
                 {itemData.caseStudy?.title}
-              </h3>
-              <p className="mb-6 text-pink-100">
+              </motion.h3>
+              <motion.p
+                className="mb-6 text-pink-100"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+              >
                 {itemData.caseStudy?.description}
-              </p>
+              </motion.p>
               <div className="space-y-4">
                 {itemData.caseStudy?.highlights?.map((highlight, idh) => (
-                  <div key={idh} className="flex items-start space-x-4">
+                  <motion.div
+                    key={idh}
+                    className="flex items-start space-x-4"
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4 + idh * 0.1 }}
+                  >
                     <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white/20">
                       <Check className="h-4 w-4 text-white" />
                     </div>
                     <span className="flex-1">{highlight}</span>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -187,9 +248,14 @@ export default function WhoWeEmpowerSection({
             <div className="mt-6 md:mt-0 md:w-1/3">
               <div className="grid grid-cols-2 gap-4 md:grid-cols-1">
                 {itemData.caseStudy?.stats?.map((stat, ids) => (
-                  <div
+                  <motion.div
                     key={ids}
                     className="rounded-xl bg-white/10 p-4 text-center backdrop-blur-sm"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5 + ids * 0.1 }}
+                    whileHover={{ scale: 1.05 }}
                   >
                     <div className="text-3xl font-bold text-white">
                       {stat.value}
@@ -197,50 +263,83 @@ export default function WhoWeEmpowerSection({
                     <div className="text-sm text-pink-100">
                       {stat.label}
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
 
         {/* CTA Card - Improved styling */}
-        <div className="flex flex-col">
+        <motion.div
+          className="flex flex-col"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
       <div
         className="flex h-full flex-col justify-between rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
         <div>
-          <h3 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
+          <motion.h3
+            className="mb-4 text-xl font-bold text-gray-900 dark:text-white"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+          >
             Ready to transform your business?
-          </h3>
-          <p className="mb-6 text-gray-600 dark:text-gray-300">
-            Let&aposs discuss how we can help you achieve your technology and business goals.
-          </p>
+          </motion.h3>
+          <motion.p
+            className="mb-6 text-gray-600 dark:text-gray-300"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+          >
+            Let&apos;s discuss how we can help you achieve your technology
+            and business goals.
+          </motion.p>
         </div>
 
         <div className="space-y-4">
-          <button
-            className="w-full rounded-lg bg-pink-600 px-6 py-3 font-medium text-white transition-colors hover:bg-pink-700">
+          <motion.button
+            className="w-full rounded-lg bg-pink-600 px-6 py-3 font-medium text-white transition-colors hover:bg-pink-700"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+          >
             Schedule a Consultation
-          </button>
+          </motion.button>
 
           {itemData.id && (
-            <Link
-              href={{
-                pathname: "/our-service",
-                query: { id: itemData.id },
-              }}
-              onClick={onNavigate}
-              className="flex items-center justify-center text-sm font-medium text-pink-600 hover:underline dark:text-pink-400"
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
             >
-              Learn more about this service
-              <ArrowRight size={16} className="ml-2" />
-            </Link>
+              <Link
+                href={{
+                  pathname: "/our-service",
+                  query: { id: itemData.id },
+                }}
+                onClick={onNavigate}
+                className="flex items-center justify-center text-sm font-medium text-pink-600 hover:underline dark:text-pink-400"
+              >
+                Learn more about this service
+                <ArrowRight size={16} className="ml-2" />
+              </Link>
+            </motion.div>
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   </div>
 </div>
   );

@@ -40,7 +40,7 @@ const Footer = () => {
         {/* Social Icons */}
         <div className="flex space-x-4">
           <Link
-            href="#"
+            href="https://www.linkedin.com/company/edhirya/posts/?feedView=all"
             className="text-white transition-colors duration-200 hover:text-white"
           >
             <Linkedin size={20} />
