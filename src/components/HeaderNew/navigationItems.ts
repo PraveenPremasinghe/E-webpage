@@ -95,7 +95,7 @@ export const navigationItems: NavigationItem[] = [
                 subtitle: "Dental clinic management system.",
                 description: "Appointment, patient records, and billing for dental practices.",
                 features: ["Dental charting", "EHR", "Billing", "Patient history"],
-                image: "images/OurJourneyTimeline/dentalpro.png",
+                image: "images/OurJourneyTimeline/dentalpro2.png",
               },
 
             ],
@@ -111,7 +111,7 @@ export const navigationItems: NavigationItem[] = [
                 subtitle: "POS and kitchen management for retail chains.",
                 description: "End-to-end food outlet management from kitchen to cashier.",
                 features: ["POS integration", "Order management", "Customer loyalty", "Inventory sync"],
-                image: "images/megaMenu/erp_operations.webp",
+                image: "images/clientLogo/Go-nuts.png",
               },
               {
                 id: "food_pak_supermarket",
@@ -160,8 +160,8 @@ export const navigationItems: NavigationItem[] = [
             tabs: [
               {
                 id: "automotive_amvms",
-                title: "AMVMS",
-                subtitle: "Automated Motor Vehicle Management System.",
+                title: "VMMS",
+                subtitle: "Vehicle Management Management System.",
                 description: "Complete solution for managing vehicle registrations and inspections.",
                 features: ["Vehicle database", "Inspection records", "License renewals", "Reporting"],
                 image: "images/megaMenu/erp_operations.webp",
