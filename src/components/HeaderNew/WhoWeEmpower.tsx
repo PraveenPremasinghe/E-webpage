@@ -89,146 +89,159 @@ export default function WhoWeEmpowerSection({
   if (!itemData) return null;
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="grid grid-cols-1 items-center gap-8 space-y-10 lg:grid-cols-2">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-            {itemData.name}
-          </h1>
-          <p className="mt-1 text-lg text-gray-600">{itemData.name}</p>
-          <p className="mt-6 text-gray-700">{itemData.subtitle}</p>
-        </div>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          <img
-            src={"/placeholder.jpg"}
-            alt={itemData.name}
-            className="rounded-lg shadow-md"
-          />
-        </div>
-      </section>
+  {/* Hero Section - Improved layout */}
+      <section className="grid grid-cols-1  lg:grid-cols-2   ">
+    <div className="space-y-4">
+      <div>
+        <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-3xl md:text-3xl">
+          {itemData.name}
+        </h1>
+        <p className="mt-2 text-lg text-gray-600 dark:text-gray-300 sm:text-lg">{itemData.name}</p>
+      </div>
+      <div className="prose prose-lg text-gray-700">
+        <p>{itemData.subtitle}</p>
+      </div>
+    </div>
+    <div className="relative aspect-video overflow-hidden  ">
+      <img
+        src={`/${itemData.image}`}
+        alt={itemData.name}
+        className="absolute h-full w-full object-cover"
+      />
+    </div>
 
-      {/* Features Section */}
-      <section className="mt-10 space-y-4">
-        <h2 className="mb-6 text-2xl font-bold text-gray-900">Key Features</h2>
-        {itemData.points?.map((point, idx) => (
-          <div key={idx} className="flex items-start space-x-3">
-            <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-pink-100">
-              <Check className="h-4 w-4 text-pink-600" />
-            </div>
+        {/* Features Section - Enhanced card style */}
+        <section className="space-y-6 ">
+    <h2 className="mb-6 mt-4 text-2xl font-bold text-gray-900">Key Features</h2>
+    <div className="space-y-4">
+      {itemData.points?.map((point, idx) => (
+        <div
+          key={idx}
+          className="flex items-start space-x-4   transition-all"
+        >
+          <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-pink-100">
+            <Check className="h-5 w-5 text-pink-600" />
+          </div>
+          <div>
             <span className="text-gray-700">{point.text}</span>
           </div>
-        ))}
-      </section>
+        </div>
+      ))}
+    </div>
+  </section>
+  </section>
 
-      {/* Case Study + CTA */}
-      <div className="mt-10 flex flex-col gap-8 lg:flex-row ">
-        {/* Case Study Card */}
-        <div className="flex-1 ">
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-pink-600 to-pink-800 p-6 text-white">
-            <div className="absolute inset-0 opacity-10">
-              <svg
-                width="100%"
-                height="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                className="absolute inset-0"
-              >
-                <defs>
-                  <pattern
-                    id="grid"
-                    width="20"
-                    height="20"
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <path
-                      d="M 20 0 L 0 0 0 20"
-                      fill="none"
-                      stroke="white"
-                      strokeWidth="0.5"
-                    />
-                  </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#grid)" />
-              </svg>
-            </div>
 
-            <div className="relative z-10">
-              <div className="flex flex-col gap-6 md:flex-row">
-                <div className="md:w-2/3">
-                  <h3 className="mb-2 text-lg font-bold">
-                    {itemData.caseStudy?.title}
-                  </h3>
-                  <p className="mb-4 text-sm text-white">
-                    {itemData.caseStudy?.description}
-                  </p>
-                  <div className="space-y-2 text-sm">
-                    {itemData.caseStudy?.highlights?.map((highlight, idh) => (
-                      <div key={idh} className="flex items-start space-x-3">
-                        <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white/70">
-                          <Check className="h-4 w-4 text-pink-900" />
-                        </div>
-                        <span className="text-white">{highlight}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
 
-                <div className="md:w-1/3">
-                  <div className="grid grid-cols-2 gap-2 md:grid-cols-1 md:grid-rows-2">
-                    {itemData.caseStudy?.stats?.map((stat, ids) => (
-                      <div
-                        key={ids}
-                        className="rounded-2xl bg-white p-3 text-center backdrop-blur-sm"
-                      >
-                        <div className="text-3xl font-bold text-pink-800">
-                          {stat.value}
-                        </div>
-                        <div className="text-xs text-pink-600">
-                          {stat.label}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      {/* Case Study + CTA - Improved side-by-side layout */}
+      <div className="grid gap-8 lg:grid-cols-3 mt-4">
+    {/* Case Study Card - Full width */}
+        <div className="lg:col-span-2">
+      <div
+        className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-pink-600 to-pink-800 p-8 text-white shadow-xl">
+        {/* Grid pattern background */}
+        <div className="absolute inset-0 opacity-10">
+          <svg
+            width="100%"
+            height="100%"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <pattern
+              id="grid-pattern"
+              width="20"
+              height="20"
+              patternUnits="userSpaceOnUse"
+            >
+              <path
+                d="M 20 0 L 0 0 0 20"
+                fill="none"
+                stroke="white"
+                strokeWidth="0.5"
+              />
+            </pattern>
+            <rect width="100%" height="100%" fill="url(#grid-pattern)" />
+          </svg>
         </div>
 
-        {/* CTA Card */}
-        <div className="flex-shrink-0 lg:w-80 xl:w-96">
-          <div className="flex h-full flex-col justify-between gap-4 rounded-2xl border border-gray-200 bg-pink-100 p-6 dark:border-gray-700 dark:bg-gray-900">
-            <div>
-              <h3 className="mb-2 text-lg font-bold">
-                Ready to transform your business?
+        <div className="relative z-10">
+          <div className="flex flex-col gap-8 md:flex-row">
+            <div className="md:w-2/3">
+              <h3 className="mb-4 text-2xl font-bold">
+                {itemData.caseStudy?.title}
               </h3>
-              <p className="mb-4 text-sm text-gray-600 dark:text-gray-300">
-                Let&apos;s discuss how Edhirya can help you achieve your
-                technology and business goals with our client-first approach.
+              <p className="mb-6 text-pink-100">
+                {itemData.caseStudy?.description}
               </p>
+              <div className="space-y-4">
+                {itemData.caseStudy?.highlights?.map((highlight, idh) => (
+                  <div key={idh} className="flex items-start space-x-4">
+                    <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white/20">
+                      <Check className="h-4 w-4 text-white" />
+                    </div>
+                    <span className="flex-1">{highlight}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="flex flex-col gap-3">
-              <button className="rounded-full bg-primary px-6 py-2 text-sm text-white transition-colors hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200">
-                Schedule a Consultation
-              </button>
-
-              {itemData.id && (
-                <Link
-                  href={{
-                    pathname: "/our-service",
-                    query: { id: itemData.id },
-                  }}
-                  onClick={onNavigate}
-                  className="inline-flex items-center text-sm font-medium text-pink-600 hover:underline dark:text-pink-400"
-                >
-                  Learn more
-                  <ArrowRight size={16} className="ml-1" />
-                </Link>
-              )}
+            <div className="mt-6 md:mt-0 md:w-1/3">
+              <div className="grid grid-cols-2 gap-4 md:grid-cols-1">
+                {itemData.caseStudy?.stats?.map((stat, ids) => (
+                  <div
+                    key={ids}
+                    className="rounded-xl bg-white/10 p-4 text-center backdrop-blur-sm"
+                  >
+                    <div className="text-3xl font-bold text-white">
+                      {stat.value}
+                    </div>
+                    <div className="text-sm text-pink-100">
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+        {/* CTA Card - Improved styling */}
+        <div className="flex flex-col">
+      <div
+        className="flex h-full flex-col justify-between rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <div>
+          <h3 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
+            Ready to transform your business?
+          </h3>
+          <p className="mb-6 text-gray-600 dark:text-gray-300">
+            Let's discuss how we can help you achieve your technology and business goals.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <button
+            className="w-full rounded-lg bg-pink-600 px-6 py-3 font-medium text-white transition-colors hover:bg-pink-700">
+            Schedule a Consultation
+          </button>
+
+          {itemData.id && (
+            <Link
+              href={{
+                pathname: "/our-service",
+                query: { id: itemData.id },
+              }}
+              onClick={onNavigate}
+              className="flex items-center justify-center text-sm font-medium text-pink-600 hover:underline dark:text-pink-400"
+            >
+              Learn more about this service
+              <ArrowRight size={16} className="ml-2" />
+            </Link>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   );
 }
