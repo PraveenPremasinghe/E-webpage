@@ -340,7 +340,7 @@ export const navigationItems: NavigationItem[] = [
                   "Role-based access",
                   "Compliance tracking",
                 ],
-                image: "images/megaMenu/bis.jpg",
+                image: "images/megaMenu/gov.jpg",
               },
             ],
           },
