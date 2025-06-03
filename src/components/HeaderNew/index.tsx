@@ -1048,9 +1048,9 @@ export default function HeaderNew() {
                                             whileHover={{ scale: 1.05 }}
                                             whileTap={{ scale: 0.95 }}
                                           >
-                                            <PrimaryButton>
-                                              I&apos;m interested
-                                            </PrimaryButton>
+                                            {/*<PrimaryButton>*/}
+                                            {/*  I&apos;m interested*/}
+                                            {/*</PrimaryButton>*/}
                                           </motion.div>
 
                                           {activeNavItem ? (

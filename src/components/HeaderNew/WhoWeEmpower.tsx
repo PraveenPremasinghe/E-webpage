@@ -215,7 +215,7 @@ export default function WhoWeEmpowerSection({
             Ready to transform your business?
           </h3>
           <p className="mb-6 text-gray-600 dark:text-gray-300">
-            Let's discuss how we can help you achieve your technology and business goals.
+            Let&aposs discuss how we can help you achieve your technology and business goals.
           </p>
         </div>
 

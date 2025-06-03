@@ -89,7 +89,7 @@ export default function AboutCompanySection() {
               Back then, innovation meant finding a way when nothing existed yet. That same mindset drives us today.
             </p>
             <p className="text-lg md:text-xl">
-              At Edhirya, we help businesses break through growth barriers—not with off-the-shelf software, but with purpose-built systems that adapt, assist, and evolve. Whether you're limited by your current tech, launching something new, or ready to scale—we're here.
+              At Edhirya, we help businesses break through growth barriers—not with off-the-shelf software, but with purpose-built systems that adapt, assist, and evolve. Whether you&apos;re limited by your current tech, launching something new, or ready to scale—we&apos;re here.
             </p>
             <p className="text-lg md:text-xl">
               Our mission is to transform how businesses leverage technology for growth and innovation.
