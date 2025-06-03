@@ -27,6 +27,7 @@ export interface CategoryItem {
   points?: CategoryPoints[];
   caseStudy?: CaseStudy; // changes this
   id? : string;
+  image?: string;
 }
 
 export interface Category {
@@ -69,7 +70,7 @@ export const navigationItems: NavigationItem[] = [
                 subtitle: "ERP solution for classifieds and marketplace management.",
                 description: "Integrated ERP tools built to manage operations efficiently for Saltside Technologies.",
                 features: ["Inventory management", "Vendor tracking", "Workflow automation", "Real-time reporting"],
-                image: "images/megaMenu/erp_operations.webp",
+                image: "images/OurJourneyTimeline/ikman.webp",
               },
               {
                 id: "erp_business_register",
@@ -77,24 +78,10 @@ export const navigationItems: NavigationItem[] = [
                 subtitle: "Digital business registration and compliance management.",
                 description: "Complete ERP suite for government-driven business registration services.",
                 features: ["Registration workflow", "User management", "Document handling", "Audit trails"],
-                image: "images/megaMenu/erp_operations.webp",
+                image: "images/OurJourneyTimeline/nbr.png",
               },
-              {
-                id: "erp_inventory_tracking",
-                title: "Inventory Management",
-                subtitle: "Real-time control over stock and availability.",
-                description: "Ideal for businesses needing accurate stock tracking and alerts.",
-                features: ["Stock visibility", "Reorder levels", "Batch tracking", "Warehouse mapping"],
-                image: "images/megaMenu/erp_operations.webp",
-              },
-              {
-                id: "erp_procurement",
-                title: "Procurement",
-                subtitle: "Simplify purchase processes with automation.",
-                description: "Ensure compliance, reduce costs, and manage vendors effectively.",
-                features: ["Purchase order automation", "Vendor management", "Approval workflows", "Budget control"],
-                image: "images/megaMenu/erp_operations.webp",
-              },
+
+
             ],
           },
           {
@@ -108,24 +95,9 @@ export const navigationItems: NavigationItem[] = [
                 subtitle: "Dental clinic management system.",
                 description: "Appointment, patient records, and billing for dental practices.",
                 features: ["Dental charting", "EHR", "Billing", "Patient history"],
-                image: "images/megaMenu/erp_operations.webp",
+                image: "images/OurJourneyTimeline/dentalpro.png",
               },
-              {
-                id: "healthcare_patient_management",
-                title: "Patient Management",
-                subtitle: "Centralized patient records and appointments.",
-                description: "EHR integration, appointment scheduling, and follow-ups made easy.",
-                features: ["EHR integration", "Appointment booking", "Patient history tracking", "Telemedicine support"],
-                image: "images/megaMenu/erp_operations.webp",
-              },
-              {
-                id: "healthcare_billing_system",
-                title: "Billing System",
-                subtitle: "Streamline invoicing and insurance claims.",
-                description: "Automated medical billing with insurance support and transparency.",
-                features: ["Medical coding", "Insurance claim tracking", "Invoice generation", "Payment gateway integration"],
-                image: "images/megaMenu/erp_operations.webp",
-              },
+
             ],
           },
           {
@@ -147,7 +119,7 @@ export const navigationItems: NavigationItem[] = [
                 subtitle: "Supermarket ERP and inventory automation.",
                 description: "Retail-focused ERP solution for stock, billing, and CRM.",
                 features: ["Multi-location stock", "Billing", "Offers & promotions", "Customer analytics"],
-                image: "images/megaMenu/erp_operations.webp",
+                image: "images/clientLogo/pak.png",
               },
             ],
           },
@@ -162,7 +134,7 @@ export const navigationItems: NavigationItem[] = [
                 subtitle: "Smart compliance and automation for authorities.",
                 description: "Public sector ERP built for compliance, document flow, and approvals.",
                 features: ["Document tracking", "eForms", "Role-based access", "Secure logs"],
-                image: "images/megaMenu/erp_operations.webp",
+                image: "images/clientLogo/solor.png",
               },
             ],
           },
@@ -177,7 +149,7 @@ export const navigationItems: NavigationItem[] = [
                 subtitle: "Site and material tracking for contractors.",
                 description: "Manage construction workflows with procurement and project modules.",
                 features: ["Site progress", "Material requests", "Contractor logs", "Timesheet integration"],
-                image: "images/megaMenu/erp_operations.webp",
+                image: "images/clientLogo/pasg.png",
               },
             ],
           },
@@ -222,7 +194,7 @@ export const navigationItems: NavigationItem[] = [
                 subtitle: "Student & course management for educational institutes.",
                 description: "ERP tailored for course registration, grading, and communication.",
                 features: ["Course catalogs", "Timetable", "Exam results", "Notifications"],
-                image: "images/megaMenu/erp_operations.webp",
+                image: "images/clientLogo/casrilnka.jpg",
               },
             ],
           },
@@ -237,7 +209,7 @@ export const navigationItems: NavigationItem[] = [
                 subtitle: "Appointment and staff management for beauty businesses.",
                 description: "Boost customer experience and simplify your spa/salon operations.",
                 features: ["Online bookings", "Stylist schedules", "Service tracking", "Customer profiles"],
-                image: "images/megaMenu/erp_operations.webp",
+                image: "images/clientLogo/beatech-feature.webp",
               },
             ],
           },
@@ -345,7 +317,7 @@ export const navigationItems: NavigationItem[] = [
                   "Secure storage",
                   "Version control",
                 ],
-                image: "images/megaMenu/erp_operations.webp",
+                image: "images/megaMenu/smart.avif",
               },
             ],
           },
@@ -368,7 +340,7 @@ export const navigationItems: NavigationItem[] = [
                   "Role-based access",
                   "Compliance tracking",
                 ],
-                image: "images/megaMenu/erp_operations.webp",
+                image: "images/megaMenu/bis.jpg",
               },
             ],
           },
@@ -391,7 +363,7 @@ export const navigationItems: NavigationItem[] = [
                   "Integration ready",
                   "Real-time insights",
                 ],
-                image: "images/megaMenu/erp_operations.webp",
+                image: "images/megaMenu/bis.jpg",
               },
             ],
           },
@@ -406,6 +378,7 @@ export const navigationItems: NavigationItem[] = [
     categories: [
       {
         title: "Who We Empower",
+
         category: [
           {
             id: "who_we_empower_startup_founders",
@@ -413,6 +386,7 @@ export const navigationItems: NavigationItem[] = [
             subtitle:
               "Startup founders are visionary entrepreneurs who identify problems, develop innovative solutions, and build early-stage companies from the ground up, often navigating risk, uncertainty, and rapid growth",
             icon: "Rocket",
+            image: "images/megaMenu/startup.jpg",
             points: [
               { text: "MVP Development & Scaling", icon: "Code" },
               { text: "Technical Co-founding", icon: "Users" },
@@ -441,6 +415,7 @@ export const navigationItems: NavigationItem[] = [
             subtitle:
               "Centralized solutions to manage and grow franchise ecosystems.",
             icon: "Network",
+            image:"images/megaMenu/Franchise.jpg",
             points: [
               { text: "Unified Dashboard Systems", icon: "LayoutDashboard" },
               { text: "Automated Reporting & Analytics", icon: "BarChart3" },
@@ -468,6 +443,7 @@ export const navigationItems: NavigationItem[] = [
             name: "Tech Investors",
             subtitle:
               "Insights and tools to evaluate and scale tech portfolios.",
+            image:"images/megaMenu/people-1979261_1280.jpg",
             icon: "DollarSign",
             points: [
               { text: "Due Diligence Platforms", icon: "ClipboardCheck" },
@@ -496,6 +472,7 @@ export const navigationItems: NavigationItem[] = [
             name: "Strategic Outsourcing",
             subtitle:
               "Smart outsourcing strategies for cost-effective execution.",
+            image:"images/megaMenu/pawn-2430046_1280.jpg",
             icon: "Briefcase",
             points: [
               { text: "Dedicated Offshore Teams", icon: "Users" },
@@ -524,6 +501,7 @@ export const navigationItems: NavigationItem[] = [
             name: "Tech Partnerships",
             subtitle:
               "Collaborate on innovation with integrated tech ecosystems.",
+            image:"images/megaMenu/team-spirit-2447163_1280.jpg",
             icon: "Link",
             points: [
               { text: "API-first Integration", icon: "Plug" },

@@ -14,7 +14,7 @@ const Hero = () => {
         <div className="flex h-screen w-full  flex-col lg:flex-row">
           {/* Left side - Red background */}
           {/* Left side - Red background */}
-          <div className="hero-glassmorphism-effect flex w-full items-center justify-center md:w-2/5 ">
+          <div className="hero-glassmorphism-effect flex w-full items-center justify-center md:w-[45%] ">
             <div className="relative flex h-screen w-full flex-col">
               {/* Full-screen SparklesCore with gradients */}
               <div className="absolute inset-0 h-full w-full">
@@ -88,9 +88,14 @@ const Hero = () => {
           </div>
 
           {/* Right side - Blue background */}
-          <div className="hero-section-right _relation_1lgfw_11 flex  w-3/5 ">
-            <div className="  "></div>
-          </div>
+          <div className="hero-section-right flex md:w-[55%]">
+  <img
+    src="/images/hero/ai10new1.png"
+    alt="Hero Image"
+    className="h-screen w-full object-cover"
+  />
+</div>
+
         </div>
       </section>
     </>
