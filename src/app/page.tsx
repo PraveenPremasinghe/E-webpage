@@ -1,19 +1,14 @@
-import MarqueeDemo  from "@/components/Clients";
 import ScrollUp from "@/components/Common/ScrollUp";
 import Contact from "@/components/Contact";
 import Features from "@/components/Features";
 import Hero from "@/components/Hero";
-import { getAllPosts } from "@/utils/markdown";
 import { Metadata } from "next";
 import WeOffer from "@/components/weOffer";
-import Partners from "@/components/Partners";
 import ActogoERP from "@/components/ActogoERP";
 import Platform from "@/components/Platform";
 import IndustrySolutionsSection from "@/components/TailoredSolution";
 import React from "react";
 import OurClient from "@/components/Clients/index2";
-
-
 
 export const metadata: Metadata = {
   title: "Edhirya IT - Crafting the Future of Digital Innovation",
@@ -22,12 +17,8 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  const posts = getAllPosts(["title", "date", "excerpt", "coverImage", "slug"]);
-
   return (
-
     <main className="bg-zinc-50">
-
       <ScrollUp />
       <Hero />
       {/*<AIBot/>*/}
@@ -48,8 +39,6 @@ export default function Home() {
       {/*<Faq />*/}
       {/*<Team />*/}
       {/*<HomeBlogSection posts={posts} />*/}
-
     </main>
-
   );
 }
